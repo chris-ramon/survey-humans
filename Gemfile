@@ -14,7 +14,7 @@ gem 'nokogiri'
 # gem 'aws-s3', :require => 'aws/s3'
 
 gem 'mysql2', '< 0.3'
-#gem "devise", "~> 1.4.2"
+gem "devise", "~> 1.4.2"
 #gem 'jquery-rails', '>= 1.0.12'
 #gem "paperclip", "~> 2.3.15"
 #gem "rubyzip"
