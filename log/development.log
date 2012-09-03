@@ -1,0 +1,707 @@
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from service at /home/eduardo/.rvm/rubies/ruby-1.9.2-p318/lib/ruby/1.9.1/webrick/httpserver.rb:111)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (803.8ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36mSQL (0.6ms)[0m  [1mSHOW KEYS FROM `schema_migrations`[0m
+  [1m[35mSQL (71.7ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateAccountManagementProfiles (20120831042719)
+  [1m[35mSQL (23.2ms)[0m  CREATE TABLE `account_management_profiles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `description` text, `deleted` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120831042719')[0m
+Migrating to CreateAccountManagementUsers (20120831043335)
+  [1m[35mSQL (29.3ms)[0m  CREATE TABLE `account_management_users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255), `encrypted_password` varchar(255), `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `last_sign_in_at` datetime, `name` varchar(255), `lastname` varchar(255), `deleted` int(11), `profile_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120831043335')[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.5ms)[0m  [1mdescribe `account_management_profiles`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `account_management_profiles`
+  [1m[36mSQL (0.6ms)[0m  [1mdescribe `account_management_users`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `account_management_users`
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateAccountManagementUsers (20120831043335)
+  [1m[35mSQL (3.4ms)[0m  DROP TABLE `account_management_users`
+  [1m[36mAREL (19.6ms)[0m  [1mDELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20120831043335'[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.4ms)[0m  [1mdescribe `account_management_profiles`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `account_management_profiles`
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateAccountManagementProfiles (20120831042719)
+Migrating to CreateAccountManagementUsers (20120831043335)
+  [1m[35mSQL (40.0ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255), `encrypted_password` varchar(255), `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `last_sign_in_at` datetime, `name` varchar(255), `lastname` varchar(255), `deleted` int(11), `profile_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120831043335')[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.6ms)[0m  [1mdescribe `account_management_profiles`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `account_management_profiles`
+  [1m[36mSQL (0.9ms)[0m  [1mdescribe `users`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `users`
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateAccountManagementUsers (20120831043335)
+  [1m[35mSQL (0.7ms)[0m  DROP TABLE `account_management_users`
+Mysql2::Error: Unknown table 'account_management_users': DROP TABLE `account_management_users`
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateAccountManagementUsers (20120831043335)
+  [1m[35mSQL (0.4ms)[0m  DROP TABLE `account_management_users`
+Mysql2::Error: Unknown table 'account_management_users': DROP TABLE `account_management_users`
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateAccountManagementUsers (20120831043335)
+  [1m[35mSQL (1.7ms)[0m  DROP TABLE `users`
+  [1m[36mAREL (0.4ms)[0m  [1mDELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20120831043335'[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.4ms)[0m  [1mdescribe `account_management_profiles`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `account_management_profiles`
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateAccountManagementProfiles (20120831042719)
+  [1m[35mSQL (1.8ms)[0m  DROP TABLE `account_management_profiles`
+  [1m[36mAREL (0.4ms)[0m  [1mDELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20120831042719'[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateAccountManagementProfiles (20120831042719)
+  [1m[35mSQL (6.2ms)[0m  CREATE TABLE `profiles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `description` text, `deleted` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120831042719')[0m
+Migrating to CreateAccountManagementUsers (20120831043335)
+  [1m[35mSQL (13.5ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255), `encrypted_password` varchar(255), `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `last_sign_in_at` datetime, `name` varchar(255), `lastname` varchar(255), `deleted` int(11), `profile_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120831043335')[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.6ms)[0m  [1mdescribe `profiles`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `profiles`
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `users`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `users`
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateAccountManagementUsers (20120831043335)
+  [1m[35mSQL (10.3ms)[0m  DROP TABLE `users`
+  [1m[36mAREL (0.7ms)[0m  [1mDELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20120831043335'[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (1.2ms)[0m  [1mdescribe `profiles`[0m
+  [1m[35mSQL (0.6ms)[0m  SHOW KEYS FROM `profiles`
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateAccountManagementProfiles (20120831042719)
+  [1m[35mSQL (7.7ms)[0m  DROP TABLE `profiles`
+  [1m[36mAREL (0.5ms)[0m  [1mDELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20120831042719'[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateAccountManagementProfiles (20120831042719)
+  [1m[35mSQL (16.0ms)[0m  CREATE TABLE `profiles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `description` text, `deleted` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120831042719')[0m
+Migrating to CreateAccountManagementUsers (20120831043335)
+  [1m[35mSQL (18.2ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255), `encrypted_password` varchar(255), `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `last_sign_in_at` datetime, `name` varchar(255), `lastname` varchar(255), `deleted` int(11), `profile_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120831043335')[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.4ms)[0m  [1mdescribe `profiles`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `profiles`
+  [1m[36mSQL (0.6ms)[0m  [1mdescribe `users`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `users`
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateAccountManagementUsers (20120831043335)
+  [1m[35mSQL (24.9ms)[0m  DROP TABLE `users`
+  [1m[36mAREL (0.5ms)[0m  [1mDELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20120831043335'[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.4ms)[0m  [1mdescribe `profiles`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `profiles`
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateAccountManagementProfiles (20120831042719)
+  [1m[35mSQL (11.5ms)[0m  DROP TABLE `profiles`
+  [1m[36mAREL (0.5ms)[0m  [1mDELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20120831042719'[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateAccountManagementProfiles (20120831042719)
+  [1m[35mSQL (24.8ms)[0m  CREATE TABLE `profiles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL, `description` text, `deleted` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120831042719')[0m
+Migrating to CreateAccountManagementUsers (20120831043335)
+  [1m[35mSQL (42.1ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `encrypted_password` varchar(255) NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `last_sign_in_at` datetime, `name` varchar(255) NOT NULL, `lastname` varchar(255) NOT NULL, `deleted` int(11) DEFAULT 0, `profile_id` int(11) NOT NULL, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120831043335')[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.4ms)[0m  [1mdescribe `profiles`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `profiles`
+  [1m[36mSQL (0.9ms)[0m  [1mdescribe `users`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `users`
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateAccountManagementProfiles (20120831042719)
+Migrating to CreateAccountManagementUsers (20120831043335)
+Migrating to CreateLogs (20120831044838)
+  [1m[35mSQL (8.0ms)[0m  CREATE TABLE `logs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `description` text NOT NULL, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120831044838')[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mdescribe `logs`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `logs`
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `profiles`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `profiles`
+  [1m[36mSQL (0.5ms)[0m  [1mdescribe `users`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `users`
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateAccountManagementProfiles (20120831042719)
+Migrating to CreateAccountManagementUsers (20120831043335)
+Migrating to CreateLogs (20120831044838)
+Migrating to CreateAccesses (20120831045108)
+  [1m[35mSQL (32.1ms)[0m  CREATE TABLE `accesses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL, `parent_id` int(11) NOT NULL, `controller` varchar(255), `action` varchar(255), `panel` int(11) DEFAULT 1 NOT NULL, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120831045108')[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (1.3ms)[0m  [1mdescribe `accesses`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `accesses`
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `logs`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `logs`
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `profiles`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `profiles`
+  [1m[36mSQL (0.9ms)[0m  [1mdescribe `users`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `users`
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateAccountManagementProfiles (20120831042719)
+Migrating to CreateAccountManagementUsers (20120831043335)
+Migrating to CreateLogs (20120831044838)
+Migrating to CreateAccesses (20120831045108)
+Migrating to CreateAccessProfiles (20120831045450)
+  [1m[35mSQL (33.4ms)[0m  CREATE TABLE `access_profiles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `access_id` int(11) NOT NULL, `profile_id` int(11) NOT NULL, `deleted` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120831045450')[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.4ms)[0m  [1mdescribe `access_profiles`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `access_profiles`
+  [1m[36mSQL (0.4ms)[0m  [1mdescribe `accesses`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `accesses`
+  [1m[36mSQL (0.5ms)[0m  [1mdescribe `logs`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `logs`
+  [1m[36mSQL (0.5ms)[0m  [1mdescribe `profiles`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `profiles`
+  [1m[36mSQL (2.4ms)[0m  [1mdescribe `users`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `users`
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateAccountManagementProfiles (20120831042719)
+Migrating to CreateAccountManagementUsers (20120831043335)
+Migrating to CreateLogs (20120831044838)
+Migrating to CreateAccesses (20120831045108)
+Migrating to CreateAccessProfiles (20120831045450)
+Migrating to CreateCompanies (20120831045758)
+  [1m[35mSQL (16.8ms)[0m  CREATE TABLE `companies` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL, `user_id` int(11) NOT NULL, `deleted` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120831045758')[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.6ms)[0m  [1mdescribe `access_profiles`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `access_profiles`
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `accesses`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `accesses`
+  [1m[36mSQL (0.6ms)[0m  [1mdescribe `companies`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `companies`
+  [1m[36mSQL (0.5ms)[0m  [1mdescribe `logs`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `logs`
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `profiles`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `profiles`
+  [1m[36mSQL (0.9ms)[0m  [1mdescribe `users`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `users`
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/Tekton Labs/RAILS/SurveyHuman/config/environment.rb:5)
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateAccountManagementProfiles (20120831042719)
+Migrating to CreateAccountManagementUsers (20120831043335)
+Migrating to CreateLogs (20120831044838)
+Migrating to CreateAccesses (20120831045108)
+Migrating to CreateAccessProfiles (20120831045450)
+Migrating to CreateCompanies (20120831045758)
+Migrating to CreateCompanyUsers (20120831050200)
+  [1m[35mSQL (9.1ms)[0m  CREATE TABLE `company_users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `company_id` int(11) NOT NULL, `user_id` int(11) NOT NULL, `deleted` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120831050200')[0m
+  [1m[35mSQL (0.6ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.8ms)[0m  [1mdescribe `access_profiles`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `access_profiles`
+  [1m[36mSQL (0.8ms)[0m  [1mdescribe `accesses`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `accesses`
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `companies`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `companies`
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `company_users`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `company_users`
+  [1m[36mSQL (0.6ms)[0m  [1mdescribe `logs`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `logs`
+  [1m[36mSQL (1.2ms)[0m  [1mdescribe `profiles`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `profiles`
+  [1m[36mSQL (0.9ms)[0m  [1mdescribe `users`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `users`
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/USIL/TallerDeImplementación/SurveyHuman/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/USIL/TallerDeImplementación/SurveyHuman/config/environment.rb:5)
+  [1m[36mSQL (97.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (23.4ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateAccountManagementProfiles (20120831042719)
+Migrating to CreateAccountManagementUsers (20120831043335)
+Migrating to CreateLogs (20120831044838)
+Migrating to CreateAccesses (20120831045108)
+Migrating to CreateAccessProfiles (20120831045450)
+Migrating to CreateCompanies (20120831045758)
+Migrating to CreateCompanyUsers (20120831050200)
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.4ms)[0m  [1mdescribe `access_profiles`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `access_profiles`
+  [1m[36mSQL (0.4ms)[0m  [1mdescribe `accesses`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `accesses`
+  [1m[36mSQL (0.4ms)[0m  [1mdescribe `companies`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `companies`
+  [1m[36mSQL (0.3ms)[0m  [1mdescribe `company_users`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `company_users`
+  [1m[36mSQL (0.5ms)[0m  [1mdescribe `logs`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `logs`
+  [1m[36mSQL (0.5ms)[0m  [1mdescribe `profiles`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `profiles`
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `users`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `users`
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/USIL/TallerDeImplementación/SurveyHuman/config/environment.rb:5)
+  [1m[36mSQL (27.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateAccountManagementProfiles (20120831042719)
+Migrating to CreateAccountManagementUsers (20120831043335)
+Migrating to CreateLogs (20120831044838)
+Migrating to CreateAccesses (20120831045108)
+Migrating to CreateAccessProfiles (20120831045450)
+Migrating to CreateCompanies (20120831045758)
+Migrating to CreateCompanyUsers (20120831050200)
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.5ms)[0m  [1mdescribe `access_profiles`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `access_profiles`
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `accesses`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `accesses`
+  [1m[36mSQL (0.8ms)[0m  [1mdescribe `companies`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `companies`
+  [1m[36mSQL (0.4ms)[0m  [1mdescribe `company_users`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `company_users`
+  [1m[36mSQL (0.4ms)[0m  [1mdescribe `logs`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `logs`
+  [1m[36mSQL (0.4ms)[0m  [1mdescribe `profiles`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `profiles`
+  [1m[36mSQL (0.8ms)[0m  [1mdescribe `users`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `users`
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/USIL/TallerDeImplementación/SurveyHuman/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/USIL/TallerDeImplementación/SurveyHuman/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/USIL/TallerDeImplementación/SurveyHuman/config/environment.rb:5)
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateAccountManagementProfiles (20120831042719)
+Migrating to CreateAccountManagementUsers (20120831043335)
+Migrating to CreateLogs (20120831044838)
+Migrating to CreateAccesses (20120831045108)
+Migrating to CreateAccessProfiles (20120831045450)
+Migrating to CreateCompanies (20120831045758)
+Migrating to CreateCompanyUsers (20120831050200)
+Migrating to CreateQuestionCounts (20120903062432)
+  [1m[35mSQL (43.8ms)[0m  CREATE TABLE `question_counts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` int(11) NOT NULL, `deleted` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120903062432')[0m
+Migrating to CreateQuestionLevels (20120903062500)
+  [1m[35mSQL (5.0ms)[0m  CREATE TABLE `question_levels` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `range` varchar(255) NOT NULL, `deleted` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120903062500')[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `access_profiles`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `access_profiles`
+  [1m[36mSQL (0.8ms)[0m  [1mdescribe `accesses`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `accesses`
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `companies`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `companies`
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `company_users`[0m
+  [1m[35mSQL (0.6ms)[0m  SHOW KEYS FROM `company_users`
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `logs`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `logs`
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `profiles`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `profiles`
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `question_counts`[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW KEYS FROM `question_counts`
+  [1m[36mSQL (0.9ms)[0m  [1mdescribe `question_levels`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `question_levels`
+  [1m[36mSQL (1.3ms)[0m  [1mdescribe `users`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `users`
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/USIL/TallerDeImplementación/SurveyHuman/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/USIL/TallerDeImplementación/SurveyHuman/config/environment.rb:5)
+  [1m[36mSQL (0.6ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateAccountManagementProfiles (20120831042719)
+Migrating to CreateAccountManagementUsers (20120831043335)
+Migrating to CreateLogs (20120831044838)
+Migrating to CreateAccesses (20120831045108)
+Migrating to CreateAccessProfiles (20120831045450)
+Migrating to CreateCompanies (20120831045758)
+Migrating to CreateCompanyUsers (20120831050200)
+Migrating to CreateQuestionCounts (20120903062432)
+Migrating to CreateQuestionLevels (20120903062500)
+Migrating to CreateAnswerFormats (20120903062726)
+  [1m[35mSQL (53.1ms)[0m  CREATE TABLE `answer_formats` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `format` varchar(255), `deleted` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120903062726')[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.4ms)[0m  [1mdescribe `access_profiles`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `access_profiles`
+  [1m[36mSQL (0.5ms)[0m  [1mdescribe `accesses`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `accesses`
+  [1m[36mSQL (0.4ms)[0m  [1mdescribe `answer_formats`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `answer_formats`
+  [1m[36mSQL (0.4ms)[0m  [1mdescribe `companies`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `companies`
+  [1m[36mSQL (0.4ms)[0m  [1mdescribe `company_users`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `company_users`
+  [1m[36mSQL (0.4ms)[0m  [1mdescribe `logs`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `logs`
+  [1m[36mSQL (0.4ms)[0m  [1mdescribe `profiles`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `profiles`
+  [1m[36mSQL (0.5ms)[0m  [1mdescribe `question_counts`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `question_counts`
+  [1m[36mSQL (0.5ms)[0m  [1mdescribe `question_levels`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `question_levels`
+  [1m[36mSQL (0.9ms)[0m  [1mdescribe `users`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `users`
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/USIL/TallerDeImplementación/SurveyHuman/config/environment.rb:5)
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (31.8ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `schema_migrations`
+  [1m[36mSQL (2.9ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations`
+Migrating to CreateAccountManagementProfiles (20120831042719)
+  [1m[36mSQL (5.7ms)[0m  [1mCREATE TABLE `profiles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL, `description` text, `deleted` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120831042719')
+Migrating to CreateAccountManagementUsers (20120831043335)
+  [1m[36mSQL (18.4ms)[0m  [1mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) NOT NULL, `encrypted_password` varchar(255) NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `last_sign_in_at` datetime, `name` varchar(255) NOT NULL, `lastname` varchar(255) NOT NULL, `deleted` int(11) DEFAULT 0, `profile_id` int(11) NOT NULL, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`profile_id`) REFERENCES `profiles` (`id`)) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW KEYS FROM `users`
+  [1m[36mSQL (19.2ms)[0m  [1mCREATE INDEX `index_users_on_profile_id` ON `users` (`profile_id`)[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120831043335')
+Migrating to CreateLogs (20120831044838)
+  [1m[36mSQL (7.6ms)[0m  [1mCREATE TABLE `logs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `description` text NOT NULL, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.6ms)[0m  SHOW KEYS FROM `logs`
+  [1m[36mSQL (5.4ms)[0m  [1mCREATE INDEX `index_logs_on_user_id` ON `logs` (`user_id`)[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120831044838')
+Migrating to CreateAccesses (20120831045108)
+  [1m[36mSQL (5.9ms)[0m  [1mCREATE TABLE `accesses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL, `parent_id` int(11) NOT NULL, `controller` varchar(255), `action` varchar(255), `panel` int(11) DEFAULT 1 NOT NULL, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`parent_id`) REFERENCES `accesses` (`id`)) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.7ms)[0m  SHOW KEYS FROM `accesses`
+  [1m[36mSQL (5.2ms)[0m  [1mCREATE INDEX `index_accesses_on_parent_id` ON `accesses` (`parent_id`)[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120831045108')
+Migrating to CreateAccessProfiles (20120831045450)
+  [1m[36mSQL (5.0ms)[0m  [1mCREATE TABLE `access_profiles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `access_id` int(11) NOT NULL, `profile_id` int(11) NOT NULL, `deleted` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`access_id`) REFERENCES `accesses` (`id`), FOREIGN KEY (`profile_id`) REFERENCES `profiles` (`id`)) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW KEYS FROM `access_profiles`
+  [1m[36mSQL (6.7ms)[0m  [1mCREATE INDEX `index_access_profiles_on_access_id` ON `access_profiles` (`access_id`)[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW KEYS FROM `access_profiles`
+  [1m[36mSQL (10.6ms)[0m  [1mCREATE INDEX `index_access_profiles_on_profile_id` ON `access_profiles` (`profile_id`)[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120831045450')
+Migrating to CreateCompanies (20120831045758)
+  [1m[36mSQL (4.4ms)[0m  [1mCREATE TABLE `companies` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL, `user_id` int(11) NOT NULL, `deleted` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW KEYS FROM `companies`
+  [1m[36mSQL (6.0ms)[0m  [1mCREATE INDEX `index_companies_on_user_id` ON `companies` (`user_id`)[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120831045758')
+Migrating to CreateCompanyUsers (20120831050200)
+  [1m[36mSQL (8.5ms)[0m  [1mCREATE TABLE `company_users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `company_id` int(11) NOT NULL, `user_id` int(11) NOT NULL, `deleted` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`), FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.6ms)[0m  SHOW KEYS FROM `company_users`
+  [1m[36mSQL (5.5ms)[0m  [1mCREATE INDEX `index_company_users_on_company_id` ON `company_users` (`company_id`)[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW KEYS FROM `company_users`
+  [1m[36mSQL (6.0ms)[0m  [1mCREATE INDEX `index_company_users_on_user_id` ON `company_users` (`user_id`)[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120831050200')
+Migrating to CreateQuestionCounts (20120903062432)
+  [1m[36mSQL (4.6ms)[0m  [1mCREATE TABLE `question_counts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` int(11) NOT NULL, `deleted` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120903062432')
+Migrating to CreateQuestionLevels (20120903062500)
+  [1m[36mSQL (5.9ms)[0m  [1mCREATE TABLE `question_levels` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `range` varchar(255) NOT NULL, `deleted` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120903062500')
+Migrating to CreateAnswerFormats (20120903062726)
+  [1m[36mSQL (4.1ms)[0m  [1mCREATE TABLE `answer_formats` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL, `format` varchar(255) NOT NULL, `deleted` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120903062726')
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.9ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+  [1m[35mSQL (0.7ms)[0m  describe `access_profiles`
+  [1m[36mSQL (0.8ms)[0m  [1mdescribe `accesses`[0m
+  [1m[35mSQL (0.7ms)[0m  describe `answer_formats`
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `companies`[0m
+  [1m[35mSQL (0.7ms)[0m  describe `company_users`
+  [1m[36mSQL (0.8ms)[0m  [1mdescribe `logs`[0m
+  [1m[35mSQL (0.7ms)[0m  describe `profiles`
+  [1m[36mSQL (0.6ms)[0m  [1mdescribe `question_counts`[0m
+  [1m[35mSQL (0.7ms)[0m  describe `question_levels`
+  [1m[36mSQL (0.9ms)[0m  [1mdescribe `users`[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW CREATE TABLE `access_profiles`
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW CREATE TABLE `accesses`
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW CREATE TABLE `answer_formats`
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW CREATE TABLE `companies`
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW CREATE TABLE `company_users`
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW CREATE TABLE `logs`
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW CREATE TABLE `profiles`
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW CREATE TABLE `question_counts`
+  [1m[36mSQL (0.7ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW CREATE TABLE `question_levels`
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW CREATE TABLE `users`
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW KEYS FROM `accesses`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `profiles`
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW KEYS FROM `access_profiles`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `answer_formats`
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW KEYS FROM `users`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `companies`
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW KEYS FROM `company_users`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `logs`
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW KEYS FROM `question_counts`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `question_levels`
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/USIL/TallerDeImplementación/SurveyHuman/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/USIL/TallerDeImplementación/SurveyHuman/config/environment.rb:5)
+  [1m[36mSQL (0.6ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateAccountManagementProfiles (20120831042719)
+Migrating to CreateAccountManagementUsers (20120831043335)
+Migrating to CreateLogs (20120831044838)
+Migrating to CreateAccesses (20120831045108)
+Migrating to CreateAccessProfiles (20120831045450)
+Migrating to CreateCompanies (20120831045758)
+Migrating to CreateCompanyUsers (20120831050200)
+Migrating to CreateQuestionCounts (20120903062432)
+Migrating to CreateQuestionLevels (20120903062500)
+Migrating to CreateAnswerFormats (20120903062726)
+Migrating to CreateConfigurations (20120903065811)
+  [1m[35mSQL (43.5ms)[0m  CREATE TABLE `configurations` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)) ENGINE=InnoDB
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW KEYS FROM `configurations`[0m
+  [1m[35mSQL (5.1ms)[0m  CREATE INDEX `index_configurations_on_user_id` ON `configurations` (`user_id`)
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120903065811')[0m
+  [1m[35mSQL (0.7ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.9ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations`
+  [1m[36mSQL (0.6ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.8ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `access_profiles`[0m
+  [1m[35mSQL (0.8ms)[0m  describe `accesses`
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `answer_formats`[0m
+  [1m[35mSQL (0.8ms)[0m  describe `companies`
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `company_users`[0m
+  [1m[35mSQL (0.6ms)[0m  describe `configurations`
+  [1m[36mSQL (0.6ms)[0m  [1mdescribe `logs`[0m
+  [1m[35mSQL (0.7ms)[0m  describe `profiles`
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `question_counts`[0m
+  [1m[35mSQL (0.7ms)[0m  describe `question_levels`
+  [1m[36mSQL (0.9ms)[0m  [1mdescribe `users`[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.8ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW CREATE TABLE `access_profiles`
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW CREATE TABLE `accesses`
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW CREATE TABLE `answer_formats`
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW CREATE TABLE `companies`
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW CREATE TABLE `company_users`
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW CREATE TABLE `configurations`
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW CREATE TABLE `logs`
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW CREATE TABLE `profiles`
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW CREATE TABLE `question_counts`
+  [1m[36mSQL (0.7ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW CREATE TABLE `question_levels`
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW CREATE TABLE `users`
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW KEYS FROM `accesses`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `profiles`
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW KEYS FROM `access_profiles`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `answer_formats`
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW KEYS FROM `users`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `companies`
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW KEYS FROM `company_users`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `configurations`
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW KEYS FROM `logs`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `question_counts`
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW KEYS FROM `question_levels`[0m
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/USIL/TallerDeImplementación/SurveyHuman/config/environment.rb:5)
+  [1m[36mSQL (0.6ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations`
+Migrating to CreateConfigurations (20120903065811)
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT constraint_name, table_name, column_name, referenced_table_name, referenced_column_name
+ FROM information_schema.key_column_usage
+ WHERE table_schema = SCHEMA()
+ AND referenced_table_schema = table_schema
+ ORDER BY constraint_name, ordinal_position;
+[0m
+  [1m[35mSQL (3.7ms)[0m  DROP TABLE `configurations`
+  [1m[36mAREL (0.6ms)[0m  [1mDELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20120903065811'[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations`
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.5ms)[0m  [1mdescribe `access_profiles`[0m
+  [1m[35mSQL (0.6ms)[0m  describe `accesses`
+  [1m[36mSQL (0.5ms)[0m  [1mdescribe `answer_formats`[0m
+  [1m[35mSQL (0.5ms)[0m  describe `companies`
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `company_users`[0m
+  [1m[35mSQL (0.6ms)[0m  describe `logs`
+  [1m[36mSQL (0.8ms)[0m  [1mdescribe `profiles`[0m
+  [1m[35mSQL (0.6ms)[0m  describe `question_counts`
+  [1m[36mSQL (0.6ms)[0m  [1mdescribe `question_levels`[0m
+  [1m[35mSQL (1.1ms)[0m  describe `users`
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW CREATE TABLE `access_profiles`[0m
+  [1m[35mSQL (0.7ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW CREATE TABLE `accesses`[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW CREATE TABLE `answer_formats`[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW CREATE TABLE `companies`[0m
+  [1m[35mSQL (0.7ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW CREATE TABLE `company_users`[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW CREATE TABLE `logs`[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW CREATE TABLE `profiles`[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW CREATE TABLE `question_counts`[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW CREATE TABLE `question_levels`[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW CREATE TABLE `users`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `accesses`
+  [1m[36mSQL (0.6ms)[0m  [1mSHOW KEYS FROM `profiles`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `access_profiles`
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW KEYS FROM `answer_formats`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `users`
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW KEYS FROM `companies`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `company_users`
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW KEYS FROM `logs`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `question_counts`
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW KEYS FROM `question_levels`[0m
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/eduardo/USIL/TallerDeImplementación/SurveyHuman/config/environment.rb:5)
