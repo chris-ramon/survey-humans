@@ -1,0 +1,30 @@
+<%str_method = @int_page_type==2? 'put' : 'post'%>
+<%str_path = @int_page_type==2? match_management_question_type_path : match_management_question_type_index_path%>
+<%= form_for(@question_type, :url=>str_path, :method=>str_method,:html=>{:id=>"form_company"}) do |f| %>   
+	
+	<fieldset>
+		<legend><%=t('.new_company')%></legend>
+		<dl class="inline">
+
+      <dt><%= set_label_obligatory(QuestionType.null?("name")) %><%= f.label :name,"#{t('.name')}:" %></dt>
+      <dd>
+        <%= f.text_field :name, :class=>"medium validate[#{set_validate(QuestionType.null?("name"))}]",:size=>50 %>
+        <small><%= t('.small_name')%></small>
+      </dd>
+
+      <dt><%= set_label_obligatory(QuestionType.null?("description")) %><%= f.label :description,"#{t('.description')}:" %></dt>
+      <dd>
+        <%= f.text_area :description, :class=>"medium validate[#{set_validate(QuestionType.null?("description"))}]",:size=>50 %>
+        <small><%= t('.small_description')%></small>
+      </dd>
+
+    </dl>
+
+		<div style="clear:both"></div>
+
+	    <div class="buttons">
+	      <%= render :partial => "buttons" %>
+	    </div>
+    </fieldset>
+
+<% end %>

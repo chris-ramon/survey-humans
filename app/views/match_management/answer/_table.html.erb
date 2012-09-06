@@ -1,0 +1,35 @@
+<% if @list_answers.size > 0 %>
+<table id="table1" class="gtable sortable">
+	<thead>
+		<tr>
+			<th><%=t('.answer')%></th>
+			<th><%=t('.is_correct')%>?</th>
+			<th><%=t('.percent')%></th>
+			<th><%=t('.question')%></th>
+			<th><%=t('table.actions')%></th>
+		</tr>
+	</thead>
+	<tbody>
+    <%@list_answers.each do |answer|%>
+		  <tr>
+			  <td><%=answer.answer%></td>
+			  <td><%=answer.is_correct%></td>
+			  <td><%=answer.percent%></td>
+			  <td><%=answer.question.question%></td>
+			  <td>
+				  <%=link_to image_tag('standard/show.png',:title=>"#{t('table.show')} #{answer.answer}"),match_management_answer_path(answer) unless !current_user.has_access(50)%>
+                <%=link_to image_tag('standard/delete.png', :title=>"#{t('table.delete')} #{answer.answer}"),{:action=>'destroy',:id=>answer.id},{:method=>:delete, :confirm=>t('messages.sure_to_delete')+answer.answer+"?"} unless !current_user.has_access(52)%>
+			  </td>
+		  </tr>
+    <%end%>
+	</tbody>
+</table>
+<div class="tablefooter clearfix">
+	<div class="pagination">
+    <%= will_paginate @list_answers %>
+    <%= paginate_ajax_js%>
+	</div>
+</div>
+<%else%>
+<p><%= t('messages.noitem_found')%></p>
+<%end%>

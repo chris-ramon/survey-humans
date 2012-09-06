@@ -1,0 +1,29 @@
+<% if @list_match_types.size > 0 %>
+<table id="table1" class="gtable sortable">
+	<thead>
+		<tr>
+			<th><%=t('.name')%></th>
+			<th><%=t('table.actions')%></th>
+		</tr>
+	</thead>
+	<tbody>
+    <%@list_match_types.each do |match_type|%>
+		  <tr>
+			  <td><%=match_type.name%></td>
+			  <td>
+				<%=link_to image_tag('standard/show.png',:title=>"#{t('table.show')} #{match_type.name}"),match_management_match_type_path(match_type) unless !current_user.has_access(30)%>
+                <%=link_to image_tag('standard/delete.png', :title=>"#{t('table.delete')} #{match_type.name}"),{:action=>'destroy',:id=>match_type.id},{:method=>:delete, :confirm=>t('messages.sure_to_delete')+match_type.name+"?"} unless !current_user.has_access(32)%>
+			  </td>
+		  </tr>
+    <%end%>
+	</tbody>
+</table>
+<div class="tablefooter clearfix">
+	<div class="pagination">
+    <%= will_paginate @list_match_types %>
+    <%= paginate_ajax_js%>
+	</div>
+</div>
+<%else%>
+<p><%= t('messages.noitem_found')%></p>
+<%end%>

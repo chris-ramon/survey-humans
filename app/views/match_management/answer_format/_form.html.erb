@@ -1,0 +1,30 @@
+<%str_method = @int_page_type==2? 'put' : 'post'%>
+<%str_path = @int_page_type==2? match_management_answer_format_path : match_management_answer_format_index_path%>
+<%= form_for(@answer_format, :url=>str_path, :method=>str_method,:html=>{:id=>"form_answer_format"}) do |f| %>   
+	
+	<fieldset>
+		<legend><%=t('.answer_format_info')%></legend>
+		<dl class="inline">
+
+      <dt><%= set_label_obligatory(AnswerFormat.null?("name")) %><%= f.label :name,"#{t('.name')}:" %></dt>
+      <dd>
+        <%= f.text_field :name, :class=>"medium validate[#{set_validate(AnswerFormat.null?("name"))}]",:size=>50 %>
+        <small><%= t('.small_name')%></small>
+      </dd>
+
+      <dt><%= set_label_obligatory(AnswerFormat.null?("format")) %><%= f.label :format,"#{t('.format')}:" %></dt>
+      <dd>
+        <%= f.text_field :format, :class=>"medium validate[#{set_validate(AnswerFormat.null?("format"))}]",:size=>50 %>
+        <small><%= t('.small_format')%></small>
+      </dd>      
+
+    </dl>
+
+		<div style="clear:both"></div>
+
+	    <div class="buttons">
+	      <%= render :partial => "buttons" %>
+	    </div>
+    </fieldset>
+
+<% end %>

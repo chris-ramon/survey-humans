@@ -1,2 +1,7 @@
-<h1>MatchManagement::QuestionLevel#show</h1>
-<p>Find me in app/views/match_management/question_level/show.html.erb</p>
+<% title  t('.title')%>
+<%= render :partial=>"layouts/messages" %>
+
+<h2><%=yield :title%></h2>
+<%= render :partial => "form" %>
+
+<%=disabled_info 'form_question_level'%>

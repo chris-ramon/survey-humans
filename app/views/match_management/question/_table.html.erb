@@ -1,0 +1,37 @@
+<% if @list_questions.size > 0 %>
+<table id="table1" class="gtable sortable">
+	<thead>
+		<tr>
+			<th><%=t('.name')%></th>
+			<th><%=t('.correct_answer')%></th>
+			<th><%=t('.answer_format')%></th>
+			<th><%=t('.question_type')%></th>
+			<th><%=t('.match')%></th>
+			<th><%=t('table.actions')%></th>
+		</tr>
+	</thead>
+	<tbody>
+    <%@list_questions.each do |question|%>
+		  <tr>
+			  <td><%=question.question%></td>
+			  <td><%=question.correct_answer%></td>
+			  <td><%=question.answer_format.name%></td>
+			  <td><%=question.question_type.name if question.question_type!=nil%></td>
+			  <td><%=question.match.name%></td>
+			  <td>
+				  <%=link_to image_tag('standard/show.png',:title=>"#{t('table.show')} #{question.question}"),match_management_question_path(question) unless !current_user.has_access(45)%>
+                <%=link_to image_tag('standard/delete.png', :title=>"#{t('table.delete')} #{question.question}"),{:action=>'destroy',:id=>question.id},{:method=>:delete, :confirm=>t('messages.sure_to_delete')+question.question+"?"} unless !current_user.has_access(47)%>
+			  </td>
+		  </tr>
+    <%end%>
+	</tbody>
+</table>
+<div class="tablefooter clearfix">
+	<div class="pagination">
+    <%= will_paginate @list_questions %>
+    <%= paginate_ajax_js%>
+	</div>
+</div>
+<%else%>
+<p><%= t('messages.noitem_found')%></p>
+<%end%>

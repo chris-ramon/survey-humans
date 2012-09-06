@@ -3,7 +3,7 @@
 <%= form_for(@company, :url=>str_path, :method=>str_method,:html=>{:id=>"form_company"}) do |f| %>   
 	
 	<fieldset>
-		<legend><%=t('.new_company')%></legend>
+		<legend><%=t('.profile_info')%></legend>
 		<dl class="inline">
 
       <dt><%= set_label_obligatory(Company.null?("name")) %><%= f.label :name,"#{t('.name')}:" %></dt>

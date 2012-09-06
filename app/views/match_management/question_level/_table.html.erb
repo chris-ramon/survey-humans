@@ -1,0 +1,29 @@
+<% if @list_question_levels.size > 0 %>
+<table id="table1" class="gtable sortable">
+	<thead>
+		<tr>
+			<th><%=t('.range')%></th>
+			<th><%=t('table.actions')%></th>
+		</tr>
+	</thead>
+	<tbody>
+    <%@list_question_levels.each do |question_level|%>
+		  <tr>
+			  <td><%=question_level.range%></td>
+			  <td>
+				  <%=link_to image_tag('standard/show.png',:title=>"#{t('table.show')} #{question_level.range}"),match_management_question_level_path(question_level) unless !current_user.has_access(35)%>
+                <%=link_to image_tag('standard/delete.png', :title=>"#{t('table.delete')} #{question_level.range}"),{:action=>'destroy',:id=>question_level.id},{:method=>:delete, :confirm=>t('messages.sure_to_delete')+question_level.range+"?"} unless !current_user.has_access(37)%>
+			  </td>
+		  </tr>
+    <%end%>
+	</tbody>
+</table>
+<div class="tablefooter clearfix">
+	<div class="pagination">
+    <%= will_paginate @list_question_levels %>
+    <%= paginate_ajax_js%>
+	</div>
+</div>
+<%else%>
+<p><%= t('messages.noitem_found')%></p>
+<%end%>
