@@ -42213,3 +42213,204 @@ ActionController::RoutingError (No route matches "/javascripts/jquery-ui-timepic
   
 
 Rendered /home/eduardo/.rvm/gems/ruby-1.9.2-p318/gems/actionpack-3.0.11/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.6ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/chris/projects/survey_taller/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/chris/projects/survey_taller/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/chris/projects/survey_taller/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/chris/projects/survey_taller/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/chris/projects/survey_taller/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/chris/projects/survey_taller/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/chris/projects/survey_taller/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/chris/projects/survey_taller/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/chris/projects/survey_taller/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/chris/projects/survey_taller/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/chris/projects/survey_taller/config/environment.rb:5)
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (105.3ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (24.7ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW KEYS FROM `schema_migrations`
+  [1m[36mSQL (3.6ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (1.3ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/chris/projects/survey_taller/config/environment.rb:5)
+  [1m[36mSQL (16.0ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (102.6ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to DeviseCreateUsers (20120830042738)
+  [1m[35mSQL (1.4ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(128) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int(11) DEFAULT 0, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW KEYS FROM `users`[0m
+  [1m[35mSQL (2.5ms)[0m  CREATE UNIQUE INDEX `index_users_on_email` ON `users` (`email`)
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW KEYS FROM `users`[0m
+  [1m[35mSQL (2.3ms)[0m  CREATE UNIQUE INDEX `index_users_on_reset_password_token` ON `users` (`reset_password_token`)
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120830042738')[0m
+Migrating to AddInfoToUser (20120830083183)
+  [1m[35mSQL (3.1ms)[0m  ALTER TABLE `users` ADD `name` varchar(255) NOT NULL
+  [1m[36mSQL (2.6ms)[0m  [1mALTER TABLE `users` ADD `lastname` varchar(255) NOT NULL[0m
+  [1m[35mSQL (2.9ms)[0m  ALTER TABLE `users` ADD `deleted` int(11) DEFAULT 0
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120830083183')[0m
+Migrating to CreateProfiles (20120831042719)
+  [1m[35mSQL (1.2ms)[0m  CREATE TABLE `profiles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL, `description` text, `deleted` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (1.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120831042719')[0m
+Migrating to AddProfileToUser (20120831044030)
+  [1m[35mSQL (230.1ms)[0m  ALTER TABLE `users` ADD `profile_id` int(11) NOT NULL
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW KEYS FROM `users`[0m
+  [1m[35mSQL (2.8ms)[0m  CREATE INDEX `index_users_on_profile_id` ON `users` (`profile_id`)
+  [1m[36mSQL (3.0ms)[0m  [1mALTER TABLE `users` ADD FOREIGN KEY (`profile_id`) REFERENCES `profiles` (`id`)[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120831044030')
+Migrating to CreateLogs (20120831044838)
+  [1m[36mSQL (2.6ms)[0m  [1mCREATE TABLE `logs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11) NOT NULL, `description` text NOT NULL, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `logs`
+  [1m[36mSQL (2.8ms)[0m  [1mCREATE INDEX `index_logs_on_user_id` ON `logs` (`user_id`)[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120831044838')
+Migrating to CreateAccesses (20120831045108)
+  [1m[36mSQL (1.7ms)[0m  [1mCREATE TABLE `accesses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL, `parent_id` int(11) NOT NULL, `controller` varchar(255), `action` varchar(255), `panel` int(11) DEFAULT 1 NOT NULL, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120831045108')
+Migrating to CreateAccessProfiles (20120831045450)
+  [1m[36mSQL (1.5ms)[0m  [1mCREATE TABLE `access_profiles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `access_id` int(11) NOT NULL, `profile_id` int(11) NOT NULL, `deleted` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`access_id`) REFERENCES `accesses` (`id`), FOREIGN KEY (`profile_id`) REFERENCES `profiles` (`id`)) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `access_profiles`
+  [1m[36mSQL (3.0ms)[0m  [1mCREATE INDEX `index_access_profiles_on_access_id` ON `access_profiles` (`access_id`)[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `access_profiles`
+  [1m[36mSQL (3.1ms)[0m  [1mCREATE INDEX `index_access_profiles_on_profile_id` ON `access_profiles` (`profile_id`)[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120831045450')
+Migrating to CreateCompanies (20120831045758)
+  [1m[36mSQL (1.2ms)[0m  [1mCREATE TABLE `companies` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL, `user_id` int(11) NOT NULL, `deleted` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `companies`
+  [1m[36mSQL (2.7ms)[0m  [1mCREATE INDEX `index_companies_on_user_id` ON `companies` (`user_id`)[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120831045758')
+Migrating to CreateCompanyUsers (20120831050200)
+  [1m[36mSQL (1.9ms)[0m  [1mCREATE TABLE `company_users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `company_id` int(11) NOT NULL, `user_id` int(11) NOT NULL, `deleted` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`), FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `company_users`
+  [1m[36mSQL (2.5ms)[0m  [1mCREATE INDEX `index_company_users_on_company_id` ON `company_users` (`company_id`)[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `company_users`
+  [1m[36mSQL (2.5ms)[0m  [1mCREATE INDEX `index_company_users_on_user_id` ON `company_users` (`user_id`)[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120831050200')
+Migrating to CreateQuestionLevels (20120903062500)
+  [1m[36mSQL (1.3ms)[0m  [1mCREATE TABLE `question_levels` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `range` varchar(255) NOT NULL, `deleted` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120903062500')
+Migrating to CreateAnswerFormats (20120903062726)
+  [1m[36mSQL (1.1ms)[0m  [1mCREATE TABLE `answer_formats` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL, `format` varchar(255) NOT NULL, `deleted` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120903062726')
+Migrating to CreateMatchTypes (20120905215136)
+  [1m[36mSQL (1.5ms)[0m  [1mCREATE TABLE `match_types` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL, `description` text, `deleted` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120905215136')
+Migrating to CreateMatches (20120905215247)
+  [1m[36mSQL (2.1ms)[0m  [1mCREATE TABLE `matches` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL, `url` varchar(255), `started` int(11), `match_type_id` int(11) NOT NULL, `question_level_id` int(11), `deleted` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`match_type_id`) REFERENCES `match_types` (`id`), FOREIGN KEY (`question_level_id`) REFERENCES `question_levels` (`id`)) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `matches`
+  [1m[36mSQL (3.0ms)[0m  [1mCREATE INDEX `index_matches_on_match_type_id` ON `matches` (`match_type_id`)[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `matches`
+  [1m[36mSQL (2.9ms)[0m  [1mCREATE INDEX `index_matches_on_question_level_id` ON `matches` (`question_level_id`)[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120905215247')
+Migrating to CreateQuestionTypes (20120905215626)
+  [1m[36mSQL (1.4ms)[0m  [1mCREATE TABLE `question_types` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL, `description` text, `deleted` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120905215626')
+Migrating to CreateQuestions (20120905215739)
+  [1m[36mSQL (2.2ms)[0m  [1mCREATE TABLE `questions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `question` text NOT NULL, `correct_answer` varchar(255), `answer_format_id` int(11) NOT NULL, `question_type_id` int(11), `match_id` int(11) NOT NULL, `deleted` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`answer_format_id`) REFERENCES `answer_formats` (`id`), FOREIGN KEY (`question_type_id`) REFERENCES `question_types` (`id`), FOREIGN KEY (`match_id`) REFERENCES `matches` (`id`)) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `questions`
+  [1m[36mSQL (3.0ms)[0m  [1mCREATE INDEX `index_questions_on_answer_format_id` ON `questions` (`answer_format_id`)[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `questions`
+  [1m[36mSQL (3.9ms)[0m  [1mCREATE INDEX `index_questions_on_question_type_id` ON `questions` (`question_type_id`)[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `questions`
+  [1m[36mSQL (2.7ms)[0m  [1mCREATE INDEX `index_questions_on_match_id` ON `questions` (`match_id`)[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120905215739')
+Migrating to CreateAnswers (20120905215920)
+  [1m[36mSQL (1.4ms)[0m  [1mCREATE TABLE `answers` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `answer` text NOT NULL, `is_correct` int(11) NOT NULL, `percent` float, `question_id` int(11) NOT NULL, `deleted` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`question_id`) REFERENCES `questions` (`id`)) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `answers`
+  [1m[36mSQL (3.0ms)[0m  [1mCREATE INDEX `index_answers_on_question_id` ON `answers` (`question_id`)[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120905215920')
+Migrating to CreateExamTopics (20120905220125)
+  [1m[36mSQL (1.7ms)[0m  [1mCREATE TABLE `exam_topics` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) NOT NULL, `description` text, `deleted` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120905220125')
+Migrating to CreateQuestionTypeExamTopics (20120905220209)
+  [1m[36mSQL (1.5ms)[0m  [1mCREATE TABLE `question_type_exam_topics` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `question_type_id` int(11) NOT NULL, `exam_topic_id` int(11) NOT NULL, `deleted` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime, FOREIGN KEY (`question_type_id`) REFERENCES `question_types` (`id`), FOREIGN KEY (`exam_topic_id`) REFERENCES `exam_topics` (`id`)) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `question_type_exam_topics`
+  [1m[36mSQL (3.1ms)[0m  [1mCREATE INDEX `index_question_type_exam_topics_on_question_type_id` ON `question_type_exam_topics` (`question_type_id`)[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `question_type_exam_topics`
+  [1m[36mSQL (2.7ms)[0m  [1mCREATE INDEX `index_question_type_exam_topics_on_exam_topic_id` ON `question_type_exam_topics` (`exam_topic_id`)[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20120905220209')
+Migrating to AddColumnUserIdToMatch (20120906002702)
+  [1m[36mSQL (3.4ms)[0m  [1mALTER TABLE `matches` ADD `user_id` int(11) NOT NULL[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `matches`
+  [1m[36mSQL (3.0ms)[0m  [1mCREATE INDEX `index_matches_on_user_id` ON `matches` (`user_id`)[0m
+  [1m[35mSQL (3.3ms)[0m  ALTER TABLE `matches` ADD FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120906002702')[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (1.7ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations`
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.8ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.8ms)[0m  [1mdescribe `access_profiles`[0m
+  [1m[35mSQL (0.5ms)[0m  describe `accesses`
+  [1m[36mSQL (0.6ms)[0m  [1mdescribe `answer_formats`[0m
+  [1m[35mSQL (0.6ms)[0m  describe `answers`
+  [1m[36mSQL (0.6ms)[0m  [1mdescribe `companies`[0m
+  [1m[35mSQL (0.5ms)[0m  describe `company_users`
+  [1m[36mSQL (1.6ms)[0m  [1mdescribe `exam_topics`[0m
+  [1m[35mSQL (0.7ms)[0m  describe `logs`
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `match_types`[0m
+  [1m[35mSQL (0.5ms)[0m  describe `matches`
+  [1m[36mSQL (0.5ms)[0m  [1mdescribe `profiles`[0m
+  [1m[35mSQL (0.7ms)[0m  describe `question_levels`
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `question_type_exam_topics`[0m
+  [1m[35mSQL (0.6ms)[0m  describe `question_types`
+  [1m[36mSQL (0.8ms)[0m  [1mdescribe `questions`[0m
+  [1m[35mSQL (0.7ms)[0m  describe `users`
+  [1m[36mSQL (0.8ms)[0m  [1mSELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()[0m
+  [1m[35mSQL (0.9ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW CREATE TABLE `access_profiles`[0m
+  [1m[35mSQL (1.2ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW CREATE TABLE `accesses`[0m
+  [1m[35mSQL (0.8ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW CREATE TABLE `answer_formats`[0m
+  [1m[35mSQL (0.8ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW CREATE TABLE `answers`[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW CREATE TABLE `companies`[0m
+  [1m[35mSQL (0.8ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW CREATE TABLE `company_users`[0m
+  [1m[35mSQL (0.9ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW CREATE TABLE `exam_topics`[0m
+  [1m[35mSQL (0.7ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW CREATE TABLE `logs`[0m
+  [1m[35mSQL (0.8ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW CREATE TABLE `match_types`[0m
+  [1m[35mSQL (0.7ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW CREATE TABLE `matches`[0m
+  [1m[35mSQL (0.8ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW CREATE TABLE `profiles`[0m
+  [1m[35mSQL (0.7ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW CREATE TABLE `question_levels`[0m
+  [1m[35mSQL (0.8ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW CREATE TABLE `question_type_exam_topics`[0m
+  [1m[35mSQL (0.7ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW CREATE TABLE `question_types`[0m
+  [1m[35mSQL (0.9ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW CREATE TABLE `questions`[0m
+  [1m[35mSQL (0.8ms)[0m  SELECT table_name FROM information_schema.views WHERE table_schema = SCHEMA()
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW CREATE TABLE `users`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `accesses`
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW KEYS FROM `profiles`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `access_profiles`
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW KEYS FROM `answer_formats`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `match_types`
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW KEYS FROM `question_levels`[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW KEYS FROM `users`
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW KEYS FROM `matches`[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW KEYS FROM `question_types`
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW KEYS FROM `questions`[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW KEYS FROM `answers`
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW KEYS FROM `companies`[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW KEYS FROM `company_users`
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW KEYS FROM `exam_topics`[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW KEYS FROM `logs`
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW KEYS FROM `question_type_exam_topics`[0m
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/chris/projects/survey_taller/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /Users/chris/projects/survey_taller/config/environment.rb:5)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2012-09-06 01:04:03 -0500
+  Processing by Devise::SessionsController#new as HTML
+Rendered devise/shared/_links.erb (1.3ms)
+Rendered devise/shared/_links.erb (1.3ms)
+Rendered devise/sessions/new.html.erb within layouts/application (337.9ms)
+Completed 200 OK in 374ms (Views: 359.8ms | ActiveRecord: 0.0ms)
