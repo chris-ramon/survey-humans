@@ -2,13 +2,52 @@
 <html>
 <head>
   <title>SurveyHuman</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
+  <%= stylesheet_link_tag "bootstrap.min" %>
+  <%= stylesheet_link_tag "bootstrap-responsive.min" %>
+  <%= stylesheet_link_tag "style" %>
+  <% javascript_include_tag "jquery-1.7.1.min" %>
+  <% javascript_include_tag "jquery_ujs" %>
   <%= csrf_meta_tag %>
 </head>
 <body>
+<div class="container">
 
-<%= yield %>
+    <div id="main-navbar-top" class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div id="main-navbar-top-container" class="container">
 
+                <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+
+                <!-- Be sure to leave the brand out there if you want it shown -->
+                <a class="brand" href="#">Survey Humans</a>
+
+                <!-- Everything you want hidden at 940px or less, place within here -->
+                <div class="nav-collapse">
+                    <!-- .nav, .navbar-search, .navbar-form, etc -->
+                    <ul class="nav">
+                        <li class="divider-vertical"></li>
+                        <li><a href="#">Dashboard</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Matches <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Surveys</a></li>
+                                <li><a href="#">Exams</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <section id="main-content" class="container-fluid">
+      <%= yield %>
+    </section>
+</div>
 </body>
 </html>

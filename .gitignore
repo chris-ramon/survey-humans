@@ -2,3 +2,4 @@ logs/*
 config/database.yml
 tmp/*
 .idea/*
+.DS_Store
