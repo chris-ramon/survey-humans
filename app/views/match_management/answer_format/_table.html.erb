@@ -1,0 +1,31 @@
+<% if @list_answer_formats.size > 0 %>
+<table id="table1" class="gtable sortable">
+	<thead>
+		<tr>
+			<th><%=t('.name')%></th>
+			<th><%=t('.format')%></th>
+			<th><%=t('table.actions')%></th>
+		</tr>
+	</thead>
+	<tbody>
+    <%@list_answer_formats.each do |answer_format|%>
+		  <tr>
+			  <td><%=answer_format.name%></td>
+			  <td><%=answer_format.format%></td>
+			  <td>
+				  <%=link_to image_tag('standard/show.png',:title=>"#{t('table.show')} #{answer_format.name}"),match_management_answer_format_path(answer_format) unless !current_user.has_access(55)%>
+                <%=link_to image_tag('standard/delete.png', :title=>"#{t('table.delete')} #{answer_format.name}"),{:action=>'destroy',:id=>answer_format.id},{:method=>:delete, :confirm=>t('messages.sure_to_delete')+answer_format.name+"?"} unless !current_user.has_access(57)%>
+			  </td>
+		  </tr>
+    <%end%>
+	</tbody>
+</table>
+<div class="tablefooter clearfix">
+	<div class="pagination">
+    <%= will_paginate @list_answer_formats %>
+    <%= paginate_ajax_js%>
+	</div>
+</div>
+<%else%>
+<p><%= t('messages.noitem_found')%></p>
+<%end%>

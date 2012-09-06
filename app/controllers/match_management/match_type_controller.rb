@@ -9,7 +9,7 @@ class MatchManagement::MatchTypeController < ApplicationController
   def index
     if current_user.has_access 28
       @search = MatchType.search(params[:search])
-      @list_matche_types = @search.where(:deleted => 0).paginate(:page => params[:page]).order('id DESC')
+      @list_match_types = @search.where(:deleted => 0).paginate(:page => params[:page]).order('id DESC')
       respond_to do |format|
         format.html
         format.js

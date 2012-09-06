@@ -1,6 +1,16 @@
 class Answer < ActiveRecord::Base
 	belongs_to :question
 
+	# This function evaluates if a column is nullable or not in the database
+	#
+	# * *args*
+	#   - column(_string_) -> database column to be evaluated
+	# * *returns*
+	#   - if the column is nullable or not
+	def self.null?(column)
+		columns_hash[column].null
+	end
+	
 	# This function change user state to deleted
   	#
 	# * *args*

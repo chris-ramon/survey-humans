@@ -255,3 +255,170 @@ en:
     show: 'Show'
     edit: 'Edit'
     delete: 'Delete'
+
+
+
+
+  table:
+    actions: 'Actions'
+    show: 'Show'
+    delete: 'Delete'
+  search:
+    filters: 'Search Filters'
+    search: 'Search'
+  buttons:
+    register: 'Register'
+    enable_edition: 'Enable Edition'
+    edit: 'Edit'
+    undo_changes: 'Undo changes'
+    cancel: 'Cancel'
+    processing: 'Processing...'
+    save: 'Save'
+
+
+
+
+  account_management:
+    profile:
+      index:
+        title: 'Profiles'
+        new_button: 'New Profile'
+      new:
+        title: 'New Profile' 
+      edit:
+        title: 'Edit '
+      table:
+        name: 'Name'
+      search:
+        name: 'Name'       
+      form:
+        profile_info: 'General Information'
+        name: 'Name'
+        small_name: 'Enter the profile name'
+        description: 'Description'
+        small_description: 'Enter the profile description'
+
+
+
+
+    user:
+      index:
+        title: 'Users'
+        new_button: 'New User'
+        export_button: 'Export'
+      new:
+        title: 'New User' 
+      edit:
+        title: 'Edit '
+      table:
+        name: 'Name'
+        email: 'Email'
+        profile: 'Profile'
+      search:
+        name: 'Name'       
+        email: 'Email'
+        profile: 'Profile'
+        all_profiles: 'All the profiles'
+      form:
+        personal_info: 'Personal Information'
+        name: 'Name'
+        small_name: 'Enter the user name'
+        lastname: 'Lastname'
+        small_lastname: 'Enter the user lastname'
+        lastname2: '2nd Lastname'
+        small_lastname2: 'Enter the user second lastname'
+        geo_info: 'Geographic Information'
+        country: 'Country'
+        select_country: 'Select a country'
+        small_country_id: 'Select the user country'
+        user_info: 'User Information'
+        email: 'Email'
+        small_email: 'Enter the user mail'
+        password: 'Password'
+        small_password: 'Enter the user password'
+        small_repeat_password: 'Repeat the user password'
+        profile: 'Profile'
+        small_profile_id: 'Select the user profile'
+        select_profile: 'Select a profile'
+      department:
+        department: 'Department'
+        select_department: 'Select a department'
+        small_department: 'Select the country department'
+      province:
+        province: 'Province'
+        select_province: 'Select a Province'
+        small_province: 'Select the department province'
+      district:
+        district: 'District'
+        select_district: 'Select a District'
+        small_district: 'Select the province district'
+      excel:
+        name: 'Name'
+        lastname: 'Lastname'
+        lastname2: '2nd Lastname'
+        email: 'Email'
+        profile: 'Profile'
+
+
+
+    profile:
+      index:
+        title: 'Profiles'
+        new_button: 'New Profile'
+      new:
+        title: 'New Profile' 
+      edit:
+        title: 'Edit '
+      table:
+        name: 'Name'
+      search:
+        name: 'Name'       
+      form:
+        profile_info: 'General Information'
+        name: 'Name'
+        small_name: 'Enter the profile name'
+        description: 'Description'
+        small_description: 'Enter the profile description'
+
+
+    log:
+      index:
+        title: 'Logs'
+        new_button: 'New Log'
+      new:
+        title: 'New Log' 
+      edit:
+        title: 'Edit '
+      table:
+        name: 'Name'
+      search:
+        name: 'Name'
+      form:
+        profile_info: 'General Information'
+        name: 'Name'
+        small_name: 'Enter the profile name'
+        description: 'Description'
+        small_description: 'Enter the profile description'
+
+
+
+
+    company:
+      index:
+        title: 'Companies'
+        new_button: 'New company'
+      new:
+        title: 'New company' 
+      edit:
+        title: 'Edit '
+      table:
+        name: 'Name'
+      search:
+        name: 'Name'       
+      form:
+        profile_info: 'General Information'
+        name: 'Name'
+        small_name: 'Enter the company name'
+        user: 'User'
+        select_user: 'Select Usuario'
+        small_user_id: 'Enter the company administrator'

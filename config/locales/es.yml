@@ -2,7 +2,7 @@
 # by Peter Baker (pcbaker@gmail.com)
 # modificado por CCP
 # Corrected by Eloy Serra Labán: http://goo.gl/i9Kts, /nQ928, /XfKaX
-
+#encoding: utf-8
 es:
   processingjs: 'Procesando la información'
   number:
@@ -223,3 +223,150 @@ es:
     show: 'Ver'
     edit: 'Editar'
     delete: 'Eliminar'
+
+
+
+  table:
+    actions: 'Acciones'
+    show: 'Ver'
+    delete: 'Eliminar'
+  search:
+    filters: 'Filtros de Búsqueda'
+    search: 'Buscar'
+  buttons:
+    register: 'Registrar'
+    enable_edition: 'Habilitar Edición'
+    edit: 'Editar'
+    undo_changes: 'Deshacer cambios'
+    cancel: 'Cancelar'
+    processing: 'Procesando...'
+    save: 'Guardar'
+
+
+
+
+
+  account_management:
+    user:
+      index:
+        title: 'Usuarios'
+        new_button: 'Nuevo Usuario'
+        export_button: 'Exportar'
+      new:
+        title: 'Nuevo Usuario' 
+      edit:
+        title: 'Editar '
+      table:
+        name: 'Nombre'
+        email: 'Email'
+        profile: 'Rol'
+      search:
+        name: 'Nombre'       
+        email: 'Email'
+        profile: 'Rol'
+        all_profiles: 'Todos los roles'
+      form:
+        personal_info: 'Información Personal'
+        name: 'Nombre'
+        small_name: 'Ingrese en el nombre del usuario'
+        lastname: 'Apellido'
+        small_lastname: 'Ingrese el apellido del usuario'
+        lastname2: '2do Apellido'
+        small_lastname2: 'Ingrese el segundo apellido del usuario'
+        geo_info: 'Información Geográfica'
+        country: 'Pais'
+        select_country: 'Seleccione un pais'
+        small_country_id: 'Seleccione el pais del usuario'
+        user_info: 'Información de Usuario'
+        email: 'Email'
+        small_email: 'Ingrese el email del usuario'
+        password: 'Contraseña'
+        small_password: 'Ingrese la contraseña del usuario'
+        small_repeat_password: 'Ingrese nuevamente la contraseña del usuario'
+        profile: 'Rol'
+        small_profile_id: 'Seleccione el rol del usuario'
+        select_profile: 'Seleccione un rol'
+      department:
+        department: 'Departamento'
+        select_department: 'Seleccione un departmento'
+        small_department: 'Seleccione el departamento del país'
+      province:
+        province: 'Provincia'
+        select_province: 'Seleccionar una provincia'
+        small_province: 'Seleccionar la provincia de un departamento'
+      district:
+        district: 'Distrito'
+        select_district: 'Seleccione un distrito'
+        small_district: 'Seleccione el distrito de la provincia'
+      excel:
+        name: 'Nombre'
+        lastname: 'Apellido'
+        lastname2: '2do Apellido'
+        email: 'Email'
+        profile: 'Rol'
+
+
+
+
+    profile:
+      index:
+        title: 'Roles'
+        new_button: 'Nuevo Rol'
+      new:
+        title: 'Nuevo Rol' 
+      edit:
+        title: 'Editar '
+      table:
+        name: 'Nombre'
+      search:
+        name: 'Nombre'       
+      form:
+        profile_info: 'Información General'
+        name: 'Nombre'
+        small_name: 'Ingrese el nombre del rol'
+        description: 'Descripción'
+        small_description: 'Ingrese la descripción del rol'
+
+
+
+
+    log:
+      index:
+        title: 'Logs'
+        new_button: 'Nuevo Log'
+      new:
+        title: 'Nuevo Log '
+      edit:
+        title: 'Editar '
+      table:
+        name: 'Nombre'
+      search:
+        name: 'Nombre'
+      form:
+        log_info: 'Información General'
+        name: 'Nombre'
+        small_name: 'Ingrese el nombre del log'
+        description: 'Descripción'
+        small_description: 'Ingrese la descripción del log'
+
+
+
+    company:
+      index:
+        title: 'Organizaciones'
+        new_button: 'Nueva organización'
+      new:
+        title: 'Nuevo organización' 
+      edit:
+        title: 'Editar '
+      table:
+        name: 'Nombre'
+      search:
+        name: 'Nombre'       
+      form:
+        profile_info: 'Información General'
+        name: 'Nombre'
+        small_name: 'Ingrese el nombre de la organización'
+        user: 'Usuario'
+        select_user: 'Seleccione un usuario'
+        small_user_id: 'Ingrese el administrador de la organización'

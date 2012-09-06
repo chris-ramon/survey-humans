@@ -1,0 +1,24 @@
+<%str_method = @int_page_type==2? 'put' : 'post'%>
+<%str_path = @int_page_type==2? match_management_question_level_path : match_management_question_level_index_path%>
+<%= form_for(@question_level, :url=>str_path, :method=>str_method,:html=>{:id=>"form_question_level"}) do |f| %>   
+	
+	<fieldset>
+		<legend><%=t('.profile_info')%></legend>
+		<dl class="inline">
+
+      <dt><%= set_label_obligatory(QuestionLevel.null?("range")) %><%= f.label :name,"#{t('.range')}:" %></dt>
+      <dd>
+        <%= f.text_field :range, :class=>"medium validate[#{set_validate(QuestionLevel.null?("range"))}]",:size=>50 %>
+        <small><%= t('.small_range')%></small>
+      </dd>
+
+    </dl>
+
+		<div style="clear:both"></div>
+
+	    <div class="buttons">
+	      <%= render :partial => "buttons" %>
+	    </div>
+    </fieldset>
+
+<% end %>

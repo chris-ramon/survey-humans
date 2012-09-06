@@ -1,0 +1,47 @@
+<%str_method = @int_page_type==2? 'put' : 'post'%>
+<%str_path = @int_page_type==2? match_management_question_path : match_management_question_index_path%>
+<%= form_for(@question, :url=>str_path, :method=>str_method,:html=>{:id=>"form_question"}) do |f| %>   
+	
+	<fieldset>
+		<legend><%=t('.question_info')%></legend>
+		<dl class="inline">
+
+      <dt><%= set_label_obligatory(Question.null?("question")) %><%= f.label :question,"#{t('.question')}:" %></dt>
+      <dd>
+        <%= f.text_area :question, :class=>"medium validate[#{set_validate(Question.null?("question"))}]",:size=>50 %>
+        <small><%= t('.small_question')%></small>
+      </dd>
+
+      <dt><%= set_label_obligatory(Question.null?("correct_answer")) %><%= f.label :correct_answer,"#{t('.correct_answer')}:" %></dt>
+      <dd>
+        <%= f.text_field :correct_answer, :class=>"medium validate[#{set_validate(Question.null?("correct_answer"))}]",:size=>50 %>
+        <small><%= t('.small_correct_answer')%></small>
+      </dd>
+
+      <dt><%= set_label_obligatory(Question.null?("answer_format_id")) %><%= f.label :answer_format_id,"#{t('.answer_format')}:" %></dt>
+      <dd>
+        <%= f.select :answer_format_id,@list_answer_formats.collect {|t| [t.name,t.id]},{:include_blank=>"#{t('.select_answer_format')}"},{:class=>"medium validate[#{set_validate(Question.null?("answer_format_id"))}]"} %>
+        <small><%=t('.small_answer_format_id')%></small>
+      </dd>
+
+      <dt><%= set_label_obligatory(Question.null?("question_type_id")) %><%= f.label :question_type_id,"#{t('.question_type')}:" %></dt>
+      <dd>
+        <%= f.select :question_type_id,@list_question_types.collect {|t| [t.name,t.id]},{:include_blank=>"#{t('.select_question_type')}"},{:class=>"medium validate[#{set_validate(Question.null?("question_type_id"))}]"} %>
+        <small><%=t('.small_question_type_id')%></small>
+      </dd>
+
+      <dt><%= set_label_obligatory(Question.null?("match_id")) %><%= f.label :match_id,"#{t('.match')}:" %></dt>
+      <dd>
+        <%= f.select :match_id,@list_matches.collect {|t| [t.name,t.id]},{:include_blank=>"#{t('.select_match')}"},{:class=>"medium validate[#{set_validate(Question.null?("match_id"))}]"} %>
+        <small><%=t('.small_match_id')%></small>
+      </dd>
+    </dl>
+
+		<div style="clear:both"></div>
+
+	    <div class="buttons">
+	      <%= render :partial => "buttons" %>
+	    </div>
+    </fieldset>
+
+<% end %>

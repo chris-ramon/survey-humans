@@ -1,2 +1,7 @@
-<h1>MatchManagement::QuestionType#edit</h1>
-<p>Find me in app/views/match_management/question_type/edit.html.erb</p>
+<% title t('.title')+' '+ @company.name %>
+<%= render :partial=>"layouts/messages" %>
+
+<h2><%=yield :title%></h2>
+<%= render :partial => "form" %>
+
+<%= render :partial=>"layouts/validation",:locals=>{:form_id=>'form_company'} %>

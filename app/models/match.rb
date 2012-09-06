@@ -1,6 +1,7 @@
 class Match < ActiveRecord::Base
 	belongs_to :match_type
 	belongs_to :question_level
+	belongs_to :user
 	has_many :questions
 
 	# This function evaluates if a column is nullable or not in the database

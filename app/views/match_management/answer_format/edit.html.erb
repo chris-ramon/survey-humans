@@ -1,2 +1,7 @@
-<h1>MatchManagement::AnswerFormat#edit</h1>
-<p>Find me in app/views/match_management/answer_format/edit.html.erb</p>
+<% title t('.title')+' '+ @answer_format.name %>
+<%= render :partial=>"layouts/messages" %>
+
+<h2><%=yield :title%></h2>
+<%= render :partial => "form" %>
+
+<%= render :partial=>"layouts/validation",:locals=>{:form_id=>'form_answer_format'} %>

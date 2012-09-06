@@ -1,0 +1,29 @@
+<% if @list_question_types.size > 0 %>
+<table id="table1" class="gtable sortable">
+	<thead>
+		<tr>
+			<th><%=t('.name')%></th>
+			<th><%=t('table.actions')%></th>
+		</tr>
+	</thead>
+	<tbody>
+    <%@list_question_types.each do |q_type|%>
+		  <tr>
+			  <td><%=q_type.name%></td>
+			  <td>
+				  <%=link_to image_tag('standard/show.png',:title=>"#{t('table.show')} #{q_type.name}"),match_management_question_type_path(q_type) unless !current_user.has_access(40)%>
+                <%=link_to image_tag('standard/delete.png', :title=>"#{t('table.delete')} #{q_type.name}"),{:action=>'destroy',:id=>q_type.id},{:method=>:delete, :confirm=>t('messages.sure_to_delete')+q_type.name+"?"} unless !current_user.has_access(42)%>
+			  </td>
+		  </tr>
+    <%end%>
+	</tbody>
+</table>
+<div class="tablefooter clearfix">
+	<div class="pagination">
+    <%= will_paginate @list_question_types %>
+    <%= paginate_ajax_js%>
+	</div>
+</div>
+<%else%>
+<p><%= t('messages.noitem_found')%></p>
+<%end%>
