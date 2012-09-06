@@ -1,0 +1,20 @@
+en:
+  account_management:
+    company:
+      index:
+        title: 'Profiles'
+        new_button: 'New Profile'
+      new:
+        title: 'New Profile' 
+      edit:
+        title: 'Edit '
+      table:
+        name: 'Name'
+      search:
+        name: 'Name'       
+      form:
+        profile_info: 'General Information'
+        name: 'Name'
+        small_name: 'Enter the profile name'
+        description: 'Description'
+        small_description: 'Enter the profile description'

@@ -44,9 +44,9 @@ ActiveRecord::Schema.define(:version => 20120906002702) do
   end
 
   create_table "answer_formats", :force => true do |t|
-    t.string   "name",       :null => false
-    t.string   "format",     :null => false
-    t.integer  "deleted"
+    t.string   "name",                      :null => false
+    t.string   "format",                    :null => false
+    t.integer  "deleted",    :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -60,8 +60,8 @@ ActiveRecord::Schema.define(:version => 20120906002702) do
   end
 
   create_table "question_levels", :force => true do |t|
-    t.string   "range",      :null => false
-    t.integer  "deleted"
+    t.string   "range",                     :null => false
+    t.integer  "deleted",    :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
