@@ -6,6 +6,7 @@
 class AccountManagement::CompanyController < ApplicationController
 	layout "_content"
 	before_filter :authenticate_user!
+  
 	def index
 		if current_user.has_access 17
 			@search = Company.search(params[:search])
@@ -23,6 +24,7 @@ class AccountManagement::CompanyController < ApplicationController
 	def new
 		if current_user.has_access 18
       @company = Company.new
+      @list_users = User.where(:deleted=>0)
       @int_page_type = 0
     else
       no_access
@@ -54,6 +56,7 @@ class AccountManagement::CompanyController < ApplicationController
 	def show
 		if current_user.has_access 19
       @company = Company.find(params[:id])
+      @list_users = User.where(:deleted=>0)
       @int_page_type = 1
     else
       no_access
@@ -63,6 +66,7 @@ class AccountManagement::CompanyController < ApplicationController
 	def edit
 		if current_user.has_access 20
       @company = Company.find(params[:id])
+      @list_users = User.where(:deleted=>0)
       @int_page_type = 2
     else
       no_access
@@ -97,7 +101,7 @@ class AccountManagement::CompanyController < ApplicationController
 		if current_user.has_access 21
       begin
         if Company.delete(params[:id])
-          str_desc="Se eliminó el currency "+Company.find(params[:id]).name+" con id = "+params[:id].to_s
+          str_desc="Se eliminó el company "+Company.find(params[:id]).name+" con id = "+params[:id].to_s
           @log=Log.create!({:description=>str_desc, :user_id=>current_user.id})
           flash[:notice] = t('messages.successfully_deleted')
         else

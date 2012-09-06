@@ -12,9 +12,9 @@
         <small><%= t('.small_name')%></small>
       </dd>
 
-      <dt><%= set_label_obligatory(Company.null?("user_id")) %><%= f.label :user_id,"#{t('.user_id')}:" %></dt>
+      <dt><%= set_label_obligatory(Company.null?("user_id")) %><%= f.label :user_id,"#{t('.user')}:" %></dt>
       <dd>
-        <%= f.text_field :user_id, :class=>"medium validate[#{set_validate(Company.null?("user_id"))}]",:size=>50 %>
+        <%= f.select :user_id,@list_users.collect {|t| [t.name,t.id]},{:include_blank=>"#{t('.select_user')}"},{:class=>"medium validate[#{set_validate(Company.null?("user_id"))}]"} %>
         <small><%=t('.small_user_id')%></small>
       </dd>
 
