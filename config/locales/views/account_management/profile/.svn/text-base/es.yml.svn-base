@@ -1,0 +1,22 @@
+#encoding: utf-8
+es:
+  account_management:
+    profile:
+      index:
+        title: 'Roles'
+        new_button: 'Nuevo Rol'
+      new:
+        title: 'Nuevo Rol' 
+      edit:
+        title: 'Editar '
+      table:
+        name: 'Nombre'
+      search:
+        name: 'Nombre'       
+      form:
+        profile_info: 'Información General'
+        name: 'Nombre'
+        small_name: 'Ingrese el nombre del rol'
+        description: 'Descripción'
+        small_description: 'Ingrese la descripción del rol'
+

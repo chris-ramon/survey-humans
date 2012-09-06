@@ -1,0 +1,38 @@
+<%str_method = @int_page_type==2? 'put' : 'post'%>
+<%str_path = @int_page_type==2? account_management_profile_path : account_management_profile_index_path%>
+
+<%= form_for(@profile, :url=>str_path, :method=>str_method,:html=>{:id=>"form_profile"}) do |f| %>             
+  <fieldset>
+    <legend><%=t('.profile_info')%></legend>
+    <dl class="inline">
+      <dt><%= set_label_obligatory(Profile.null?("name")) %><%= f.label :name,"#{t('.name')}:" %></dt>
+      <dd>
+        <%= f.text_field :name, :class=>"medium validate[#{set_validate(Profile.null?("name"))}]",:size=>50 %>
+        <small><%= t('.small_name')%></small>
+      </dd>
+      <dt><%= set_label_obligatory(Profile.null?("description")) %><%= f.label :description,"#{t('.description')}:" %></dt>
+      <dd>
+        <%= f.text_area :description, :class=>"validate[#{set_validate(Profile.null?("description"))}]",:size=>"60x4" %>
+        <small><%= t('.small_description')%></small>
+      </dd>
+    </dl>
+    </fieldset>
+    <fieldset>
+        <legend><%= t('.access')%></legend>
+        <dl class="inline">
+          <blockquote>
+            <%@list_parent_access.each do |obj_access|%>
+              <dd><%= check_box_tag "access_"+obj_access.id.to_s,1,false, :onchange=>"mark('"+obj_access.get_childs.to_s+"','"+obj_access.get_parents.to_s+"',access_"+obj_access.id.to_s+")", :checked=>@list_profile_access.any? { |item| item.access_id==obj_access.id  }%>&nbsp;<%=t('panel.'+obj_access.name)%>&nbsp;&nbsp;&nbsp;<%if obj_access.has_childs%><%=link_to_function "▼","open_close_div('"+obj_access.id.to_s+"')", :id => "link_"+obj_access.id.to_s %><%end%></dd>
+              <div id="list_<%=obj_access.id%>" style="display:none">              
+                <%= render :partial => "edit_access_childs", :locals=>{:access_parent_id=>obj_access.id} %>
+              </div>
+            <%end%>
+          </blockquote>
+        </dl>
+
+    <div style="clear:both"></div>
+    <div class="buttons">
+      <%= render :partial => "buttons", :locals=>{:profile_id=>@profile.id} %>
+    </div>
+  </fieldset>
+<% end %>

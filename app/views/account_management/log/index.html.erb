@@ -1,0 +1,25 @@
+<% title t('.title') %>
+<h2><%=yield :title%></h2>
+<%= render :partial=>"layouts/messages" %>
+    <% if @list_logs.size > 0 %>
+    <table id="table1" class="gtable sortable">
+	<thead>
+		<tr>
+			<th><%="Usuario"%></th>
+            <th><%="Descripción"%></th>
+            <th><%="Fecha"%></th>
+		</tr>
+	</thead>
+    <div id="table">
+      <%= render :partial => "table" %>
+    </div>
+    </table>
+    <div class="tablefooter clearfix">
+	    <div class="pagination">
+        <%= will_paginate @list_logs %>
+        <%= paginate_ajax_js%>
+        </div>
+    </div>
+    <%else%>
+    <p><%= t('messages.noitem_found')%></p>
+<%end%>

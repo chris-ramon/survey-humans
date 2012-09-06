@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/bundle_rails3/!svn/ver/196/trunk/app/views/devise/passwords
+END
+edit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/bundle_rails3/!svn/ver/194/trunk/app/views/devise/passwords/edit.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/bundle_rails3/!svn/ver/196/trunk/app/views/devise/passwords/new.html.erb
+END

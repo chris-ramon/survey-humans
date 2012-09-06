@@ -1,0 +1,8 @@
+<% title t('.title') %>
+<h2><%=yield :title%></h2>
+<%= render :partial=>"layouts/messages" %>
+<%= render :partial => "search" %><br/>
+<div id="table">
+  <%= render :partial => "table" %>
+</div>
+<br/><%= link_to t('.new_button'),new_account_management_profile_path, :class=>"button" unless !current_user.has_access(8)%>

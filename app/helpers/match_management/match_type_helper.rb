@@ -1,0 +1,2 @@
+module MatchManagement::MatchTypeHelper
+end

@@ -3,7 +3,7 @@ class CreateAnswerFormats < ActiveRecord::Migration
     create_table :answer_formats do |t|
       t.string :name, :null => false
       t.string :format, :null => false
-      t.integer :deleted
+      t.integer :deleted, :default => 0
 
       t.timestamps
     end

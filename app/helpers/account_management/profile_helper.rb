@@ -1,0 +1,2 @@
+module AccountManagement::ProfileHelper
+end

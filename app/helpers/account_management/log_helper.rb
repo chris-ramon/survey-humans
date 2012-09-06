@@ -1,0 +1,2 @@
+module AccountManagement::LogHelper
+end

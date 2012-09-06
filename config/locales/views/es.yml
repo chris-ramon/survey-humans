@@ -1,0 +1,16 @@
+es:
+  table:
+    actions: 'Acciones'
+    show: 'Ver'
+    delete: 'Eliminar'
+  search:
+    filters: 'Filtros de Búsqueda'
+    search: 'Buscar'
+  buttons:
+    register: 'Registrar'
+    enable_edition: 'Habilitar Edición'
+    edit: 'Editar'
+    undo_changes: 'Deshacer cambios'
+    cancel: 'Cancelar'
+    processing: 'Procesando...'
+    save: 'Guardar'

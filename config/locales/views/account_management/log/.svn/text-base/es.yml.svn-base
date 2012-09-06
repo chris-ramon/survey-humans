@@ -1,0 +1,22 @@
+#encoding: utf-8
+es:
+  account_management:
+    log:
+      index:
+        title: 'Logs'
+        new_button: 'Nuevo Log'
+      new:
+        title: 'Nuevo Log '
+      edit:
+        title: 'Editar '
+      table:
+        name: 'Nombre'
+      search:
+        name: 'Nombre'
+      form:
+        log_info: 'Información General'
+        name: 'Nombre'
+        small_name: 'Ingrese el nombre del log'
+        description: 'Descripción'
+        small_description: 'Ingrese la descripción del log'
+

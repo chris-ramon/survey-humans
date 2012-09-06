@@ -1,0 +1,22 @@
+<%= link_to t('search.filters'),"#",:onclick=>"open_close_div_search('form_search'); return false;",:class=>"show_hide_form_search" %>
+<div style="clear:both"></div>
+
+<%= form_for @search, :url => account_management_user_index_path, :html => {:method => :get, :id=>'form_search', :style=>'display:none', :remote=>true} do |f| %>
+  <fieldset>
+    <legend><%=t('search.search')%></legend>
+    <dl class="inline">
+      <dt><%= f.label t('.name') %></dt>
+      <dd><%= f.text_field :name_or_lastname_contains %></dd>
+      <dt><%= f.label t('.email') %></dt>
+      <dd><%= f.text_field :email_contains %></dd>
+      <dt><%= f.label t('.profile') %></dt>
+      <dd><%= f.select :profile_id_eq,@list_profiles.collect {|t| [t.name,t.id]},{:include_blank=>"#{t('.all_profiles')}"} %></dd>
+    </dl>
+    <div class="buttons">
+      <%= submit_tag(t('search.search'), :disable_with => t('buttons.processing'), :class => "button")%>          
+      <span id='loading_search' style='display:none'><img alt='Loading' border='0' height='14' src="<%=image_path('style/loading.gif')%>" width='14'></span>
+    </div>
+  </fieldset>
+<% end %>
+
+<%=search_loading_js 'form_search'%>

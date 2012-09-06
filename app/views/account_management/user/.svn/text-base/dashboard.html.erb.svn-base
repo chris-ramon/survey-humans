@@ -1,0 +1,7 @@
+<% list_access = Access.find(:all, :conditions => ['parent_id = ?', 0], :order=>"order1 DESC")%>
+
+<% title t(:dashboard) %>
+<%= render :partial=>"layouts/messages" %>
+<h1><%= t('messages.welcome')%></h1>
+<%= render :partial=>"layouts/panel", :locals=>{:list_access=>list_access}%>
+    

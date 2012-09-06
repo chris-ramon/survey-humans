@@ -1,0 +1,31 @@
+<% if @list_profiles.size > 0 %>
+<table id="table1" class="gtable sortable">
+	<thead>
+		<tr>
+			<th><%=t('.name')%></th>    
+			<th><%=t('table.actions')%></th>
+		</tr>
+	</thead>
+	<tbody>
+    <%@list_profiles.each do |profile|%>
+		  <tr>
+			  <td><%=profile.name%></td>
+			  <td>
+				  <%=link_to image_tag('standard/show.png',:title=>"#{t('table.show')} #{profile.name}"),account_management_profile_path(profile) unless !current_user.has_access(9)%>
+                  <%if profile.id!=1 && !Profile.has_users(profile.id)%>            
+                    <%=link_to image_tag('standard/delete.png', :title=>"#{t('table.delete')} #{profile.name}"),{:action=>'destroy',:id=>profile.id},{:method=>:delete, :confirm=>t('messages.sure_to_delete')+profile.name+"?"} unless !current_user.has_access(11)%>
+                <%end%>
+			  </td>
+		  </tr>
+    <%end%>
+	</tbody>
+</table>
+<div class="tablefooter clearfix">
+	<div class="pagination">
+    <%= will_paginate @list_profiles %>
+    <%= paginate_ajax_js%>
+	</div>
+</div>
+<%else%>
+<p><%= t('messages.noitem_found')%></p>
+<%end%>

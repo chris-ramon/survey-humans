@@ -1,0 +1,19 @@
+<% if !flash[:notice].blank? %>
+  <div class="success msg"><%= flash[:notice].html_safe %></div>
+  <% flash[:notice] = nil %>
+<% end %>
+
+<% if !flash[:alert].blank? %>
+  <div class="error msg"><%= flash[:alert].html_safe %></div>
+  <% flash[:alert] = nil %>
+<% end %>
+
+<% if !flash[:warning].blank? %>
+  <div class="warning msg"><%= flash[:warning].html_safe %></div>
+  <% flash[:warning] = nil %>
+<% end %>
+
+<% if !flash[:information].blank? %>
+  <div class="information msg"><%= flash[:information].html_safe %></div>
+  <% flash[:information] = nil %>
+<% end %>

@@ -1,0 +1,64 @@
+#encoding: utf-8
+
+es:
+  account_management:
+    user:
+      index:
+        title: 'Usuarios'
+        new_button: 'Nuevo Usuario'
+        export_button: 'Exportar'
+      new:
+        title: 'Nuevo Usuario' 
+      edit:
+        title: 'Editar '
+      table:
+        name: 'Nombre'
+        email: 'Email'
+        profile: 'Rol'
+      search:
+        name: 'Nombre'       
+        email: 'Email'
+        profile: 'Rol'
+        all_profiles: 'Todos los roles'
+      form:
+        personal_info: 'Información Personal'
+        name: 'Nombre'
+        small_name: 'Ingrese en el nombre del usuario'
+        lastname: 'Apellido'
+        small_lastname: 'Ingrese el apellido del usuario'
+        lastname2: '2do Apellido'
+        small_lastname2: 'Ingrese el segundo apellido del usuario'
+        geo_info: 'Información Geográfica'
+        country: 'Pais'
+        select_country: 'Seleccione un pais'
+        small_country_id: 'Seleccione el pais del usuario'
+        user_info: 'Información de Usuario'
+        email: 'Email'
+        small_email: 'Ingrese el email del usuario'
+        password: 'Contraseña'
+        small_password: 'Ingrese la contraseña del usuario'
+        small_repeat_password: 'Ingrese nuevamente la contraseña del usuario'
+        profile: 'Rol'
+        small_profile_id: 'Seleccione el rol del usuario'
+        select_profile: 'Seleccione un rol'
+      department:
+        department: 'Departamento'
+        select_department: 'Seleccione un departmento'
+        small_department: 'Seleccione el departamento del país'
+      province:
+        province: 'Provincia'
+        select_province: 'Seleccionar una provincia'
+        small_province: 'Seleccionar la provincia de un departamento'
+      district:
+        district: 'Distrito'
+        select_district: 'Seleccione un distrito'
+        small_district: 'Seleccione el distrito de la provincia'
+      excel:
+        name: 'Nombre'
+        lastname: 'Apellido'
+        lastname2: '2do Apellido'
+        email: 'Email'
+        profile: 'Rol'
+        
+     
+

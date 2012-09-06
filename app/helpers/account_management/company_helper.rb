@@ -1,0 +1,2 @@
+module AccountManagement::CompanyHelper
+end

@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/bundle_rails3/!svn/ver/213/trunk/app/views/account_management/profile
+END
+edit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/bundle_rails3/!svn/ver/56/trunk/app/views/account_management/profile/edit.html.erb
+END
+_table.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/bundle_rails3/!svn/ver/160/trunk/app/views/account_management/profile/_table.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/bundle_rails3/!svn/ver/82/trunk/app/views/account_management/profile/index.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/bundle_rails3/!svn/ver/56/trunk/app/views/account_management/profile/new.html.erb
+END
+_edit_access_childs.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/bundle_rails3/!svn/ver/72/trunk/app/views/account_management/profile/_edit_access_childs.html.erb
+END
+_buttons.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/bundle_rails3/!svn/ver/115/trunk/app/views/account_management/profile/_buttons.html.erb
+END
+index.js.erb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/bundle_rails3/!svn/ver/50/trunk/app/views/account_management/profile/index.js.erb
+END
+show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/bundle_rails3/!svn/ver/56/trunk/app/views/account_management/profile/show.html.erb
+END
+_form.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/bundle_rails3/!svn/ver/115/trunk/app/views/account_management/profile/_form.html.erb
+END
+_search.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/bundle_rails3/!svn/ver/213/trunk/app/views/account_management/profile/_search.html.erb
+END

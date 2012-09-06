@@ -1,0 +1,16 @@
+en:
+  table:
+    actions: 'Actions'
+    show: 'Show'
+    delete: 'Delete'
+  search:
+    filters: 'Search Filters'
+    search: 'Search'
+  buttons:
+    register: 'Register'
+    enable_edition: 'Enable Edition'
+    edit: 'Edit'
+    undo_changes: 'Undo changes'
+    cancel: 'Cancel'
+    processing: 'Processing...'
+    save: 'Save'

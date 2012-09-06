@@ -1,0 +1,62 @@
+<%str_method = @int_page_type==2? 'put' : 'post'%>
+<%str_path = @int_page_type==2? account_management_user_path : account_management_user_index_path%>
+<%= form_for(@user, :url=>str_path, :method=>str_method,:html=>{:id=>"form_user"}) do |f| %>             
+    <fieldset>
+      <legend><%=t('.personal_info')%></legend>
+      <dl class="inline">
+        <dt><%= set_label_obligatory(User.null?("name")) %><%= f.label :name,"#{t('.name')}:" %></dt>
+        <dd>
+          <%= f.text_field :name, :class=>"medium validate[#{set_validate(User.null?("name"))}]",:size=>50 %>
+          <small><%= t('.small_name')%></small>
+        </dd>
+        <dt><%= set_label_obligatory(User.null?("lastname")) %><%= f.label :lastname,"#{t('.lastname')}:" %></dt>
+        <dd>
+          <%= f.text_field :lastname, :class=>"medium validate[#{set_validate(User.null?("lastname"))}]",:size=>50 %>
+          <small><%=t('.small_lastname')%></small>
+        </dd>
+        <dt><%= set_label_obligatory(User.null?("lastname2")) %><%= f.label :lastname2,"#{t('.lastname2')}:" %></dt>
+        <dd>
+          <%= f.text_field :lastname2, :class=>"medium validate[#{set_validate(User.null?("lastname2"))}]",:size=>50 %>
+          <small><%=t('.small_lastname2')%></small>
+        </dd>
+      </dl>
+      </fieldset>
+      <fieldset>
+        <legend><%=t('.user_info')%></legend>
+        <dl class="inline">
+          <dt><%= set_label_obligatory(User.null?("email")) %><%= f.label :email,"#{t('.email')}:" %></dt>
+          <dd>
+            <%= f.text_field :email, :class=>"medium validate[#{set_validate(User.null?("email"))},custom[email]]",:size=>50 %>
+            <small><%=t('.small_email')%></small>
+          </dd>
+          <dt><%= set_label_obligatory(User.null?("profile_id")) %><%= f.label :profile_id,"#{t('.profile')}:" %></dt>
+          <dd>
+            <%= f.select :profile_id,@list_profiles.collect {|t| [t.name,t.id]},{:include_blank=>"#{t('.select_profile')}"},{:class=>"medium validate[#{set_validate(User.null?("profile_id"))}]"} %>
+            <small><%=t('.small_profile_id')%></small>
+          </dd>
+          <dt><%= set_label_obligatory(User.null?("event_id")) %><%= f.label :event_id,"#{t('.event')}:" %></dt>
+          <dd>
+            <%= f.select :event_id,@list_events.collect {|t| [t.name,t.id]},{:include_blank=>"#{t('.select_event')}"},{:class=>"medium validate[#{set_validate(User.null?("event_id"))}]"} %>
+            <small><%=t('.small_event_id')%></small>
+          </dd>
+        </dl>
+        <%if @int_page_type==0%>
+        <dl class="inline">
+          <dt><%= set_label_obligatory(false) %><%= f.label :password,"#{t('.password')}:" %></dt>
+          <dd>
+            <%= f.password_field :password, :class=>"medium validate[#{set_validate(false)},minSize[6]]",:size=>50 %>
+            <small><%=t('.small_password')%></small>
+          </dd>
+          <dt><%= set_label_obligatory(false) %><%= f.label :password_confirmation,"#{t('.password')}:" %></dt>
+          <dd>
+            <%= f.password_field :password_confirmation, :class=>"medium validate[#{set_validate(false)},equals[user_password]]",:size=>50 %>
+            <small><%=t('.small_repeat_password')%></small>
+          </dd>
+        </dl>
+        <%end%>
+        <div style="clear:both"></div>
+        <div class="buttons">
+          <%= render :partial => "buttons" %>
+        </div>
+      </fieldset>
+    <% end %>

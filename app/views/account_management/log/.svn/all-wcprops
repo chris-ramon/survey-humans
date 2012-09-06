@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/bundle_rails3/!svn/ver/174/trunk/app/views/account_management/log
+END
+_table.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/bundle_rails3/!svn/ver/164/trunk/app/views/account_management/log/_table.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/bundle_rails3/!svn/ver/167/trunk/app/views/account_management/log/index.html.erb
+END

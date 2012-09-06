@@ -1,0 +1,15 @@
+<% list_access = Access.find(:all, :conditions => ['parent_id = ?', 0])%>
+<div class="box menu">
+	<h2><%=t('modules')%></h2>
+  <%= link_to_function image_tag("standard/resultset_previous.png"), "hide_sidebar()", :style=>"float: right;top: 7px;position: absolute;left: 150px;"%>
+
+	<section>
+		<ul>
+      <%list_access.each do |access|%>
+			<li>
+        <%= link_to t("panel.#{access.name}"), {:controller=>access.controller, :action=>access.action} unless !current_user.has_access(access.id)%>  
+      </li>
+      <%end%>
+		</ul>
+	</section>
+</div>

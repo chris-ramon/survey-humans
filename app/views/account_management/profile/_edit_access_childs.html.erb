@@ -1,0 +1,9 @@
+<%list_access = Access.find_all_by_parent_id access_parent_id%>
+<%list_access.each do |obj_access|%>
+<blockquote>  
+  <dd><%= check_box_tag "access_"+obj_access.id.to_s,1,false, :onchange=>"mark('"+obj_access.get_childs.to_s+"','"+obj_access.get_parents.to_s+"',access_"+obj_access.id.to_s+")", :checked=>@list_profile_access.any? { |item| item.access_id==obj_access.id  }%>&nbsp;<%=t('panel.'+obj_access.name)%>&nbsp;&nbsp;&nbsp;<%if obj_access.has_childs%><%=link_to_function "▼","open_close_div('"+obj_access.id.to_s+"')", :id => "link_"+obj_access.id.to_s %><%end%></dd>              
+  <div id="list_<%=obj_access.id%>" style="display:none">              
+    <%= render :partial => "edit_access_childs", :locals=>{:access_parent_id=>obj_access.id} if obj_access.has_childs%>
+  </div>
+</blockquote>
+<%end%>

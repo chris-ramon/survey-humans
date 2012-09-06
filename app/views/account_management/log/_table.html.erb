@@ -1,0 +1,9 @@
+    <tbody>
+    <%@list_logs.each do |log|%>
+		  <tr>
+			  <td><%=log.user.name%></td>
+              <td><%=log.description%></td>
+              <td><%=log.created_at%></td>
+		  </tr>
+    <%end%>
+	</tbody>

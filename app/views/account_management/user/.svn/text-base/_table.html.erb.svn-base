@@ -1,0 +1,35 @@
+<% if @list_users.size > 0 %>
+<table id="table1" class="gtable sortable">
+	<thead>
+		<tr>
+			<th><%=t('.name')%></th>
+			<th><%=t('.email')%></th>
+			<th><%=t('.profile')%></th>
+			<th><%=t('table.actions')%></th>
+		</tr>
+	</thead>
+	<tbody>
+    <%@list_users.each do |user|%>
+		  <tr>
+			  <td><%=user.fullname%></td>
+			  <td><%=mail_to user.email%></td>
+			  <td><%=user.profile.name%></td>
+			  <td>
+				  <%=link_to image_tag('standard/show.png',:title=>"#{t('table.show')} #{user.fullname}"),account_management_user_path(user) unless !current_user.has_access(4)%>
+          <%if user.id != 1 && user.id!=current_user.id%>
+                <%=link_to image_tag('standard/delete.png', :title=>"#{t('table.delete')} #{user.fullname}"),{:action=>'destroy',:id=>user.id},{:method=>:delete, :confirm=>t('messages.sure_to_delete')+user.name+"?"} unless !current_user.has_access(6)%>
+          <%end%>
+			  </td>
+		  </tr>
+    <%end%>
+	</tbody>
+</table>
+<div class="tablefooter clearfix">
+	<div class="pagination">
+    <%= will_paginate @list_users %>
+    <%= paginate_ajax_js%>
+	</div>
+</div>
+<%else%>
+<p><%= t('messages.noitem_found')%></p>
+<%end%>
