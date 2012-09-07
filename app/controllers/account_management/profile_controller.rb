@@ -8,6 +8,7 @@ class AccountManagement::ProfileController < ApplicationController
   before_filter :authenticate_user!
   
   def index
+    @current_view = "security"
     if current_user.has_access 7
       @search = Profile.search(params[:search])
       @list_profiles = @search.where(:deleted => 0).paginate(:page => params[:page]).order('id DESC')

@@ -1,5 +1,5 @@
 <%if @int_page_type==0%>
-  <%= submit_tag(t('buttons.register'), :disable_with => t('buttons.processing'), :class => "button")%>          
+  <%= submit_tag(t('buttons.register'), :disable_with => t('buttons.processing'), :class => "btn btn-primary")%>
 <%elsif @int_page_type==1&& profile_id!=1%>
   <%= link_to t('buttons.enable_edition'), edit_account_management_profile_path(@user), :class=>"button" unless !current_user.has_access(10) %>
 <%else%>
@@ -8,4 +8,4 @@
         <%= link_to t('buttons.undo_changes'), edit_account_management_profile_path(@user), :class=>"button"  %>
     <%end%>
 <%end%>
-<%= link_to t('buttons.cancel'), account_management_profile_index_path, :class=>"button white"%>
+<%= link_to t('buttons.cancel'), account_management_profile_index_path, :class=>"btn btn-info"%>

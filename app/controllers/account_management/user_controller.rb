@@ -9,6 +9,7 @@ class AccountManagement::UserController < ApplicationController
   before_filter :authenticate_user!
 
   def index
+    @current_view = "security"
     if current_user.has_access 2
       @search = User.search(params[:search])
       @list_users = @search.where(:deleted => 0).paginate(:page => params[:page]).order('id DESC')
@@ -160,6 +161,14 @@ class AccountManagement::UserController < ApplicationController
     else
       no_access
     end
+  end
+
+  def account_panel
+    @current_view = "security"
+  end
+
+  def dashboard
+    @current_view = "dashboard"
   end
 
 end

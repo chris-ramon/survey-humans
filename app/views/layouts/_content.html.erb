@@ -24,27 +24,37 @@
                       <!-- .nav, .navbar-search, .navbar-form, etc -->
                       <ul class="nav">
                           <li class="divider-vertical"></li>
-                          <li><a href="#">Dashboard</a></li>
+                          <li><%= link_to 'Dashboard', root_path, :id=>"site-title" %></li>
                           <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Matches <b class="caret"></b></a>
                               <ul class="dropdown-menu">
-                                  <li><a href="#">Surveys</a></li>a
+                                  <li><a href="#">Surveys</a></li>
                                   <li><a href="#">Exams</a></li>
                               </ul>
                           </li>
                       </ul>
                       <ul class="nav pull-right">
-                          <li><a href="#">Link</a></li>
+                          <li><%= link_to current_user.fullname , account_management_user_path(current_user.id), :class => "dropdown-toggle" ,:'data-toggle' => 'dropdown' %></li>
                           <li class="divider-vertical"></li>
                           <li class="dropdown">
-                              <%= link_to  current_user.fullname, account_management_user_path(current_user.id), :class => '123' %>
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown </a>
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                  My Account
+                                  <i class="caret"></i>
+                              </a>
                               <ul class="dropdown-menu">
-                                  <li><a href="#">Action</a></li>
-                                  <li><a href="#">Another action</a></li>
-                                  <li><a href="#">Something else here</a></li>
+                                  <li><a href="#"></a></li>
                                   <li class="divider"></li>
-                                  <li><a href="#">Separated link</a></li>
+                                  <li><%= link_to t('logout'), destroy_user_session_path, :method => :delete %></li>
+                              </ul>
+                          </li>
+                          <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                  Languages
+                                  <i class="caret"></i>
+                              </a>
+                              <ul class="dropdown-menu">
+                                  <li><%= link_to "English", url_for( :locale => 'en') %></li>
+                                  <li><%= link_to "Spanish", url_for( :locale => 'es') %></li>
                               </ul>
                           </li>
                       </ul>
@@ -58,48 +68,15 @@
           <h3>Dashboard</h3>
           <div class="row-fluid">
               <aside id="aside-nav-panel" class="span3">
-                  <ul class="nav nav-list bs-docs-sidenav">
-                      <li class="active"><a href="#">Dashboard <i class="icon-chevron-right"></i></a></li>
-                      <li><a href="#">Payments <i class="icon-chevron-right"></i></a></li>
-                      <li><a href="#"><i class="icon-chevron-right"></i>Organizations</a></li>
-                      <li><a href="#"><i class="icon-chevron-right"></i>Security</a></li>
-                      <li><a href="#"><i class="icon-chevron-right"></i>Templates</a></li>
-                      <li><a href="#"><i class="icon-chevron-right"></i>Comments</a></li>
-                  </ul>
-
+                  <h2><%=t('modules')%></h2>
+                  <%= render :partial => "layouts/sidebar"%>
               </aside>
               <section class="span9">
+                  <%= yield %>
               </section>
           </div>
 
       </section>
-
-    <header id="top">
-      <div class="container_12 clearfix">
-        <div id="logo" class="grid_5">
-          <%= link_to 'Survey Humans', root_path, :id=>"site-title" %>
-          <%= link_to image_tag("style/english.png",:border=>0,:size=>"20x20"), url_for( :locale => 'en') %>
-          <%= link_to image_tag("style/spain.png",:border=>0,:size=>"20x20"), url_for( :locale => 'es') %>
-        </div>
-
-        <div id="userinfo" class="grid_7">
-
-        </div>
-      </div>
-    </header>
-
-    <nav id="topmenu">
-      <div class="container_12 clearfix">
-        <div class="grid_12">
-          <ul id="mainmenu" class="sf-menu">
-            <li class="current"><%= link_to t('dashboard'), root_path %></li>
-          </ul>
-          <ul id="usermenu">
-            <li><%= link_to t('logout'), destroy_user_session_path, :method => :delete %></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
 
     <section id="content">
       <section class="container_12 clearfix">
@@ -109,25 +86,12 @@
         </aside>
         <section id="main" class="grid_10 push_2">
           <article>
-                <%= yield %>
+
               </article>
         </section>
-        <aside id="sidebar" class="grid_2 pull_10">
-          <%= render :partial => "layouts/sidebar"%>
-        </aside>
       </section>
     </section>
 
-    <footer id="bottom">
-      <section class="container_6 clearfix">
-        <div class="grid_1 alignright"><a href="#">About us</a></div>
-        <div class="grid_1 alignright"><a href="#">Developers / API</a></div>
-        <div class="grid_1 alignright"><a href="#">Privacy</a></div>
-        <div class="grid_1 alignright"><a href="#">Blog</a></div>
-        <div class="grid_1 alignright"><a href="#">Contact</a></div>
-        <div class="grid_1 alignright">&copy; 2011-2012 <a href="#">Survey Humans</a></div>
-      </section>
-    </footer>
     <script type="text/javascript"> Cufon.now(); </script>
     <script type="text/javascript">
      Cufon.replace('h1'); // Works without a selector engine

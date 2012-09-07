@@ -3,7 +3,8 @@
 <%= render :partial=>"layouts/messages" %>
 <%= render :partial => "search" %><br/>
 <div id="table">
+    <%= link_to t('.new_button'),new_account_management_user_path, :class=>"btn btn-info" unless !current_user.has_access(3)%>
   <%= render :partial => "table" %>
 </div>
-<br/><%= link_to t('.new_button'),new_account_management_user_path, :class=>"button" unless !current_user.has_access(3)%>
-<%= link_to t('.export_button'),export_to_spreadsheet_account_management_user_index_path, :class=>"button" unless !current_user.has_access(2)%>
+
+

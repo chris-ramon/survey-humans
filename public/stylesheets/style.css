@@ -44,6 +44,9 @@ footer p {
 .search-form-actions {
   text-align: center;
 }
+#security-panel-ul {
+    list-style: none;
+}
 /* Sidenav for Docs
 -------------------------------------------------- */
 
