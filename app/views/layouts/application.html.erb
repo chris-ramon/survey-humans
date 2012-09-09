@@ -29,25 +29,38 @@
                 <!-- Everything you want hidden at 940px or less, place within here -->
                 <div class="nav-collapse">
                     <!-- .nav, .navbar-search, .navbar-form, etc -->
-                    <ul class="nav">
+                    <ul class="nav pull-right">
+                        <li><a href="#">Discover</a></li>
+                        <li><a href="#">About Us</a></li>
                         <li class="divider-vertical"></li>
-                        <li><a href="#">Dashboard</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Matches <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Surveys</a></li>
-                                <li><a href="#">Exams</a></li>
-                            </ul>
-                        </li>
+                        <li id="login-button"><a href="<%=new_user_session_path%>" class="btn btn-small btn-info">LOG IN</a></li>
+                        <li><button class="btn btn-small btn-success">SIGN UP</button></li>
                     </ul>
                 </div>
 
             </div>
         </div>
     </div>
+
     <section id="main-content" class="container-fluid">
       <%= yield %>
     </section>
+
+    <footer class="navbar navbar-fixed-bottom">
+        <div class="navbar-inner">
+            <div id="main-navbar-bottom-container" class="container">
+                <ul class="nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Discover</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <p class="pull-right">© 2011-2012 Survey Humane.</p>
+            </div>
+        </div>
+    </footer>
 </div>
 </body>
 </html>
