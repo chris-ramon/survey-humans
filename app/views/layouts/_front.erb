@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Survey for Humans!</title>
+    <%= stylesheet_link_tag "bootstrap.min" %>
+    <%= stylesheet_link_tag "style" %>
+</head>
+<body>
+<div class="container">
+
+    <div id="main-navbar-top" class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div id="main-navbar-top-container" class="container">
+
+                <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+
+                <!-- Be sure to leave the brand out there if you want it shown -->
+                <a class="brand" href="#">Survey Humans</a>
+
+                <!-- Everything you want hidden at 940px or less, place within here -->
+                <div class="nav-collapse">
+                    <!-- .nav, .navbar-search, .navbar-form, etc -->
+                    <ul class="nav pull-right">
+                        <li><a href="#">Discover</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li class="divider-vertical"></li>
+                        <li id="login-button"><button class="btn btn-small btn-info">LOG IN</button></li>
+                        <li><button class="btn btn-small btn-success">SIGN UP</button></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <%= yield %>
+
+    <footer class="navbar navbar-fixed-bottom">
+        <div class="navbar-inner">
+            <div id="main-navbar-bottom-container" class="container">
+                <ul class="nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Discover</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <p class="pull-right">© 2011-2012 Survey Humane.</p>
+            </div>
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>
