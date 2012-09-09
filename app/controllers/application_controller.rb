@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
   #This function specifies the path to be loaded after sign out
   def after_sign_out_path_for(resource_or_scope)
-    new_user_session_path
+    home_path
   end
 
   #This function generates a custom error string based in the ActiveRecord errors
