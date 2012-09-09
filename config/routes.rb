@@ -3,7 +3,13 @@ SurveyHuman::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
-  devise_for :users
+  #devise_for :users
+  devise_for :users, :path => "", :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock', :registration => 'register', :sign_up => 'cmon_let_me_in' }
+
+  devise_scope :user do
+    get "sign_in", :to => "devise/sessions#new"
+    get "home", :to => "devise/sessions#homepage"
+  end
 
   namespace :account_management do
     resources :user do
@@ -31,7 +37,6 @@ SurveyHuman::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-
   root :controller=>"account_management/user", :action=>"dashboard"
 
 end
