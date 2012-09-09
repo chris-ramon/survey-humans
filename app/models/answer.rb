@@ -1,6 +1,8 @@
 class Answer < ActiveRecord::Base
 	belongs_to :question
 
+	self.per_page = 10
+
 	# This function evaluates if a column is nullable or not in the database
 	#
 	# * *args*

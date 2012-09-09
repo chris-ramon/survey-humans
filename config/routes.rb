@@ -1,6 +1,12 @@
 SurveyHuman::Application.routes.draw do
 
-  get "front/index"
+  get "subscribe/index"
+
+  get "survey/index"
+
+  get "front/sign_up"
+
+  get "payment_notification/create"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -11,6 +17,7 @@ SurveyHuman::Application.routes.draw do
   devise_scope :user do
     get "sign_in", :to => "devise/sessions#new"
     get "home", :to => "devise/sessions#homepage"
+    get "sign_up", :to => "devise/registrations#new"
   end
 
   namespace :account_management do
@@ -18,6 +25,7 @@ SurveyHuman::Application.routes.draw do
       get :dashboard, :on => :collection
       get :account_panel, :on => :collection
       get :export_to_spreadsheet, :on => :collection
+      post :create_user_by_sign_up, :on => :collection
     end
     resources :profile
     resources :log
@@ -27,6 +35,7 @@ SurveyHuman::Application.routes.draw do
   namespace :match_management do
     resources :match do 
       get :match_panel, :on => :collection
+      get :show_matches_by_match_type, :on => :collection
     end
     resources :match_type
     resources :question
@@ -35,6 +44,21 @@ SurveyHuman::Application.routes.draw do
     resources :exam_topic
     resources :answer
     resources :answer_format
+  end
+
+  namespace :organization_management do
+    resources :company do 
+      get :organization_panel, :on => :collection
+    end
+  end
+
+  namespace :panel do
+    resources :survey do
+      get :index, :on => :collection
+    end
+    resources :subscribe do
+      get :index, :on => :collection
+    end
   end
 
   # You can have the root of your site routed with "root"

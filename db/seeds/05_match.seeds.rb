@@ -1,6 +1,6 @@
 begin
 	
-	Access.create_migration({:id=>22,:name=>"match", :parent_id=>0, :controller=>'match_management/match', :action=>'match_panel',:panel=>0}) #1
+	Access.create_migration({:id=>22,:name=>"match", :parent_id=>0, :controller=>'match_management/match', :action=>'match_panel',:panel=>0}) #22
 
 	Access.create_migration({:id=>23,:name=>"match", :parent_id=>22, :controller=>'match_management/match', :action=>'index',:panel=>0}) #23
 	  Access.create_migration({:id=>24,:name=>"new", :parent_id=>23}) #24

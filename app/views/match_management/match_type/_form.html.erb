@@ -3,7 +3,7 @@
 <%= form_for(@match_type, :url=>str_path, :method=>str_method,:html=>{:id=>"form_match_type"}) do |f| %>   
 	
 	<fieldset>
-		<legend><%=t('.profile_info')%></legend>
+		<legend><%=t('.match_type')%></legend>
 		<dl class="inline">
 
       <dt><%= set_label_obligatory(MatchType.null?("name")) %><%= f.label :name,"#{t('.name')}:" %></dt>

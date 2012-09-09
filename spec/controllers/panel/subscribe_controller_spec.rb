@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe FrontController do
+describe Panel::SubscribeController do
 
   describe "GET 'index'" do
     it "returns http success" do

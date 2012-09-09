@@ -212,10 +212,6 @@ es:
     page_gap: "&hellip;"
 
   panel:
-    account-user: 'Mi Perfil'
-    account: 'Seguridad'
-    matches_management: 'Matches Management'
-    account_welcome: 'Bienvenido al Panel de Seguridad'
     user: 'Usuarios'
     profile: 'Roles'
     log: 'Logs'
@@ -223,6 +219,23 @@ es:
     show: 'Ver'
     edit: 'Editar'
     delete: 'Eliminar'
+    account-user: 'Mi Perfil'
+    account: 'Seguridad'
+    matches_management: 'Partidas'
+    organization_management: 'Organizaciones'
+    payment_management: 'Realización de Pagos'
+    account_welcome: 'Bienvenido al Panel de Seguridad'
+    match_welcome: 'Bienvenido al Panel de Partidas'
+    organization_welcome: 'Bienvenido al Panel de Organizaciones'
+    matches: 'Tipo de Partidas'
+    surveys: 'Encuestas'
+    exams: 'Exámenes'
+    my_account: 'Mi Cuenta'
+    settings: 'Configuración'
+    logout: 'Cerrar Sesión'
+    languages: 'Idiomas'
+    english: 'Inglés'
+    spanish: 'Español'
 
 
 
@@ -244,7 +257,8 @@ es:
 
 
 
-
+  Survey: 'Encuestas'
+  Exam: 'Exámenes'
 
   account_management:
     user:
@@ -370,3 +384,41 @@ es:
         user: 'Usuario'
         select_user: 'Seleccione un usuario'
         small_user_id: 'Ingrese el administrador de la organización'
+
+
+  organization_management:
+    company:
+      index:
+        title: 'Organizaciones'
+      search:
+        name: 'Nombre'
+        user: Usuario
+        all_users: 'Seleccione un usuario'
+      form:
+        name: 'Nombre'
+        user: Usuario
+
+
+  match_management:
+    match:
+      index:
+        title: 'Partidas'
+      search:
+        name: 'Nombre'
+        match_type: 'Tipo de Partida'
+        level: 'Nivel'
+        all_match_types: 'Seleccione un tipo de partida'
+        all_question_levels: 'Seleccione un Nivel'
+      form:
+        name: 'Nombre'
+        url: 'URL'
+        started: '¿Iniciado?'
+        match_type: 'Tipo de Partida'
+        question_level: 'Nivel'
+        level: 'Nivel'
+        user: 'Usuario'
+        select_match_type: 'Seleccione un tipo de partida'
+        select_question_level: 'Seleccione un Nivel'
+        select_user: 'Seleccione un usuario'
+      new:
+        title: 'Registrar una Partida'

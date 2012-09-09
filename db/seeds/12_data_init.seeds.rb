@@ -1,3 +1,19 @@
+Access.create_migration({:id=>58,:name=>"organization", :parent_id=>0, :controller=>'organization_management/company', :action=>'organization_panel',:panel=>0}) #58
+	Profile.all.each do |profile|
+		if profile.id==1
+			profile.access_profiles.build({:access_id=>58})
+		else
+			profile.access_profiles.build({:access_id=>58, :deleted=>1})
+		end
+		profile.save
+	end
+access_company = Access.find(17)
+access_company.name="organization"
+access_company.parent_id=58
+access_company.controller="organization_management/company"
+access_company.save
+
+
 Company.create({:name=>"Company 01",
 				:user_id=>1,
 				:deleted=>0})

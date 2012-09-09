@@ -32,6 +32,9 @@ footer p {
 #main-content aside ul {
 	background-color: #FAFAFA;
 }
+#sign-up-wrapper {
+    margin-top: 100px;
+}
 .brand {
 	color: #E66054 !important;
 }
@@ -44,8 +47,23 @@ footer p {
 .search-form-actions {
   text-align: center;
 }
+.success {
+  color:green;
+}
+.error, .warning ,.information{
+  color:red;
+}
 #security-panel-ul {
     list-style: none;
+}
+#panel {
+    margin-top: 100px;
+}
+#panel h1 {
+    text-align: center;
+}
+#panel p {
+    margin-top: 20px;
 }
 /* Sidenav for Docs
 -------------------------------------------------- */

@@ -5,8 +5,8 @@
   <%= stylesheet_link_tag "bootstrap.min" %>
   <%= stylesheet_link_tag "bootstrap-responsive.min" %>
   <%= stylesheet_link_tag "style" %>
-  <% javascript_include_tag "jquery-1.7.1.min" %>
-  <% javascript_include_tag "jquery_ujs" %>
+  <%= javascript_include_tag "jquery-1.7.1.min" %>
+  <%= javascript_include_tag "jquery_ujs" %>
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -26,6 +26,7 @@
                 <!-- Be sure to leave the brand out there if you want it shown -->
                 <a class="brand" href="<%=home_path%>">Survey Humans</a>
 
+              <%if current_user.nil?%>
                 <!-- Everything you want hidden at 940px or less, place within here -->
                 <div class="nav-collapse">
                     <!-- .nav, .navbar-search, .navbar-form, etc -->
@@ -33,10 +34,51 @@
                         <li><a href="#">Discover</a></li>
                         <li><a href="#">About Us</a></li>
                         <li class="divider-vertical"></li>
-                        <li id="login-button"><a href="<%=new_user_session_path%>" class="btn btn-small btn-info">LOG IN</a></li>
-                        <li><button class="btn btn-small btn-success">SIGN UP</button></li>
+                        <li id="login-button"><a href="<%=new_user_session_path%>" class="btn btn-small btn-info">SIGN IN</a></li>
+                        <li><a href="<%=sign_up_path%>" class="btn btn-small btn-success">SIGN UP</a></li>
                     </ul>
                 </div>
+              <%else%>
+                <div class="nav-collapse">
+                      <!-- .nav, .navbar-search, .navbar-form, etc -->
+                      <ul class="nav">
+                          <li class="divider-vertical"></li>
+                          <li><%= link_to 'Dashboard', root_path, :id=>"site-title" %></li>
+                          <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=t("panel.matches")%> <b class="caret"></b></a>
+                              <ul class="dropdown-menu">
+                                  <li><%=link_to t("panel.surveys"),show_matches_by_match_type_match_management_match_index_path+"&id=1"%></li>
+                                  <li><%=link_to t("panel.exams"),show_matches_by_match_type_match_management_match_index_path+"&id=2"%></li>
+                              </ul>
+                          </li>
+                      </ul>
+                      <ul class="nav pull-right">
+                          <li><%= link_to current_user.fullname , account_management_user_path(current_user.id), :class => "dropdown-toggle" ,:'data-toggle' => 'dropdown' %></li>
+                          <li class="divider-vertical"></li>
+                          <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                  My Account
+                                  <i class="caret"></i>
+                              </a>
+                              <ul class="dropdown-menu">
+                                  <li><a href="#"></a></li>
+                                  <li class="divider"></li>
+                                  <li><%= link_to t('logout'), destroy_user_session_path, :method => :delete %></li>
+                              </ul>
+                          </li>
+                          <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                  Languages
+                                  <i class="caret"></i>
+                              </a>
+                              <ul class="dropdown-menu">
+                                  <li><%= link_to "English", url_for( :locale => 'en') %></li>
+                                  <li><%= link_to "Spanish", url_for( :locale => 'es') %></li>
+                              </ul>
+                          </li>
+                      </ul>
+                  </div>
+              <% end %>
 
             </div>
         </div>

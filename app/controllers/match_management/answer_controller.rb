@@ -7,6 +7,7 @@ class MatchManagement::AnswerController < ApplicationController
 	layout "_content"
   before_filter :authenticate_user!
   def index
+    @current_view = "match"
     if current_user.has_access 48
       @search = Answer.search(params[:search])
       @list_answers = @search.where(:deleted => 0).paginate(:page => params[:page]).order('id DESC')

@@ -244,10 +244,6 @@ en:
     page_gap: "&hellip;"
 
   panel:
-    account-user: 'My Profile'
-    account: 'Security'
-    matches_management: 'Gestión de Partidas - Encuestas y exámenes'
-    account_welcome: 'Welcome to the Security Panel'
     user: 'Users'
     log: 'Logs'
     profile: 'Profiles'
@@ -255,6 +251,23 @@ en:
     show: 'Show'
     edit: 'Edit'
     delete: 'Delete'
+    account-user: 'My Profile'
+    account: 'Security'
+    matches_management: 'Matches'
+    organization_management: 'Organizations'
+    payment_management: 'Payments'
+    account_welcome: 'Welcome to the Security Panel'
+    match_welcome: 'Welcome to the Match Panel'
+    organization_welcome: 'Welcome to the Organization Panel'
+    matches: 'Matches'
+    surveys: 'Surveys'
+    exams: 'Exams'
+    my_account: 'My Account'
+    settings: 'Settings'
+    logout: 'Logout'
+    languages: 'Languages'
+    english: 'English'
+    spanish: 'Spanish'
 
 
 
@@ -277,6 +290,8 @@ en:
 
 
 
+  Survey: 'Surveys'
+  Exam: 'Exams'
 
   account_management:
     profile:
@@ -422,3 +437,39 @@ en:
         user: 'User'
         select_user: 'Select Usuario'
         small_user_id: 'Enter the company administrator'
+
+  organization_management:
+    company:
+      index:
+        title: 'Organizations'
+      search:
+        name: 'Name'
+        user: 'User'
+        all_users: 'Select an user'
+      form:
+        name: 'Name'
+        user: 'User'
+
+  match_management:
+    match:
+      index:
+        title: 'Matches'
+      search:
+        name: 'Name'
+        match_type: 'Match Type'
+        level: 'Level'
+        all_match_types: 'Select a match type'
+        all_question_levels: 'Select a level'
+      form:
+        name: 'Name'
+        url: 'URL'
+        started: '¿Started?'
+        match_type: 'Match Type'
+        question_level: 'Level'
+        level: 'Level'
+        user: 'User'
+        select_match_type: 'Select a match type'
+        select_question_level: 'Select a Level'
+        select_user: 'Select a user'
+      new:
+        title: 'Register a Match'

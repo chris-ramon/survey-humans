@@ -3,18 +3,14 @@
   <%= link_to_function image_tag("standard/resultset_previous.png"), "hide_sidebar()", :style=>"float: right;top: 7px;position: absolute;left: 150px;"%>
 
 		<ul class="nav nav-list bs-docs-sidenav">
-        <li class="<%=@current_view=="dashboard" ? "active" : "" %>"><a href="#">Dashboard <i class="icon-chevron-right"></i></a></li>
-        <li><a href="#">Payments <i class="icon-chevron-right"></i></a></li>
-        <li><a href="#"><i class="icon-chevron-right"></i>Organizations</a></li>
-        <li><a href="#"><i class="icon-chevron-right"></i>Security</a></li>
-        <li><a href="#"><i class="icon-chevron-right"></i>Templates</a></li>
-        <li><a href="#"><i class="icon-chevron-right"></i>Comments</a></li>
+        <li class="<%=@current_view=="dashboard" ? "active" : "" %>"><a href="<%=dashboard_account_management_user_index_path%>">Dashboard <i class="icon-chevron-right"></i></a></li>
+        <li><%= link_to t("panel.payment_management"), "#"%></li>
+        <li><a href="#">Templates</a></li>
+        <li><a href="#">Comments</a></li>
       <%list_access.each do |access|%>
-
-			<li class="<%=@current_view=="security" ? "active" : "" %>">
-
-        <%= link_to t("panel.#{access.name}"), {:controller=>access.controller, :action=>access.action} unless !current_user.has_access(access.id)  %>
-      </li>
+        <li class="<%=@current_view=="security" ? "active" : "" %>">
+          <%= link_to t("panel.#{access.name}"), {:controller=>access.controller, :action=>access.action} unless !current_user.has_access(access.id)  %>
+        </li>
       <%end%>
 
 		</ul>
