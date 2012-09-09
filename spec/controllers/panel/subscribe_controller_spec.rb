@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe FrontController do
+describe Panel::SubscribeController do
 
-  describe "GET 'sign_up'" do
+  describe "GET 'index'" do
     it "returns http success" do
-      get 'sign_up'
+      get 'index'
       response.should be_success
     end
   end

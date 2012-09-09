@@ -1,0 +1,2 @@
+module Panel::SurveyHelper
+end

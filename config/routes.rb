@@ -1,5 +1,13 @@
 SurveyHuman::Application.routes.draw do
 
+  get "subscribe/index"
+
+  get "survey/index"
+
+  get "front/sign_up"
+
+  get "payment_notification/create"
+
   get "front/index"
 
   # The priority is based upon order of creation:
@@ -16,6 +24,18 @@ SurveyHuman::Application.routes.draw do
     resources :profile
     resources :log
     resources :company
+  end
+
+  namespace :panel do
+    resources :survey do
+      get :index, :on => :collection
+    end
+  end
+
+  namespace :panel do
+    resources :subscribe do
+      get :index, :on => :collection
+    end
   end
 
   namespace :match_management do
