@@ -1,0 +1,2 @@
+module OrganizationManagement::CompanyHelper
+end

@@ -1,0 +1,7 @@
+<% title t('.title')+' '+ @company.name %>
+<%= render :partial=>"layouts/messages" %>
+
+<h2><%=yield :title%></h2>
+<%= render :partial => "form" %>
+
+<%= render :partial=>"layouts/validation",:locals=>{:form_id=>'form_company'} %>
