@@ -15,6 +15,7 @@ gem 'will_paginate', '~> 3.0'
 gem "meta_where"
 gem "meta_search"
 gem 'private_pub'
+gem 'nested_form'
 
 # Use unicorn as the web server
 #gem unicorn
