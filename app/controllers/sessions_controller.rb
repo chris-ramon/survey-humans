@@ -4,9 +4,9 @@ class SessionsController < Devise::SessionsController
 	end
 
 	def sign_up #registrarse
-  end
+	end
 
-  def sign_in #ingresar
-  end
+	def sign_in #ingresar
+	end
 
 end

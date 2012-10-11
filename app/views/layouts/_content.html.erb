@@ -1,7 +1,11 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-  <%= render :partial => "layouts/header"%>
+  <%if current_user.profile_id==1%>
+    <%= render :partial => "layouts/header_admin"%>
+  <%else%>
+    <%= render :partial => "layouts/header_user"%>
+  <%end%>
 </head>
 <body>
   <div class="container">
@@ -67,13 +71,19 @@
       <section id="main-content" class="container-fluid">
           <h3>Dashboard</h3>
           <div class="row-fluid">
-              <aside id="aside-nav-panel" class="span3">
-                  <h2><%=t('modules')%></h2>
-                  <%= render :partial => "layouts/sidebar"%>
-              </aside>
-              <section class="span9">
-                  <%= yield %>
-              </section>
+            <%if current_user.profile_id==1%>
+                <aside id="aside-nav-panel" class="span3">
+                    <h2><%=t('modules')%></h2>
+                    <%= render :partial => "layouts/sidebar_admin"%>
+                </aside>
+                <section class="span9">
+                    <%= yield %>
+                </section>
+            <%else%>
+                <section class="span12">
+                    <%= yield %>
+                </section>
+            <%end%>
           </div>
 
       </section>

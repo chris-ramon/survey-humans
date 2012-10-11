@@ -1,7 +1,14 @@
-<% list_access = Access.find(:all, :conditions => ['parent_id = ?', 0])%>
+<%if current_user.profile_id==1%>
+	<% list_access = Access.find(:all, :conditions => ['parent_id = ?', 0])%>
 
-<% title t(:dashboard) %>
-<%= render :partial=>"layouts/messages" %>
-<h1><%= t('messages.welcome')%></h1>
-<%= render :partial=>"layouts/panel", :locals=>{:list_access=>list_access}%>
-    
+	<% title t(:dashboard) %>
+	<%= render :partial=>"layouts/messages" %>
+	<h1><%= t('messages.welcome')%></h1>
+	<%= render :partial=>"layouts/panel_admin", :locals=>{:list_access=>list_access}%>
+<%else%>
+	<% list_access = Access.find(:all, :conditions => ['parent_id = ?', 0])%>
+
+	<% title t(:dashboard) %>
+	<%= render :partial=>"layouts/messages" %>
+	<%= render :partial=>"layouts/panel_user", :locals=>{:list_access=>list_access}%>
+<%end%>
