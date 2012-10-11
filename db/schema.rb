@@ -60,8 +60,8 @@ ActiveRecord::Schema.define(:version => 20120909072311) do
   end
 
   create_table "question_levels", :force => true do |t|
-    t.string   "range",      :null => false
-    t.integer  "deleted"
+    t.string   "range",                     :null => false
+    t.integer  "deleted",    :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(:version => 20120909072311) do
     t.string   "name"
     t.string   "lastname"
     t.integer  "deleted",                               :default => 0
-    t.integer  "profile_id",                                            :null => false
+    t.integer  "profile_id",                            :default => 2,  :null => false
     t.index ["email"], :name => "index_users_on_email", :unique => true
     t.index ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
     t.index ["profile_id"], :name => "index_users_on_profile_id"
@@ -102,9 +102,9 @@ ActiveRecord::Schema.define(:version => 20120909072311) do
     t.index ["match_type_id"], :name => "index_matches_on_match_type_id"
     t.index ["question_level_id"], :name => "index_matches_on_question_level_id"
     t.index ["user_id"], :name => "index_matches_on_user_id"
+    t.foreign_key ["user_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "matches_ibfk_3"
     t.foreign_key ["match_type_id"], "match_types", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "matches_ibfk_1"
     t.foreign_key ["question_level_id"], "question_levels", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "matches_ibfk_2"
-    t.foreign_key ["user_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "matches_ibfk_3"
   end
 
   create_table "question_types", :force => true do |t|

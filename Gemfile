@@ -32,5 +32,6 @@ group :development, :test do
     gem "webrat", ">= 0.7.2"
     gem "rspec-rails", ">= 2.0.0"
     gem "cucumber-rails", ">= 0.3.2"
-    gem 'database_cleaner'  
+    gem 'database_cleaner'
+    gem 'railroady'
 end
