@@ -29,10 +29,13 @@ gem 'ruby-debug19'
 # Bundle the extra gems:
 gem 'nokogiri'
 
+group :test do
+  gem "cucumber-rails", ">= 0.3.2"
+end
+
 group :development, :test do
     gem "webrat", ">= 0.7.2"
     gem "rspec-rails", ">= 2.0.0"
-    gem "cucumber-rails", ">= 0.3.2"
     gem 'database_cleaner'
     gem 'railroady'
 end

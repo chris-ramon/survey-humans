@@ -20,7 +20,7 @@ footer p {
 	margin-right: 16px;
 }
 #branding-message, #main-content {
-	margin-top: 80px;
+	margin-top: 50px;
 }
 #branding-survey-flow {
 	text-align: center;
@@ -57,14 +57,31 @@ footer p {
     list-style: none;
 }
 #panel {
-    margin-top: 100px;
-}
-#panel h1 {
-    text-align: center;
+    margin-top: 80px;
 }
 #panel p {
-    margin-top: 20px;
 }
+
+#panel .status {
+    margin-top: -40px;
+    margin-left: 190px;
+}
+
+#authorize-net-logo {
+    margin-left: 140px;
+}
+
+.text-centered {
+    text-align: center;
+}
+
+#update-subs-table th{
+    text-align: center;
+}
+#update-subs-table tbody tr:nth-of-type(n+2) td{
+    padding-left: 80px;
+}
+
 /* Sidenav for Docs
 -------------------------------------------------- */
 

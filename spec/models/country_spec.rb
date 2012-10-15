@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe "user/edit.html.erb" do
+describe Country do
   pending "add some examples to (or delete) #{__FILE__}"
 end

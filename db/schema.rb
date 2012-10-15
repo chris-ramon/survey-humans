@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120909072311) do
+ActiveRecord::Schema.define(:version => 20121015004324) do
 
   create_table "accesses", :force => true do |t|
     t.string   "name",                      :null => false
@@ -102,9 +102,9 @@ ActiveRecord::Schema.define(:version => 20120909072311) do
     t.index ["match_type_id"], :name => "index_matches_on_match_type_id"
     t.index ["question_level_id"], :name => "index_matches_on_question_level_id"
     t.index ["user_id"], :name => "index_matches_on_user_id"
-    t.foreign_key ["user_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "matches_ibfk_3"
     t.foreign_key ["match_type_id"], "match_types", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "matches_ibfk_1"
     t.foreign_key ["question_level_id"], "question_levels", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "matches_ibfk_2"
+    t.foreign_key ["user_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "matches_ibfk_3"
   end
 
   create_table "question_types", :force => true do |t|
@@ -166,6 +166,12 @@ ActiveRecord::Schema.define(:version => 20120909072311) do
     t.foreign_key ["user_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "company_users_ibfk_2"
   end
 
+  create_table "countries", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "exam_topics", :force => true do |t|
     t.string   "name",                       :null => false
     t.text     "description"
@@ -181,6 +187,25 @@ ActiveRecord::Schema.define(:version => 20120909072311) do
     t.datetime "updated_at"
     t.index ["user_id"], :name => "index_logs_on_user_id"
     t.foreign_key ["user_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "logs_ibfk_1"
+  end
+
+  create_table "panel_billings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "country_id"
+    t.string   "street_address"
+    t.string   "zip_code"
+    t.string   "cardholder_first_name"
+    t.string   "cardholder_last_name"
+    t.integer  "number"
+    t.integer  "cvv"
+    t.datetime "exp_date"
+    t.string   "billing_email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["user_id"], :name => "index_panel_billings_on_user_id"
+    t.index ["country_id"], :name => "index_panel_billings_on_country_id"
+    t.foreign_key ["user_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_billings_ibfk_1"
+    t.foreign_key ["country_id"], "countries", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_billings_ibfk_2"
   end
 
   create_table "question_type_exam_topics", :force => true do |t|

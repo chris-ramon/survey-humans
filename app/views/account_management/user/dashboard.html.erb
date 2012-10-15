@@ -7,7 +7,6 @@
 	<%= render :partial=>"layouts/panel_admin", :locals=>{:list_access=>list_access}%>
 <%else%>
 	<% list_access = Access.find(:all, :conditions => ['parent_id = ?', 0])%>
-
 	<% title t(:dashboard) %>
 	<%= render :partial=>"layouts/messages" %>
 	<%= render :partial=>"layouts/panel_user", :locals=>{:list_access=>list_access}%>
