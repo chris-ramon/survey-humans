@@ -1,3 +1,4 @@
+
 <div class="row-fluid container-fluid">
 	<section class="span4">
 		<h4>SURVEYS</h4>
@@ -17,15 +18,18 @@
 			<a class="btn btn-success" href="">More</a>
 		</div>
 	</section>
-	<section class="span4">
+	<section id="dashboard-subs-section" class="span4 well text-centered">
 		<h4>SUBSCRIPTION</h4>
-		<div class="inner">
-			<p>Current plan: FREE FOR 15 DAYS</p>
-			<p>10 days left</p>
-			<a class="btn btn-success" href="">UPDATE SUBSCRIPTION</a>
-		</div>
+      <div class="alert alert-block">
+          <p>Current plan: <%= @subscription.panel_plan.name %></p>
+      </div>
+			<p><%= @days_left %> days left before subscription expire.</p>
+			<a class="btn btn-success" href="<%= panel_subscribe_index_path %>">UPDATE SUBSCRIPTION</a>
 	</section>
 </div>
+
+<br><br> <!-- #TODO -->
+
 <div class="row-fluid container-fluid">
 	<section class="span8">
 		<h4>ANALYZE DATA</h4>

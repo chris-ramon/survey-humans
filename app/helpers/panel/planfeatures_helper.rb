@@ -1,0 +1,2 @@
+module Panel::PlanfeaturesHelper
+end

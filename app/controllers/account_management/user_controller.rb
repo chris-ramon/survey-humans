@@ -38,6 +38,7 @@ class AccountManagement::UserController < ApplicationController
       user = User.new(params[:user])
       begin
         if user.save
+
           str_desc="Se registró el usuario "+user.fullname+" con id = "+user.id.to_s
           @log=Log.create!({:description=>str_desc, :user_id=>current_user.id})
           flash[:notice] = t('messages.successfully_created')
@@ -169,6 +170,9 @@ class AccountManagement::UserController < ApplicationController
 
   def dashboard
     @current_view = "dashboard"
+    @subscription = Panel::Subscription.where(:User_id=>current_user.id).first
+    one_day_in_seconds = 86400
+    @days_left = ( ( @subscription.expired_at - Time.now  ) / one_day_in_seconds ).round
     @surveys=Match.where(:match_type_id => 1, :deleted=>0).order('updated_at DESC')
     @exams=Match.where(:match_type_id => 2, :deleted=>0).order('updated_at DESC')
   end

@@ -1,5 +1,6 @@
 <section class="row-fluid" id="panel">
     <div class="panel-header">
+
         <legend>
             <h1>Subscribe</h1>
             <span class="label pull-left status">Active</span>
@@ -10,63 +11,81 @@
         <div class="row-fluid">
             <div class="span4">
                 <h5>PLAN</h5>
-                <p>15 Days Free</p>
-
+                <p><%= @subscription.panel_plan.name %></p>
             </div>
             <div class="span4">
                 <h5>NEXT BILLING DATE</h5>
-                <p>11/14/2012</p>
+                <p><%= @subscription.expired_at %></p>
             </div>
         </div>
         <br>
         <div class="row-fluid">
             <div class="span12">
-                <div class="alert alert-block">
-                    <p>Ready to upgrade? You must add billing information before choosing another plan.</p><br>
-                    <a href="#" class="btn">Edit Credit Card Information</a>
-                </div>
+                <% if @credit_card_valid %>
+                  <div class="span4 well">
+                      <h5>CREDIT CARD</h5>
+                      <p><%= @billing.number %></p>
+                  </div>
+                  <div class="span4 well">
+                      <h5>BILLING EMAIL</h5>
+                      <p><%= @billing.billing_email %></p>
+                  </div>
+                  <div class="row-fluid">
+                      <div class="span12">
+                          <a href="<%= edit_panel_billing_path(@billing.id) %>" class="btn">Edit Credit Card Information</a>
+                      </div>
+                  </div>
+                <% else %>
+                  <div class="alert alert-block">
+                      <p>Ready to upgrade? You must add billing information before choosing another plan.</p><br>
+                      <a href="<%= edit_panel_billing_path(@billing.id) %>" class="btn">Edit Credit Card Information</a>
+                  </div>
+                <% end %>
             </div>
         </div>
     </div>
+
+    <br><!-- #TODO -->
+
     <div class="row-fluid">
         <legend>Price Plans</legend>
+
         <table id="price-plan-table" class="table table-bordered table-striped">
             <thead>
             <tr>
                 <th></th>
-                <th>
-                    15 Days Free Plan <br>
-                    <small>0$ USD a month</small>
-                </th>
-                <th>
-                    Basic Plan <br>
-                    <small>15$ USD a month</small>
-                </th>
-                <th>
-                    Pro Plan <br>
-                    <small>30$ USD a month</small>
-                </th>
+                <% @plans.each do |plan| %>
+                  <th>
+                      <%= plan.name %> <br>
+
+                      <small><%= plan.amount %>$ USD a  month</small> <br>
+
+                      <p>
+                          <%if @user_current_plan == plan.id %>
+                            <strong class="highlight">Current Plan !</strong>
+                            <% else %>
+                            <%= link_to "Select Plan", edit_panel_subscribe_index_path(:old_plan => @user_current_plan, :new_plan => plan.id ), :class => 'btn btn-info' %>
+                          <% end %>
+                      </p>
+                  </th>
+                <% end %>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>Matchs (Exams, Surveys)</td>
-                <td>Up to 5</td>
-                <td>Up to 30</td>
-                <td>Unlimited</td>
-            </tr>
-            <tr>
-                <td>Organizations</td>
-                <td>Up to 5</td>
-                <td>Up to 10</td>
-                <td>Unlimited</td>
-            </tr>
-            <tr>
-                <td>Users per Organization</td>
-                <td>Up to 5</td>
-                <td>Up to 30</td>
-                <td>Unlimited</td>
-            </tr>
+            <% @plan_features.each do |plan_features| %>
+              <tr>
+                  <td><%= plan_features[0].panel_feature.name %></td>
+                  <% plan_features.each do |feature| %>
+                    <td>
+                        <% if feature.up_to == 0 %>
+                          Unlimited
+                        <% else %>
+                          Up to <%= feature.up_to %>
+                        <% end %>
+                    </td>
+                  <% end %>
+              </tr>
+            <% end %>
             </tbody>
         </table>
     </div>

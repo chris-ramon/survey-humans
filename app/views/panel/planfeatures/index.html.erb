@@ -1,0 +1,26 @@
+<legend>Plan - Features</legend>
+<table class="table table-bordered table-striped">
+  <tr>
+    <th>Plan</th>
+    <th>Up to</th>
+    <th>Feature</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @panel_planfeatures.each do |panel_planfeature| %>
+  <tr>
+    <td><%= panel_planfeature.panel_plan.name %></td>
+    <td><%= panel_planfeature.up_to %></td>
+    <td><%= panel_planfeature.panel_feature.name %></td>
+    <td><%= link_to 'Show', panel_planfeature %></td>
+    <td><%= link_to 'Edit', edit_panel_planfeature_path(panel_planfeature) %></td>
+    <td><%= link_to 'Destroy', panel_planfeature, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Plan - Feature', new_panel_planfeature_path %>

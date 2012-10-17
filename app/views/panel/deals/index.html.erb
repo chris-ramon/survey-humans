@@ -1,0 +1,29 @@
+<h1>Listing panel_deals</h1>
+
+<table>
+  <tr>
+    <th>Panel plan</th>
+    <th>Valid until</th>
+    <th>Deal type</th>
+    <th>Deal</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @panel_deals.each do |panel_deal| %>
+  <tr>
+    <td><%= panel_deal.panel_plan_id %></td>
+    <td><%= panel_deal.valid_until %></td>
+    <td><%= panel_deal.deal_type %></td>
+    <td><%= panel_deal.deal %></td>
+    <td><%= link_to 'Show', panel_deal %></td>
+    <td><%= link_to 'Edit', edit_panel_deal_path(panel_deal) %></td>
+    <td><%= link_to 'Destroy', panel_deal, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Deal', new_panel_deal_path %>

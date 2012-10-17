@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @panel_subscription.User %>
+</p>
+
+<p>
+  <b>Plan:</b>
+  <%= @panel_subscription.panel_plan.name %>
+</p>
+
+<p>
+  <b>Deal:</b>
+  <%= @panel_subscription.panel_deal.try(:deal) %>
+</p>
+
+<p>
+  <b>Expired at:</b>
+  <%= @panel_subscription.expired_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_panel_subscription_path(@panel_subscription) %> |
+<%= link_to 'Back', panel_subscriptions_path %>

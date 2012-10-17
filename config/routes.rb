@@ -1,12 +1,20 @@
 SurveyHuman::Application.routes.draw do
 
+
+
+  namespace :panel do resources :planfeatures end
+
+  namespace :panel do resources :features end
+
+  namespace :panel do resources :subscriptions end
+
+  namespace :panel do resources :deals end
+
+  namespace :panel do resources :plans end
+
   namespace :panel do resources :billings end
 
   resources :countries
-
-  get "subscribe/index"
-
-  get "subscribe/edit"
 
   get "survey/index"
 
@@ -65,6 +73,7 @@ SurveyHuman::Application.routes.draw do
     resources :subscribe do
       get :index, :on => :collection
       get :edit, :on => :collection
+      get :update, :on => :collection
     end
   end
 

@@ -20,7 +20,7 @@
 <% @panel_billings.each do |panel_billing| %>
   <tr>
     <td><%= panel_billing.user.name %></td>
-    <td><%= panel_billing.country.name %></td>
+    <td><%= panel_billing.country.try(:name) %></td>
     <td><%= panel_billing.street_address %></td>
     <td><%= panel_billing.zip_code %></td>
     <td><%= panel_billing.cardholder_first_name %></td>

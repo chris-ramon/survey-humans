@@ -1,0 +1,32 @@
+<%= form_for(@panel_deal) do |f| %>
+  <% if @panel_deal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@panel_deal.errors.count, "error") %> prohibited this panel_deal from being saved:</h2>
+
+      <ul>
+      <% @panel_deal.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :panel_plan %><br />
+      <%= f.select :panel_plan_id, @panel_plans.collect { |t| [t.name, t.id] } %>
+  </div>
+  <div class="field">
+    <%= f.label :valid_until %><br />
+    <%= f.datetime_select :valid_until %>
+  </div>
+  <div class="field">
+    <%= f.label :deal_type %><br />
+    <%= f.text_field :deal_type %>
+  </div>
+  <div class="field">
+    <%= f.label :deal %><br />
+    <%= f.text_field :deal %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

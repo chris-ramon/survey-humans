@@ -1,5 +1,6 @@
 class Panel::BillingsController < ApplicationController
-  layout "_base_front"
+  before_filter :authenticate_user!
+  layout "_content"
   # GET /panel/billings
   # GET /panel/billings.xml
   def index
@@ -40,6 +41,7 @@ class Panel::BillingsController < ApplicationController
     @countries = Country.find(:all)
     @users = User.find(:all)
     @panel_billing = Panel::Billing.find(params[:id])
+
   end
 
   # POST /panel/billings
@@ -66,7 +68,7 @@ class Panel::BillingsController < ApplicationController
 
     respond_to do |format|
       if @panel_billing.update_attributes(params[:panel_billing])
-        format.html { redirect_to(@panel_billing, :notice => 'Billing was successfully updated.') }
+        format.html { redirect_to(panel_subscribe_index_path, :notice => 'Billing was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

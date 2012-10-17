@@ -38,4 +38,5 @@ group :development, :test do
     gem "rspec-rails", ">= 2.0.0"
     gem 'database_cleaner'
     gem 'railroady'
+    gem 'ruby-debug19', :require => 'ruby-debug'
 end
