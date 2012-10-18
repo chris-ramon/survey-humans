@@ -1,6 +1,4 @@
-<section class="row-fluid" id="panel">
     <div class="panel-header">
-
         <legend>
             <h1>Subscribe</h1>
             <span class="label pull-left status">Active</span>
@@ -64,7 +62,9 @@
                           <%if @user_current_plan == plan.id %>
                             <strong class="highlight">Current Plan !</strong>
                             <% else %>
-                            <%= link_to "Select Plan", edit_panel_subscribe_index_path(:old_plan => @user_current_plan, :new_plan => plan.id ), :class => 'btn btn-info' %>
+                              <% if @credit_card_valid %>
+                                <%= link_to "Select Plan", edit_panel_subscribe_index_path(:old_plan => @user_current_plan, :new_plan => plan.id ), :class => 'btn btn-info' %>
+                              <% end %>
                           <% end %>
                       </p>
                   </th>
@@ -89,4 +89,3 @@
             </tbody>
         </table>
     </div>
-</section>

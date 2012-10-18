@@ -8,7 +8,7 @@ footer p {
 	margin: 6px;
 }
 #aside-nav-panel {
-  margin-top: -30px;
+  /*margin-top: -30px;*/
 }
 #main-navbar-bottom-container ul li > a{
 	padding: 5px 10px 5px;
@@ -19,8 +19,11 @@ footer p {
 #login-button {
 	margin-right: 16px;
 }
-#branding-message, #main-content {
+#branding-message {
 	margin-top: 50px;
+}
+.panel {
+    margin-top: 80px;
 }
 #branding-survey-flow {
 	text-align: center;
@@ -34,6 +37,9 @@ footer p {
 }
 #sign-up-wrapper {
     margin-top: 40px;
+}
+.admin-show-wrapper {
+    margin-top: 75px;
 }
 .brand {
 	color: #E66054 !important;
@@ -56,13 +62,11 @@ footer p {
 #security-panel-ul {
     list-style: none;
 }
-#panel {
-    margin-top: 80px;
-}
-#panel p {
+#dashboard-front {
+    margin-top: 40px;
 }
 
-#panel .status {
+.panel .status {
     margin-top: -40px;
     margin-left: 190px;
 }

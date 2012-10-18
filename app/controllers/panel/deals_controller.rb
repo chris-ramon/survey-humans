@@ -1,10 +1,14 @@
 class Panel::DealsController < ApplicationController
+  before_filter :authenticate_user!
+  layout "_content"
   # GET /panel/deals
   # GET /panel/deals.xml
+  before_filter :current_module
+  def current_module
+    @current_module = "deals"
+  end
   def index
     @panel_deals = Panel::Deal.all
-
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @panel_deals }
@@ -27,7 +31,6 @@ class Panel::DealsController < ApplicationController
   def new
     @panel_deal = Panel::Deal.new
     @panel_plans = Panel::Plan.all
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @panel_deal }
@@ -37,12 +40,14 @@ class Panel::DealsController < ApplicationController
   # GET /panel/deals/1/edit
   def edit
     @panel_deal = Panel::Deal.find(params[:id])
+    @panel_plans = Panel::Plan.all
   end
 
   # POST /panel/deals
   # POST /panel/deals.xml
   def create
     @panel_deal = Panel::Deal.new(params[:panel_deal])
+    @panel_plans = Panel::Plan.all
 
     respond_to do |format|
       if @panel_deal.save

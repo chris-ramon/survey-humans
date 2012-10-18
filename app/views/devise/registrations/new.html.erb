@@ -1,4 +1,4 @@
-<section id="sign-up-wrapper">
+<section class="panel">
 <!--[if !IE]> -->
   <legend><h3><%=t('.sign_up')%></h3></legend>
 
@@ -16,7 +16,9 @@
 
   <%=f.hidden_field :profile_id, :value=>"2"%>
 
-  <div><%= f.submit "Sign up", :class => "btn btn-primary" %></div>
+  <div>
+  <br>
+  <%= f.submit "Sign up", :class => "btn btn-primary" %></div>
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>

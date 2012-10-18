@@ -1,4 +1,6 @@
 class Panel::SubscriptionsController < ApplicationController
+  before_filter :authenticate_user!
+  layout "_content"
   # GET /panel/subscriptions
   # GET /panel/subscriptions.xml
   def index
@@ -59,7 +61,6 @@ class Panel::SubscriptionsController < ApplicationController
   # PUT /panel/subscriptions/1.xml
   def update
     @panel_subscription = Panel::Subscription.find(params[:id])
-    debugger
     respond_to do |format|
       if @panel_subscription.update_attributes(params[:panel_subscription])
         format.html { redirect_to(@panel_subscription, :notice => 'Subscription was successfully updated.') }

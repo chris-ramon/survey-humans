@@ -249,7 +249,7 @@ DEPENDENCIES
   rails (= 3.0.11)
   rdoc
   roo (= 1.9.5)
-  rspec-rails
+  rspec-rails (>= 2.0.0)
   ruby-debug19
   rubyzip
   schema_plus

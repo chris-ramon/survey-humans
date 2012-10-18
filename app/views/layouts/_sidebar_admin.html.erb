@@ -3,7 +3,22 @@
   <%= link_to_function image_tag("standard/resultset_previous.png"), "hide_sidebar()", :style=>"float: right;top: 7px;position: absolute;left: 150px;"%>
 
 		<ul class="nav nav-list bs-docs-sidenav">
-        <li class="<%=@current_view=="dashboard" ? "active" : "" %>"><a href="<%=dashboard_account_management_user_index_path%>">Dashboard <i class="icon-chevron-right"></i></a></li>
+        <li class="<%=@current_view=="dashboard" ? "active" : "" %>">
+            <a href="<%=dashboard_account_management_user_index_path%>">
+                Dashboard
+                <% if @current_view=='dashboard'%>
+                  <i class="icon-chevron-right"></i>
+                <% end %>
+            </a>
+        </li>
+        <li class="<%=@current_module=="deals" ? "active" : "" %>">
+            <a href="<%= panel_deals_path %>" >
+                Deals
+                <% if @current_module=="deals"%>
+                  <i class="icon-chevron-right"></i>
+                <% end %>
+            </a>
+        </li>
         <li><%= link_to t("panel.payment_management"), "#"%></li>
         <li><a href="#">Templates</a></li>
         <li><a href="#">Comments</a></li>
