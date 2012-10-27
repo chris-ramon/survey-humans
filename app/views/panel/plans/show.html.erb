@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @panel_plan.name %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= @panel_plan.amount %>
+</p>
+
+
+<%= link_to 'Edit', edit_panel_plan_path(@panel_plan) %> |
+<%= link_to 'Back', panel_plans_path %>

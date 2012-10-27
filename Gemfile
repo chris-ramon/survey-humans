@@ -16,6 +16,7 @@ gem "meta_where"
 gem "meta_search"
 gem 'private_pub'
 gem 'nested_form'
+gem 'rack-ssl', :require => 'rack/ssl'
 
 # Use unicorn as the web server
 #gem unicorn
@@ -29,9 +30,18 @@ gem 'ruby-debug19'
 # Bundle the extra gems:
 gem 'nokogiri'
 
+group :test do
+  gem "cucumber-rails"
+  gem "rspec-rails"
+
+end
+
 group :development, :test do
+    gem "cucumber-rails-training-wheels"
+    gem "database_cleaner"
+    gem "capybara"
+    gem "launchy"
     gem "webrat", ">= 0.7.2"
-    gem "rspec-rails", ">= 2.0.0"
-    gem "cucumber-rails", ">= 0.3.2"
-    gem 'database_cleaner'  
+    gem 'railroady'
+    gem 'ruby-debug19', :require => 'ruby-debug'
 end

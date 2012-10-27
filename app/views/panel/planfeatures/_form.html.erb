@@ -1,0 +1,29 @@
+<%= form_for(@panel_planfeature) do |f| %>
+  <% if @panel_planfeature.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@panel_planfeature.errors.count, "error") %> prohibited this panel_planfeature from being saved:</h2>
+
+      <ul>
+      <% @panel_planfeature.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :plan %><br />
+      <%= f.select :panel_plan_id, @plans.collect { |t| [t.name, t.id] } %>
+  </div>
+  <div class="field">
+    <%= f.label :feature %><br />
+      <%= f.select :panel_feature_id, @features.collect { |t| [t.name, t.id] } %>
+  </div>
+  <div class="field">
+    <%= f.label :up_to %><br />
+    <%= f.text_field :up_to %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

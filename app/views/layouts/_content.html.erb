@@ -38,7 +38,7 @@
                           </li>
                       </ul>
                       <ul class="nav pull-right">
-                          <li><%= link_to current_user.fullname , account_management_user_path(current_user.id), :class => "dropdown-toggle" ,:'data-toggle' => 'dropdown' %></li>
+                          <li><%= link_to current_user.email , account_management_user_path(current_user.id) %></li>
                           <li class="divider-vertical"></li>
                           <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -48,7 +48,9 @@
                               <ul class="dropdown-menu">
                                   <li><a href="#"><%=t("panel.settings")%></a></li>
                                   <li class="divider"></li>
-                                  <li><%= link_to t('logout'), destroy_user_session_path, :method => :delete %></li>
+                                  <li>
+                                      <%= link_to t('logout'), destroy_user_session_path, :method => :delete %>
+                                  </li>
                               </ul>
                           </li>
                           <li class="dropdown">
@@ -69,19 +71,24 @@
       </div>
 
       <section id="main-content" class="container-fluid">
-          <h3>Dashboard</h3>
           <div class="row-fluid">
             <%if current_user.profile_id==1%>
                 <aside id="aside-nav-panel" class="span3">
-                    <h2><%=t('modules')%></h2>
-                    <%= render :partial => "layouts/sidebar_admin"%>
+                    <div class="row-fluid panel">
+                        <h2><%=t('modules')%></h2>
+                        <%= render :partial => "layouts/sidebar_admin"%>
+                    </div>
                 </aside>
                 <section class="span9">
-                    <%= yield %>
+                    <section class="row-fluid panel">
+                      <%= yield %>
+                    </section>
                 </section>
             <%else%>
                 <section class="span12">
-                    <%= yield %>
+                    <section class="row-fluid panel">
+                      <%= yield %>
+                    </section>
                 </section>
             <%end%>
           </div>
@@ -101,28 +108,6 @@
         </section>
       </section>
     </section>
-
-    <script type="text/javascript"> Cufon.now(); </script>
-    <script type="text/javascript">
-     Cufon.replace('h1'); // Works without a selector engine
-    </script>
-
-    <footer class="navbar navbar-fixed-bottom">
-        <div class="navbar-inner">
-            <div id="main-navbar-bottom-container" class="container">
-                <ul class="nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Privacy</a></li>
-                    <li><a href="#">Discover</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-                <p class="pull-right">© 2011-2012 Survey Humane.</p>
-            </div>
-        </div>
-    </footer>
-    
   </div>
 </body>
 </html>

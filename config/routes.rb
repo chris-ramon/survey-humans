@@ -1,20 +1,18 @@
 SurveyHuman::Application.routes.draw do
 
-  get "exam/index"
+  namespace :panel do resources :planfeatures end
 
-  get "exam/new"
+  namespace :panel do resources :features end
 
-  get "exam/edit"
+  namespace :panel do resources :subscriptions end
 
-  get "survey/new"
+  namespace :panel do resources :deals end
 
-  get "survey/create"
+  namespace :panel do resources :plans end
 
-  get "survey/edit"
+  namespace :panel do resources :billings end
 
-  get "survey/update"
-
-  get "subscribe/index"
+  resources :countries
 
   get "survey/index"
 
@@ -83,6 +81,8 @@ SurveyHuman::Application.routes.draw do
     end
     resources :subscribe do
       get :index, :on => :collection
+      get :edit, :on => :collection
+      get :update, :on => :collection
     end
   end
 

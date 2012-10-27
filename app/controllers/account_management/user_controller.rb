@@ -171,6 +171,10 @@ class AccountManagement::UserController < ApplicationController
     @current_view = "dashboard"
     @surveys=Match.where(:match_type_id => 1, :deleted=>0, :user_id=>current_user.id).order('updated_at DESC').limit(2)
     @exams=Match.where(:match_type_id => 2, :deleted=>0, :user_id=>current_user.id).order('updated_at DESC').limit(2)
+    if current_user.profile_id == 2
+      @subscription = Panel::Subscription.where(:User_id=>current_user.id).first
+      one_day_in_seconds = 86400
+      @days_left = ( ( @subscription.expired_at - Time.now  ) / one_day_in_seconds ).round
+    end
   end
-
 end

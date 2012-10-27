@@ -1,22 +1,91 @@
-<section id="panel">
-    <legend><h1>Subscribe</h1></legend>
-    <table class="table table-bordered table-striped">
-        <tbody>
-        <tr>
-            <th>Plan</th>
-            <td>Basic</td>
-        </tr>
-        <tr>
-            <th>Price</th>
-            <td>$15 / Month</td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="panel-header">
+        <legend>
+            <h1>Subscribe</h1>
+            <span class="label pull-left status">Active</span>
+        </legend>
+    </div>
 
-    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
-        <input type="hidden" name="cmd" value="_s-xclick">
-        <input type="hidden" name="hosted_button_id" value="LD6MCA54L84VQ">
-        <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-        <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-    </form>
-</section>
+    <div class="row-fluid">
+        <div class="row-fluid">
+            <div class="span4">
+                <h5>PLAN</h5>
+                <p><%= @subscription.panel_plan.name %></p>
+            </div>
+            <div class="span4">
+                <h5>NEXT BILLING DATE</h5>
+                <p><%= @subscription.expired_at %></p>
+            </div>
+        </div>
+        <br>
+        <div class="row-fluid">
+            <div class="span12">
+                <% if @credit_card_valid %>
+                  <div class="span4 well">
+                      <h5>CREDIT CARD</h5>
+                      <p><%= @billing.number %></p>
+                  </div>
+                  <div class="span4 well">
+                      <h5>BILLING EMAIL</h5>
+                      <p><%= @billing.billing_email %></p>
+                  </div>
+                  <div class="row-fluid">
+                      <div class="span12">
+                          <a href="<%= edit_panel_billing_path(@billing.id) %>" class="btn">Edit Credit Card Information</a>
+                      </div>
+                  </div>
+                <% else %>
+                  <div class="alert alert-block">
+                      <p>Ready to upgrade? You must add billing information before choosing another plan.</p><br>
+                      <a href="<%= edit_panel_billing_path(@billing.id) %>" class="btn">Edit Credit Card Information</a>
+                  </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+
+    <br><!-- #TODO -->
+
+    <div class="row-fluid">
+        <legend>Price Plans</legend>
+
+        <table id="price-plan-table" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th></th>
+                <% @plans.each do |plan| %>
+                  <th>
+                      <%= plan.name %> <br>
+
+                      <small><%= plan.amount %>$ USD a  month</small> <br>
+
+                      <p>
+                          <%if @user_current_plan == plan.id %>
+                            <strong class="highlight">Current Plan !</strong>
+                            <% else %>
+                              <% if @credit_card_valid %>
+                                <%= link_to "Select Plan", edit_panel_subscribe_index_path(:old_plan => @user_current_plan, :new_plan => plan.id ), :class => 'btn btn-info' %>
+                              <% end %>
+                          <% end %>
+                      </p>
+                  </th>
+                <% end %>
+            </tr>
+            </thead>
+            <tbody>
+            <% @plan_features.each do |plan_features| %>
+              <tr>
+                  <td><%= plan_features[0].panel_feature.name %></td>
+                  <% plan_features.each do |feature| %>
+                    <td>
+                        <% if feature.up_to == 0 %>
+                          Unlimited
+                        <% else %>
+                          Up to <%= feature.up_to %>
+                        <% end %>
+                    </td>
+                  <% end %>
+              </tr>
+            <% end %>
+            </tbody>
+        </table>
+    </div>

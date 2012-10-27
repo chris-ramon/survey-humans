@@ -1,44 +1,50 @@
-<div class="row-fluid container-fluid">
-	<section class="span4">
-		<h4>SURVEYS</h4>
-		<div class="inner">
-			<%@surveys.each do |survey|%>
-				<p><%=survey.name%></p>
-			<%end%>
-			<%=link_to t("panel.more"), match_management_survey_index_path, :class=>"btn btn-success"%>
-		</div>
-	</section>
-	<section class="span4">
-		<h4>EXAMS</h4>
-		<div class="inner">
-			<%@exams.each do |exam|%>
-				<p><%=exam.name%></p>
-			<%end%>
-			<%=link_to t("panel.more"), match_management_exam_index_path, :class=>"btn btn-success"%>
-		</div>
-	</section>
-	<section class="span4">
-		<h4>SUBSCRIPTION</h4>
-		<div class="inner">
-			<p>Current plan: FREE FOR 15 DAYS</p>
-			<p>10 days left</p>
-			<a class="btn btn-success" href="">UPDATE SUBSCRIPTION</a>
-		</div>
-	</section>
-</div>
-<div class="row-fluid container-fluid">
-	<section class="span8">
-		<h4>ANALYZE DATA</h4>
-		<div class="inner">
-			<p> </p>
-			<a class="btn btn-success" href="">More</a>
-		</div>
-	</section>
-	<section class="span4">
-		<h4>ORGANIZATIONS</h4>
-		<div class="inner">
-			<p> </p>
-			<a class="btn btn-success" href="">CREATE ORGANIZATION</a>
-		</div>
-	</section>
-</div>
+<section id="dashboard-front">
+  <div class="row-fluid container-fluid">
+    <section class="span4">
+      <h4>SURVEYS</h4>
+      <div class="inner">
+        <%@surveys.each do |survey|%>
+          <p><%=survey.name%></p>
+        <%end%>
+        <a class="btn btn-success" href="">Create Survey</a>
+      </div>
+    </section>
+    <section class="span4">
+      <h4>EXAMS</h4>
+      <div class="inner">
+        <%@exams.each do |exam|%>
+          <p><%=exam.name%></p>
+        <%end%>
+        <a class="btn btn-success" href="">Create Exam</a>
+      </div>
+    </section>
+    <section id="dashboard-subs-section" class="span4 well text-centered">
+      <h4>SUBSCRIPTION</h4>
+        <div class="alert alert-block">
+            <p>Current plan: <%= @subscription.panel_plan.name %></p>
+        </div>
+        <p><%= @days_left %> days left before subscription expire.</p>
+        <a class="btn btn-success" href="<%= panel_subscribe_index_path %>">UPDATE SUBSCRIPTION</a>
+    </section>
+  </div>
+
+  <br><br> <!-- #TODO -->
+
+  <div class="row-fluid container-fluid">
+    <section class="span8">
+      <h4>ANALYZE DATA</h4>
+      <div class="inner">
+        <p> </p>
+        <a class="btn btn-success" href="">More</a>
+      </div>
+    </section>
+    <section class="span4">
+      <h4>ORGANIZATIONS</h4>
+      <div class="inner">
+        <p> </p>
+        <a class="btn btn-success" href="">CREATE ORGANIZATION</a>
+      </div>
+    </section>
+  </div>
+</section>
+

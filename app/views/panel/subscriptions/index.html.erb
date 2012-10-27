@@ -1,0 +1,28 @@
+<h1>Listing Panel Subscriptions</h1>
+<table class="table table-bordered table-striped">
+  <tr>
+    <th>User</th>
+    <th>Plan</th>
+    <th>Deal</th>
+    <th>Expired at</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @panel_subscriptions.each do |panel_subscription| %>
+  <tr>
+    <td><%= panel_subscription.User.email %></td>
+    <td><%= panel_subscription.panel_plan.name %></td>
+    <td><%= panel_subscription.panel_deal.try(:name) %></td>
+    <td><%= panel_subscription.expired_at %></td>
+    <td><%= link_to 'Show', panel_subscription %></td>
+    <td><%= link_to 'Edit', edit_panel_subscription_path(panel_subscription) %></td>
+    <td><%= link_to 'Destroy', panel_subscription, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Subscription', new_panel_subscription_path %>

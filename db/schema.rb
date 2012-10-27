@@ -60,8 +60,8 @@ ActiveRecord::Schema.define(:version => 20121026034853) do
   end
 
   create_table "question_levels", :force => true do |t|
-    t.string   "range",      :null => false
-    t.integer  "deleted"
+    t.string   "range",                     :null => false
+    t.integer  "deleted",    :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -166,6 +166,12 @@ ActiveRecord::Schema.define(:version => 20121026034853) do
     t.foreign_key ["user_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "company_users_ibfk_2"
   end
 
+  create_table "countries", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "exam_topics", :force => true do |t|
     t.string   "name",                       :null => false
     t.text     "description"
@@ -181,6 +187,76 @@ ActiveRecord::Schema.define(:version => 20121026034853) do
     t.datetime "updated_at"
     t.index ["user_id"], :name => "index_logs_on_user_id"
     t.foreign_key ["user_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "logs_ibfk_1"
+  end
+
+  create_table "panel_billings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "country_id"
+    t.string   "street_address"
+    t.string   "zip_code"
+    t.string   "cardholder_first_name"
+    t.string   "cardholder_last_name"
+    t.integer  "number"
+    t.integer  "cvv"
+    t.datetime "exp_date"
+    t.string   "billing_email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["user_id"], :name => "index_panel_billings_on_user_id"
+    t.index ["country_id"], :name => "index_panel_billings_on_country_id"
+    t.foreign_key ["user_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_billings_ibfk_1"
+    t.foreign_key ["country_id"], "countries", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_billings_ibfk_2"
+  end
+
+  create_table "panel_plans", :force => true do |t|
+    t.string   "name"
+    t.decimal  "amount",     :precision => 10, :scale => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "panel_deals", :force => true do |t|
+    t.integer  "panel_plan_id"
+    t.datetime "valid_until"
+    t.integer  "deal_type"
+    t.integer  "deal"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["panel_plan_id"], :name => "index_panel_deals_on_panel_plan_id"
+    t.foreign_key ["panel_plan_id"], "panel_plans", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_deals_ibfk_1"
+  end
+
+  create_table "panel_features", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "panel_planfeatures", :force => true do |t|
+    t.integer  "panel_plan_id"
+    t.integer  "panel_feature_id"
+    t.integer  "up_to"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["panel_plan_id"], :name => "index_panel_planfeatures_on_panel_plan_id"
+    t.index ["panel_feature_id"], :name => "index_panel_planfeatures_on_panel_feature_id"
+    t.foreign_key ["panel_plan_id"], "panel_plans", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_planfeatures_ibfk_1"
+    t.foreign_key ["panel_feature_id"], "panel_features", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_planfeatures_ibfk_2"
+  end
+
+  create_table "panel_subscriptions", :force => true do |t|
+    t.integer  "User_id"
+    t.integer  "panel_plan_id"
+    t.integer  "panel_deal_id"
+    t.datetime "expired_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["User_id"], :name => "index_panel_subscriptions_on_User_id"
+    t.index ["panel_plan_id"], :name => "index_panel_subscriptions_on_panel_plan_id"
+    t.index ["panel_deal_id"], :name => "index_panel_subscriptions_on_panel_deal_id"
+    t.foreign_key ["User_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_subscriptions_ibfk_1"
+    t.foreign_key ["panel_plan_id"], "panel_plans", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_subscriptions_ibfk_2"
+    t.foreign_key ["panel_deal_id"], "panel_deals", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_subscriptions_ibfk_3"
   end
 
   create_table "question_type_exam_topics", :force => true do |t|

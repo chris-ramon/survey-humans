@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  after_create :create_subscription
+
   devise :registerable, :database_authenticatable, :recoverable, :rememberable, :trackable
   #devise :registerable, :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :confirmable 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :lastname, :profile_id
@@ -9,14 +11,30 @@ class User < ActiveRecord::Base
   has_many :companies
   has_many :matches
 
-  validates_presence_of :name
-  validates_presence_of :lastname
+  #validates_presence_of :name
+  #validates_presence_of :lastname
   validates :email, :uniqueness=>true, :format=>{:with=>/\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/}
   validates :password, :on=> :create, :presence=>true, :confirmation=>true, :length => {:minimum=>6}
   validates :password_confirmation, :presence=>true, :on=> :create
   validates_associated :profile
 
   self.per_page = 10
+
+  def create_subscription
+    ### saving customer subscription
+    subscription = Panel::Subscription.new
+    subscription.User_id = self.id
+    plan = Panel::Plan.find_or_create_by_name_and_amount("15 Days Free", 0)
+    subscription.panel_plan_id = plan.id
+    subscription.expired_at = Time.now + 1296000
+    subscription.save
+
+    ### saving credit card information
+    billing = Panel::Billing.new
+    billing.user_id = self.id
+    billing.billing_email = self.email
+    billing.save
+  end
 
   # This function evaluates if a column is nullable or not in the database
   #

@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Plan:</b>
+  <%= @panel_planfeature.panel_plan.name %>
+</p>
+
+<p>
+  <b>Feature:</b>
+  <%= @panel_planfeature.panel_feature.name %>
+</p>
+
+<p>
+  <b>Up to:</b>
+  <%= @panel_planfeature.up_to %>
+</p>
+
+
+<%= link_to 'Edit', edit_panel_planfeature_path(@panel_planfeature) %> |
+<%= link_to 'Back', panel_planfeatures_path %>

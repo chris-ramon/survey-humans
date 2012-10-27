@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @panel_billing.user %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%= @panel_billing.country %>
+</p>
+
+<p>
+  <b>Street address:</b>
+  <%= @panel_billing.street_address %>
+</p>
+
+<p>
+  <b>Zip code:</b>
+  <%= @panel_billing.zip_code %>
+</p>
+
+<p>
+  <b>Cardholder first name:</b>
+  <%= @panel_billing.cardholder_first_name %>
+</p>
+
+<p>
+  <b>Cardholder last name:</b>
+  <%= @panel_billing.cardholder_last_name %>
+</p>
+
+<p>
+  <b>Number:</b>
+  <%= @panel_billing.number %>
+</p>
+
+<p>
+  <b>Cvv:</b>
+  <%= @panel_billing.cvv %>
+</p>
+
+<p>
+  <b>Exp date:</b>
+  <%= @panel_billing.exp_date %>
+</p>
+
+<p>
+  <b>Billing email:</b>
+  <%= @panel_billing.billing_email %>
+</p>
+
+
+<%= link_to 'Edit', edit_panel_billing_path(@panel_billing) %> |
+<%= link_to 'Back', panel_billings_path %>

@@ -1,0 +1,108 @@
+    <%= form_for(@panel_billing) do |f| %>
+      <% if @panel_billing.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@panel_billing.errors.count, "error") %> prohibited this panel_billing from being saved:</h2>
+
+            <ul>
+                <% @panel_billing.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+      <% end %>
+      <div class="row-fluid">
+          <div class="span12">
+              <legend>Credit Card Billing Address</legend>
+          </div>
+
+      </div>
+      <div class="row-fluid">
+          <div class="span4">
+              <div class="field">
+                  <label>Street Address*</label>
+                  <br/>
+                  <%= f.text_field :street_address %>
+              </div>
+          </div>
+          <div class="span4">
+              <div class="field">
+                  <%= f.label :zip_code %>
+                  <br/>
+                  <%= f.text_field :zip_code %>
+              </div>
+          </div>
+          <div class="span4">
+              <div class="field">
+                  <%= f.label :country %>
+                  <br/>
+                  <%= f.select :country_id, @countries.collect { |t| [t.name, t.id] } %>
+              </div>
+          </div>
+      </div>
+      <div class="row-fluid">
+          <legend>Credit Card Information</legend>
+      </div>
+
+      <div class="row-fluid">
+          <div class="span8">
+              <div class="alert alert-block">
+                  <p>Payment information is secured with <a href="http://en.wikipedia.org/wiki/Transport_Layer_Security" class="">SSL encryption</a>.</p>
+              </div>
+          </div>
+          <div class="span4">
+              <a id="authorize-net-logo" href="https://authorize.net/" class=""><img alt='Authorize.Net' src="<%=image_path('front/authorize-logo.gif')%>"></a>
+          </div>
+      </div>
+
+      <div class="row-fluid">
+          <div class="span6">
+              <div class="field">
+                  <label>Cardholder First Name*</label><br />
+                  <%= f.text_field :cardholder_first_name %>
+              </div>
+          </div>
+          <div class="span6">
+              <div class="field">
+                  <label>Cardholder Last Name*</label><br />
+                  <%= f.text_field :cardholder_last_name %>
+              </div>
+          </div>
+      </div>
+
+      <div class="row-fluid">
+          <div class="span12">
+              <label>Credit Card Number*</label><br />
+              <%= f.text_field :number %>
+          </div>
+      </div>
+
+      <div class="row-fluid">
+        <div class="span4">
+            <label>Verification Code (CVV)*</label><br />
+            <%= f.text_field :cvv %>
+        </div>
+        <div class="span8">
+          <div class="field">
+              <label>Credit Card Expiration*</label><br />
+              <%= f.datetime_select :exp_date %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row-fluid">
+        <div class="field">
+            <label>Billing Email Address*</label><br />
+            <%= f.text_field :billing_email %>
+            <small>Email address to send billing emails (notifications, invoices, etc)</small>
+        </div>
+      </div>
+
+      <br><!-- #TODO -->
+
+      <div class="row-fluid">
+        <div class="well">
+          <%= f.submit 'Save', :class => 'btn btn-info' %> or
+          <button class="btn">Close</button>
+        </div>
+      </div>
+    <% end %>

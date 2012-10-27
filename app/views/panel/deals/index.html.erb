@@ -1,0 +1,27 @@
+<legend>Deals</legend>
+<a href="<%= new_panel_deal_path %>" class="btn btn-success">New Deal</a>
+<br> <br> <!-- #TODO -->
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Panel plan</th>
+
+        <th>Deal</th>
+        <th>Deal Type</th>
+        <th>Valid Until</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    <% @panel_deals.each do |panel_deal| %>
+      <tr>
+          <td><%= panel_deal.panel_plan.name %></td>
+          <td><%= panel_deal.deal %> <%= deal_post_fix panel_deal.deal_type %></td>
+          <td><%= translate_deals_type panel_deal.deal_type %></td>
+          <td><%= panel_deal.valid_until %></td>
+          <td><%= link_to 'Show', panel_deal %></td>
+          <td><%= link_to 'Edit', edit_panel_deal_path(panel_deal) %></td>
+          <td><%= link_to 'Destroy', panel_deal, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+</table>

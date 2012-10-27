@@ -1,0 +1,2 @@
+module Panel::PlansHelper
+end

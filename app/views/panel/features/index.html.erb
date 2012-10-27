@@ -1,0 +1,23 @@
+<h1>Listing panel_features</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @panel_features.each do |panel_feature| %>
+  <tr>
+    <td><%= panel_feature.name %></td>
+    <td><%= link_to 'Show', panel_feature %></td>
+    <td><%= link_to 'Edit', edit_panel_feature_path(panel_feature) %></td>
+    <td><%= link_to 'Destroy', panel_feature, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Feature', new_panel_feature_path %>

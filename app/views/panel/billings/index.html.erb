@@ -1,0 +1,41 @@
+<h1>Listing panel_billings</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Country</th>
+    <th>Street address</th>
+    <th>Zip code</th>
+    <th>Cardholder first name</th>
+    <th>Cardholder last name</th>
+    <th>Number</th>
+    <th>Cvv</th>
+    <th>Exp date</th>
+    <th>Billing email</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @panel_billings.each do |panel_billing| %>
+  <tr>
+    <td><%= panel_billing.user.name %></td>
+    <td><%= panel_billing.country.try(:name) %></td>
+    <td><%= panel_billing.street_address %></td>
+    <td><%= panel_billing.zip_code %></td>
+    <td><%= panel_billing.cardholder_first_name %></td>
+    <td><%= panel_billing.cardholder_last_name %></td>
+    <td><%= panel_billing.number %></td>
+    <td><%= panel_billing.cvv %></td>
+    <td><%= panel_billing.exp_date %></td>
+    <td><%= panel_billing.billing_email %></td>
+    <td><%= link_to 'Show', panel_billing %></td>
+    <td><%= link_to 'Edit', edit_panel_billing_path(panel_billing) %></td>
+    <td><%= link_to 'Destroy', panel_billing, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Billing', new_panel_billing_path %>

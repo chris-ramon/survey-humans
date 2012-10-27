@@ -1,0 +1,32 @@
+<div class="admin-show-wrapper">
+  <% if notice != nil %>
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <p id="notice"><%= notice %></p>
+    </div>
+  <% end %>
+
+  <p>
+    <b>Panel plan:</b>
+    <%= @panel_deal.panel_plan.name %>
+  </p>
+
+  <p>
+    <b>Valid until:</b>
+    <%= @panel_deal.valid_until %>
+  </p>
+
+  <p>
+    <b>Deal type:</b>
+    <%= translate_deals_type @panel_deal.deal_type %>
+  </p>
+
+  <p>
+    <b>Deal:</b>
+    <%= @panel_deal.deal %>
+  </p>
+
+
+  <%= link_to 'Edit', edit_panel_deal_path(@panel_deal) %> |
+  <%= link_to 'Back', panel_deals_path %>
+</div>
