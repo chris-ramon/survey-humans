@@ -50,6 +50,10 @@ footer p {
 .success {
   color:green;
 }
+.text-area{
+  height: 50;
+  width: 200
+}
 .error, .warning ,.information{
   color:red;
 }
@@ -132,4 +136,25 @@ footer p {
   position: absolute;
   top: auto;
   bottom: 270px;
+}
+.question-div{
+  background: #ffe;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  margin:15px;
+  padding:15px;
+}
+.answer-format-content{
+  height: 150px;
+}
+.answer-format{
+  background: #eee;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  display: inline-block;
+  height: 230px;
+  margin:5px;
+  padding:8px;
+  vertical-align: top;
+  width:141px;
 }

@@ -1,0 +1,2 @@
+module MatchManagement::SurveyHelper
+end

@@ -23,4 +23,23 @@ class Match < ActiveRecord::Base
 	def self.delete(id)
 		return update_all({:deleted=>1, :updated_at=>Time.now},{:id=>id})
 	end
+
+	def get_status(status_id)
+		case status_id
+			when 0
+				"waiting"
+			when 1
+				"started"
+			when 2
+				"finished"
+		end
+	end
+
+	def deleted?(id)
+		if Match.find(id).deleted==0
+			"no"
+		else
+			"yes"
+		end
+	end
 end

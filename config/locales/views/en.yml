@@ -7,6 +7,7 @@ en:
     filters: 'Search Filters'
     search: 'Search'
   buttons:
+    update: 'Update'
     register: 'Register'
     enable_edition: 'Enable Edition'
     edit: 'Edit'

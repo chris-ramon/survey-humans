@@ -22,4 +22,8 @@ class Answer < ActiveRecord::Base
 	def self.delete(id)
 		return update_all({:deleted=>1, :updated_at=>Time.now},{:id=>id})
 	end
+
+	def self.get_answers_by_question_id(question_id)
+		Answer.where(:question_id=>question_id,:deleted=>0)
+	end
 end

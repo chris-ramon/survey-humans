@@ -169,8 +169,8 @@ class AccountManagement::UserController < ApplicationController
 
   def dashboard
     @current_view = "dashboard"
-    @surveys=Match.where(:match_type_id => 1, :deleted=>0).order('updated_at DESC')
-    @exams=Match.where(:match_type_id => 2, :deleted=>0).order('updated_at DESC')
+    @surveys=Match.where(:match_type_id => 1, :deleted=>0, :user_id=>current_user.id).order('updated_at DESC').limit(2)
+    @exams=Match.where(:match_type_id => 2, :deleted=>0, :user_id=>current_user.id).order('updated_at DESC').limit(2)
   end
 
 end

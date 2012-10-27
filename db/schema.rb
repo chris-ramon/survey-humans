@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120909072311) do
+ActiveRecord::Schema.define(:version => 20121026034853) do
 
   create_table "accesses", :force => true do |t|
     t.string   "name",                      :null => false
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(:version => 20120909072311) do
     t.string   "name"
     t.string   "lastname"
     t.integer  "deleted",                               :default => 0
-    t.integer  "profile_id",                                            :null => false
+    t.integer  "profile_id",                            :default => 2,  :null => false
     t.index ["email"], :name => "index_users_on_email", :unique => true
     t.index ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
     t.index ["profile_id"], :name => "index_users_on_profile_id"
@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(:version => 20120909072311) do
   create_table "matches", :force => true do |t|
     t.string   "name",                             :null => false
     t.string   "url"
-    t.integer  "started"
+    t.integer  "started",           :default => 0
     t.integer  "match_type_id",                    :null => false
     t.integer  "question_level_id"
     t.integer  "deleted",           :default => 0
@@ -134,7 +134,7 @@ ActiveRecord::Schema.define(:version => 20120909072311) do
 
   create_table "answers", :force => true do |t|
     t.text     "answer",                     :null => false
-    t.integer  "is_correct",                 :null => false
+    t.string   "is_correct"
     t.float    "percent"
     t.integer  "question_id",                :null => false
     t.integer  "deleted",     :default => 0

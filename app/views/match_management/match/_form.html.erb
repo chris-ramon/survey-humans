@@ -1,54 +1,46 @@
 <%str_method = @int_page_type==2? 'put' : 'post'%>
 <%str_path = @int_page_type==2? match_management_match_path : match_management_match_index_path%>
-<%= form_for(@match, :url=>str_path, :method=>str_method,:html=>{:id=>"form_company"}) do |f| %>   
-	
-	<fieldset>
-		<legend><%=t('.Match Info')%></legend>
-		<dl class="inline">
+<%= form_for(@match, :url=>str_path, :method=>str_method,:html=>{:id=>"form_company"}, :class=>"form-horizontal") do |f| %>   
+      
+    <div class="control-group">
+        <%= set_label_obligatory(Match.null?("name")) %><%= f.label :name,"#{t('.name')}:" %>
+        <div class="controls">
+          <%= f.text_field :name, :class=>"medium validate[#{set_validate(Match.null?("name"))}] input-xxlarge",:size=>50, :placeholder=>"#{t('.enter_the_name_survey')}" %>
+        </div>
+    </div>
 
-      <dt><%= set_label_obligatory(Match.null?("name")) %><%= f.label :name,"#{t('.name')}:" %></dt>
-      <dd>
-        <%= f.text_field :name, :class=>"medium validate[#{set_validate(Match.null?("name"))}]",:size=>50 %>
-        <small><%= t('.small_name')%></small>
-      </dd>
+        <dt><%= set_label_obligatory(Match.null?("url")) %><%= f.label :url,"#{t('.url')}:" %></dt>
+        <dd>
+          <%= f.text_field :url, :class=>"medium validate[#{set_validate(Match.null?("url"))}]",:size=>50 %>
+          <small><%= t('.small_url')%></small>
+        </dd>
 
-      <dt><%= set_label_obligatory(Match.null?("url")) %><%= f.label :url,"#{t('.url')}:" %></dt>
-      <dd>
-        <%= f.text_field :url, :class=>"medium validate[#{set_validate(Match.null?("url"))}]",:size=>50 %>
-        <small><%= t('.small_url')%></small>
-      </dd>
+        <dt><%= set_label_obligatory(Match.null?("started")) %><%= f.label :started,"#{t('.started')}:" %></dt>
+        <dd>
+          <%= f.text_field :started, :class=>"medium validate[#{set_validate(Match.null?("started"))}]",:size=>50 %>
+          <small><%= t('.small_started')%></small>
+        </dd>
 
-      <dt><%= set_label_obligatory(Match.null?("started")) %><%= f.label :started,"#{t('.started')}:" %></dt>
-      <dd>
-        <%= f.text_field :started, :class=>"medium validate[#{set_validate(Match.null?("started"))}]",:size=>50 %>
-        <small><%= t('.small_started')%></small>
-      </dd>
+        <dt><%= set_label_obligatory(Match.null?("match_type_id")) %><%= f.label :match_type_id,"#{t('.match_type')}:" %></dt>
+        <dd>
+          <%= f.select :match_type_id,@list_match_types.collect {|t| [t.name,t.id]},{:include_blank=>"#{t('.select_match_type')}"},{:class=>"medium validate[#{set_validate(Match.null?("match_type_id"))}]"} %>
+          <small><%=t('.small_match_type_id')%></small>
+        </dd>
 
-      <dt><%= set_label_obligatory(Match.null?("match_type_id")) %><%= f.label :match_type_id,"#{t('.match_type')}:" %></dt>
-      <dd>
-        <%= f.select :match_type_id,@list_match_types.collect {|t| [t.name,t.id]},{:include_blank=>"#{t('.select_match_type')}"},{:class=>"medium validate[#{set_validate(Match.null?("match_type_id"))}]"} %>
-        <small><%=t('.small_match_type_id')%></small>
-      </dd>
-
-      <dt><%= set_label_obligatory(Match.null?("question_level_id")) %><%= f.label :question_level_id,"#{t('.question_level')}:" %></dt>
-      <dd>
-        <%= f.select :question_level_id,@list_question_levels.collect {|t| [t.range,t.id]},{:include_blank=>"#{t('.select_question_level')}"},{:class=>"medium validate[#{set_validate(Match.null?("question_level_id"))}]"} %>
-        <small><%=t('.small_question_level_id')%></small>
-      </dd>
-
-      <dt><%= set_label_obligatory(Match.null?("user_id")) %><%= f.label :user_id,"#{t('.user')}:" %></dt>
-      <dd>
-        <%= f.select :user_id,@list_users.collect {|t| [t.name,t.id]},{:include_blank=>"#{t('.select_user')}"},{:class=>"medium validate[#{set_validate(Match.null?("user_id"))}]"} %>
-        <small><%=t('.small_user_id')%></small>
-      </dd>
-
-    </dl>
+        <dt><%= set_label_obligatory(Match.null?("question_level_id")) %><%= f.label :question_level_id,"#{t('.question_level')}:" %></dt>
+        <dd>
+          <%= f.select :question_level_id,@list_question_levels.collect {|t| [t.range,t.id]},{:include_blank=>"#{t('.select_question_level')}"},{:class=>"medium validate[#{set_validate(Match.null?("question_level_id"))}]"} %>
+          <small><%=t('.small_question_level_id')%></small>
+        </dd>
+        <dt><%= set_label_obligatory(Match.null?("user_id")) %><%= f.label :user_id,"#{t('.user')}:" %></dt>
+        <dd>
+          <%= f.select :user_id,@list_users.collect {|t| [t.name,t.id]},{:include_blank=>"#{t('.select_user')}"},{:class=>"medium validate[#{set_validate(Match.null?("user_id"))}]"} %>
+          <small><%=t('.small_user_id')%></small>
+        </dd>
 
 		<div style="clear:both"></div>
-
-	    <div class="buttons">
-	      <%= render :partial => "buttons" %>
-	    </div>
-    </fieldset>
-
+    <div class="buttons">
+      <%= render :partial => "buttons" %>
+    </div>
+    
 <% end %>

@@ -1,5 +1,19 @@
 SurveyHuman::Application.routes.draw do
 
+  get "exam/index"
+
+  get "exam/new"
+
+  get "exam/edit"
+
+  get "survey/new"
+
+  get "survey/create"
+
+  get "survey/edit"
+
+  get "survey/update"
+
   get "subscribe/index"
 
   get "survey/index"
@@ -35,15 +49,26 @@ SurveyHuman::Application.routes.draw do
   namespace :match_management do
     resources :match do 
       get :match_panel, :on => :collection
-      get :show_matches_by_match_type, :on => :collection
     end
+    resources :survey do
+      delete :delete_question, :on=>:collection
+      delete :delete_answer, :on=>:collection
+    end
+    resources :exam
     resources :match_type
-    resources :question
+    resources :question do
+      post :add_question, :on=>:collection
+      put :edit_question, :on=>:collection
+    end
+    resources :answer do
+      put :add_answers, :on=>:collection
+      put :edit_answers, :on=>:collection
+    end
     resources :question_level
     resources :question_type
     resources :exam_topic
-    resources :answer
     resources :answer_format
+    
   end
 
   namespace :organization_management do

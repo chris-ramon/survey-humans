@@ -1,0 +1,18 @@
+<script>
+    $(function(){
+        $("<%=int_link%>").click(function(event){
+            event.preventDefault();          
+            $("<%=int_id%>").dialog({ 
+                modal: true,
+                height: 1000,
+                width: 800,
+            });
+            $("<%=int_id%>").dialog('open')
+        });
+        $("<%=int_id%>").dialog({autoOpen: false});
+        $(".datesamples").change(function(){
+            $(".datesamples").datepicker({ 
+                dateFormat: 'dd/mm/yy'});
+         });
+    });
+</script>

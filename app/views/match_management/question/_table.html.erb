@@ -1,11 +1,12 @@
 <% if @list_questions.size > 0 %>
-<table id="table1" class="gtable sortable">
+<table id="table1" class="table table-hover">
 	<thead>
 		<tr>
 			<th><%=t('.name')%></th>
 			<th><%=t('.correct_answer')%></th>
 			<th><%=t('.answer_format')%></th>
 			<th><%=t('.question_type')%></th>
+			<th><%=t('.match_type')%></th>
 			<th><%=t('.match')%></th>
 			<th><%=t('table.actions')%></th>
 		</tr>
@@ -17,6 +18,8 @@
 			  <td><%=question.correct_answer%></td>
 			  <td><%=question.answer_format.name%></td>
 			  <td><%=question.question_type.name if question.question_type!=nil%></td>
+			  <%match_type= question.match.match_type_id==1 ? "SURVEY" : "EXAM"%>
+			  <td><%=match_type%></td>
 			  <td><%=question.match.name%></td>
 			  <td>
 				  <%=link_to image_tag('standard/show.png',:title=>"#{t('table.show')} #{question.question}"),match_management_question_path(question) unless !current_user.has_access(45)%>

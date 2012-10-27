@@ -1,0 +1,6 @@
+#encoding: utf-8
+es:
+  match_management:
+    question:
+    	add_question_dialog:
+    		answer_format: "Selecciones un format de respuesta"

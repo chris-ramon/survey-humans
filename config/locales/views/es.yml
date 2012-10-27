@@ -7,6 +7,7 @@ es:
     filters: 'Filtros de Búsqueda'
     search: 'Buscar'
   buttons:
+    update: 'Actualizar'
     register: 'Registrar'
     enable_edition: 'Habilitar Edición'
     edit: 'Editar'

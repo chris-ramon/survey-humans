@@ -126,20 +126,4 @@ class MatchManagement::MatchController < ApplicationController
   def match_panel
   end
 
-  def show_matches_by_match_type
-    if current_user.has_access 23
-      @match_type_id=params[:id]
-      @list_matches = Match.where(:deleted => 0, :match_type_id=>params[:id]).paginate(:page => params[:page]).order('id DESC')
-      @list_users = User.where(:deleted=>0)
-      @list_question_levels = QuestionLevel.where(:deleted=>0)
-      @list_match_types = MatchType.where(:deleted=>0)
-      respond_to do |format|
-        format.html
-        format.js
-      end
-    else
-      no_access
-    end
-  end
-
 end
