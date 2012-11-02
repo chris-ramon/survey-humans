@@ -1,6 +1,0 @@
-<% title t("#{MatchType.find(@match_type_id).name}") if !@match_type_id.nil?%>
-<h2><%=yield :title%></h2>
-<%= render :partial=>"layouts/messages" %>
-<div id="table">
-  <%= render :partial => "table" %>
-</div>

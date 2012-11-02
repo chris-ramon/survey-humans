@@ -3,7 +3,7 @@ class CreateMatches < ActiveRecord::Migration
     create_table :matches do |t|
       t.string :name, :null => false
       t.string :url
-      t.integer :started
+      t.integer :started, :default => 0
       t.integer :match_type_id, :null => false
       t.integer :question_level_id
       t.integer :deleted, :default => 0

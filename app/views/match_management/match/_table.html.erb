@@ -1,39 +1,33 @@
 <% if @list_matches.size > 0 %>
-<table id="table1" class="gtable sortable">
-	<thead>
-		<tr>
-			<th><%=t('.name')%></th>
-			<th><%=t('.url')%></th>
-			<th><%=t('.started')%></th>
-			<th><%=t('.match_type')%></th>
-			<th><%=t('.question_level')%></th>
-			<th><%=t('.created_by')%></th>
-			<th><%=t('table.actions')%></th>
-		</tr>
-	</thead>
-	<tbody>
-    <%@list_matches.each do |match|%>
-		  <tr>
-			  <td><%=match.name%></td>
-			  <td><%=match.url%></td>
-			  <td><%=match.started%></td>
-			  <td><%=match.match_type.name%></td>
-			  <td><%=match.question_level.range%></td>
-			  <td><%=match.user.name%></td>
-			  <td>
-				  <%=link_to image_tag('standard/show.png',:title=>"#{t('table.show')} #{match.name}"),match_management_match_path(match) unless !current_user.has_access(19)%>
-                <%=link_to image_tag('standard/delete.png', :title=>"#{t('table.delete')} #{match.name}"),{:action=>'destroy',:id=>match.id},{:method=>:delete, :confirm=>t('messages.sure_to_delete')+match.name+"?"} unless !current_user.has_access(21)%>
-			  </td>
-		  </tr>
-    <%end%>
-	</tbody>
-</table>
-<div class="tablefooter clearfix">
-	<div class="pagination">
-    <%= will_paginate @list_matches %>
-    <%= paginate_ajax_js%>
+	<table id="table1" class="table table-hover">
+		<thead>
+			<tr>
+				<th><%=t('.name')%></th>
+				<th><%=t('.started')%></th>
+				<th><%=t('.created_by')%></th>
+				<th><%=t('table.actions')%></th>
+			</tr>
+		</thead>
+		<tbody>
+	    <%@list_matches.each do |match|%>
+			  <tr>
+				  <td><%=match.name%></td>
+				  <td><%=match.started%></td>
+				  <td><%=match.user.name%></td>
+				  <td>
+					  <%=link_to image_tag('standard/show.png',:title=>"#{t('table.show')} #{match.name}"),edit_match_management_match_path(match) unless !current_user.has_access(19)%>
+	                <%=link_to image_tag('standard/delete.png', :title=>"#{t('table.delete')} #{match.name}"),{:action=>'destroy',:id=>match.id},{:method=>:delete, :confirm=>t('messages.sure_to_delete')+match.name+"?"} unless !current_user.has_access(21)%>
+				  </td>
+			  </tr>
+	    <%end%>
+		</tbody>
+	</table>
+	<div class="tablefooter clearfix">
+		<div class="pagination">
+	    <%= will_paginate @list_matches %>
+	    <%= paginate_ajax_js%>
+		</div>
 	</div>
-</div>
 <%else%>
-<p><%= t('messages.noitem_found')%></p>
+	<p><%= t('messages.noitem_found')%></p>
 <%end%>

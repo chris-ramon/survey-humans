@@ -1,0 +1,39 @@
+<%if !@list_questions.empty?%>
+    <div class="control-group">
+      <%@list_questions.each_with_index do |question,index|%>
+        <div class="question-div">
+          <h5><%=index+1%>. <%=question.question%>
+            <small><%=question.answer_format.name%>
+            <a id="edit-question-<%=question.id%> " class="btn btn-success" href="#edit-question-link-<%=question.id%>" role="button" data-toggle="modal">Edit</a>
+            <%=link_to "Delete", {:action=>'delete_question',:id=>question.id},{:method=>:delete, :confirm=>t('messages.sure_to_delete')+question.question+"?", :class=>"btn btn-danger", :role=>"button"} unless !current_user.has_access(47)%></small>
+          </h5>
+
+          <%= render :partial => "match_management/question/edit_question_dialog", :locals=>{:id=>question.id}%>
+
+      <%case question.answer_format_id%>
+        <%when 3,4,7,8%>
+          <small>The answer will be inserted by the user.</small>
+        <%else%>
+          <div style="padding-left:20px;">
+            <%if !Answer.get_answers_by_question_id(question.id).empty?%>
+              <%= render :partial => "answers_list", :locals=>{:question=>question}%>
+              <a class="btn" href="#edit-answer-link-<%=question.id%>" role="button" data-toggle="modal"><small>Edit Answers</small></a>
+              <div class="modal hide fade" id="edit-answer-link-<%=question.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <%= render :partial => "match_management/answer/add_answer_dialog", :locals=>{:question=>question}%>
+                </div>
+            <%else%>
+                <small class="span5">No answers. These answers will be selected by the user.</small>
+                <a class="btn" href="#add-answer-link-<%=question.id%>" role="button" data-toggle="modal"><small>Add Answers</small></a>
+                <div class="modal hide fade" id="add-answer-link-<%=question.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <%= render :partial => "match_management/answer/add_answer_dialog", :locals=>{:question=>question}%>
+                </div>
+            <%end%>
+          </div>
+      <%end%>
+
+        </div>
+      <%end%>
+    </div>
+<%else%>
+    <small>No questions</small>
+<%end%>

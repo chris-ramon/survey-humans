@@ -116,4 +116,38 @@ class MatchManagement::AnswerController < ApplicationController
     end
   end
 
+  def add_answers
+    if current_user.has_access 49
+      #answer = Answer.new(params[:answer])
+      question = Question.find params[:id]
+      if !params[:question].nil?
+        params[:question][:answers_attributes].values.each do |answer|
+          if answer[:_destroy]==false
+            @answer=Answer.create!({:answer=>answer[:answer],:question_id=>question.id})
+          end
+        end
+        question.attributes = params[:question]
+        begin
+          if question.save
+            str_desc="Se registró answers para la pregunta con id = "+question.id.to_s
+            @log=Log.create!({:description=>str_desc, :user_id=>current_user.id})
+            flash[:notice] = t('messages.successfully_created')
+            redirect_to("/match_management/survey/#{question.match_id}/edit")
+          else
+            flash[:alert] = get_errors(answer)
+            redirect_to("/match_management/survey/#{question.match_id}/edit")
+          end
+        rescue ActiveRecord::StatementInvalid => error
+          flash[:alert] = t('messages.error_ocurred')
+          redirect_to("/match_management/survey/#{question.match_id}/edit")
+        end
+      else
+        flash[:notice] = "You have not added any answer to the selected question."
+        redirect_to("/match_management/survey/#{question.match_id}/edit")
+      end
+    else
+      no_access
+    end
+  end
+
 end

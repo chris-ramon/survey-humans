@@ -1,0 +1,14 @@
+<%= nested_form_for(question,:url=>add_answers_match_management_answer_index_path+"&id=#{question.id}",:method=>'put',:html=>{:id=>"form_answers"}) do |f| %>
+	<div class="modal-body">
+		<% f.fields_for :answers do |builder| %>
+			<%= render "/match_management/answer/add_field_comment", :f => builder %>
+		<% end %>
+		<%= f.link_to_add "Add answer", :answers %>
+	</div>
+
+	<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" >Close</button>
+		<%= submit_tag(t('buttons.save'), :disable_with => t('buttons.processing'), :class=>"btn btn-success")%>
+	</div>
+
+<%end%>

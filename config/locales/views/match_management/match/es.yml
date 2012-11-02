@@ -1,0 +1,29 @@
+#encoding: utf-8
+es:
+  match_management:
+    match:
+      index:
+        title: 'Partidas'
+      search:
+        name: 'Nombre'
+        match_type: 'Tipo de Partida'
+        level: 'Nivel'
+        all_match_types: 'Seleccione un tipo de partida'
+        all_question_levels: 'Seleccione un Nivel'
+      form:
+        name: 'Nombre'
+        url: 'URL'
+        started: '¿Iniciado?'
+        match_type: 'Tipo de Partida'
+        question_level: 'Nivel'
+        level: 'Nivel'
+        user: 'Usuario'
+        select_match_type: 'Seleccione un tipo de partida'
+        select_question_level: 'Seleccione un Nivel'
+        select_user: 'Seleccione un usuario'
+        enter_the_name_survey: 'Ingrese un nombre...'
+      new:
+        title: 'Registrar una Partida'
+      add_question:
+        question: 'Question'
+        answer_format: 'Select an answer format'

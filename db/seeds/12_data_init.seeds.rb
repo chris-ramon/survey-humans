@@ -35,8 +35,29 @@ Match.create({:name=>"Match 01",
 			:user_id=>1})
 
 
-AnswerFormat.create({:name=>"Multiple Choice",
-					:format=>"abc",
+AnswerFormat.create({:name=>"Multiple Choices - 1 answer",
+					:format=>"id",
+					:deleted=>0})
+AnswerFormat.create({:name=>"Multiple Choices - Multiple answers",
+					:format=>"id@id@id",
+					:deleted=>0})
+AnswerFormat.create({:name=>"Comment / Essay Box",
+					:format=>"value",
+					:deleted=>0})
+AnswerFormat.create({:name=>"Ranking",
+					:format=>"value",
+					:deleted=>0})
+AnswerFormat.create({:name=>"Matrix (One answer per row)",
+					:format=>"id@id@id",
+					:deleted=>0})
+AnswerFormat.create({:name=>"Matrix (Multiple answers per row)",
+					:format=>"id@id@id",
+					:deleted=>0})
+AnswerFormat.create({:name=>"Datetime / hour",
+					:format=>"value",
+					:deleted=>0})
+AnswerFormat.create({:name=>"File picker",
+					:format=>"image",
 					:deleted=>0})
 
 QuestionType.create({:name=>"Math",

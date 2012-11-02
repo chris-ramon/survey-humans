@@ -5,6 +5,7 @@
     <title>Survey for Humans!</title>
     <%= stylesheet_link_tag "bootstrap.min" %>
     <%= stylesheet_link_tag "style" %>
+    <%= stylesheet_link_tag "jquery-ui" %>
     <%= javascript_include_tag "jquery-1.7.1.min" %>
     <%= javascript_include_tag "bootstrap.min" %>
 
@@ -29,9 +30,7 @@
                     <!-- .nav, .navbar-search, .navbar-form, etc -->
                     <ul class="nav">
                         <li class="divider-vertical"></li>
-                        <li><a href="/panel/survey">Surveys</a></li>
-                        <li><a href="#">Exams</a></li>
-                        <li><a href="#">Analyze Data</a></li>
+                        <li><%= link_to "Subscribe", "/panel/subscribe" %></li>
                     </ul>
                 </div>
 
@@ -39,13 +38,15 @@
                 <div class="nav-collapse">
                     <!-- .nav, .navbar-search, .navbar-form, etc -->
                     <ul class="nav pull-right">
-                        <li><%= link_to "Subscribe", "/panel/subscribe" %></li>
-                        <li><a href="#">Feedback</a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">rchristian.ramon@gmail.com <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Logout</a></li>
-                            </ul>
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                              <%=t("panel.languages")%>
+                              <i class="caret"></i>
+                          </a>
+                          <ul class="dropdown-menu">
+                              <li><%= link_to t("panel.english"), url_for( :locale => 'en') %></li>
+                              <li><%= link_to t("panel.spanish"), url_for( :locale => 'es') %></li>
+                          </ul>
                         </li>
                     </ul>
                 </div>

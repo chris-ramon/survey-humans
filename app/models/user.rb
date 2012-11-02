@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  after_create :welcome
   after_create :create_subscription
 
   devise :registerable, :database_authenticatable, :recoverable, :rememberable, :trackable
@@ -20,10 +21,14 @@ class User < ActiveRecord::Base
 
   self.per_page = 10
 
+  def welcome 
+    SurveyMailer.welcome_to_survey_humans(self).deliver
+  end
+
   def create_subscription
     ### saving customer subscription
     subscription = Panel::Subscription.new
-    subscription.User_id = self.id
+    subscription.user_id = self.id
     plan = Panel::Plan.find_or_create_by_name_and_amount("15 Days Free", 0)
     subscription.panel_plan_id = plan.id
     subscription.expired_at = Time.now + 1296000

@@ -1,0 +1,28 @@
+en:
+  match_management:
+    match:
+      index:
+        title: 'Matches'
+      search:
+        name: 'Name'
+        match_type: 'Match Type'
+        level: 'Level'
+        all_match_types: 'Select a match type'
+        all_question_levels: 'Select a level'
+      form:
+        name: 'Name'
+        url: 'URL'
+        started: '¿Started?'
+        match_type: 'Match Type'
+        question_level: 'Level'
+        level: 'Level'
+        user: 'User'
+        select_match_type: 'Select a match type'
+        select_question_level: 'Select a Level'
+        select_user: 'Select a user'
+        enter_the_name_survey: 'Enter a name survey...'
+      new:
+        title: 'Register a Match'
+      add_question:
+        question: 'Question'
+        answer_format: 'Select an answer format'

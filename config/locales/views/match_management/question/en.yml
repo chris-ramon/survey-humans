@@ -1,0 +1,6 @@
+en:
+  match_management:
+    match:
+    	question:
+    		add_question_dialog:
+    			answer_format: 'Select an answer format'

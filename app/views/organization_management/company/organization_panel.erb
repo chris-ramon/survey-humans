@@ -3,4 +3,8 @@
 <% title t('panel.organization_management') %>
 <%= render :partial=>"layouts/messages" %>
 <h1><%= t('panel.organization_welcome')%></h1>
-<%= render :partial=>"layouts/panel", :locals=>{:list_access=>list_access}%>
+<%if current_user.profile_id==1%>
+<%= render :partial=>"layouts/panel_admin", :locals=>{:list_access=>list_access}%>
+<%else%>
+<%= render :partial=>"layouts/panel_user", :locals=>{:list_access=>list_access}%>
+<%end%>

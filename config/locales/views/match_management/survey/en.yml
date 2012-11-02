@@ -1,0 +1,38 @@
+en:
+  match_management:
+    survey:
+      index:
+        title: 'Surveys'
+        new_button: 'Create a Survey'
+      search:
+        name: 'Name'
+        match_type: 'Match Type'
+        level: 'Level'
+        all_match_types: 'Select a match type'
+        all_question_levels: 'Select a level'
+      form:
+        title: 'Survey Details'
+        name: 'Name'
+        url: 'URL'
+        status: 'Status'
+        match_type: 'Match Type'
+        question_level: 'Level'
+        level: 'Level'
+        user: 'User'
+        select_match_type: 'Select a match type'
+        select_question_level: 'Select a Level'
+        select_user: 'Select a user'
+        select_status: 'Select status'
+        enter_the_name_survey: 'Enter a name survey...'
+        created_by: 'Created by'
+      new:
+        title: 'Survey Details'
+      table:
+        name: 'Name'
+        status: 'Status'
+        created_by: 'Created by'
+      edit:
+        title: 'Survey Details'
+      add_question:
+        question: 'Question'
+        answer_format: 'Select an answer format'

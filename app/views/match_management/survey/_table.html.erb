@@ -1,0 +1,46 @@
+<% if @list_matches.size > 0 %>
+	<table id="table1" class="table table-hover">
+		<thead>
+			<tr>
+				<th><%=t('.name')%></th>
+				<th><%=t('.status')%></th>
+		  	<th>URL</th>
+			<%if current_user.profile_id==1%>
+				<th><%=t('.created_by')%></th>
+				<th><%=t('.deleted?')%></th>
+			<%end%>
+				<th><%=t('table.actions')%></th>
+			</tr>
+		</thead>
+		<tbody>
+	    <%@list_matches.each do |match|%>
+			  <tr>
+				  <td><%=match.name%></td>
+				  <td><%=match.get_status(match.started)%></td>
+				<%if !match.url.nil?%>
+					<td><a href="<%=match.url%>"><%=match.url%></a></td>
+				<%else%>
+					<td>The URL hasn't been generated.</td>
+				<%end%>
+				<%if current_user.profile_id==1%>
+					<td><%=match.user.email%></td>
+					<td><%=match.deleted?(match.id)%></td>
+				<%end%>
+				  <td>
+					<%=link_to "Edit",edit_match_management_survey_path(match) unless !current_user.has_access(19)%>
+	                <%=link_to "Delete",{:action=>'destroy',:id=>match.id},{:method=>:delete, :confirm=>t('messages.sure_to_delete')+match.name+"?"} unless !current_user.has_access(21)%>
+				  </td>
+			
+			  </tr>
+	    <%end%>
+		</tbody>
+	</table>
+	<div class="tablefooter clearfix">
+		<div class="pagination">
+	    <%= will_paginate @list_matches %>
+	    <%= paginate_ajax_js%>
+		</div>
+	</div>
+<%else%>
+	<p><%= t('messages.noitem_found')%></p>
+<%end%>

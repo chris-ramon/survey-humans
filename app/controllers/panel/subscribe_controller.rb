@@ -2,15 +2,18 @@ class Panel::SubscribeController < ApplicationController
   before_filter :authenticate_user!
   layout "_content"
   def index
-    @subscription = Panel::Subscription.where(:User_id => current_user.id).first
+    @subscription = Panel::Subscription.where(:user_id => current_user.id).first
     @billing = Panel::Billing.where(:user_id => current_user.id).first
 
-    if @billing.is_credit_card_valid?
-      @credit_card_valid = true
+    if !@billing.nil?
+      if @billing.is_credit_card_valid?
+        @credit_card_valid = true
+      else
+        @credit_card_valid = false
+      end
     else
       @credit_card_valid = false
     end
-
     @plan_features = Panel::Planfeature.get_all_plan_features
     @plans = Panel::Plan.get_all_plans
 

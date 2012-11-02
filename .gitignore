@@ -3,3 +3,4 @@ config/database.yml
 tmp/*
 .idea/*
 .DS_Store
+*.iml

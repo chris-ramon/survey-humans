@@ -123,4 +123,63 @@ class MatchManagement::QuestionController < ApplicationController
     end
   end
 
+  def add_question
+    if current_user.has_access(44)
+      question = Question.new(params[:question])
+      if !question.match_id.nil? and question.match_id!=0
+        if current_user.id==Match.find(question.match_id).user_id
+          begin
+            if question.save
+              str_desc="Se registró el question con id = "+question.id.to_s
+              @log=Log.create!({:description=>str_desc, :user_id=>current_user.id})
+              flash[:notice] = t('messages.successfully_created')
+              redirect_to("/match_management/survey/#{question.match_id}/edit")
+            else
+              flash[:alert] = get_errors(question)
+              redirect_to("/match_management/survey/#{question.match_id}/edit")
+            end
+          rescue ActiveRecord::StatementInvalid => error
+            flash[:alert] = t('messages.error_ocurred')
+            redirect_to("/match_management/survey/#{question.match_id}/edit")
+          end
+        else
+          no_access
+        end
+      else
+        flash[:alert] = t('messages.error_ocurred')
+        redirect_to("/match_management/survey")
+      end
+    else
+      no_access
+    end
+  end
+
+  def edit_question
+    if current_user.has_access 46
+      question = Question.find(params[:id])
+      question.attributes = params[:question]
+      if !question.match_id.nil? and question.match_id!=0
+        begin
+          if question.save
+            str_desc="Se editó el question con id = "+question.id.to_s
+            @log=Log.create!({:description=>str_desc, :user_id=>current_user.id})
+            flash[:notice] = t('messages.successfully_updated')
+            redirect_to("/match_management/survey/#{question.match_id}/edit")
+          else
+            flash[:alert] = get_errors(question)
+            redirect_to("/match_management/survey/#{question.match_id}/edit")
+          end
+        rescue ActiveRecord::StatementInvalid => error
+          flash[:alert] = t('messages.error_ocurred')
+          redirect_to("/match_management/survey/#{question.match_id}/edit")
+        end
+      else
+        flash[:alert] = t('messages.error_ocurred')
+        redirect_to("/match_management/survey")
+      end
+    else
+      no_access
+    end
+  end
+
 end

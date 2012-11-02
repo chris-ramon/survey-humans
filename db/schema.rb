@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121019222722) do
+ActiveRecord::Schema.define(:version => 20121026034853) do
 
   create_table "accesses", :force => true do |t|
     t.string   "name",                      :null => false
@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(:version => 20121019222722) do
   create_table "matches", :force => true do |t|
     t.string   "name",                             :null => false
     t.string   "url"
-    t.integer  "started"
+    t.integer  "started",           :default => 0
     t.integer  "match_type_id",                    :null => false
     t.integer  "question_level_id"
     t.integer  "deleted",           :default => 0
@@ -134,7 +134,7 @@ ActiveRecord::Schema.define(:version => 20121019222722) do
 
   create_table "answers", :force => true do |t|
     t.text     "answer",                     :null => false
-    t.integer  "is_correct",                 :null => false
+    t.string   "is_correct"
     t.float    "percent"
     t.integer  "question_id",                :null => false
     t.integer  "deleted",     :default => 0

@@ -1,4 +1,4 @@
-<%= link_to t('search.filters'),"#",:onclick=>"open_close_div_search('form_search'); return false;",:class=>"show_hide_form_search" %>
+<a href="#" class="show_hide_form_search btn" onclick="open_close_div_search('form_search'); return false;"><i class="icon-search"></i> Search Filters</a>
 <div style="clear:both"></div>
 
 <%= form_for @search, :url => match_management_answer_index_path, :html => {:method => :get, :id=>'form_search', :style=>'display:none', :remote=>true} do |f| %>
@@ -9,7 +9,7 @@
       <dd><%= f.select :question_id_eq,@list_questions.collect {|t| [t.question,t.id]},{:include_blank=>"#{t('.all_questions')}"} %></dd>
     </dl>
     <div class="buttons">
-      <%= submit_tag(t('search.search'), :disable_with => t('buttons.processing'), :class => "button")%>          
+      <%= submit_tag(t('search.search'), :disable_with => t('buttons.processing'), :class => "btn")%>          
       <span id='loading_search' style='display:none'><img alt='Loading' border='0' height='14' src="<%=image_path('style/loading.gif')%>" width='14'></span>
     </div>
   </fieldset>
