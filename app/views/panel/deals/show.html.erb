@@ -5,6 +5,9 @@
         <p id="notice"><%= notice %></p>
     </div>
   <% end %>
+  <%= link_to 'Edit', edit_panel_deal_path(@panel_deal) %> |
+  <%= link_to 'Back', panel_deals_path %>
+  <br> <br><!-- #TODO -->
 
   <p>
     <b>Panel plan:</b>
@@ -23,10 +26,38 @@
 
   <p>
     <b>Deal:</b>
-    <%= @panel_deal.deal %>
+    <%= @panel_deal.deal %> <%= deal_post_fix @panel_deal.deal_type %>
   </p>
+  <a href="#" class="btn btn-success">Send Deal </a>
+  <% if @users.size > 0 %>
+      <div class="tablefooter clearfix">
+          <div class="pagination">
+              <%= will_paginate @users %>
+              <%= paginate_ajax_js%>
+          </div>
+      </div>
+      <input id="select_all_deal_show" type="checkbox" class="pull-left">
+      <label for="select_all">Select All</label>
+      <table class="table table-striped">
+          <thead>
+          <tr>
+              <th><%=t('.Select')%></th>
+              <th><%=t('.name')%></th>
+              <th><%=t('.email')%></th>
+              <th><%=t('.profile')%></th>
+          </tr>
+          </thead>
+          <tbody>
+          <%@users.each do |user|%>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><%=user.try(:fullname)%></td>
+                <td><%=mail_to user.email%></td>
+                <td><%=user.profile.name%></td>
+            </tr>
+          <%end%>
+          </tbody>
+      </table>
 
-
-  <%= link_to 'Edit', edit_panel_deal_path(@panel_deal) %> |
-  <%= link_to 'Back', panel_deals_path %>
+  <% end %>
 </div>

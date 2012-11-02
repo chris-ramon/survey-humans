@@ -1,6 +1,14 @@
 SurveyHuman::Application.routes.draw do
 
+  namespace :panel do resources :subscription_transactions end
 
+  get "/gateways/update-default-gateway/:id/:task", :to => "panel/gateways#update_default_gateway" ,\
+  :as => 'update_default_gateway'
+
+  namespace :panel do
+    resources :gateways do
+    end
+  end
 
   namespace :panel do resources :planfeatures end
 

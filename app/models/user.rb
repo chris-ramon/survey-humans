@@ -51,6 +51,7 @@ class User < ActiveRecord::Base
   # * *returns*
   #   - the instanced user fullname
   def fullname
+    return "" if name == nil and lastname == nil
     name+" "+lastname
   end
 

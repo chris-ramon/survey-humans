@@ -16,7 +16,9 @@ gem "meta_where"
 gem "meta_search"
 gem 'private_pub'
 gem 'nested_form'
-gem 'rack-ssl', :require => 'rack/ssl'
+gem 'activemerchant', '~> 1.28.0'
+# gem 'rack-ssl', :require => 'rack/ssl'
+
 
 # Use unicorn as the web server
 #gem unicorn

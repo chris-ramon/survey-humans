@@ -1,6 +1,12 @@
 class Panel::PlansController < ApplicationController
+  before_filter :authenticate_user!
+  layout "_content"
   # GET /panel/plans
   # GET /panel/plans.xml
+  before_filter :current_module
+  def current_module
+    @current_module = "plans"
+  end
   def index
     @panel_plans = Panel::Plan.all
 
@@ -14,6 +20,7 @@ class Panel::PlansController < ApplicationController
   # GET /panel/plans/1.xml
   def show
     @panel_plan = Panel::Plan.find(params[:id])
+    @features = Panel::Planfeature.where(:panel_plan_id => params[:id]).all
 
     respond_to do |format|
       format.html # show.html.erb

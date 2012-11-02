@@ -1,0 +1,38 @@
+<%= form_for(@panel_gateway) do |f| %>
+  <% if @panel_gateway.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@panel_gateway.errors.count, "error") %> prohibited this panel_gateway from being saved:</h2>
+
+      <ul>
+      <% @panel_gateway.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :website %><br />
+    <%= f.text_field :website %>
+  </div>
+  <div class="field">
+    <%= f.check_box :status, :class => 'pull-left checkbox' %>
+    <%= f.label :status %>
+    <br>
+  </div>
+  <div class="field">
+    <%= f.label :login %><br />
+    <%= f.text_field :login %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.text_field :password %>
+  </div>
+  <div class="actions">
+    <%= f.submit :class => 'btn btn-info' %>
+  </div>
+<% end %>

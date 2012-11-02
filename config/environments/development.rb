@@ -28,5 +28,26 @@ SurveyHuman::Application.configure do
   # Mailer devise
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
+  # Active merchant instance
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test
+  end
+
+  # Active merchant instance
+  config.to_prepare do
+    Panel::SubscriptionTransaction.gateway =
+        ActiveMerchant::Billing::TrustCommerceGateway.new(
+            :login    => 'TestMerchant',
+            :password => 'password'
+    )
+  end
+
+  #config.to_prepare do
+  #  Panel::SubscriptionTransaction.gateway =
+  #      ActiveMerchant::Billing::BraintreeGateway.new(
+  #          :login    => 'TestMerchant',
+  #          :password => 'password'
+  #      )
+  #end
 end
 

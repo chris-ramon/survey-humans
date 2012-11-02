@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  subscription: 
+  gateway: 
+  amount: 9.99
+  success: false
+  reference: 1
+  message: MyString
+  action: MyString
+  params: MyString
+  test: false
+
+two:
+  subscription: 
+  gateway: 
+  amount: 9.99
+  success: false
+  reference: 1
+  message: MyString
+  action: MyString
+  params: MyString
+  test: false

@@ -1,0 +1,60 @@
+<div class="admin-show-wrapper">
+    <% if notice != nil %>
+      <div class="alert alert-success">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          <p id="notice"><%= notice %></p>
+      </div>
+    <% end %>
+<p>
+    <b>User Email:</b>
+    <a href="#" class=""><%= @panel_subscription_transaction.try(:panel_subscription).User.email  %></a>
+</p>
+<p>
+  <b>Subscription:</b>
+  <%= @panel_subscription_transaction.panel_subscription.panel_plan.name %>
+</p>
+
+<p>
+  <b>Gateway:</b>
+  <%= @panel_subscription_transaction.gateway.display_name %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  $ <%= @panel_subscription_transaction.amount %>
+</p>
+
+<p>
+  <b>Success:</b>
+  <%= @panel_subscription_transaction.success %>
+</p>
+
+<p>
+  <b>Reference:</b>
+  <%= @panel_subscription_transaction.reference %>
+</p>
+
+<p>
+  <b>Message:</b>
+  <%= @panel_subscription_transaction.message %>
+</p>
+
+<p>
+  <b>Action:</b>
+  <%= @panel_subscription_transaction.action %>
+</p>
+
+<p>
+  <b>Params:</b>
+  <%= @panel_subscription_transaction.params %>
+</p>
+
+<p>
+  <b>Test:</b>
+  <%= @panel_subscription_transaction.test %>
+</p>
+
+
+<%= link_to 'Edit', edit_panel_subscription_transaction_path(@panel_subscription_transaction) %> |
+<%= link_to 'Back', panel_subscription_transactions_path %>
+</div>

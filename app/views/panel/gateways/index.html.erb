@@ -1,0 +1,41 @@
+<legend><h3>Payment Gateways</h3></legend>
+<%= link_to 'New Gateway', new_panel_gateway_path, :class => 'btn btn-success' %>
+<br><br> <!-- #TODO -->
+<table class="table table-bordered table-striped">
+  <tr>
+    <th>Status Action</th>
+    <th>Name</th>
+    <th>Website</th>
+    <th>Status</th>
+    <th>Login</th>
+    <th>Password</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @panel_gateways.each do |panel_gateway| %>
+  <tr>
+    <td>
+        <% if panel_gateway.status %>
+          <a href="<%= update_default_gateway_path(panel_gateway.id, 'disable') %>" class="">Disable</a>
+        <% else %>
+          <a href="<%= update_default_gateway_path(panel_gateway.id, 'enable') %>" class="">Enable</a>
+    <% end %>
+    </td>
+    <td><%= panel_gateway.name %></td>
+    <td>
+        <a href="<%= panel_gateway.website %>" target="_blank" class=""><%= panel_gateway.website %></a>
+    </td>
+    <td>
+        <%= status panel_gateway.status %>
+    </td>
+    <td><%= panel_gateway.login %></td>
+    <td>***********</td>
+    <td><%= link_to 'Show', panel_gateway %></td>
+    <td><%= link_to 'Edit', edit_panel_gateway_path(panel_gateway) %></td>
+    <td><%= link_to 'Destroy', panel_gateway, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+

@@ -1,6 +1,7 @@
 <h1>Editing panel_planfeature</h1>
 
 <%= render 'form' %>
-
+<a href="<%= panel_plan_path @panel_planfeature.panel_plan.id %>" class="btn btn-inverse">Back</a>
+<br> <br> <!-- #TODO -->
 <%= link_to 'Show', @panel_planfeature %> |
 <%= link_to 'Back', panel_planfeatures_path %>

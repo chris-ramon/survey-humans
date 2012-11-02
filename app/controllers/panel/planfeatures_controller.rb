@@ -1,4 +1,6 @@
 class Panel::PlanfeaturesController < ApplicationController
+  before_filter :authenticate_user!
+  layout "_content"
   # GET /panel/planfeatures
   # GET /panel/planfeatures.xml
   def index

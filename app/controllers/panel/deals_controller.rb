@@ -19,7 +19,7 @@ class Panel::DealsController < ApplicationController
   # GET /panel/deals/1.xml
   def show
     @panel_deal = Panel::Deal.find(params[:id])
-
+    @users = User.where(:deleted => 0, :profile_id => 2).paginate(:page => params[:page]).order('id DESC')
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @panel_deal }
