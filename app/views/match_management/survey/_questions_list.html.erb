@@ -2,7 +2,7 @@
     <div class="control-group">
       <%@list_questions.each_with_index do |question,index|%>
         <div class="question-div">
-          <h5><%=index+1%>. <%=question.question%>?
+          <h5><%=index+1%>. <%=question.question%>
             <small><%=question.answer_format.name%>
             <a id="edit-question-<%=question.id%> " class="btn btn-success" href="#edit-question-link-<%=question.id%>" role="button" data-toggle="modal">Edit</a>
             <%=link_to "Delete", {:action=>'delete_question',:id=>question.id},{:method=>:delete, :confirm=>t('messages.sure_to_delete')+question.question+"?", :class=>"btn btn-danger", :role=>"button"} unless !current_user.has_access(47)%></small>

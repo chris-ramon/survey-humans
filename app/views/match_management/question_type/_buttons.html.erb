@@ -1,9 +1,9 @@
 <%if @int_page_type==0%>
-  <%= submit_tag(t('buttons.register'), :disable_with => t('buttons.processing'), :class => "button")%>          
+  <%= submit_tag(t('buttons.register'), :disable_with => t('buttons.processing'), :class => "btn")%>          
 <%elsif @int_page_type==1%>
   <%= link_to t('buttons.enable_edition'), edit_match_management_question_type_path(@question_type), :class=>"button" unless !current_user.has_access(41) %>
 <%else%>
-  <%= submit_tag(t('buttons.edit'), :disable_with => t('buttons.processing'), :class => "button")%>      
+  <%= submit_tag(t('buttons.edit'), :disable_with => t('buttons.processing'), :class => "btn")%>      
   <%= link_to t('buttons.undo_changes'), edit_match_management_question_type_path(@question_type), :class=>"button"  %>
 <%end%>
 <%= link_to t('buttons.cancel'), match_management_question_type_index_path, :class=>"button white"%>

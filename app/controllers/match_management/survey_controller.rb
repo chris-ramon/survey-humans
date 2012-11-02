@@ -72,6 +72,16 @@ class MatchManagement::SurveyController < ApplicationController
   def edit
     @match = Match.find(params[:id])
     if current_user.has_access(26) and @match.user_id==current_user.id
+      if !@match.url.nil?
+        app_id=119458701544487
+        description="This is a survey."
+        redirect_uri="http://172.18.20.26:3000/match_management/survey/#{params[:id]}/edit"
+        @facebook_url="https://www.facebook.com/dialog/feed?app_id=#{app_id}&link=#{@match.url}&picture=http://fbrell.com/f8.jpg&name=#{@match.name}&caption=Survey%20Humans&description=#{description}&redirect_uri=#{redirect_uri}&display=popup"
+        @twitter_url=@match.url
+      else
+        @facebook_url="#"
+        @twitter_url="#"
+      end
       @list_users = User.where(:deleted=>0)
       @list_question_levels = QuestionLevel.where(:deleted=>0)
       @list_match_types = MatchType.where(:deleted=>0)
@@ -145,6 +155,49 @@ class MatchManagement::SurveyController < ApplicationController
         flash[:alert] = t('messages.error_ocurred')
       end
       redirect_to("/match_management/survey/#{Question.find(params[:id]).match_id}/edit")
+    else
+      no_access
+    end
+  end
+
+  def generate_url_for_survey
+    if current_user.has_access 26
+      match = Match.find params[:id]
+      match.url=match.get_extension
+      match.save
+      flash[:notice] = "The Survey's URL has been generated."
+      redirect_to("/match_management/survey/#{params[:id]}/edit")
+    else
+      no_access
+    end
+  end
+
+  def send_survey_by_email
+    if current_user.has_access 26
+      @match = Match.find params[:id]
+      emails = params[:emails]
+      emails_array = Array.new
+      emails_array = emails.split(",")
+      if !emails_array.empty?
+        email_addresses=Array.new
+        invalid_email_addresses=Array.new
+        emails_array.each do |email|
+          email=email.delete(" ")
+          if email!=""
+            if email =~ /\A[\w\._%-]+@[\w\.-]+\.[a-zA-Z]{2,4}\z/
+              email_addresses << "<"+email+">"
+            else
+              invalid_email_addresses << "<"+email+">,"
+            end
+          end
+        end
+        email_text=email_addresses.join(",")
+        SurveyMailer.send_survey_by_generated_url(current_user,@match,email_text,params[:message]).deliver
+        flash[:notice]="Email has been sent."
+      else
+        flash[:alert]="Invalid email(s)."
+      end
+      redirect_to("/match_management/survey/#{params[:id]}/edit")
     else
       no_access
     end

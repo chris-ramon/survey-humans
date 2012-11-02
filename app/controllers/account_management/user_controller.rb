@@ -12,7 +12,7 @@ class AccountManagement::UserController < ApplicationController
     @current_view = "security"
     if current_user.has_access 2
       @search = User.search(params[:search])
-      @list_users = @search.where(:deleted => 0).paginate(:page => params[:page]).order('id DESC')
+      @list_users = @search.paginate(:page => params[:page]).order('id DESC')
       @list_profiles = Profile.where(:deleted => 0)
       respond_to do |format|
         format.html 
@@ -172,9 +172,9 @@ class AccountManagement::UserController < ApplicationController
     @surveys=Match.where(:match_type_id => 1, :deleted=>0, :user_id=>current_user.id).order('updated_at DESC').limit(2)
     @exams=Match.where(:match_type_id => 2, :deleted=>0, :user_id=>current_user.id).order('updated_at DESC').limit(2)
     if current_user.profile_id == 2
-      @subscription = Panel::Subscription.where(:User_id=>current_user.id).first
+      @subscription = Panel::Subscription.where(:user_id=>current_user.id).first
       one_day_in_seconds = 86400
-      @days_left = ( ( @subscription.expired_at - Time.now  ) / one_day_in_seconds ).round
+      @days_left = @subscription.nil? ? "15" :( ( @subscription.expired_at - Time.now  ) / one_day_in_seconds ).round
     end
   end
 end

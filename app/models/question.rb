@@ -1,5 +1,6 @@
 class Question < ActiveRecord::Base
 	belongs_to :match
+	has_one :solution
 	belongs_to :question_type
 	belongs_to :answer_format
 	has_many :answers, :dependent => :destroy

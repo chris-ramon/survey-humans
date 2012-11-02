@@ -3,7 +3,9 @@
 	<thead>
 		<tr>
 			<th><%=t('.name')%></th>
-			<th><%=t('.user')%></th>
+			<%if current_user.profile_id==1%>
+				<th><%=t('.user')%></th>
+			<%end%>
 			<th><%=t('table.actions')%></th>
 		</tr>
 	</thead>
@@ -11,7 +13,9 @@
     <%@list_companies.each do |company|%>
 		  <tr>
 			  <td><%=company.name%></td>
-			  <td><%=company.user.name%></td>
+			  <%if current_user.profile_id==1%>
+			  	<td><%=company.user.name%></td>
+			  <%end%>
 			  <td>
 				  <%=link_to image_tag('standard/show.png',:title=>"#{t('table.show')} #{company.name}"),organization_management_company_path(company) unless !current_user.has_access(19)%>
                 <%=link_to image_tag('standard/delete.png', :title=>"#{t('table.delete')} #{company.name}"),{:action=>'destroy',:id=>company.id},{:method=>:delete, :confirm=>t('messages.sure_to_delete')+company.name+"?"} unless !current_user.has_access(21)%>

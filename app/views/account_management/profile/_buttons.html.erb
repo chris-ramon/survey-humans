@@ -4,7 +4,7 @@
   <%= link_to t('buttons.enable_edition'), edit_account_management_profile_path(@user), :class=>"button" unless !current_user.has_access(10) %>
 <%else%>
     <%if profile_id!=1%> 
-        <%= submit_tag(t('buttons.edit'), :disable_with => t('buttons.processing'), :class => "button")%>
+        <%= submit_tag(t('buttons.edit'), :disable_with => t('buttons.processing'), :class => "btn")%>
         <%= link_to t('buttons.undo_changes'), edit_account_management_profile_path(@user), :class=>"button"  %>
     <%end%>
 <%end%>

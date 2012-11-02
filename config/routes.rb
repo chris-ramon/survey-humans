@@ -1,5 +1,7 @@
 SurveyHuman::Application.routes.draw do
 
+  get "report/index"
+
   namespace :panel do resources :planfeatures end
 
   namespace :panel do resources :features end
@@ -24,7 +26,7 @@ SurveyHuman::Application.routes.draw do
   # first created -> highest priority.
 
   #devise_for :users
-  devise_for :users, :path => "", :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock', :registration => 'register', :sign_up => 'cmon_let_me_in' }
+  devise_for :users, :path => "", :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock', :registration => 'register', :sign_up => 'cmon_let_me_in' }, :controllers => { :confirmations => "confirmations" }
 
   devise_scope :user do
     get "sign_in", :to => "devise/sessions#new"
@@ -51,6 +53,8 @@ SurveyHuman::Application.routes.draw do
     resources :survey do
       delete :delete_question, :on=>:collection
       delete :delete_answer, :on=>:collection
+      get :generate_url_for_survey, :on=>:collection
+      put :send_survey_by_email, :on=>:collection
     end
     resources :exam
     resources :match_type
@@ -77,7 +81,9 @@ SurveyHuman::Application.routes.draw do
 
   namespace :panel do
     resources :survey do
-      get :index, :on => :collection
+      post :submit_survey, :on => :collection
+      get :success, :on => :collection
+      get :error, :on => :collection
     end
     resources :subscribe do
       get :index, :on => :collection

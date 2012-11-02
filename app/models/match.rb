@@ -3,6 +3,7 @@ class Match < ActiveRecord::Base
 	belongs_to :question_level
 	belongs_to :user
 	has_many :questions
+	has_many :solutions
 
 	# This function evaluates if a column is nullable or not in the database
 	#
@@ -42,4 +43,17 @@ class Match < ActiveRecord::Base
 			"yes"
 		end
 	end
+
+	def get_extension
+		url="/panel/survey/"
+		param_id=id
+		ext1="#{created_at.year.to_i+12}#{created_at.month.to_i+20}#{created_at.day.to_i+27}"
+		ext2="#{created_at.day.to_i+54}#{created_at.month.to_i+40}#{created_at.year.to_i+24}"
+		"#{url}#{ext1}#{id.to_s}#{ext2}"
+	end
+
+	def self.get_id_by_parameter(parameter)
+		parameter[8..parameter.size-9]
+	end
+
 end

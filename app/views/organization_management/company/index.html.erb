@@ -5,4 +5,4 @@
 <div id="table">
   <%= render :partial => "table" %>
 </div>
-<br/><%= link_to t('.new_button'),new_organization_management_company_path, :class=>"button" unless !current_user.has_access(18)%>
+<br/><%= link_to t('.new_organization'),new_organization_management_company_path, :class=>"btn btn-info" unless !current_user.has_access(18)%>
