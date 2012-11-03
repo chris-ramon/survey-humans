@@ -172,6 +172,37 @@ class MatchManagement::SurveyController < ApplicationController
     end
   end
 
+  def distribute
+    @match = Match.find(params[:id])
+    if current_user.has_access(26) and @match.user_id==current_user.id
+      if !@match.url.nil?
+        #Facebook
+        app_id=119458701544487
+        description="This is a survey."
+        redirect_uri="http://172.18.20.26:3000/match_management/survey/#{params[:id]}/edit"
+        @facebook_url="https://www.facebook.com/dialog/feed?app_id=#{app_id}&link=#{@match.url}&picture=http://fbrell.com/f8.jpg&name=#{@match.name}&caption=Survey%20Humans&description=#{description}&redirect_uri=#{redirect_uri}&display=popup"
+        #Twitter
+        msg="We have a new survey for you. "
+        @twitter_url="https://twitter.com/share?text=#{msg}&url=#{@match.url}&hashtags=SurveyHumans"
+      else
+        @facebook_url="#"
+        @twitter_url="#"
+      end
+      @list_users = User.where(:deleted=>0)
+      @list_question_levels = QuestionLevel.where(:deleted=>0)
+      @list_match_types = MatchType.where(:deleted=>0)
+      @match_type_id=@match.id
+      @list_answer_formats = AnswerFormat.where(:deleted=>0)
+      @list_question_types = QuestionType.where(:deleted=>0)
+      @list_status = [{"id"=>0,"name"=>"waiting"}, {"id"=>1,"name"=>'started'}, {"id"=>2,"name"=>'finished'}]
+      @list_questions = Question.where(:match_id=>params[:id],:deleted=>0)
+      @question = Question.new
+      @int_page_type = 2
+    else
+      no_access
+    end
+  end
+
   def send_survey_by_email
     if current_user.has_access 26
       @match = Match.find params[:id]

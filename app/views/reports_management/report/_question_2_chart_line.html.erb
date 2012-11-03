@@ -1,0 +1,54 @@
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	<h3>Line Chart</h3>
+</div>
+<div class="modal-body">
+	<div id="line_chart"></div>
+	<%answers_ids=Array.new%>
+	<%answers_text=Array.new%>
+	<%answers_quantity=Array.new%>
+	<%list_solutions=Solution.where(:question_id=>question.id)%>
+	<%list_solutions.each do |solution|
+			two_id=solution.answer.split("@")
+			two_id.each do |id|
+				answers_ids << id.to_i
+				answers_text << Answer.find(id.to_i).answer[0..8]
+			end
+		end
+	%>
+	<%answers_text=answers_text.uniq%>
+	<%ans_ids=answers_ids.uniq%>
+	<%ans_ids.each do |id_uniq|
+			c=0
+			answers_ids.each do |id|
+				if id_uniq==id
+					c+=1
+				end
+			end
+			answers_quantity << c
+		end
+	%>
+	<script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Answer', 'Qty answers'],
+          <%answers_text.each_with_index do |t,i|%>
+          ['<%=answers_text[i]%>',  <%=answers_quantity[i]%>],
+          <%end%>
+        ]);
+
+        var options = {
+          title: "<%=question.question%>",
+                       'width':510,
+                       'height':350};
+
+        var chart = new google.visualization.LineChart(document.getElementById('line_chart'));
+        chart.draw(data, options);
+      }
+    </script>
+</div>
+<div class="modal-footer">
+	<a href="#" class="btn btn-success" data-dismiss="modal">OK</a>
+</div>

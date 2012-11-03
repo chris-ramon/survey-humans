@@ -34,13 +34,15 @@ class Panel::SurveyController < ApplicationController
         solution.question_id=question.id
         if question.answer_format_id==8
           solution.answer=""
-          image = params["answer_#{question.id}"]["image"]
-          solution.image_file_name = image.original_filename
-          solution.image_content_type = image.content_type
-          solution.image_file_size = image.size
-          solution.image_updated_at = Time.now
-          fileDir = "public/images/surveyhumans"
-          File.open(File.join(fileDir, image.original_filename), "wb") { |f| f.write(image.tempfile.read) }
+          if !params["answer_#{question.id}"].nil?
+            image = params["answer_#{question.id}"]["image"]
+            solution.image_file_name = image.original_filename
+            solution.image_content_type = image.content_type
+            solution.image_file_size = image.size
+            solution.image_updated_at = Time.now
+            fileDir = "public/images/surveyhumans"
+            File.open(File.join(fileDir, image.original_filename), "wb") { |f| f.write(image.tempfile.read) }
+          end
         else
           solution.answer=answer
         end

@@ -1,0 +1,206 @@
+
+body{
+
+}
+
+
+div{
+    display:block;
+
+}
+
+#container{
+    width:800px;
+
+}
+
+table{
+    border-collapse:collapse;
+    margin:0;
+    padding:0;
+    border-spacing:0;
+}
+
+p{
+    margin:0;
+    padding:0;
+}
+
+.borde_top{
+    border-top:1px solid black;
+}
+
+.borde_left{
+    border-left:1px solid black;
+}
+
+.borde_right{
+    border-right:1px solid black;
+}
+
+.borde_bottom{
+    border-bottom:1px solid black;
+}
+
+
+#hotel_info{
+    height:150px;
+    overflow:hidden;
+}
+
+
+#top_left{
+    width:80%;
+    height:100%;
+    float:left;
+}
+
+#top_right{
+    width:19.9%;
+    height:100%;
+    float:left;
+}
+
+
+#hotel_name{
+    margin-top:1%;
+    height:47%;
+   padding-top:3%;
+}
+
+#hotel_name p{
+
+    font-size:34px;
+    text-align:center;
+}
+
+#address{
+    height:13.9%;
+    padding-top:0.5%;
+    margin-top:1%;
+    width:99.4%;
+    text-align:left;
+    float:left;
+    padding-left:5px;
+}
+
+#phone{
+    height:13.9%;
+    padding-top:0.5%;
+    width:99.4%;
+    text-align:left;
+    float:left;
+    padding-left:5px;
+}
+
+#hotel_logo{
+    margin-left:30px;
+    height:55%;
+    margin-top:1%;
+    overflow:hidden;
+    float:left;
+}
+
+#doc_num{
+    height:9%;
+    width:100%;
+    margin-top:1%;
+    padding-bottom:2%;
+    text-align:center;
+    font-size:80%;
+    float:left;
+}
+
+#doc_num_id{
+    width:100%;
+    height:30%;
+    text-align:center;
+    vertical-align:middle;
+    margin-top:10%;
+    float:left;
+}
+
+#client_info{
+    margin-top:2%;
+    height:50px;
+}
+
+#client_name{
+    float:left;
+    width:98.9%;
+    padding:5px;
+    padding-top:0.2%;
+}
+
+#client_ruc{
+    float:left;
+    width:70%;
+    padding:5px;
+    padding-top:0.2%;
+
+}
+
+#client_date{
+    float:left;
+    padding:5px;
+    padding-top:0.2%;
+    padding-left:10%;
+}
+
+
+#detail{
+    margin-top:4%;
+    margin-bottom:4%;
+    width:100%;
+    overflow:auto;
+}
+
+#detail_table {
+    width:100%;
+    border-collapse:collapse;
+    text-align:center;
+    border-spacing:0px;
+}
+
+.cant{
+    width:10%;
+}
+
+.des{
+    width:60%;
+}
+
+.fecha{
+    width:15%;
+}
+
+.monto{
+    width:15%;
+}
+
+#sumup{
+    float:right;
+    width:25%;
+    margin-top:20px;
+    padding:0;
+}
+
+#sumup_table{
+    float:right;
+    width:100%;
+    margin-top:20px;
+}
+
+#sumup_table td{
+    padding-left:5px;
+}
+
+.montos{
+    width:50%;
+    text-align:center;
+}
+
+.items-montos{
+    width:49.9%;
+}
+

@@ -1,2 +1,8 @@
-<h1>ReportsManagement::Report#index</h1>
-<p>Find me in app/views/reports_management/report/index.html.erb</p>
+<% title t('.Survey Details - Report') %>
+<h2><%=yield :title%></h2>
+
+<%= render :partial => "search" %><br/>
+<div id="table">
+  <%= render :partial => "table" %>
+</div>
+</br>

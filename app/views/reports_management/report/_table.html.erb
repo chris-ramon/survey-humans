@@ -4,7 +4,6 @@
 			<tr>
 				<th><%=t('.name')%></th>
 				<th><%=t('.status')%></th>
-		  	<th>URL</th>
 			<%if current_user.profile_id==1%>
 				<th><%=t('.created_by')%></th>
 				<th><%=t('.deleted?')%></th>
@@ -17,22 +16,12 @@
 			  <tr>
 				  <td><%=match.name%></td>
 				  <td><%=match.get_status(match.started)%></td>
-				<%if !match.url.nil?%>
-					<td><a href="<%=match.url%>"><%=match.url%></a></td>
-				<%else%>
-					<td>The URL hasn't been generated.</td>
-				<%end%>
 				<%if current_user.profile_id==1%>
 					<td><%=match.user.email%></td>
 					<td><%=match.deleted?(match.id)%></td>
 				<%end%>
 				  <td>
-				  	<%if match.started!=2%>
-						<%=link_to "Edit",edit_match_management_survey_path(match) unless !current_user.has_access(19)%>
-						<%=link_to "Delete",{:action=>'destroy',:id=>match.id},{:method=>:delete, :confirm=>t('messages.sure_to_delete')+match.name+"?"} unless !current_user.has_access(21)%>
-					<%else%>
-						<p>No editable</p>
-					<%end%>
+					<%=link_to "Analyze",reports_management_report_path(match) unless !current_user.has_access(19)%>
 				  </td>
 			
 			  </tr>

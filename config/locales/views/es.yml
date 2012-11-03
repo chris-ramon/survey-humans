@@ -16,3 +16,4 @@ es:
     processing: 'Procesando...'
     save: 'Guardar'
     send: 'Enviar'
+    ok: "OK"

@@ -1,0 +1,32 @@
+<section id="panel">
+  	<legend><h3><%=@match.name%>
+		<small> 
+			<a href="#" class="btn btn-success">Excel</a>
+			<a href="<%=export_pdf_reports_management_report_index_path+'&id='+@match.id.to_s%>" class="btn btn-danger">PDF</a>
+		</small></h3> 
+	</legend>
+	<%if !@match.pdf_url.nil?%>
+		PDF to download: <a href="<%=@match.pdf_url%>" target="_blank"><%=@match.pdf_url%></a>
+	<%end%>
+
+	<%if @match.started!=0%>
+		<%if !@list_questions.empty?%>
+
+	    <div class="control-group">
+	      <%@list_questions.each_with_index do |question,index|%>
+	        <div class="question-div">
+	          <h5><%=index+1%>. <%=question.question%>
+	            <small><%=question.answer_format.name%></small>
+	          </h5>
+	          <a href="<%=show_question_reports_management_report_index_path+'&id='+question.id.to_s%>" class="btn">See Charts</a>
+	        </div>
+	      <%end%>
+	    </div>
+
+		<%else%>
+		    <small>No questions</small>
+		<%end%>
+	<%else%>
+			<h6>The survey has not started yet.</h6>		
+	<%end%>	
+</section>

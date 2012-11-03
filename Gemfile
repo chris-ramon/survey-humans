@@ -16,6 +16,10 @@ gem "meta_where"
 gem "meta_search"
 gem 'private_pub'
 gem 'nested_form'
+gem "pdfkit"
+gem "wkhtmltopdf"
+gem 'rack-ssl', :require => 'rack/ssl'
+gem "googlecharts", "~> 1.6.8"
 gem 'activemerchant', '~> 1.28.0'
 gem 'redis'
 # gem 'rack-ssl', :require => 'rack/ssl'
