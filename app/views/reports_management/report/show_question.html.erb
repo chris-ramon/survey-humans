@@ -1,0 +1,114 @@
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<a href="<%=reports_management_report_path(@question.match)%>" class="btn"><i class="icon-chevron-left"></i> Back</a>
+<%case @question.answer_format_id%>
+	<%when 1,2, 5,6%>
+			<h3>Choose a Chart</h3> 
+			<style type="text/css">
+				.chart{
+					width: 220px;
+					height: 150px;
+					margin: 10px;
+				}
+				.chart:hover{
+					background: #ccc;
+				}
+			</style>
+			<div class="inline">
+				<a class="btn chart" href="#bar-h-chart-<%=@question.id%>" role="button" data-toggle="modal"><img src="/images/front/chart1.png" alt="Bar H" title="Bar H"></a>
+				<a class="btn chart" href="#line-chart-<%=@question.id%>" role="button" data-toggle="modal"><img src="/images/front/chart2.png" alt="Line" title="Line"></a>
+				<a class="btn chart" href="#bar-v-chart-<%=@question.id%>" role="button" data-toggle="modal"><img src="/images/front/chart3.png" alt="Bar V" title="Bar V"></a>
+				<a class="btn chart" href="#pie-chart-<%=@question.id%>" role="button" data-toggle="modal"><img src="/images/front/chart4.png" alt="Pie" title="Pie"></a>
+			</div>
+			<h3>Total Started Survey: <%=Solution.where(:question_id=>@question.id).count%></h3>
+			<h4><%=@question.question%> <small><%=@question.answer_format.name%></small></h4>
+			<table class="table table-condensed span8">
+				<thead>
+					<tr>
+						<td>#</td>
+						<td>Answers</td>
+					</tr>
+				</thead>
+				<tbody>
+					<%Answer.get_answers_by_question_id(@question.id).each_with_index do |answer, index|%>
+						<tr>
+							<td><small><%=index+1%></small></td>
+							<td><%=answer.answer%></td>
+						</tr>
+					<%end%>
+				</tbody>
+			</table>
+	<%when 3,7%>
+			<h4><%=@question.question%> <small><%=@question.answer_format.name%></small></h4>
+			<table class="table table-condensed span8">
+				<thead>
+					<tr>
+						<th>#</th>
+						<%if @question.answer_format_id==3%>
+						<th>Comments</th>
+						<%else%>
+						<th>Datetimes</th>
+						<%end%>
+					</tr>
+				</thead>
+				<tbody>
+					<%Solution.where(:question_id=>@question.id).each_with_index do |sol,index|%>
+						<tr>
+							<td><small><%=index+1%></small></td>
+							<td><%=sol.answer%></td>
+						</tr>
+					<%end%>
+				</tbody>
+			</table>
+	<%when 4%>
+			<br><br>
+			<center><a class="btn chart" href="#line-chart-<%=@question.id%>" role="button" data-toggle="modal"><img src="/images/front/chart2.png" alt="Line" title="Line"></a>
+			<a class="btn chart" href="#barv-chart-<%=@question.id%>" role="button" data-toggle="modal"><img src="/images/front/chart3.png" alt="Line" title="Line"></a></center>
+			<div class="modal hide fade" id="line-chart-<%=@question.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><%= render :partial => "question_4_chart_line", :locals=>{:question=>@question}%></div>
+			<div class="modal hide fade" id="barv-chart-<%=@question.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><%= render :partial => "question_4_chart_barv", :locals=>{:question=>@question}%></div>
+			<h4><%=@question.question%> <small><%=@question.answer_format.name%></small></h4>
+			<table class="table table-condensed span8">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Ranking</th>
+					</tr>
+				</thead>
+				<tbody>
+					<%Solution.where(:question_id=>@question.id).each_with_index do |sol,index|%>
+						<tr>
+							<td><small><%=index+1%></small></td>
+							<td><%=sol.answer%></td>
+						</tr>
+					<%end%>
+				</tbody>
+			</table>
+	<%when 8%>
+			<h4><%=@question.question%> <small><%=@question.answer_format.name%></small></h4>
+				<p>Images</p>
+				<div class="inline" style="padding:15px;border:1px solid #ccc">
+					<%Solution.where(:question_id=>@question.id).each_with_index do |sol,index|%>
+						<a href="#dialog_<%=sol.id%>" role="button" data-toggle="modal"><img src="/images/surveyhumans/<%=sol.image_file_name%>" width="70px" style="padding:15px;"/></a>
+						<div class="modal hide fade" id="dialog_<%=sol.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<br><center><img src="/images/surveyhumans/<%=sol.image_file_name%>"/></center><br>
+						</div>
+					<%end%>
+				</div>
+<%end%>
+
+<%if Solution.where(:question_id=>@question.id).empty?%>
+	<p>The question has no been answered yet.</p>
+<%end%>
+
+<%case @question.answer_format_id%>
+	<%when 1, 5%>
+		<div class="modal hide fade" id="bar-h-chart-<%=@question.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><%= render :partial => "question_1_chart_barh", :locals=>{:question=>@question}%></div>
+		<div class="modal hide fade" id="line-chart-<%=@question.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><%= render :partial => "question_1_chart_line", :locals=>{:question=>@question}%></div>
+		<div class="modal hide fade" id="bar-v-chart-<%=@question.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><%= render :partial => "question_1_chart_barv", :locals=>{:question=>@question}%></div>
+		<div class="modal hide fade" id="pie-chart-<%=@question.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><%= render :partial => "question_1_chart_pie", :locals=>{:question=>@question}%></div>
+	<%when 2, 6%>
+		<div class="modal hide fade" id="bar-h-chart-<%=@question.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><%= render :partial => "question_2_chart_barh", :locals=>{:question=>@question}%></div>
+		<div class="modal hide fade" id="line-chart-<%=@question.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><%= render :partial => "question_2_chart_line", :locals=>{:question=>@question}%></div>
+		<div class="modal hide fade" id="bar-v-chart-<%=@question.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><%= render :partial => "question_2_chart_barv", :locals=>{:question=>@question}%></div>
+		<div class="modal hide fade" id="pie-chart-<%=@question.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><%= render :partial => "question_2_chart_pie", :locals=>{:question=>@question}%></div>
+<%end%>
+<br/><br/>

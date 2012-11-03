@@ -1,0 +1,27 @@
+<% title t('.URL: ')%>
+<%= render :partial=>"layouts/messages" %>
+
+<h2><%=yield :title%>
+		<%if @match.url.nil?%>
+      <%=link_to "Generate URL", generate_url_for_survey_match_management_survey_index_path+"&id="+@match.id.to_s, :class=>"btn" unless !current_user.has_access(21)%>
+    <%else%>
+      <small><a href="<%=@match.url%>"><%=@match.url%></a></small>
+      <%=link_to "Cancel", edit_match_management_survey_path(@match), :class=>"btn" unless !current_user.has_access(21)%>
+    <%end%>
+</h2>
+<br>
+<h3><%=@match.name%></h3>
+<div style="border-radius:8px;border:1px solid #ccc;padding:20px;margin:10px;">
+  <!--Share Facebook -->
+    <a class="btn btn-primary" href="<%=@facebook_url%>"><img src="/img/icon-fb.png"> Share Facebook</a>
+  <!--Share Twitter -->
+    <a class="btn btn-info" href="<%=@twitter_url%>" target="_blank"><img src="/img/icon-tw.png"> Share Twitter</a>
+</div>  
+<div style="border-radius:8px;border:1px solid #ccc;padding:20px;margin:10px;">
+  <!--Share by email -->
+  <a class="btn" href="#send-email" role="button" data-toggle="modal"><i class="icon-envelope"></i> Send Email</a>
+  <div class="modal hide fade" id="send-email" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <%= render :partial => "send_email", :id=>@match.id.to_s %>
+  </div>
+</div>
+<%= render :partial=>"layouts/validation",:locals=>{:form_id=>'form_match'} %>

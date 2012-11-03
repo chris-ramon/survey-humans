@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121026034853) do
+ActiveRecord::Schema.define(:version => 20121103152804) do
 
   create_table "accesses", :force => true do |t|
     t.string   "name",                      :null => false
@@ -60,8 +60,8 @@ ActiveRecord::Schema.define(:version => 20121026034853) do
   end
 
   create_table "question_levels", :force => true do |t|
-    t.string   "range",                     :null => false
-    t.integer  "deleted",    :default => 0
+    t.string   "range",      :null => false
+    t.integer  "deleted"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(:version => 20121026034853) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id",                          :null => false
+    t.string   "pdf_url"
     t.index ["match_type_id"], :name => "index_matches_on_match_type_id"
     t.index ["question_level_id"], :name => "index_matches_on_question_level_id"
     t.index ["user_id"], :name => "index_matches_on_user_id"
@@ -140,6 +141,7 @@ ActiveRecord::Schema.define(:version => 20121026034853) do
     t.integer  "deleted",     :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "position"
     t.index ["question_id"], :name => "index_answers_on_question_id"
     t.foreign_key ["question_id"], "questions", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "answers_ibfk_1"
   end
@@ -245,16 +247,16 @@ ActiveRecord::Schema.define(:version => 20121026034853) do
   end
 
   create_table "panel_subscriptions", :force => true do |t|
-    t.integer  "User_id"
+    t.integer  "user_id"
     t.integer  "panel_plan_id"
     t.integer  "panel_deal_id"
     t.datetime "expired_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["User_id"], :name => "index_panel_subscriptions_on_User_id"
+    t.index ["user_id"], :name => "index_panel_subscriptions_on_user_id"
     t.index ["panel_plan_id"], :name => "index_panel_subscriptions_on_panel_plan_id"
     t.index ["panel_deal_id"], :name => "index_panel_subscriptions_on_panel_deal_id"
-    t.foreign_key ["User_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_subscriptions_ibfk_1"
+    t.foreign_key ["user_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_subscriptions_ibfk_1"
     t.foreign_key ["panel_plan_id"], "panel_plans", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_subscriptions_ibfk_2"
     t.foreign_key ["panel_deal_id"], "panel_deals", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_subscriptions_ibfk_3"
   end
@@ -269,6 +271,22 @@ ActiveRecord::Schema.define(:version => 20121026034853) do
     t.index ["exam_topic_id"], :name => "index_question_type_exam_topics_on_exam_topic_id"
     t.foreign_key ["question_type_id"], "question_types", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "question_type_exam_topics_ibfk_1"
     t.foreign_key ["exam_topic_id"], "exam_topics", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "question_type_exam_topics_ibfk_2"
+  end
+
+  create_table "solutions", :force => true do |t|
+    t.integer  "question_id"
+    t.string   "answer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "match_id",           :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.index ["question_id"], :name => "index_solutions_on_question_id"
+    t.index ["match_id"], :name => "index_solutions_on_match_id"
+    t.foreign_key ["question_id"], "questions", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "solutions_ibfk_1"
+    t.foreign_key ["match_id"], "matches", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "solutions_ibfk_2"
   end
 
 end

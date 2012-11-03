@@ -1,0 +1,45 @@
+<meta charset="utf-8">
+<meta name="pdfkit-orientation" content="Portrait"/>
+<% title "Documento de Pago" %>
+<base href="<%='http://localhost:3000'%>"/>
+<p>Survey Humans - 2012</p>
+<h2>Report: <%=@match.name%></h2>
+    <div id="container" class="borde_top borde_top borde_left borde_right borde_bottom">
+      <div id="hotel_info" class="borde_bottom">
+        <div id="top_left">
+          <div id="hotel_name"><p><%=@match.name%></p></div>
+        </div>
+      </div>
+
+      <div id="client_info" class="borde_top borde_bottom">
+        <div id="client_ruc" class="borde_right"><%=@match.user.email%></div>
+        <div id="client_date"><%=Date.today%></div>
+      </div>
+      <div id="detail">
+        <table id="detail_table">
+          <thead>
+            <th class="cant borde_top borde_bottom borde_right">#</th>
+            <th class="des borde_top borde_bottom borde_right">Question</th>
+            <th class="fecha borde_top borde_bottom borde_right">Answer Format</th>
+            <th class="monto borde_top borde_bottom ">Qty Answers</th>
+          </thead>
+          <tbody>
+            <%if !Question.where(:match_id=>@match.id).empty?%>
+			    <div class="control-group">
+			      <%Question.where(:match_id=>@match.id).each_with_index do |question,index|%>
+			        <tr>
+	                  <td class="cant borde_top borde_bottom borde_right"><%=index+1%></td>
+	                  <td class="des borde_top borde_bottom borde_right"><%=question.question%></td>
+	                  <td class="fecha borde_top borde_bottom borde_right"><%=question.answer_format.name%></td>
+	                  <td class="monto borde_top borde_bottom "><%=question.answers.count%></td>
+	                </tr>
+			      <%end%>
+			    </div>
+			<%else%>
+			    <small>No questions</small>
+			<%end%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+

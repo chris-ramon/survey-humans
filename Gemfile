@@ -16,7 +16,10 @@ gem "meta_where"
 gem "meta_search"
 gem 'private_pub'
 gem 'nested_form'
+gem "pdfkit"
+gem "wkhtmltopdf"
 gem 'rack-ssl', :require => 'rack/ssl'
+gem "googlecharts", "~> 1.6.8"
 
 # Use unicorn as the web server
 #gem unicorn

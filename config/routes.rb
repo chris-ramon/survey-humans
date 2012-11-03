@@ -1,7 +1,5 @@
 SurveyHuman::Application.routes.draw do
 
-  get "report/index"
-
   namespace :panel do resources :planfeatures end
 
   namespace :panel do resources :features end
@@ -54,6 +52,7 @@ SurveyHuman::Application.routes.draw do
       delete :delete_question, :on=>:collection
       delete :delete_answer, :on=>:collection
       get :generate_url_for_survey, :on=>:collection
+      get :distribute, :on=>:collection
       put :send_survey_by_email, :on=>:collection
     end
     resources :exam
@@ -89,6 +88,13 @@ SurveyHuman::Application.routes.draw do
       get :index, :on => :collection
       get :edit, :on => :collection
       get :update, :on => :collection
+    end
+  end
+
+  namespace :reports_management do
+    resources :report do
+      get :show_question , :on => :collection
+      get :export_pdf, :on=> :collection
     end
   end
 
