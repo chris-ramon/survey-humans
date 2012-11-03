@@ -17,6 +17,7 @@ gem "meta_search"
 gem 'private_pub'
 gem 'nested_form'
 gem 'activemerchant', '~> 1.28.0'
+gem 'redis'
 # gem 'rack-ssl', :require => 'rack/ssl'
 
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121026034853) do
+ActiveRecord::Schema.define(:version => 20121103044725) do
 
   create_table "accesses", :force => true do |t|
     t.string   "name",                      :null => false
@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(:version => 20121026034853) do
   create_table "matches", :force => true do |t|
     t.string   "name",                             :null => false
     t.string   "url"
-    t.integer  "started",           :default => 0
+    t.integer  "started"
     t.integer  "match_type_id",                    :null => false
     t.integer  "question_level_id"
     t.integer  "deleted",           :default => 0
@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(:version => 20121026034853) do
     t.integer  "deleted",     :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "position"
     t.index ["question_id"], :name => "index_answers_on_question_id"
     t.foreign_key ["question_id"], "questions", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "answers_ibfk_1"
   end
@@ -242,6 +243,38 @@ ActiveRecord::Schema.define(:version => 20121026034853) do
     t.datetime "updated_at"
   end
 
+  create_table "panel_organizations", :force => true do |t|
+    t.integer  "User_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["User_id"], :name => "index_panel_organizations_on_User_id"
+    t.foreign_key ["User_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_organizations_ibfk_1"
+  end
+
+  create_table "panel_organization_invitations", :force => true do |t|
+    t.integer  "User_id"
+    t.integer  "panel_organization_id"
+    t.integer  "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["User_id"], :name => "index_panel_organization_invitations_on_User_id"
+    t.index ["panel_organization_id"], :name => "index_panel_organization_invitations_on_panel_organization_id"
+    t.foreign_key ["User_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_organization_invitations_ibfk_1"
+    t.foreign_key ["panel_organization_id"], "panel_organizations", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_organization_invitations_ibfk_2"
+  end
+
+  create_table "panel_organization_members", :force => true do |t|
+    t.integer  "User_id"
+    t.integer  "panel_organization_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["User_id"], :name => "index_panel_organization_members_on_User_id"
+    t.index ["panel_organization_id"], :name => "index_panel_organization_members_on_panel_organization_id"
+    t.foreign_key ["User_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_organization_members_ibfk_1"
+    t.foreign_key ["panel_organization_id"], "panel_organizations", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_organization_members_ibfk_2"
+  end
+
   create_table "panel_planfeatures", :force => true do |t|
     t.integer  "panel_plan_id"
     t.integer  "panel_feature_id"
@@ -297,6 +330,22 @@ ActiveRecord::Schema.define(:version => 20121026034853) do
     t.index ["exam_topic_id"], :name => "index_question_type_exam_topics_on_exam_topic_id"
     t.foreign_key ["question_type_id"], "question_types", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "question_type_exam_topics_ibfk_1"
     t.foreign_key ["exam_topic_id"], "exam_topics", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "question_type_exam_topics_ibfk_2"
+  end
+
+  create_table "solutions", :force => true do |t|
+    t.integer  "question_id"
+    t.string   "answer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "match_id",           :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.index ["question_id"], :name => "index_solutions_on_question_id"
+    t.index ["match_id"], :name => "index_solutions_on_match_id"
+    t.foreign_key ["question_id"], "questions", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "solutions_ibfk_1"
+    t.foreign_key ["match_id"], "matches", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "solutions_ibfk_2"
   end
 
 end

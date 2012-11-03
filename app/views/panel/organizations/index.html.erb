@@ -1,0 +1,25 @@
+<h1>Listing panel_organizations</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @panel_organizations.each do |panel_organization| %>
+  <tr>
+    <td><%= panel_organization.User %></td>
+    <td><%= panel_organization.name %></td>
+    <td><%= link_to 'Show', panel_organization %></td>
+    <td><%= link_to 'Edit', edit_panel_organization_path(panel_organization) %></td>
+    <td><%= link_to 'Destroy', panel_organization, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Organization', new_panel_organization_path %>
