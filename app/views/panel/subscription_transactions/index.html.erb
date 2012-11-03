@@ -1,0 +1,37 @@
+<legend><h3>Transactions</h3></legend>
+
+<table class="table table-bordered table-striped">
+  <tr>
+    <th>User</th>
+    <th>Subscription</th>
+    <th>Gateway</th>
+    <th>Amount</th>
+    <th>Success</th>
+    <th>Reference</th>
+    <th>Message</th>
+    <th>Action</th>
+    <th>Params</th>
+    <th>Test</th>
+    <th></th>
+  </tr>
+
+<% @panel_subscription_transactions.each do |panel_subscription_transaction| %>
+  <tr>
+    <td>
+        <a href="#" class=""><%= panel_subscription_transaction.try(:panel_subscription).User.email  %></a>
+    </td>
+    <td><%= panel_subscription_transaction.try(:panel_subscription).panel_plan.name %></td>
+    <td>
+        <a href="<%= panel_subscription_transaction.gateway.homepage_url %>" target="_blank"><%= panel_subscription_transaction.gateway.display_name %></a>
+    </td>
+    <td>$ <%= panel_subscription_transaction.amount %></td>
+    <td><%= panel_subscription_transaction.success %></td>
+    <td><%= panel_subscription_transaction.reference %></td>
+    <td><%= panel_subscription_transaction.message %></td>
+    <td><%= panel_subscription_transaction.action %></td>
+    <td><%= panel_subscription_transaction.params %></td>
+    <td><%= panel_subscription_transaction.test %></td>
+    <td><%= link_to 'Show', panel_subscription_transaction %></td>
+  </tr>
+<% end %>
+</table>

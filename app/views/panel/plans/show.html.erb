@@ -1,15 +1,46 @@
-<p id="notice"><%= notice %></p>
+<div class="admin-show-wrapper">
+  <% if notice != nil %>
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <p id="notice"><%= notice %></p>
+    </div>
+  <% end %>
+  <p>
+    <b>Name:</b>
+    <%= @panel_plan.name %>
+  </p>
 
-<p>
-  <b>Name:</b>
-  <%= @panel_plan.name %>
-</p>
+  <p>
+    <b>Amount:</b>
+    <%= @panel_plan.amount %>
+  </p>
 
-<p>
-  <b>Amount:</b>
-  <%= @panel_plan.amount %>
-</p>
+  <legend>Features</legend>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>Up to</th>
+            <th>Name</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @features.each do |feature| %>
+        <tr>
+          <% if feature.up_to == 0 %>
+              <td>Unlimited</td>
+          <% else %>
+              <td><%= feature.up_to %></td>
+          <% end %>
+          <td><%= feature.panel_feature.name %></td>
+          <td><a href="<%= edit_panel_planfeature_path feature.id %>" class="">Edit</a></td>
+        </tr>
+        
+        <% end %>
+        </tbody>
+    </table>
 
 
-<%= link_to 'Edit', edit_panel_plan_path(@panel_plan) %> |
-<%= link_to 'Back', panel_plans_path %>
+    <%= link_to 'Edit', edit_panel_plan_path(@panel_plan) %> |
+  <%= link_to 'Back', panel_plans_path %>
+</div>

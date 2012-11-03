@@ -20,6 +20,9 @@ gem "pdfkit"
 gem "wkhtmltopdf"
 gem 'rack-ssl', :require => 'rack/ssl'
 gem "googlecharts", "~> 1.6.8"
+gem 'activemerchant', '~> 1.28.0'
+# gem 'rack-ssl', :require => 'rack/ssl'
+
 
 # Use unicorn as the web server
 #gem unicorn

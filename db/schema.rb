@@ -234,6 +234,16 @@ ActiveRecord::Schema.define(:version => 20121103152804) do
     t.datetime "updated_at"
   end
 
+  create_table "panel_gateways", :force => true do |t|
+    t.string   "name"
+    t.string   "website"
+    t.boolean  "status"
+    t.string   "login"
+    t.string   "password",   :limit => 125
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "panel_planfeatures", :force => true do |t|
     t.integer  "panel_plan_id"
     t.integer  "panel_feature_id"
@@ -259,6 +269,24 @@ ActiveRecord::Schema.define(:version => 20121103152804) do
     t.foreign_key ["user_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_subscriptions_ibfk_1"
     t.foreign_key ["panel_plan_id"], "panel_plans", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_subscriptions_ibfk_2"
     t.foreign_key ["panel_deal_id"], "panel_deals", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_subscriptions_ibfk_3"
+  end
+
+  create_table "panel_subscription_transactions", :force => true do |t|
+    t.integer  "panel_subscription_id"
+    t.integer  "panel_gateway_id"
+    t.decimal  "amount",                :precision => 10, :scale => 0
+    t.boolean  "success"
+    t.integer  "reference"
+    t.string   "message"
+    t.string   "action"
+    t.string   "params"
+    t.boolean  "test"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["panel_subscription_id"], :name => "index_panel_subscription_transactions_on_panel_subscription_id"
+    t.index ["panel_gateway_id"], :name => "index_panel_subscription_transactions_on_panel_gateway_id"
+    t.foreign_key ["panel_subscription_id"], "panel_subscriptions", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_subscription_transactions_ibfk_1"
+    t.foreign_key ["panel_gateway_id"], "panel_gateways", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_subscription_transactions_ibfk_2"
   end
 
   create_table "question_type_exam_topics", :force => true do |t|

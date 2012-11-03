@@ -1,0 +1,53 @@
+<%= form_for(@panel_subscription_transaction) do |f| %>
+  <% if @panel_subscription_transaction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@panel_subscription_transaction.errors.count, "error") %> prohibited this panel_subscription_transaction from being saved:</h2>
+
+      <ul>
+      <% @panel_subscription_transaction.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :subscription %><br />
+    <%= f.text_field :subscription %>
+  </div>
+  <div class="field">
+    <%= f.label :gateway %><br />
+    <%= f.text_field :gateway %>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br />
+    <%= f.text_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label :success %><br />
+    <%= f.check_box :success %>
+  </div>
+  <div class="field">
+    <%= f.label :reference %><br />
+    <%= f.text_field :reference %>
+  </div>
+  <div class="field">
+    <%= f.label :message %><br />
+    <%= f.text_field :message %>
+  </div>
+  <div class="field">
+    <%= f.label :action %><br />
+    <%= f.text_field :action %>
+  </div>
+  <div class="field">
+    <%= f.label :params %><br />
+    <%= f.text_field :params %>
+  </div>
+  <div class="field">
+    <%= f.label :test %><br />
+    <%= f.check_box :test %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

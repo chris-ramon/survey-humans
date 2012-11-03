@@ -38,6 +38,9 @@ footer p {
 #sign-up-wrapper {
     margin-top: 40px;
 }
+#select_all_deal_show {
+    margin-right: 10px;
+}
 .admin-show-wrapper {
     margin-top: 75px;
 }
@@ -81,6 +84,9 @@ footer p {
 
 .text-centered {
     text-align: center;
+}
+.checkbox {
+    margin-right: 10px !important;
 }
 
 #update-subs-table th{

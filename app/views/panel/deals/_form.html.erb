@@ -4,7 +4,6 @@
         <button type="button" class="close" data-dismiss="alert">×</button>
         <div id="error_explanation">
             <h4><%= pluralize(@panel_deal.errors.count, "error") %>. Please fix the following errors:</h4>
-
             <ul>
                 <% @panel_deal.errors.full_messages.each do |msg| %>
                   <li><%= msg %></li>
@@ -30,6 +29,8 @@
   <div class="field">
     <%= f.label :deal %><br />
     <%= f.text_field :deal %>
+    <h5>For DISCOUNT insert percentage (%)</h5>
+    <h5>For PROMOTION insert days.</h5>
   </div>
   <div class="actions">
     <%= f.submit :class => 'btn btn-info btn-large' %>

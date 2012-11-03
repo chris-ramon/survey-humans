@@ -1,4 +1,10 @@
     <div class="panel-header">
+        <% if notice != nil %>
+          <div class="alert alert-success">
+              <button type="button" class="close" data-dismiss="alert">×</button>
+              <p id="notice"><%= notice %></p>
+          </div>
+        <% end %>
         <legend>
             <h1>Subscribe</h1>
             <span class="label pull-left status">Active</span>
@@ -63,7 +69,7 @@
                             <strong class="highlight">Current Plan !</strong>
                             <% else %>
                               <% if @credit_card_valid %>
-                                <%= link_to "Select Plan", edit_panel_subscribe_index_path(:old_plan => @user_current_plan, :new_plan => plan.id ), :class => 'btn btn-info' %>
+                                <%= link_to "Select Plan", edit_panel_subscribe_index_path(:old_plan => @user_current_plan, :new_plan => plan.id ), :class => 'btn btn-info', :id => plan.name %>
                               <% end %>
                           <% end %>
                       </p>

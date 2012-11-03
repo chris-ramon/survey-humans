@@ -30,14 +30,15 @@ class Panel::SubscribeController < ApplicationController
 
   def update
     @panel_subscription = Panel::Subscription.where(:User_id => current_user.id).first
+    billing = Panel::Billing.where(:user_id => current_user.id).first
+    new_plan_id = params['new_plan'].to_i
+    result = @panel_subscription.update_subscription(billing, new_plan_id)
     respond_to do |format|
-      ### Updating expired date to 30 days from today.
-      params[:panel_subscription]['expired_at'] = Time.now + 2592000
-      if @panel_subscription.update_attributes(params[:panel_subscription])
+      if result
         format.html { redirect_to(panel_subscribe_index_path, :notice => 'Subscription was successfully updated.') }
         format.xml  { head :ok }
       else
-        format.html { redirect_to(edit_panel_subscribe_index_path) }
+        format.html { redirect_to(panel_subscribe_index_path) }
         format.xml  { render :xml => @panel_subscription.errors, :status => :unprocessable_entity }
       end
     end

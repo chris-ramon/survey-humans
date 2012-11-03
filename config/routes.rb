@@ -1,5 +1,15 @@
 SurveyHuman::Application.routes.draw do
 
+  namespace :panel do resources :subscription_transactions end
+
+  get "/gateways/update-default-gateway/:id/:task", :to => "panel/gateways#update_default_gateway" ,\
+  :as => 'update_default_gateway'
+
+  namespace :panel do
+    resources :gateways do
+    end
+  end
+
   namespace :panel do resources :planfeatures end
 
   namespace :panel do resources :features end
@@ -47,6 +57,7 @@ SurveyHuman::Application.routes.draw do
   namespace :match_management do
     resources :match do 
       get :match_panel, :on => :collection
+      get :show_matches_by_match_type, :on => :collection
     end
     resources :survey do
       delete :delete_question, :on=>:collection
