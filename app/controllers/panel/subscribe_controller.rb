@@ -2,7 +2,7 @@ class Panel::SubscribeController < ApplicationController
   before_filter :authenticate_user!
   layout "_content"
   def index
-    @subscription = Panel::Subscription.where(:user_id => current_user.id).first
+    @subscription = Panel::Subscription.where(:User_id => current_user.id).first
     @billing = Panel::Billing.where(:user_id => current_user.id).first
 
     if !@billing.nil?
