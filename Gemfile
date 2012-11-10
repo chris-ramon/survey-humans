@@ -21,7 +21,7 @@ gem "wkhtmltopdf"
 gem 'rack-ssl', :require => 'rack/ssl'
 gem "googlecharts", "~> 1.6.8"
 gem 'activemerchant', '~> 1.28.0'
-gem 'redis'
+#gem 'redis'
 # gem 'rack-ssl', :require => 'rack/ssl'
 
 
@@ -35,7 +35,7 @@ gem 'redis'
 gem 'ruby-debug19'
 
 # Bundle the extra gems:
-gem 'nokogiri'
+
 
 group :test do
   gem "cucumber-rails"
@@ -44,6 +44,7 @@ group :test do
 end
 
 group :development, :test do
+    gem 'nokogiri'
     gem "cucumber-rails-training-wheels"
     gem "database_cleaner"
     gem "capybara"
