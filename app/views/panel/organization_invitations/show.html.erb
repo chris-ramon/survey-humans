@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @panel_organization_invitation.User %>
+</p>
+
+<p>
+  <b>Organization:</b>
+  <%= @panel_organization_invitation.Organization %>
+</p>
+
+
+<%= link_to 'Edit', edit_panel_organization_invitation_path(@panel_organization_invitation) %> |
+<%= link_to 'Back', panel_organization_invitations_path %>

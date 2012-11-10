@@ -1,15 +1,28 @@
-<p id="notice"><%= notice %></p>
-
+<div class="">
+    <% if notice != nil %>
+      <div class="alert alert-success">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          <p id="notice"><%= notice %></p>
+      </div>
+    <% end %>
+<legend>Organization &raquo; <%= @panel_organization.name %></legend>
 <p>
-  <b>User:</b>
-  <%= @panel_organization.User %>
+  <b>Administrator:</b>
+  <%= @panel_organization.User.email %>
 </p>
 
 <p>
-  <b>Name:</b>
-  <%= @panel_organization.name %>
+    <strong>Members:</strong>
+
 </p>
+
+<ul>
+    <%= @members %>
+    <li></li>
+</ul>
 
 
 <%= link_to 'Edit', edit_panel_organization_path(@panel_organization) %> |
 <%= link_to 'Back', panel_organizations_path %>
+
+</div>

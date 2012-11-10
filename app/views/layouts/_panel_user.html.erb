@@ -1,5 +1,29 @@
 <section id="dashboard-front">
-  <div class="row-fluid container-fluid">
+    <% if @invitations.size > 0 %>
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="row-fluid alert alert-info">
+            <div class="row-fluid">
+                <div class="span12">
+                    <p>You have the following organization invitations:</p>
+                </div>
+            </div>
+            <% @invitations.each do |invitation| %>
+            <div class="row-fluid">
+                <div class="span2">
+                    <%= invitation.panel_organization.name %>
+                </div>
+                <div class="span4">
+                  <a href="#" class="btn">Confirm</a>
+                  <a href="#" class="btn">Dismiss</a>
+                </div>
+            </div> <br>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <div class="row-fluid container-fluid">
     <section class="span4">
       <h4>SURVEYS</h4>
       <div class="inner">
@@ -41,8 +65,12 @@
     <section class="span4">
       <h4>ORGANIZATIONS</h4>
       <div class="inner">
-        <p> </p>
-        <a class="btn btn-success" href="<%=organization_management_company_index_path%>">CREATE ORGANIZATION</a>
+          <ul>
+              <% @organizations.each do |organization| %>
+                <li><a href="<%= panel_organization_path organization.id %>" class=""><%= organization.name %></a></li>
+              <% end %>
+          </ul>
+        <a class="btn btn-success" href="<%=new_panel_organization_path%>">CREATE ORGANIZATION</a>
       </div>
     </section>
   </div>

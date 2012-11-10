@@ -1,6 +1,7 @@
 SurveyHuman::Application.routes.draw do
 
   namespace :panel do resources :organizations end
+  namespace :panel do resources :organization_invitations end
 
   get "report/index"
   namespace :panel do resources :subscription_transactions end

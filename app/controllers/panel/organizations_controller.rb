@@ -1,4 +1,5 @@
 class Panel::OrganizationsController < ApplicationController
+  layout "_content"
   # GET /panel/organizations
   # GET /panel/organizations.xml
   def index
@@ -14,7 +15,7 @@ class Panel::OrganizationsController < ApplicationController
   # GET /panel/organizations/1.xml
   def show
     @panel_organization = Panel::Organization.find(params[:id])
-
+    @members = 123
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @panel_organization }
@@ -25,7 +26,7 @@ class Panel::OrganizationsController < ApplicationController
   # GET /panel/organizations/new.xml
   def new
     @panel_organization = Panel::Organization.new
-
+    @users = User.all
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @panel_organization }
@@ -42,9 +43,20 @@ class Panel::OrganizationsController < ApplicationController
   def create
     params['panel_organization']['User'] = current_user
     @panel_organization = Panel::Organization.new(params[:panel_organization])
-
     respond_to do |format|
       if @panel_organization.save
+        begin
+          @users = params['members']
+          @users.each do |user_id|
+            user_id = user_id.to_i
+            Panel::OrganizationInvitation.create(
+                :panel_organization_id => @panel_organization.id,
+                :User_id => user_id
+            )
+          end
+          rescue
+          #
+        end
         format.html { redirect_to(@panel_organization, :notice => 'Organization was successfully created.') }
         format.xml  { render :xml => @panel_organization, :status => :created, :location => @panel_organization }
       else
