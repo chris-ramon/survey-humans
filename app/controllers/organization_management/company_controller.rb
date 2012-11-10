@@ -34,6 +34,7 @@ class OrganizationManagement::CompanyController < ApplicationController
   def create
     if current_user.has_access 18
       company = Company.new(params[:company])
+      company.user = current_user
       begin
         if company.save
           str_desc="Se registró el company "+company.name+" con id = "+company.id.to_s
@@ -45,6 +46,7 @@ class OrganizationManagement::CompanyController < ApplicationController
           redirect_to :action=>"new",:company=>company.attributes
         end
       rescue ActiveRecord::StatementInvalid => error
+        puts error
         flash[:alert] = t('messages.error_ocurred')
         redirect_to :action=>"new",:company=>company.attributes
       end
