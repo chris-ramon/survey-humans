@@ -1,5 +1,5 @@
 log/*.log
-config/database.yml
+config/cucumber.yml
 tmp/*
 .idea/*
 .DS_Store
