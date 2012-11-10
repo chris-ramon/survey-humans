@@ -34,6 +34,7 @@ class OrganizationManagement::CompanyController < ApplicationController
   def create
     if current_user.has_access 18
       company = Company.new(params[:company])
+      company.user_id=current_user.id
       begin
         if company.save
           str_desc="Se registró el company "+company.name+" con id = "+company.id.to_s

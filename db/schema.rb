@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121103152804) do
+ActiveRecord::Schema.define(:version => 20121110191140) do
 
   create_table "accesses", :force => true do |t|
     t.string   "name",                      :null => false
@@ -44,11 +44,23 @@ ActiveRecord::Schema.define(:version => 20121103152804) do
   end
 
   create_table "answer_formats", :force => true do |t|
-    t.string   "name",                      :null => false
-    t.string   "format",                    :null => false
-    t.integer  "deleted",    :default => 0
+    t.string   "name",                           :null => false
+    t.string   "format",                         :null => false
+    t.integer  "deleted",         :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "match_id",                       :null => false
+    t.integer  "enable_to_exams", :default => 1
+    t.index ["match_id"], :name => "index_answer_formats_on_match_id"
+  end
+
+  create_table "courses", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id",                   :null => false
+    t.integer  "deleted",    :default => 0
+    t.index ["user_id"], :name => "index_courses_on_user_id"
   end
 
   create_table "match_types", :force => true do |t|
@@ -99,10 +111,13 @@ ActiveRecord::Schema.define(:version => 20121103152804) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id",                          :null => false
-    t.string   "pdf_url"
+    t.integer  "obligatory"
+    t.integer  "course_id"
     t.index ["match_type_id"], :name => "index_matches_on_match_type_id"
     t.index ["question_level_id"], :name => "index_matches_on_question_level_id"
     t.index ["user_id"], :name => "index_matches_on_user_id"
+    t.index ["course_id"], :name => "index_matches_on_course_id"
+    t.foreign_key ["course_id"], "courses", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "matches_ibfk_4"
     t.foreign_key ["match_type_id"], "match_types", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "matches_ibfk_1"
     t.foreign_key ["question_level_id"], "question_levels", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "matches_ibfk_2"
     t.foreign_key ["user_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "matches_ibfk_3"
@@ -125,6 +140,7 @@ ActiveRecord::Schema.define(:version => 20121103152804) do
     t.integer  "deleted",          :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "obligatory",       :default => 1, :null => false
     t.index ["answer_format_id"], :name => "index_questions_on_answer_format_id"
     t.index ["question_type_id"], :name => "index_questions_on_question_type_id"
     t.index ["match_id"], :name => "index_questions_on_match_id"
@@ -301,6 +317,17 @@ ActiveRecord::Schema.define(:version => 20121103152804) do
     t.foreign_key ["exam_topic_id"], "exam_topics", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "question_type_exam_topics_ibfk_2"
   end
 
+  create_table "students", :force => true do |t|
+    t.string   "email"
+    t.string   "code"
+    t.integer  "deleted"
+    t.integer  "course_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["course_id"], :name => "index_students_on_course_id"
+    t.foreign_key ["course_id"], "courses", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "students_ibfk_1"
+  end
+
   create_table "solutions", :force => true do |t|
     t.integer  "question_id"
     t.string   "answer"
@@ -311,8 +338,11 @@ ActiveRecord::Schema.define(:version => 20121103152804) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "student_id"
     t.index ["question_id"], :name => "index_solutions_on_question_id"
     t.index ["match_id"], :name => "index_solutions_on_match_id"
+    t.index ["student_id"], :name => "index_solutions_on_student_id"
+    t.foreign_key ["student_id"], "students", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "solutions_ibfk_3"
     t.foreign_key ["question_id"], "questions", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "solutions_ibfk_1"
     t.foreign_key ["match_id"], "matches", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "solutions_ibfk_2"
   end

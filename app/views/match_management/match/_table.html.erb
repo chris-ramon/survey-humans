@@ -12,7 +12,7 @@
 	    <%@list_matches.each do |match|%>
 			  <tr>
 				  <td><%=match.name%></td>
-				  <td><%=match.started%></td>
+				  <td><%=match.get_status(match.started)%></td>
 				  <td><%=match.user.name%></td>
 				  <td>
 					  <%=link_to image_tag('standard/show.png',:title=>"#{t('table.show')} #{match.name}"),edit_match_management_match_path(match) unless !current_user.has_access(19)%>

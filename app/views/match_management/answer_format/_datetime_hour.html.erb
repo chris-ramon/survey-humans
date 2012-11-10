@@ -1,5 +1,6 @@
 <div class="answer-format-content">
-	<h6>What time you were born?</h6>
+	<%text= @match.match_type_id==1 ? "What time you were born?" : "When was America discovered?"%>
+	<h6><%=text%></h6>
 	<br/>
 	<p>Date or time: <input type="text" id="datepicker" style="width:127px"/></p>
 	<script>

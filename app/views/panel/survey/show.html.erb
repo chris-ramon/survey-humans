@@ -1,13 +1,14 @@
 <section id="panel">
     <br/><br/><br/>
-    <legend><h3><%=@match.name%></h3></legend>
+    <legend><h3><%=@match.name%></h3><small>(*) Required</small></legend>
 
 <%if @match.started==1%>
     <%if !@list_questions.empty?%>
-    	<%=form_tag(submit_survey_panel_survey_index_path, :method=>"post", :multipart => true) do %>
+    	<%=form_tag(submit_survey_panel_survey_index_path, :method=>"post", :id=>"form_send_survey", :multipart => true) do %>
     		<%@list_questions.each_with_index do |question, index|%>
     			<div>
-    				<h6><%=index+1%>. <%=question.question%></h6>
+    				<%required= question.obligatory==1 ? "(*)" : ""%>
+    				<h6><%=index+1%>. <%=question.question%> <%=required%></h6>
     			</div>
     			<div>
     				<input type="hidden" name="match_id" value="<%=@match.id%>"/>
@@ -16,7 +17,7 @@
 							<%when 1%>
 								<!--%= render :partial=>"/match_management/answer/ans_one_answer", :locals=>{:question=>question}%-->
 								<%Answer.get_answers_by_question_id(question.id).each_with_index do |answer, index|%>
-									<label class="radio"><input type="radio" name="answer_<%=question.id%>" value="<%=answer.id%>"/><%=answer.answer%></label>
+									<label class="radio"><input class="validate[required]" type="radio" name="answer_<%=question.id%>" value="<%=answer.id%>"/><%=answer.answer%></label>
 								<%end%>
 							<%when 2%>
 								<!--%= render :partial=>"/match_management/answer/ans_multiple_answers", :locals=>{:question=>question}%-->
@@ -78,4 +79,26 @@
 		<h6>The survey is not available.</h6>		
 <%end%>
 </section>
-<script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
+
+<% javascript "jquery.validationEngine-#{I18n.locale}","jquery.validationEngine","jquery.blockUI" %>
+<% stylesheet "validationEngine.jquery" %>
+
+<script type='text/javascript'>
+  $(document).ready(function() {
+    $("#form_send_survey").validationEngine();
+    $("#form_send_survey").submit(function() {
+      if ($("#form_send_survey").validationEngine('validate')) {
+        $.blockUI({ message: "Procesando la información",
+          css: {
+            border: 'none',
+            padding: '15px',
+            backgroundColor: '#000',
+            '-webkit-border-radius': '10px',
+            '-moz-border-radius': '10px',
+            opacity: .5,
+            color: '#fff'
+        } });
+      }
+    });
+  });
+</script>

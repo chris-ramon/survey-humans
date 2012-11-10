@@ -1,0 +1,84 @@
+
+<section id="panel">
+    <br/><br/><br/>
+    <legend><h3><%=@match.name%></h3></legend>
+
+<%if @match.started==1%>
+    <%if !@list_questions.empty?%>
+    	<%=form_tag(submit_exam_panel_exam_index_path, :method=>"post", :multipart => true) do %>
+    		<%@list_questions.each_with_index do |question, index|%>
+    			<div>
+    				<%required= question.obligatory==1 ? "(*)" : ""%>
+    				<h6><%=index+1%>. <%=question.question%> <%=required%></h6>
+    			</div>
+    			<div>
+    				<input type="hidden" name="match_id" value="<%=@match.id%>"/>
+    				<input type="hidden" name="student_id" value="<%=@student_id%>"/>
+    				<input type="hidden" name="question_<%=question.id%>" value="<%=question.id%>"/>
+    				<%case question.answer_format_id%>
+							<%when 1%>
+								<!--%= render :partial=>"/match_management/answer/ans_one_answer", :locals=>{:question=>question}%-->
+								<%Answer.get_answers_by_question_id(question.id).each_with_index do |answer, index|%>
+									<label class="radio"><input type="radio" name="answer_<%=question.id%>" value="<%=answer.id%>"/><%=answer.answer%></label>
+								<%end%>
+							<%when 2%>
+								<!--%= render :partial=>"/match_management/answer/ans_multiple_answers", :locals=>{:question=>question}%-->
+								<%Answer.get_answers_by_question_id(question.id).each_with_index do |answer, index|%>
+									<label class="checkbox"><input type="checkbox" name="answer_<%=answer.id%>" value="<%=answer.id%>"/><%=answer.answer%></label>
+								<%end%>
+							<%when 3%>
+								<!--%= render :partial=>"/match_management/answer/ans_comment", :locals=>{:question=>question}%-->
+								<textarea style="width:350px;max-width:350px;max-height:100px" name="answer_<%=question.id%>"></textarea>
+							<%when 4%>
+								<!--%= render :partial=>"/match_management/answer/ans_ranking", :locals=>{:question=>question}%-->
+								<div id="answer_<%=question.id%>" style="width:360px"></div><br>
+								<label>Ranking <small> (0 - 100)</small>: <input id="answer_input_<%=question.id%>" type="text" name="answer_<%=question.id%>" value="0" readonly="true" style="width:28px"/></label>
+								<script>
+								$(function() {
+								    $("#answer_<%=question.id%>").slider();
+								});
+									$(document).ready(function() {
+										$( "#answer_<%=question.id%>" ).slider({
+										  slide: function(event, ui) {
+										  	var value = $( "#answer_<%=question.id%>" ).slider( "option", "value" );
+									    	$("#answer_input_<%=question.id%>").val(value);
+										  }
+										});
+										$( "#answer_<%=question.id%>" ).slider({
+										  change: function(event, ui) {
+										  	var value = $( "#answer_<%=question.id%>" ).slider( "option", "value" );
+									    	$("#answer_input_<%=question.id%>").val(value);
+										  }
+										});
+								  });
+								</script>
+							<%when 5%>
+								<!--%= render :partial=>"/match_management/answer/ans_one_answer_per_row", :locals=>{:question=>question}%-->
+								
+							<%when 6%>
+								<!--%= render :partial=>"/match_management/answer/ans_multiple_answers_per_row", :locals=>{:question=>question}%-->
+								
+							<%when 7%>
+								<!--%= render :partial=>"/match_management/answer/ans_datetime", :locals=>{:question=>question}%-->
+								<input type="text" id="answer_<%=question.id%>" name="answer_<%=question.id%>"/>
+								<script>
+							    $(function() {
+							        $( "#answer_<%=question.id%>" ).datepicker();
+							    });
+							  </script>
+							<%when 8%>
+								<!--%= render :partial=>"/match_management/answer/ans_file_picker", :locals=>{:question=>question}%-->
+								<%=file_field("answer_#{question.id}", :image)%>
+						<%end%>
+    			</div>
+    		<%end%>
+    		<%= submit_tag(t('buttons.send'), :disable_with => t('buttons.processing'), :class => "btn btn-success btn-large")%>
+    	<%end%>
+    <%else%>
+
+    <%end%>
+<%else%>
+		<h6>The survey is not available.</h6>		
+<%end%>
+</section>
+<script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>

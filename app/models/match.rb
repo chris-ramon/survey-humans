@@ -4,6 +4,7 @@ class Match < ActiveRecord::Base
 	belongs_to :user
 	has_many :questions
 	has_many :solutions
+	belongs_to :course
 
 	# This function evaluates if a column is nullable or not in the database
 	#
@@ -45,7 +46,8 @@ class Match < ActiveRecord::Base
 	end
 
 	def get_extension
-		url="/panel/survey/"
+		match_type_str = match_type_id==1 ? "survey" : "exam"
+		url="http://172.18.19.228:3000/panel/#{match_type_str}/"
 		param_id=id
 		ext1="#{created_at.year.to_i+12}#{created_at.month.to_i+20}#{created_at.day.to_i+27}"
 		ext2="#{created_at.day.to_i+54}#{created_at.month.to_i+40}#{created_at.year.to_i+24}"

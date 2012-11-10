@@ -3,16 +3,16 @@
 <%= form_for(@question_type, :url=>str_path, :method=>str_method,:html=>{:id=>"form_company"}) do |f| %>   
 	
 	<fieldset>
-		<legend><%=t('.new_company')%></legend>
+		<legend><%=t('.new_question_type')%></legend>
 		<dl class="inline">
 
-      <dt><%= set_label_obligatory(QuestionType.null?("name")) %><%= f.label :name,"#{t('.name')}:" %></dt>
+      <dt><%= set_label_obligatory(QuestionType.null?("name")) %><%= f.label :name,"Name:" %></dt>
       <dd>
         <%= f.text_field :name, :class=>"medium validate[#{set_validate(QuestionType.null?("name"))}]",:size=>50 %>
         <small><%= t('.small_name')%></small>
       </dd>
 
-      <dt><%= set_label_obligatory(QuestionType.null?("description")) %><%= f.label :description,"#{t('.description')}:" %></dt>
+      <dt><%= set_label_obligatory(QuestionType.null?("description")) %><%= f.label :description,"Description:" %></dt>
       <dd>
         <%= f.text_area :description, :class=>"medium validate[#{set_validate(QuestionType.null?("description"))}]",:size=>50 %>
         <small><%= t('.small_description')%></small>

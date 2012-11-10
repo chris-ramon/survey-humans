@@ -7,7 +7,7 @@ class Panel::SurveyController < ApplicationController
   def show
   	id = Match.get_id_by_parameter(params[:id])
   	@match = Match.find id
-  	@list_questions = Question.where(:match_id=>id)
+  	@list_questions = Question.where(:match_id=>id,:deleted=>0)
   end
 
   def submit_survey

@@ -1,5 +1,6 @@
 <div class="answer-format-content">
-<h6>Is this app easy to use?</h6>
+<%text= @match.match_type_id==1 ? "Is this app easy to use?" : "Is Berna the capital of Greece?"%>
+<h6><%=text%></h6>
 <label class="radio"><input type="radio" name="optionsRadios"> No </label>
 <label class="radio"><input type="radio" name="optionsRadios"> Yes </label>
 <label class="radio"><input type="radio" name="optionsRadios"> Maybe </label>

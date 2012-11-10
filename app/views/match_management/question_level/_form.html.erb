@@ -6,7 +6,7 @@
 		<legend><%=t('.profile_info')%></legend>
 		<dl class="inline">
 
-      <dt><%= set_label_obligatory(QuestionLevel.null?("range")) %><%= f.label :name,"#{t('.range')}:" %></dt>
+      <dt><%= set_label_obligatory(QuestionLevel.null?("range")) %><%= f.label :name,"Range:" %></dt>
       <dd>
         <%= f.text_field :range, :class=>"medium validate[#{set_validate(QuestionLevel.null?("range"))}]",:size=>50 %>
         <small><%= t('.small_range')%></small>

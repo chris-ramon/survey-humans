@@ -1,5 +1,7 @@
 SurveyHuman::Application.routes.draw do
 
+  resources :courses
+
   namespace :panel do resources :subscription_transactions end
 
   get "/gateways/update-default-gateway/:id/:task", :to => "panel/gateways#update_default_gateway" ,\
@@ -66,11 +68,18 @@ SurveyHuman::Application.routes.draw do
       get :distribute, :on=>:collection
       put :send_survey_by_email, :on=>:collection
     end
-    resources :exam
+    resources :exam do
+      delete :delete_question, :on=>:collection
+      delete :delete_answer, :on=>:collection
+      get :generate_url_for_exam, :on=>:collection
+      get :distribute, :on=>:collection
+      put :send_exam_by_email, :on=>:collection
+    end
     resources :match_type
     resources :question do
       post :add_question, :on=>:collection
       put :edit_question, :on=>:collection
+      put :choose_correct_answer, :on=>:collection
     end
     resources :answer do
       put :add_answers, :on=>:collection
@@ -92,6 +101,13 @@ SurveyHuman::Application.routes.draw do
   namespace :panel do
     resources :survey do
       post :submit_survey, :on => :collection
+      get :success, :on => :collection
+      get :error, :on => :collection
+    end
+    resources :exam do
+      post :validate_user, :on => :collection
+      get :show_exam, :on => :collection
+      post :submit_exam, :on => :collection
       get :success, :on => :collection
       get :error, :on => :collection
     end

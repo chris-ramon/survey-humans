@@ -9,7 +9,7 @@ class MatchManagement::QuestionController < ApplicationController
   def index
     if current_user.has_access 43
       @search = Question.search(params[:search])
-      @list_questions = @search.where(:deleted => 0).paginate(:page => params[:page]).order('id DESC')
+      @list_questions = @search.where("deleted<2").paginate(:page => params[:page]).order('id DESC')
       @list_answer_formats = AnswerFormat.where(:deleted=>0)
       @list_question_types = QuestionType.where(:deleted=>0)
       @list_matches = Match.where(:deleted=>0)
@@ -128,19 +128,25 @@ class MatchManagement::QuestionController < ApplicationController
       question = Question.new(params[:question])
       if !question.match_id.nil? and question.match_id!=0
         if current_user.id==Match.find(question.match_id).user_id
-          begin
-            if question.save
-              str_desc="Se registró el question con id = "+question.id.to_s
-              @log=Log.create!({:description=>str_desc, :user_id=>current_user.id})
-              flash[:notice] = t('messages.successfully_created')
-              redirect_to("/match_management/survey/#{question.match_id}/edit")
-            else
-              flash[:alert] = get_errors(question)
-              redirect_to("/match_management/survey/#{question.match_id}/edit")
+          redirect_str= question.match.match_type_id==1 ? "/match_management/survey/#{question.match_id}/edit" : "/match_management/exam/#{question.match_id}/edit"
+          if Question.where(:match_id=>question.match_id,:deleted=>0).count<=100
+            begin
+              if question.save
+                str_desc="Se registró el question con id = "+question.id.to_s
+                @log=Log.create!({:description=>str_desc, :user_id=>current_user.id})
+                flash[:notice] = t('messages.successfully_created')
+                redirect_to(redirect_str)
+              else
+                flash[:alert] = get_errors(question)
+                redirect_to(redirect_str)
+              end
+            rescue ActiveRecord::StatementInvalid => error
+              flash[:alert] = t('messages.error_ocurred')
+              redirect_to(redirect_str)
             end
-          rescue ActiveRecord::StatementInvalid => error
-            flash[:alert] = t('messages.error_ocurred')
-            redirect_to("/match_management/survey/#{question.match_id}/edit")
+          else
+            flash[:alert] = "You cannot add more questions. Has been added 100 questions."
+            redirect_to(redirect_str)
           end
         else
           no_access
@@ -159,26 +165,38 @@ class MatchManagement::QuestionController < ApplicationController
       question = Question.find(params[:id])
       question.attributes = params[:question]
       if !question.match_id.nil? and question.match_id!=0
+        redirect_str= question.match.match_type_id==1 ? "/match_management/survey/#{question.match_id}/edit" : "/match_management/exam/#{question.match_id}/edit"
         begin
           if question.save
             str_desc="Se editó el question con id = "+question.id.to_s
             @log=Log.create!({:description=>str_desc, :user_id=>current_user.id})
             flash[:notice] = t('messages.successfully_updated')
-            redirect_to("/match_management/survey/#{question.match_id}/edit")
+            redirect_to(redirect_str)
           else
             flash[:alert] = get_errors(question)
-            redirect_to("/match_management/survey/#{question.match_id}/edit")
+            redirect_to(redirect_str)
           end
         rescue ActiveRecord::StatementInvalid => error
           flash[:alert] = t('messages.error_ocurred')
-          redirect_to("/match_management/survey/#{question.match_id}/edit")
+          redirect_to(redirect_str)
         end
       else
         flash[:alert] = t('messages.error_ocurred')
-        redirect_to("/match_management/survey")
+        if question.match.match_type_id==1 
+          redirect_to("/match_management/survey")
+        else
+          redirect_to("/match_management/exam")
+        end
       end
     else
       no_access
+    end
+  end
+
+  def choose_correct_answer
+    if current_user.has_access 46
+      question = Question.find(params[:id])
+      
     end
   end
 

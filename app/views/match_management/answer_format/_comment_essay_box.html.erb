@@ -1,4 +1,5 @@
 <div class="answer-format-content">
-<h6>Give us a feedback</h6>
+<%text= @match.match_type_id==1 ? "Give us a feedback" : "Respond to ..."%>
+<h6><%=text%></h6>
 <textarea style="height:50px;width:120px;max-width:120px;max-height:50px;" ></textarea>
 </div>
