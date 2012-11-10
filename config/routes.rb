@@ -2,6 +2,9 @@ SurveyHuman::Application.routes.draw do
 
   resources :courses
 
+  namespace :panel do resources :organizations end
+
+  get "report/index"
   namespace :panel do resources :subscription_transactions end
 
   get "/gateways/update-default-gateway/:id/:task", :to => "panel/gateways#update_default_gateway" ,\

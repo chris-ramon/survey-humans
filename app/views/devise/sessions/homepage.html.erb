@@ -1,9 +1,16 @@
 <section class="panel">
   <section id="branding-message" class="row">
       <div class="span4 offset2">
+
           <h3>Creating surveys haven't been easier before.</h3>
           <h5>Analize, reuse, organize and archive.</h5><br>
-          <a href="<%=sign_up_path%>" class="btn btn-large btn-success">Sign up for free</a>
+          <% if not user_signed_in? %>
+            <a href="<%=sign_up_path%>" class="btn btn-large btn-success">Sign up for free</a>
+          <% else %>
+            <a href="<%=dashboard_account_management_user_index_path%>" class="btn btn-large btn-success">Got to Dashboard !</a>
+          <% end %>
+
+
       </div>
       <div class="span4">
           <%= image_tag("front/home-survey.jpeg", :width => "250", :alt => "Show Group" ) %>
