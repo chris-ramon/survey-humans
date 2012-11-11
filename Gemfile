@@ -51,5 +51,5 @@ group :development, :test do
     gem "launchy"
     gem "webrat", ">= 0.7.2"
     gem 'railroady'
-    gem 'ruby-debug19', :require => 'ruby-debug'
+    #gem 'ruby-debug19', :require => 'ruby-debug'
 end
