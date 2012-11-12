@@ -28,10 +28,11 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: surveyhumans
+  database: surveyhuman_development
   pool: 5
   username: root
   password: oreilly
+# socket: /var/run/mysqld/mysqld.sock
   socket: /var/run/mysqld/mysqld.sock
 
 cucumber:

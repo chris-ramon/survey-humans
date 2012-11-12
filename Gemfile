@@ -29,7 +29,8 @@ gem 'activemerchant', '~> 1.28.0'
 #gem unicorn
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
+gem 'passenger'
 
 # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
 
