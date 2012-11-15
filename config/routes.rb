@@ -9,6 +9,10 @@ SurveyHuman::Application.routes.draw do
   get "/gateways/update-default-gateway/:id/:task", :to => "panel/gateways#update_default_gateway" ,\
   :as => 'update_default_gateway'
 
+  get "/organization-invitation/update-status/:id/:status",
+      :to => "panel/organization_invitations#update_status",
+      :as => 'organization_invitation_update_status'
+
   namespace :panel do
     resources :gateways do
     end

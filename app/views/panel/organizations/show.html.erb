@@ -6,6 +6,12 @@
       </div>
     <% end %>
 <legend>Organization &raquo; <%= @panel_organization.name %></legend>
+    <div class="row-fluid">
+        <div class="header-actions span6">
+            <%= link_to 'Edit', edit_panel_organization_path(@panel_organization) %> |
+            <%= link_to 'Back', panel_organizations_path %>
+        </div>
+    </div>
 <p>
   <b>Administrator:</b>
   <%= @panel_organization.User.email %>
@@ -16,13 +22,23 @@
 
 </p>
 
-<ul>
-    <%= @members %>
-    <li></li>
-</ul>
+<div class="span6">
+  <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+          <th>Email</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @members.each do |member| %>
+      <tr>
+          <td><%= member.User.email %></td>
+      </tr>
+      <% end %>
+      </tbody>
+  </table>
+</div>
 
 
-<%= link_to 'Edit', edit_panel_organization_path(@panel_organization) %> |
-<%= link_to 'Back', panel_organizations_path %>
 
 </div>

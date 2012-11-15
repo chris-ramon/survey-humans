@@ -22,7 +22,7 @@ gem 'rack-ssl', :require => 'rack/ssl'
 gem "googlecharts", "~> 1.6.8"
 gem 'activemerchant', '~> 1.28.0'
 #gem 'redis'
-# gem 'rack-ssl', :require => 'rack/ssl'
+gem 'rack-ssl', :require => 'rack/ssl'
 
 
 # Use unicorn as the web server
@@ -38,7 +38,6 @@ gem 'passenger'
 
 
 group :test do
-  gem 'ruby-debug19'
   gem "cucumber-rails"
   gem "rspec-rails"
 
@@ -53,4 +52,5 @@ group :development, :test do
     gem "webrat", ">= 0.7.2"
     gem 'railroady'
     #gem 'ruby-debug19', :require => 'ruby-debug'
+    gem 'debugger'
 end

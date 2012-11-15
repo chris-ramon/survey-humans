@@ -15,7 +15,7 @@ class Panel::OrganizationsController < ApplicationController
   # GET /panel/organizations/1.xml
   def show
     @panel_organization = Panel::Organization.find(params[:id])
-    @members = 123
+    @members = Panel::OrganizationMember.where(:panel_organization_id=>params[:id]).all
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @panel_organization }
@@ -51,7 +51,8 @@ class Panel::OrganizationsController < ApplicationController
             user_id = user_id.to_i
             Panel::OrganizationInvitation.create(
                 :panel_organization_id => @panel_organization.id,
-                :User_id => user_id
+                :User_id => user_id,
+                :status => Panel::OrganizationInvitation::SENT
             )
           end
           rescue

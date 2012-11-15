@@ -28,7 +28,8 @@ role :db,  domain, :primary => true 				# This is where Rails migrations will ru
 #     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
 #   end
 # end
-
+ssh_options[:forward_agent] = true
+default_run_options[:pty] = true
 # miscellaneous options
 set :deploy_via, :remote_cache
 set :scm, 'git'
