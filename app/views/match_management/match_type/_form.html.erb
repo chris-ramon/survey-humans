@@ -6,16 +6,14 @@
 		<legend><%=t('.match_type')%></legend>
 		<dl class="inline">
 
-      <dt><%= set_label_obligatory(MatchType.null?("name")) %><%= f.label :name,"#{t('.name')}:" %></dt>
+      <dt><%= set_label_obligatory(MatchType.null?("name")) %><%= f.label :name,"Name: " %></dt>
       <dd>
         <%= f.text_field :name, :class=>"medium validate[#{set_validate(MatchType.null?("name"))}]",:size=>50 %>
-        <small><%= t('.small_name')%></small>
       </dd>
 
-      <dt><%= set_label_obligatory(MatchType.null?("description")) %><%= f.label :description,"#{t('.description')}:" %></dt>
+      <dt><%= set_label_obligatory(MatchType.null?("description")) %><%= f.label :description,"Description: " %></dt>
       <dd>
         <%= f.text_area :description, :class=>"medium validate[#{set_validate(MatchType.null?("description"))}]",:size=>50 %>
-        <small><%=t('.small_description')%></small>
       </dd>
 
     </dl>

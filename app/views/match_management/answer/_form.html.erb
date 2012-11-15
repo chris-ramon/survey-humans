@@ -6,25 +6,25 @@
 		<legend><%=t('.answer_info')%></legend>
 		<dl class="inline">
 
-      <dt><%= set_label_obligatory(Answer.null?("answer")) %><%= f.label :answer,"#{t('.answer')}:" %></dt>
+      <dt><%= set_label_obligatory(Answer.null?("answer")) %><%= f.label :answer,"Answer:" %></dt>
       <dd>
         <%= f.text_area :answer, :class=>"medium validate[#{set_validate(Answer.null?("answer"))}]",:size=>50 %>
         <small><%= t('.small_answer')%></small>
       </dd>
 
-      <dt><%= set_label_obligatory(Answer.null?("is_correct")) %><%= f.label :is_correct,"#{t('.is_correct')}:" %></dt>
+      <dt><%= set_label_obligatory(Answer.null?("is_correct")) %><%= f.label :is_correct,"Is correct?" %></dt>
       <dd>
         <%= f.text_field :is_correct, :class=>"medium validate[#{set_validate(Answer.null?("is_correct"))}]",:size=>50 %>
         <small><%= t('.small_is_correct')%></small>
       </dd>
 
-      <dt><%= set_label_obligatory(Answer.null?("percent")) %><%= f.label :percent,"#{t('.percent')}:" %></dt>
+      <dt><%= set_label_obligatory(Answer.null?("percent")) %><%= f.label :percent,"Percent:" %></dt>
       <dd>
         <%= f.text_field :percent, :class=>"medium validate[#{set_validate(Answer.null?("percent"))}]",:size=>50 %>
         <small><%= t('.small_percent')%></small>
       </dd>
 
-      <dt><%= set_label_obligatory(Answer.null?("question_id")) %><%= f.label :question_id,"#{t('.question')}:" %></dt>
+      <dt><%= set_label_obligatory(Answer.null?("question_id")) %><%= f.label :question_id,"Question:" %></dt>
       <dd>
         <%= f.select :question_id,@list_questions.collect {|t| [t.question,t.id]},{:include_blank=>"#{t('.select_question')}"},{:class=>"medium validate[#{set_validate(Answer.null?("question_id"))}]"} %>
         <small><%=t('.small_question_id')%></small>

@@ -5,7 +5,7 @@
   <fieldset>
     <legend><%=t('search.search')%></legend>
     <dl class="inline">
-      <dt><%= f.label t('.question') %></dt>
+      <dt><%= f.label 'Question:' %></dt>
       <dd><%= f.select :question_id_eq,@list_questions.collect {|t| [t.question,t.id]},{:include_blank=>"#{t('.all_questions')}"} %></dd>
     </dl>
     <div class="buttons">

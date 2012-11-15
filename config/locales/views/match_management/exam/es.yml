@@ -1,0 +1,39 @@
+#encoding: utf-8
+es:
+  match_management:
+    exam:
+      index:
+        title: 'Exámenes'
+        new_button: 'Crear un Examen'
+      search:
+        name: 'Nombre'
+        match_type: 'Tipo de Partida'
+        level: 'Nivel'
+        all_match_types: 'Seleccione un tipo de partida'
+        all_question_levels: 'Seleccione un Nivel'
+      form:
+        title: 'Detalles del Examen'
+        name: 'Nombre'
+        url: 'URL'
+        status: 'Estado'
+        match_type: 'Tipo de Partida'
+        question_level: 'Nivel'
+        level: 'Nivel'
+        user: 'Usuario'
+        select_match_type: 'Seleccione un tipo de partida'
+        select_question_level: 'Seleccione un Nivel'
+        select_user: 'Seleccione un usuario'
+        select_status: 'Selecciones el estado'
+        enter_the_name_exam: 'Ingrese un nombre...'
+        created_by: 'Creador por'
+      new:
+        title: 'Detalles del Examen'
+      table:
+        name: 'Nombre'
+        status: 'Estado'
+        created_by: 'Creador por'
+      edit:
+        title: 'Detalles del Examen'
+      add_question:
+        question: 'Pregunta'
+        answer_format: 'Selecciones un formato de respuesta'

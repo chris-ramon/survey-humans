@@ -1,2 +1,11 @@
-<h1>MatchManagement::Exam#index</h1>
-<p>Find me in app/views/match_management/exam/index.html.erb</p>
+<% title t('.title') %>
+<h2><%=yield :title%></h2>
+<%= render :partial=>"layouts/messages" %>
+<%= render :partial => "search" %><br/>
+<div id="table">
+  <%= render :partial => "table" %>
+</div>
+</br>
+<%= link_to t('.new_button'),new_match_management_exam_path, :class=>"btn btn-info" unless !current_user.has_access(24)%>
+
+<%=link_to "Courses", courses_path, :class=>"btn"%>

@@ -1,0 +1,30 @@
+<section id="panel">
+    <br/><br/><br/>
+    <legend><h3>Results</h3> <small>Your answers has been sent.</small></legend>
+    
+    <%@correct.each_with_index do |cor,i|%>
+    <div style="border:1px solid #ddd;border-radius:6px;margin:8px;padding:20px">
+    	<%case cor%>
+    		<%when 0%>
+    			<h5><%=i+1%>. <small style="color:red">Incorrect</small> <%=Question.find(@list_solutions[i].question_id).question%></h5>
+    			<p><small>Your answer:</small></p>
+    			<%chosen=@list_solutions[i].answer.split("@")%>
+    			<%chosen.each do |chosen_answer|%>
+    				<p><%=Answer.find(chosen_answer.to_i).answer%></p>
+    			<%end%>
+    		<%when 1%>
+    			<h5><%=i+1%>. <small style="color:green">Correct</small> <%=Question.find(@list_solutions[i].question_id).question%></h5>
+    			<p><small>Your answer:</small></p>
+    			<%chosen=@list_solutions[i].answer.split("@")%>
+    			<%chosen.each do |chosen_answer|%>
+    				<p><%=Answer.find(chosen_answer.to_i).answer%></p>
+    			<%end%>
+    		<%when 2%>
+    			<h5><%=i+1%>. <small>To review</small> <%=Question.find(@list_solutions[i].question_id).question%></h5>
+    			<p><small>Your answer:</small></p>
+    			<p><%=@list_solutions[i].answer%></p>
+    	<%end%>
+    </div>
+    <%end%>
+
+</section>

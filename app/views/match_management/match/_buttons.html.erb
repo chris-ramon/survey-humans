@@ -4,6 +4,6 @@
   <%= link_to t('buttons.enable_edition'), edit_match_management_match_path(@match), :class=>"button" unless !current_user.has_access(26) %>
 <%else%>
   <%= submit_tag(t('buttons.edit'), :disable_with => t('buttons.processing'), :class=>"btn btn-info")%>      
-  <%= link_to t('buttons.undo_changes'), edit_account_management_match_path(@match), :class=>"button"  %>
+  <%= link_to t('buttons.undo_changes'), edit_match_management_match_path(@match), :class=>"button"  %>
 <%end%>
 <%= link_to t('buttons.cancel'), match_management_match_index_path, :class=>"btn"%>

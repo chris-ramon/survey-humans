@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  email: MyString
+  code: MyString
+  deleted: 1
+  course_id: 1
+
+two:
+  email: MyString
+  code: MyString
+  deleted: 1
+  course_id: 1

@@ -9,7 +9,7 @@ class AccountManagement::UserController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @current_view = "security"
+    @current_view = "securitys"
     if current_user.has_access 2
       @search = User.search(params[:search])
       @list_users = @search.paginate(:page => params[:page]).order('id DESC')
@@ -164,7 +164,7 @@ class AccountManagement::UserController < ApplicationController
   end
 
   def account_panel
-    @current_view = "security"
+    @current_view = "securitys"
   end
 
   def dashboard

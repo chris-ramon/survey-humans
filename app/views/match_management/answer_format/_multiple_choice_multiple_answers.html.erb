@@ -1,7 +1,13 @@
 <div class="answer-format-content">
-<h6>How are you today?</h6>
-<label class="checkbox"><input type="checkbox" value="">Sad </label>
-<label class="checkbox"><input type="checkbox" value="">Happy </label>
-<label class="checkbox"><input type="checkbox" value="">Excited </label>
-<label class="checkbox"><input type="checkbox" value="">Tired </label>
+<%text=Array.new%>
+<%if @match.match_type_id==1%>
+	<%text = "How are you today?, Sad, Happy, Excited, Tired".split(",")%>
+<%else%>
+	<%text = "Which are divisors of 24?, 2, 4, 5, 8".split(",")%>
+<%end%>
+<h6><%=text[0]%></h6>
+<label class="checkbox"><input type="checkbox" value=""><%=text[1]%></label>
+<label class="checkbox"><input type="checkbox" value=""><%=text[2]%> </label>
+<label class="checkbox"><input type="checkbox" value=""><%=text[3]%></label>
+<label class="checkbox"><input type="checkbox" value=""><%=text[4]%></label>
 </div>

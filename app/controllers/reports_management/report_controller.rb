@@ -5,7 +5,7 @@ class ReportsManagement::ReportController < ApplicationController
     if current_user.has_access 23
       @search = Match.search(params[:search])
       if current_user.profile_id==1
-        @list_matches = @search.where(:deleted => 0, :match_type_id=>1).paginate(:page => params[:page])
+        @list_matches = @search.where(:match_type_id=>1).paginate(:page => params[:page])
       else
         @list_matches = @search.where(:deleted => 0, :user_id=>current_user.id, :match_type_id=>1).paginate(:page => params[:page])
         @list_matches = @list_matches.where("started > 0")

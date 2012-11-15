@@ -1,0 +1,46 @@
+<%@question=Question.new%>
+
+<%= form_for(@question, :url=>add_question_match_management_question_index_path, :method=>"post",:html=>{:id=>"form_question"}) do |f| %>   
+  <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3>Question</h3><small>Obligatory? <%= f.check_box :obligatory%></small> 
+  </div> 
+  <div class="modal-body">
+      <dd>
+        <%= f.text_area :question, :class=>"medium validate[#{set_validate(Question.null?("question"))}]", :style=>"height:50px;width:97%;max-width:97%;max-height:50px;", :placeholder=>"Do you have any question?" %>
+      </dd>
+
+      <h4>Select an answer format</h4>
+
+      <section>
+          <article class="answer-format">
+            <%= render :partial => "match_management/answer_format/multiple_choice_one_answer" %>
+            <center><button class="ans-format-1 btn" type="button">Choose</button>
+            <p><small><%=@list_answer_formats[0].name%></small></p></center>
+          </article>
+          <article class="answer-format">
+            <%= render :partial => "match_management/answer_format/multiple_choice_multiple_answers" %>
+            <center><button class="ans-format-2 btn" type="button">Choose</button>
+            <p><small><%=@list_answer_formats[1].name%></small></p></center>
+          </article>
+          <article class="answer-format">
+            <%= render :partial => "match_management/answer_format/comment_essay_box" %>
+            <center><button class="ans-format-3 btn" type="button">Choose</button>
+            <p><small><%=@list_answer_formats[2].name%></small></p></center>
+          </article>
+          <article class="answer-format">
+            <%= render :partial => "match_management/answer_format/datetime_hour" %>
+            <center><button class="ans-format-7 btn" type="button">Choose</button>
+            <p><small><%=@list_answer_formats[3].name%></small></p></center>
+          </article>
+      </section>
+      <%= f.hidden_field :answer_format_id, :value=>nil, :id=>"ans-format-value" ,:class=>"medium validate[#{set_validate(Question.null?("answer_format_id"))}]"%>
+      <%= f.hidden_field :match_id, :value=>@match_type_id,:class=>"medium validate[#{set_validate(Question.null?("match_id"))}]"%>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" >Close</button>
+    <%= submit_tag(t('buttons.register'), :disable_with => t('buttons.processing'), :class=>"btn btn-success", :dismiss=>"modal")%>
+  </div>
+<% end %>
+
+<%= render :partial => "match_management/answer_format/change_answer_format" %>

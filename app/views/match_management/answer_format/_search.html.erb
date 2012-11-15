@@ -5,9 +5,9 @@
   <fieldset>
     <legend><%=t('search.search')%></legend>
     <dl class="inline">
-      <dt><%= f.label t('.name') %></dt>
+      <dt><%= f.label 'Name' %></dt>
       <dd><%= f.text_field :name_contains %></dd>
-      <dt><%= f.label t('.format') %></dt>
+      <dt><%= f.label 'Format' %></dt>
       <dd><%= f.text_field :format_contains %></dd>
     </dl>
     <div class="buttons">

@@ -5,11 +5,11 @@
   <fieldset>
     <legend><%=t('search.search')%></legend>
     <dl class="inline">
-      <dt><%= f.label t('.answer_format') %></dt>
+      <dt><%= f.label 'Answer format' %></dt>
       <dd><%= f.select :answer_format_id_eq,@list_answer_formats.collect {|t| [t.name,t.id]},{:include_blank=>"#{t('.all_answer_format')}"} %></dd>
-      <dt><%= f.label t('.question_type') %></dt>
+      <dt><%= f.label 'Question_type' %></dt>
       <dd><%= f.select :question_type_id_eq,@list_question_types.collect {|t| [t.name,t.id]},{:include_blank=>"#{t('.all_question_type')}"} %></dd>
-      <dt><%= f.label t('.match') %></dt>
+      <dt><%= f.label 'Match' %></dt>
       <dd><%= f.select :match_id_eq,@list_matches.collect {|t| [t.name,t.id]},{:include_blank=>"#{t('.all_match')}"} %></dd>
     </dl>
     <div class="buttons">

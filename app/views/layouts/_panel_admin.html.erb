@@ -1,11 +1,9 @@
-<section class="icons">
-  <ul id="security-panel-ul">
+<section class="icons inline">
     <%list_access.each do |access|%>
-    <%if current_user.has_access access.id%>
-      <li>    
-        <%= link_to image_tag("panel/#{access.id}.png",:border=>0,:size=>"48x48") + "<span>#{t('panel.'+access.name)}</span>".html_safe,{:controller=>access.controller, :action=>access.action} unless access.id==1%>        
-      </li>
+    	<%if current_user.has_access access.id%>
+    			<div style="vertical-align:top; width:100px;display:inline-block;padding:10px;margin:10px;height:80px" class="btn">
+        	<%= link_to image_tag("panel/#{access.id}.png",:border=>0,:size=>"48x48") + "<p>#{t('panel.'+access.name)}</p>".html_safe,{:controller=>access.controller, :action=>access.action} unless access.id==1%> 
+        	</div>
+  	  	<%end%>
     <%end%>
-    <%end%>
-  </ul>
 </section>

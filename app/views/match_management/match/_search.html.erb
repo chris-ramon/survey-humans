@@ -7,10 +7,6 @@
     <dl class="inline">
       <dt><%= f.label t('.name') %></dt>
       <dd><%= f.text_field :name_contains %></dd>
-      <dt><%= f.label t('.match_type') %></dt>
-      <dd><%= f.select :match_type_id_eq,@list_match_types.collect {|t| [t.name,t.id]},{:include_blank=>"#{t('.all_match_types')}"} %></dd>
-      <dt><%= f.label t('.level') %></dt>
-      <dd><%= f.select :question_level_id_eq,@list_question_levels.collect {|t| [t.range,t.id]},{:include_blank=>"#{t('.all_question_levels')}"} %></dd>
     </dl>
     <div class="buttons">
       <%= submit_tag(t('search.search'), :disable_with => t('buttons.processing'), :class => "btn")%>          

@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :company_users
   has_many :companies
   has_many :matches
+  has_many :courses
 
   #validates_presence_of :name
   #validates_presence_of :lastname

@@ -9,4 +9,10 @@ class SurveyMailer < ActionMailer::Base
   	@message=message
     mail(:to => "#{emails}", :subject => "Hi! You have a new Survey")
   end
+
+  def send_exam_by_generated_url(user,exam,emails,message)
+  	@exam=exam
+  	@message=message
+    mail(:to => "#{emails}", :subject => "Hi! You have a new Exam")
+  end
 end

@@ -1,0 +1,14 @@
+<section id="panel">
+    <br/><br/><br/>
+    <legend><h3>Enter to <%=@match.name%>!</h3></legend>
+
+    <%=form_for(@student, :url=>validate_user_panel_exam_index_path, :method=>"post") do |f| %>
+
+    	<label>Email: </label> <%=f.text_field :email%><br/>
+    	<label>Code: </label><%=f.text_field :code%><br/><br/>
+    	<input type="hidden" name="match_id" value="<%=@match_id%>"/>
+    	<%=f.submit "Enter"%>
+    <%end%>
+    
+</section>
+<script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>

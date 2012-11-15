@@ -1,0 +1,27 @@
+<%= nested_form_for(@course) do |f| %>
+  <% if @course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
+
+      <ul>
+      <% @course.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %><br /><br />
+    Students: <br /><br />
+    <% f.fields_for :students do |builder| %>
+      <%= render "students_fields", :f => builder %>
+    <% end %>
+    <%= f.link_to_add "Add student", :students %>
+  </div>
+  <br/><br/><br/>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -5,9 +5,9 @@
   <fieldset>
     <legend><%=t('search.search')%></legend>
     <dl class="inline">
-      <dt><%= f.label t('.name') %></dt>
+      <dt><%= f.label 'Name' %></dt>
       <dd><%= f.text_field :name_contains %></dd>
-      <dt><%= f.label t('.user') %></dt>
+      <dt><%= f.label 'User' %></dt>
       <dd><%= f.select :user_id_eq,@list_users.collect {|t| [t.name,t.id]},{:include_blank=>"#{t('.all_users')}"} %></dd>
     </dl>
     <div class="buttons">

@@ -6,13 +6,13 @@
 		<legend><%=t('.answer_format_info')%></legend>
 		<dl class="inline">
 
-      <dt><%= set_label_obligatory(AnswerFormat.null?("name")) %><%= f.label :name,"#{t('.name')}:" %></dt>
+      <dt><%= set_label_obligatory(AnswerFormat.null?("name")) %><%= f.label :name,"Name:" %></dt>
       <dd>
         <%= f.text_field :name, :class=>"medium validate[#{set_validate(AnswerFormat.null?("name"))}]",:size=>50 %>
         <small><%= t('.small_name')%></small>
       </dd>
 
-      <dt><%= set_label_obligatory(AnswerFormat.null?("format")) %><%= f.label :format,"#{t('.format')}:" %></dt>
+      <dt><%= set_label_obligatory(AnswerFormat.null?("format")) %><%= f.label :format,"Format:" %></dt>
       <dd>
         <%= f.text_field :format, :class=>"medium validate[#{set_validate(AnswerFormat.null?("format"))}]",:size=>50 %>
         <small><%= t('.small_format')%></small>

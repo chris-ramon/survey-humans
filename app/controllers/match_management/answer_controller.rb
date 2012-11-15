@@ -121,29 +121,36 @@ class MatchManagement::AnswerController < ApplicationController
       #answer = Answer.new(params[:answer])
       question = Question.find params[:id]
       if !params[:question].nil?
-        params[:question][:answers_attributes].values.each do |answer|
-          if answer[:_destroy]==false
-            @answer=Answer.create!({:answer=>answer[:answer],:question_id=>question.id})
+        if Answer.where(:question_id=>question.id,:deleted=>0).count<=50
+          params[:question][:answers_attributes].values.each do |answer|
+            if answer[:_destroy]==false
+                @answer=Answer.create!({:answer=>answer[:answer],:question_id=>question.id})
+            end
           end
-        end
-        question.attributes = params[:question]
-        begin
-          if question.save
-            str_desc="Se registró answers para la pregunta con id = "+question.id.to_s
-            @log=Log.create!({:description=>str_desc, :user_id=>current_user.id})
-            flash[:notice] = t('messages.successfully_created')
-            redirect_to("/match_management/survey/#{question.match_id}/edit")
-          else
-            flash[:alert] = get_errors(answer)
-            redirect_to("/match_management/survey/#{question.match_id}/edit")
+          question.attributes = params[:question]
+          redirect_str= question.match.match_type_id==1 ? "/match_management/survey/#{question.match_id}/edit" : "/match_management/exam/#{question.match_id}/edit"
+          begin
+            if question.save
+              str_desc="Se registró answers para la pregunta con id = "+question.id.to_s
+              @log=Log.create!({:description=>str_desc, :user_id=>current_user.id})
+              flash[:notice] = t('messages.successfully_created')
+              redirect_to(redirect_str)
+            else
+              flash[:alert] = get_errors(answer)
+              redirect_to(redirect_str)
+            end
+          rescue ActiveRecord::StatementInvalid => error
+            flash[:alert] = t('messages.error_ocurred')
+            redirect_to(redirect_str)
           end
-        rescue ActiveRecord::StatementInvalid => error
-          flash[:alert] = t('messages.error_ocurred')
-          redirect_to("/match_management/survey/#{question.match_id}/edit")
+        else
+          flash[:alert] = "You cannot add more answers. Has been added 50 answers."
+          redirect_to(redirect_str)
         end
       else
+        redirect_str= question.match.match_type_id==1 ? "/match_management/survey/#{question.match_id}/edit" : "/match_management/exam/#{question.match_id}/edit"
         flash[:notice] = "You have not added any answer to the selected question."
-        redirect_to("/match_management/survey/#{question.match_id}/edit")
+        redirect_to(redirect_str)
       end
     else
       no_access

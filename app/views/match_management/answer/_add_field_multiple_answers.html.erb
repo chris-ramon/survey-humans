@@ -1,3 +1,7 @@
-<input type="checkbox" name="<%=int%>"/> <%= f.text_field :answer%>
+<%if q.match.match_type_id==2%>
+	<%= f.check_box :is_correct%> <%= f.text_field :answer%>
+<%else%>
+	<input type="checkbox" name="<%=int%>"/> <%= f.text_field :answer%>
+<%end%>
  
 <%= f.link_to_remove "Remove a answer" %>
