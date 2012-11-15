@@ -45,7 +45,12 @@ namespace :deploy do
 	desc "reload the database with seed data" 
 	task :seed do
     run "cd #{current_path}; rake db:seed RAILS_ENV=production"
-	end 
+  end
+  desc "insert basic data"
+  task :basic_seeds do
+    puts "=== Inserting basic data ==="
+    run "cd #{current_path}; rake db:seed:01_access RAILS_ENV=production"
+  end
 end
 after "deploy:update_code", :bundle_install 
 	desc "install the necessary prerequisites" 
