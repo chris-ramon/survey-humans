@@ -68,7 +68,7 @@
       <div class="inner">
           <ul>
               <% @organizations.each do |organization| %>
-                <li><a href="<%= panel_organization_path organization.id %>" class=""><%= organization.name %></a></li>
+                <li><a href="<%= panel_organization_path organization.panel_organization.id %>" class=""><%= organization.panel_organization.name %></a></li>
               <% end %>
           </ul>
         <a class="btn btn-success" href="<%=new_panel_organization_path%>">CREATE ORGANIZATION</a>

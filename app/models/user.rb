@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   def create_subscription
     ### saving customer subscription
     subscription = Panel::Subscription.new
-    subscription.user_id = self.id
+    subscription.User_id = self.id
     plan = Panel::Plan.find_or_create_by_name_and_amount("15 Days Free", 0)
     subscription.panel_plan_id = plan.id
     subscription.expired_at = Time.now + 1296000

@@ -87,7 +87,6 @@ class Panel::OrganizationInvitationsController < ApplicationController
     if params[:status].to_i == Panel::OrganizationInvitation::CONFIRMED
       attributes = {'User_id'=>current_user.id, 'panel_organization_id'=> @panel_organization_invitation.panel_organization.id}
       member = Panel::OrganizationMember.new(attributes)
-      debugger
       member.save()
     end
     redirect_to(dashboard_account_management_user_index_path, :notice => 'Invitation was successfully updated.')

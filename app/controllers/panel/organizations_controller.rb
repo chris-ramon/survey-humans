@@ -36,6 +36,7 @@ class Panel::OrganizationsController < ApplicationController
   # GET /panel/organizations/1/edit
   def edit
     @panel_organization = Panel::Organization.find(params[:id])
+    @users = User.all
   end
 
   # POST /panel/organizations
@@ -53,6 +54,10 @@ class Panel::OrganizationsController < ApplicationController
                 :panel_organization_id => @panel_organization.id,
                 :User_id => user_id,
                 :status => Panel::OrganizationInvitation::SENT
+            )
+            Panel::OrganizationMember.create(
+                :User_id => current_user.id,
+                :panel_organization_id => @panel_organization.id
             )
           end
           rescue
