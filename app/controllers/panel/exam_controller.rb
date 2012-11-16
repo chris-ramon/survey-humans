@@ -14,13 +14,67 @@ class Panel::ExamController < ApplicationController
   def validate_user #student
     match_id=params[:match_id]
     id = Match.get_id_by_parameter(params[:match_id])
-    puts id
     @student=Student.new(params[:student])
     @real_student=Student.where(:email=>@student.email, :course_id=>Match.find(id).course_id).first
-    puts @real_student.inspect
     if !@real_student.nil?
       if @real_student.email==@student.email and @real_student.code==@student.code
         redirect_to :action=>"show_exam",:id=>match_id, :stu_id=>@real_student.id
+      else
+        redirect_to :action=>"show",:id=>match_id
+      end
+    else
+      redirect_to :action=>"show",:id=>match_id
+    end
+  end
+
+  def forgot_password # view
+    @match_id=params[:id]
+    id = Match.get_id_by_parameter(params[:id])
+    @match = Match.find id
+    @student=Student.new
+  end
+
+  def send_password
+    match_id=params[:match_id]
+    id = Match.get_id_by_parameter(params[:match_id])
+    @student=Student.new(params[:student])
+    @real_student=Student.where(:email=>@student.email, :course_id=>Match.find(id).course_id).first
+    if !@real_student.nil?
+      if @real_student.email==@student.email
+        SurveyMailer.send_code(@real_student,Match.find(id)).deliver
+        redirect_to :action=>"show",:id=>match_id
+      else
+        redirect_to :action=>"show",:id=>match_id
+      end
+    else
+      redirect_to :action=>"show",:id=>match_id
+    end
+  end
+
+  def new_code #view
+    @match_id=params[:id]
+    id = Match.get_id_by_parameter(params[:id])
+    @match = Match.find id
+    @student=Student.new
+  end
+
+  def create_code
+    match_id=params[:match_id]
+    id = Match.get_id_by_parameter(params[:match_id])
+    @student=Student.new(params[:student])
+    @real_student=Student.where(:email=>@student.email, :course_id=>Match.find(id).course_id).first
+    if !@real_student.nil?
+      if @real_student.email==@student.email and @student.code.to_s==params[:confirm_code].to_s
+        @real_student.code=@student.code
+        begin
+          if @real_student.save
+            redirect_to :action=>"show_exam",:id=>match_id, :stu_id=>@real_student.id
+          else
+            redirect_to :action=>"show",:id=>match_id
+          end
+        rescue
+          redirect_to :action=>"show",:id=>match_id
+        end
       else
         redirect_to :action=>"show",:id=>match_id
       end
@@ -34,6 +88,7 @@ class Panel::ExamController < ApplicationController
     id = Match.get_id_by_parameter(params[:id])
     @match = Match.find id
     @list_questions = Question.where(:match_id=>id,:deleted=>0)
+    @student=Student.find @student_id
   end
 
   def submit_exam

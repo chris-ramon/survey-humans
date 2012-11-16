@@ -109,6 +109,10 @@ SurveyHuman::Application.routes.draw do
     end
     resources :exam do
       post :validate_user, :on => :collection
+      get :forgot_password, :on => :collection
+      post :send_password, :on => :collection
+      get :new_code, :on => :collection
+      post :create_code, :on => :collection
       get :show_exam, :on => :collection
       post :submit_exam, :on => :collection
       get :success, :on => :collection
