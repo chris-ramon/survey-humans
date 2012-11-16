@@ -46,4 +46,18 @@ SurveyHuman::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  # Active merchant instance
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test
+  end
+
+  # Active merchant instance
+  config.to_prepare do
+    Panel::SubscriptionTransaction.gateway =
+        ActiveMerchant::Billing::TrustCommerceGateway.new(
+            :login    => 'TestMerchant',
+            :password => 'password'
+        )
+  end
 end

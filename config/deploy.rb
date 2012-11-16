@@ -63,3 +63,4 @@ after "deploy:update_code", :bundle_install
   run "cd #{current_path} && bundle install --without development test"
   end
 #release_path
+# rake db:seed:13_insert_plans RAILS_ENV=production
