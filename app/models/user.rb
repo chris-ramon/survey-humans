@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   self.per_page = 10
 
   def welcome 
-    SurveyMailer.welcome_to_survey_humans(self).deliver
+    #SurveyMailer.welcome_to_survey_humans(self).deliver
   end
 
   def create_subscription

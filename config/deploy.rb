@@ -44,7 +44,7 @@ namespace :deploy do
 	end
 	desc "reload the database with seed data" 
 	task :db_migrate do
-    run "cd #{current_path}; rake db:migrate --trace RAILS_ENV=production"
+    run "cd #{current_path}; rake db:migrate RAILS_ENV=production"
   end
   desc "insert basic data"
   task :db_seeds do
@@ -60,5 +60,6 @@ end
 after "deploy:update_code", :bundle_install 
 	desc "install the necessary prerequisites" 
 	task :bundle_install, :roles => :app do
-  run "cd #{release_path} && bundle install"
-end
+  run "cd #{current_path} && bundle install --without development test"
+  end
+#release_path
