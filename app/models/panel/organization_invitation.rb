@@ -3,6 +3,6 @@ class Panel::OrganizationInvitation < ActiveRecord::Base
   CONFIRMED = 1
   DISMISSED = 0
 
-  belongs_to :User
+  belongs_to :user
   belongs_to :panel_organization, :class_name => 'Panel::Organization'
 end

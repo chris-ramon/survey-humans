@@ -17,7 +17,7 @@ class Panel::Subscription < ActiveRecord::Base
     )
 
     ### Updating the subscription
-    subscription = Panel::Subscription.where(:User_id=>billing.user_id).first
+    subscription = Panel::Subscription.where(:user_id=>billing.user_id).first
 
     response = Panel::SubscriptionTransaction.authorize(amount, credit_card, subscription.id)
     capture = Panel::SubscriptionTransaction.capture(amount, response.authorization, subscription.id)

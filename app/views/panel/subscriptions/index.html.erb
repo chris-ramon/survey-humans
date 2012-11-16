@@ -12,7 +12,7 @@
 
 <% @panel_subscriptions.each do |panel_subscription| %>
   <tr>
-    <td><%= panel_subscription.User.email %></td>
+    <td><%= panel_subscription.user.email %></td>
     <td><%= panel_subscription.panel_plan.name %></td>
     <td><%= panel_subscription.panel_deal.try(:name) %></td>
     <td><%= panel_subscription.expired_at %></td>

@@ -1,7 +1,7 @@
 class CreatePanelOrganizationInvitation < ActiveRecord::Migration
   def self.up
     create_table :panel_organization_invitations do |t|
-      t.references :User
+      t.references :user
       t.references :panel_organization
       t.integer :status
       t.timestamps

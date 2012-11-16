@@ -172,11 +172,11 @@ class AccountManagement::UserController < ApplicationController
     @surveys=Match.where(:match_type_id => 1, :deleted=>0, :user_id=>current_user.id).order('updated_at DESC').limit(2)
     @exams=Match.where(:match_type_id => 2, :deleted=>0, :user_id=>current_user.id).order('updated_at DESC').limit(2)
     if current_user.profile_id == 2
-      @subscription = Panel::Subscription.where(:User_id=>current_user.id).first
-      @organizations = Panel::OrganizationMember.where(:User_id=>current_user.id).order('created_at DESC').limit(5)
+      @subscription = Panel::Subscription.where(:user_id=>current_user.id).first
+      @organizations = Panel::OrganizationMember.where(:user_id=>current_user.id).order('created_at DESC').limit(5)
       one_day_in_seconds = 86400
       @days_left = @subscription.nil? ? "15" :( ( @subscription.expired_at - Time.now  ) / one_day_in_seconds ).round
-      @invitations = Panel::OrganizationInvitation.where(:User_id=>current_user.id, :status=>2).limit(5).order('created_at DESC')
+      @invitations = Panel::OrganizationInvitation.where(:user_id=>current_user.id, :status=>2).limit(5).order('created_at DESC')
     end
   end
 end

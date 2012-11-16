@@ -13,7 +13,7 @@
     </div>
 <p>
   <b>Administrator:</b>
-  <%= @panel_organization.User.email %>
+  <%= @panel_organization.user.email %>
 </p>
 
 <% if @members.length > 0 %>
@@ -31,7 +31,7 @@
       <tbody>
       <% @members.each do |member| %>
       <tr>
-          <td><%= member.User.email %></td>
+          <td><%= member.user.email %></td>
       </tr>
       <% end %>
       </tbody>

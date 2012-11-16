@@ -42,7 +42,7 @@ class Panel::OrganizationsController < ApplicationController
   # POST /panel/organizations
   # POST /panel/organizations.xml
   def create
-    params['panel_organization']['User'] = current_user
+    params['panel_organization']['user'] = current_user
     @panel_organization = Panel::Organization.new(params[:panel_organization])
     respond_to do |format|
       if @panel_organization.save
@@ -52,11 +52,11 @@ class Panel::OrganizationsController < ApplicationController
             user_id = user_id.to_i
             Panel::OrganizationInvitation.create(
                 :panel_organization_id => @panel_organization.id,
-                :User_id => user_id,
+                :user_id => user_id,
                 :status => Panel::OrganizationInvitation::SENT
             )
             Panel::OrganizationMember.create(
-                :User_id => current_user.id,
+                :user_id => current_user.id,
                 :panel_organization_id => @panel_organization.id
             )
           end

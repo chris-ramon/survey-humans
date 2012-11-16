@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :User %><br />
-    <%= f.select :User_id, @users.collect {|t| [t.email, t.id]  } %>
+    <%= f.select :user_id, @users.collect {|t| [t.email, t.id]  } %>
   </div>
   <div class="field">
     <%= f.label :Plan %><br />

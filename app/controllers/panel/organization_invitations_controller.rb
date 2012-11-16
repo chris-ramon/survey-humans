@@ -85,7 +85,7 @@ class Panel::OrganizationInvitationsController < ApplicationController
     @panel_organization_invitation = Panel::OrganizationInvitation.find(params[:id].to_i)
     @panel_organization_invitation.update_attribute("status", params[:status])
     if params[:status].to_i == Panel::OrganizationInvitation::CONFIRMED
-      attributes = {'User_id'=>current_user.id, 'panel_organization_id'=> @panel_organization_invitation.panel_organization.id}
+      attributes = {'user_id'=>current_user.id, 'panel_organization_id'=> @panel_organization_invitation.panel_organization.id}
       member = Panel::OrganizationMember.new(attributes)
       member.save()
     end

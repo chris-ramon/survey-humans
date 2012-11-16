@@ -260,34 +260,34 @@ ActiveRecord::Schema.define(:version => 20121110191140) do
   end
 
   create_table "panel_organizations", :force => true do |t|
-    t.integer  "User_id"
+    t.integer  "user_id"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["User_id"], :name => "index_panel_organizations_on_User_id"
-    t.foreign_key ["User_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_organizations_ibfk_1"
+    t.index ["user_id"], :name => "index_panel_organizations_on_user_id"
+    t.foreign_key ["user_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_organizations_ibfk_1"
   end
 
   create_table "panel_organization_invitations", :force => true do |t|
-    t.integer  "User_id"
+    t.integer  "user_id"
     t.integer  "panel_organization_id"
     t.integer  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["User_id"], :name => "index_panel_organization_invitations_on_User_id"
+    t.index ["user_id"], :name => "index_panel_organization_invitations_on_user_id"
     t.index ["panel_organization_id"], :name => "index_panel_organization_invitations_on_panel_organization_id"
-    t.foreign_key ["User_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_organization_invitations_ibfk_1"
+    t.foreign_key ["user_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_organization_invitations_ibfk_1"
     t.foreign_key ["panel_organization_id"], "panel_organizations", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_organization_invitations_ibfk_2"
   end
 
   create_table "panel_organization_members", :force => true do |t|
-    t.integer  "User_id"
+    t.integer  "user_id"
     t.integer  "panel_organization_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["User_id"], :name => "index_panel_organization_members_on_User_id"
+    t.index ["user_id"], :name => "index_panel_organization_members_on_user_id"
     t.index ["panel_organization_id"], :name => "index_panel_organization_members_on_panel_organization_id"
-    t.foreign_key ["User_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_organization_members_ibfk_1"
+    t.foreign_key ["user_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_organization_members_ibfk_1"
     t.foreign_key ["panel_organization_id"], "panel_organizations", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_organization_members_ibfk_2"
   end
 

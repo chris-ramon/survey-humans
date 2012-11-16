@@ -6,3 +6,5 @@ tmp/*
 *.iml
 .rvmrc
 log/production.log
+config/deploy.rb
+config/database.yml

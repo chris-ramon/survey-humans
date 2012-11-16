@@ -44,7 +44,14 @@
                 <tbody>
                 <% @new_plan.each do |plan_feature| %>
                   <tr>
-                      <td><%= plan_feature.up_to %> <%= plan_feature.panel_feature.name %></td>
+                      <td>
+                          <% if plan_feature.up_to == 0  %>
+                            Unlimited
+                          <% else %>
+                            <%= plan_feature.up_to %>
+                          <% end %>
+                          <%= plan_feature.panel_feature.name %>
+                      </td>
                   </tr>
                 <% end %>
 
