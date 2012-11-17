@@ -4,6 +4,6 @@ class AddColumnToQuestion < ActiveRecord::Migration
   end
 
   def self.down
-  	remove_column :questions, :obligatory,
+  	remove_column :questions, :obligatory
   end
 end

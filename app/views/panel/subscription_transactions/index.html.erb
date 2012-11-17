@@ -18,7 +18,7 @@
 <% @panel_subscription_transactions.each do |panel_subscription_transaction| %>
   <tr>
     <td>
-        <a href="#" class=""><%= panel_subscription_transaction.try(:panel_subscription).User.email  %></a>
+        <a href="#" class=""><%= panel_subscription_transaction.try(:panel_subscription).user.email  %></a>
     </td>
     <td><%= panel_subscription_transaction.try(:panel_subscription).panel_plan.name %></td>
     <td>

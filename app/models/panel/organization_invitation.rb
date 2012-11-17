@@ -1,3 +1,8 @@
 class Panel::OrganizationInvitation < ActiveRecord::Base
-  belongs_to :user, :class_name => "User"
+  SENT = 2
+  CONFIRMED = 1
+  DISMISSED = 0
+
+  belongs_to :user
+  belongs_to :panel_organization, :class_name => 'Panel::Organization'
 end

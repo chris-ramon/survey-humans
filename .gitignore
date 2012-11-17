@@ -1,6 +1,10 @@
 log/*.log
-config/database.yml
+config/cucumber.yml
 tmp/*
 .idea/*
 .DS_Store
 *.iml
+.rvmrc
+log/production.log
+config/deploy.rb
+config/database.yml

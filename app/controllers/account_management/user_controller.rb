@@ -174,8 +174,10 @@ class AccountManagement::UserController < ApplicationController
     if current_user.profile_id == 2
       @subscription = Panel::Subscription.where(:user_id=>current_user.id).first
       @organizations = Panel::Organization.where(:user_id=>current_user.id).all
+      @organizations = Panel::OrganizationMember.where(:user_id=>current_user.id).order('created_at DESC').limit(5)
       one_day_in_seconds = 86400
       @days_left = @subscription.nil? ? "15" :( ( @subscription.expired_at - Time.now  ) / one_day_in_seconds ).round
+      @invitations = Panel::OrganizationInvitation.where(:user_id=>current_user.id, :status=>2).limit(5).order('created_at DESC')
     end
     # matches availables to be analyzed
     @list_matches=Match.where("deleted=? and user_id=? and started>?", 0,current_user.id,0).order('updated_at DESC').limit(3)

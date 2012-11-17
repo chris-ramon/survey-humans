@@ -15,7 +15,21 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+  <div class="field">
+      <label for="members">Members</label><br />
+      <select id="members" name="members[]" multiple class="chzn-select span6">
+          <% @users.each do |user| %>
+            <option value="<%= user.id %>"><%= user.email %></option>
+          <% end %>
+      </select>
+  </div>
+  <br>
   <div class="actions">
-    <%= f.submit %>
+      <input type="submit" class="btn btn-info" value="Save">
   </div>
 <% end %>
+<script>
+    $(function(){
+      $(".chzn-select").chosen();
+    });
+</script>

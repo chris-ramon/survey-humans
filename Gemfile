@@ -24,19 +24,21 @@ gem 'activemerchant', '~> 1.28.0'
 gem 'redis'
 gem "wysihat-engine", "~> 0.1.13"
 # gem 'rack-ssl', :require => 'rack/ssl'
+#gem 'redis'
+gem 'rack-ssl', :require => 'rack/ssl'
 
 
 # Use unicorn as the web server
 #gem unicorn
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
+gem 'passenger'
 
 # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
-gem 'ruby-debug19'
 
 # Bundle the extra gems:
-gem 'nokogiri'
+
 
 group :test do
   gem "cucumber-rails"
@@ -45,11 +47,13 @@ group :test do
 end
 
 group :development, :test do
+    gem 'nokogiri'
     gem "cucumber-rails-training-wheels"
     gem "database_cleaner"
     gem "capybara"
     gem "launchy"
     gem "webrat", ">= 0.7.2"
     gem 'railroady'
-    gem 'ruby-debug19', :require => 'ruby-debug'
+    #gem 'ruby-debug19', :require => 'ruby-debug'
+    gem 'debugger'
 end

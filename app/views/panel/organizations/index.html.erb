@@ -11,7 +11,7 @@
 
 <% @panel_organizations.each do |panel_organization| %>
   <tr>
-    <td><%= panel_organization.User %></td>
+    <td><%= panel_organization.user %></td>
     <td><%= panel_organization.name %></td>
     <td><%= link_to 'Show', panel_organization %></td>
     <td><%= link_to 'Edit', edit_panel_organization_path(panel_organization) %></td>

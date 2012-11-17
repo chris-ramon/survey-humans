@@ -1,15 +1,45 @@
-<p id="notice"><%= notice %></p>
-
+<div class="">
+    <% if notice != nil %>
+      <div class="alert alert-success">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          <p id="notice"><%= notice %></p>
+      </div>
+    <% end %>
+<legend>Organization &raquo; <%= @panel_organization.name %></legend>
+    <div class="row-fluid">
+        <div class="header-actions span6">
+            <%= link_to 'Edit', edit_panel_organization_path(@panel_organization) %> |
+        </div>
+    </div>
 <p>
-  <b>User:</b>
-  <%= @panel_organization.User %>
+  <b>Administrator:</b>
+  <%= @panel_organization.user.email %>
 </p>
 
-<p>
-  <b>Name:</b>
-  <%= @panel_organization.name %>
-</p>
+<% if @members.length > 0 %>
+<div class="span6">
+  <p>
+      <strong>Members:</strong>
+
+  </p>
+  <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+          <th>Email</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @members.each do |member| %>
+      <tr>
+          <td><%= member.user.email %></td>
+      </tr>
+      <% end %>
+      </tbody>
+  </table>
+</div>
+<% else  %>
+      <p>There are no members yet.</p>
+<% end %>
 
 
-<%= link_to 'Edit', edit_panel_organization_path(@panel_organization) %> |
-<%= link_to 'Back', panel_organizations_path %>
+</div>

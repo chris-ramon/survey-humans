@@ -30,8 +30,9 @@ class User < ActiveRecord::Base
     ### saving customer subscription
     subscription = Panel::Subscription.new
     subscription.user_id = self.id
-    plan = Panel::Plan.find_or_create_by_name_and_amount("15 Days Free", 0)
+    plan = Panel::Plan.where(:name => Panel::Plan::FREE_PLAN).select([:id]).first
     subscription.panel_plan_id = plan.id
+    # 1296000 seconds = 15 days.
     subscription.expired_at = Time.now + 1296000
     subscription.save
 

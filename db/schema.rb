@@ -49,33 +49,7 @@ ActiveRecord::Schema.define(:version => 20121110191140) do
     t.integer  "deleted",         :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "match_id",                       :null => false
     t.integer  "enable_to_exams", :default => 1
-    t.index ["match_id"], :name => "index_answer_formats_on_match_id"
-  end
-
-  create_table "courses", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id",                   :null => false
-    t.integer  "deleted",    :default => 0
-    t.index ["user_id"], :name => "index_courses_on_user_id"
-  end
-
-  create_table "match_types", :force => true do |t|
-    t.string   "name",                       :null => false
-    t.text     "description"
-    t.integer  "deleted",     :default => 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "question_levels", :force => true do |t|
-    t.string   "range",      :null => false
-    t.integer  "deleted"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
@@ -101,6 +75,31 @@ ActiveRecord::Schema.define(:version => 20121110191140) do
     t.foreign_key ["profile_id"], "profiles", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "users_ibfk_1"
   end
 
+  create_table "courses", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id",                   :null => false
+    t.integer  "deleted",    :default => 0
+    t.index ["user_id"], :name => "index_courses_on_user_id"
+    t.foreign_key ["user_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "courses_ibfk_1"
+  end
+
+  create_table "match_types", :force => true do |t|
+    t.string   "name",                       :null => false
+    t.text     "description"
+    t.integer  "deleted",     :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "question_levels", :force => true do |t|
+    t.string   "range",                     :null => false
+    t.integer  "deleted",    :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "matches", :force => true do |t|
     t.string   "name",                             :null => false
     t.string   "url"
@@ -111,7 +110,7 @@ ActiveRecord::Schema.define(:version => 20121110191140) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id",                          :null => false
-    t.integer  "obligatory"
+    t.string   "pdf_url"
     t.integer  "course_id"
     t.index ["match_type_id"], :name => "index_matches_on_match_type_id"
     t.index ["question_level_id"], :name => "index_matches_on_question_level_id"
@@ -261,34 +260,34 @@ ActiveRecord::Schema.define(:version => 20121110191140) do
   end
 
   create_table "panel_organizations", :force => true do |t|
-    t.integer  "User_id"
+    t.integer  "user_id"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["User_id"], :name => "index_panel_organizations_on_User_id"
-    t.foreign_key ["User_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_organizations_ibfk_1"
+    t.index ["user_id"], :name => "index_panel_organizations_on_user_id"
+    t.foreign_key ["user_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_organizations_ibfk_1"
   end
 
   create_table "panel_organization_invitations", :force => true do |t|
-    t.integer  "User_id"
+    t.integer  "user_id"
     t.integer  "panel_organization_id"
     t.integer  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["User_id"], :name => "index_panel_organization_invitations_on_User_id"
+    t.index ["user_id"], :name => "index_panel_organization_invitations_on_user_id"
     t.index ["panel_organization_id"], :name => "index_panel_organization_invitations_on_panel_organization_id"
-    t.foreign_key ["User_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_organization_invitations_ibfk_1"
+    t.foreign_key ["user_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_organization_invitations_ibfk_1"
     t.foreign_key ["panel_organization_id"], "panel_organizations", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_organization_invitations_ibfk_2"
   end
 
   create_table "panel_organization_members", :force => true do |t|
-    t.integer  "User_id"
+    t.integer  "user_id"
     t.integer  "panel_organization_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["User_id"], :name => "index_panel_organization_members_on_User_id"
+    t.index ["user_id"], :name => "index_panel_organization_members_on_user_id"
     t.index ["panel_organization_id"], :name => "index_panel_organization_members_on_panel_organization_id"
-    t.foreign_key ["User_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_organization_members_ibfk_1"
+    t.foreign_key ["user_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_organization_members_ibfk_1"
     t.foreign_key ["panel_organization_id"], "panel_organizations", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_organization_members_ibfk_2"
   end
 

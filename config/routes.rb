@@ -3,12 +3,17 @@ SurveyHuman::Application.routes.draw do
   resources :courses
 
   namespace :panel do resources :organizations end
+  namespace :panel do resources :organization_invitations end
 
   get "report/index"
   namespace :panel do resources :subscription_transactions end
 
   get "/gateways/update-default-gateway/:id/:task", :to => "panel/gateways#update_default_gateway" ,\
   :as => 'update_default_gateway'
+
+  get "/organization-invitation/update-status/:id/:status",
+      :to => "panel/organization_invitations#update_status",
+      :as => 'organization_invitation_update_status'
 
   namespace :panel do
     resources :gateways do
