@@ -1,7 +1,7 @@
 class CreatePanelOrganizations < ActiveRecord::Migration
   def self.up
     create_table :panel_organizations do |t|
-      t.references :User
+      t.references :user
       t.string :name
       t.timestamps
     end
