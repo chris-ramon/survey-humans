@@ -129,6 +129,7 @@ SurveyHuman::Application.routes.draw do
     resources :report do
       get :show_question , :on => :collection
       get :export_pdf, :on=> :collection
+      get :show_result_student, :on=> :collection
     end
   end
 

@@ -1,6 +1,6 @@
 class Solution < ActiveRecord::Base
 	belongs_to :match
-	belongs_to :questions
+	belongs_to :question
 	has_attached_file :image, :styles => { 
 		:small=> "250x100>",
       	:thumb=> "100x100#"
@@ -49,6 +49,21 @@ class Solution < ActiveRecord::Base
     		when 4
     			
     	end
+    end
+
+    def get_chosen_answer_one_option
+        answer_id = answer.to_i
+        answer = Answer.find answer_id
+        answer.answer
+    end
+
+    def get_chosen_answer_multiple_options
+        chosen = answer.split("@")
+        list="<ul>"
+        chosen.each do |ans|
+            list=list+"<li>"+Answer.find(ans.to_i).answer+"</li>"
+        end
+        (list+"</ul>").html_safe
     end
 
 end

@@ -169,13 +169,15 @@ class AccountManagement::UserController < ApplicationController
 
   def dashboard
     @current_view = "dashboard"
-    @surveys=Match.where(:match_type_id => 1, :deleted=>0, :user_id=>current_user.id).order('updated_at DESC').limit(2)
-    @exams=Match.where(:match_type_id => 2, :deleted=>0, :user_id=>current_user.id).order('updated_at DESC').limit(2)
+    @surveys=Match.where(:match_type_id => 1, :deleted=>0, :user_id=>current_user.id).order('updated_at DESC').limit(4)
+    @exams=Match.where(:match_type_id => 2, :deleted=>0, :user_id=>current_user.id).order('updated_at DESC').limit(4)
     if current_user.profile_id == 2
       @subscription = Panel::Subscription.where(:user_id=>current_user.id).first
       @organizations = Panel::Organization.where(:user_id=>current_user.id).all
       one_day_in_seconds = 86400
       @days_left = @subscription.nil? ? "15" :( ( @subscription.expired_at - Time.now  ) / one_day_in_seconds ).round
     end
+    # matches availables to be analyzed
+    @list_matches=Match.where("deleted=? and user_id=? and started>?", 0,current_user.id,0).order('updated_at DESC').limit(3)
   end
 end

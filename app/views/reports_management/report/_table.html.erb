@@ -3,6 +3,7 @@
 		<thead>
 			<tr>
 				<th><%=t('.name')%></th>
+				<th><%=t('.Type')%></th>
 				<th><%=t('.status')%></th>
 			<%if current_user.profile_id==1%>
 				<th><%=t('.created_by')%></th>
@@ -15,6 +16,7 @@
 	    <%@list_matches.each do |match|%>
 			  <tr>
 				  <td><%=match.name%></td>
+				  <td><%=match.match_type.name%></td>
 				  <td><%=match.get_status(match.started)%></td>
 				<%if current_user.profile_id==1%>
 					<td><%=match.user.email%></td>

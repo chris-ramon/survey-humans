@@ -1,10 +1,15 @@
+<style type="text/css">
+  .match-dashboard{
+    color: #AA5F0A
+  }
+</style>
 <section id="dashboard-front">
   <div class="row-fluid container-fluid">
     <section class="span4">
       <h4>SURVEYS</h4>
       <div class="inner">
         <%@surveys.each do |survey|%>
-          <p><%=survey.name%></p>
+          <p><a class="match-dashboard" href="<%=edit_match_management_survey_path(survey)%>"><%=survey.name%></a></p>
         <%end%>
         <a class="btn btn-success" href="<%=match_management_survey_index_path%>">MORE</a>
       </div>
@@ -13,7 +18,7 @@
       <h4>EXAMS</h4>
       <div class="inner">
         <%@exams.each do |exam|%>
-          <p><%=exam.name%></p>
+          <p><a class="match-dashboard" href="<%=edit_match_management_exam_path(exam)%>"><%=exam.name%></a></p>
         <%end%>
         <a class="btn btn-success" href="<%=match_management_exam_index_path%>">MORE</a>
       </div>
@@ -28,13 +33,15 @@
     </section>
   </div>
 
-  <br><br> <!-- #TODO -->
+  <br> <!-- #TODO -->
 
   <div class="row-fluid container-fluid">
     <section class="span8">
       <h4>ANALYZE DATA</h4>
       <div class="inner">
-        <p> </p>
+        <%@list_matches.each do |match|%>
+          <p><small style="color:#555"><%=match.match_type.name%> </small><a class="match-dashboard" href="<%=reports_management_report_path(match)%>"><%=match.name%></a></p>
+        <%end%>
         <a class="btn btn-success" href="<%=reports_management_report_index_path%>">MORE</a>
       </div>
     </section>
