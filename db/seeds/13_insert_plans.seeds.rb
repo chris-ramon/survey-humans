@@ -1,7 +1,7 @@
 #encoding: utf-8
-free_plan = Panel::Plan.create(:name => 'Free Plan', :amount => 0)
-basic_plan = Panel::Plan.create(:name => 'Basic Plan',:amount => 15)
-pro_plan = Panel::Plan.create(:name => 'Pro Plan',:amount => 30)
+free_plan = Panel::Plan.create(:id=>1,:name => 'Free Plan', :amount => 0)
+basic_plan = Panel::Plan.create(:id=>2,:name => 'Basic Plan',:amount => 15)
+pro_plan = Panel::Plan.create(:id=>3,:name => 'Pro Plan',:amount => 30)
 
 matches = Panel::Feature.create(:name => 'Matches')
 organizations = Panel::Feature.create(:name => 'Organizations')
