@@ -21,7 +21,7 @@ gem "wkhtmltopdf"
 gem 'rack-ssl', :require => 'rack/ssl'
 gem "googlecharts", "~> 1.6.8"
 gem 'activemerchant', '~> 1.28.0'
-gem 'redis'
+#gem 'redis'
 gem "wysihat-engine", "~> 0.1.13"
 # gem 'rack-ssl', :require => 'rack/ssl'
 #gem 'redis'
