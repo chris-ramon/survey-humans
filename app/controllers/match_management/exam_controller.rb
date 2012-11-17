@@ -75,7 +75,7 @@ class MatchManagement::ExamController < ApplicationController
       if !@match.url.nil?
         app_id=119458701544487
         description="This is an exam."
-        redirect_uri="http://172.18.19.228:3000/match_management/exam/#{params[:id]}/edit"
+        redirect_uri="http://www.surveyhumans.com/match_management/exam/#{params[:id]}/edit"
         @facebook_url="https://www.facebook.com/dialog/feed?app_id=#{app_id}&link=#{@match.url}&picture=http://fbrell.com/f8.jpg&name=#{@match.name}&caption=Survey%20Humans&description=#{description}&redirect_uri=#{redirect_uri}&display=popup"
         @twitter_url=@match.url
       else
@@ -180,7 +180,7 @@ class MatchManagement::ExamController < ApplicationController
         #Facebook
         app_id=119458701544487
         description="This is an exam."
-        redirect_uri="http://172.18.19.228:3000/match_management/exam/#{params[:id]}/edit"
+        redirect_uri="http://www.surveyhumans.com/match_management/exam/#{params[:id]}/edit"
         @facebook_url="https://www.facebook.com/dialog/feed?app_id=#{app_id}&link=#{@match.url}&picture=http://fbrell.com/f8.jpg&name=#{@match.name}&caption=Survey%20Humans&description=#{description}&redirect_uri=#{redirect_uri}&display=popup"
         #Twitter
         msg="We have a new exam for you. "
