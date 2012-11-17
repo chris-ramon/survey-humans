@@ -15,4 +15,10 @@ class SurveyMailer < ActionMailer::Base
   	@message=message
     mail(:to => "#{emails}", :subject => "Hi! You have a new Exam")
   end
+
+  def send_code(student,exam)
+    @exam=exam
+    @student=student
+    mail(:to => "#{student.email}", :subject => "Your code is here")
+  end
 end

@@ -45,6 +45,8 @@ jQuery(function($) {
       $(link).closest("form")
         .trigger({ type: 'nested:fieldAdded', field: field })
         .trigger({ type: 'nested:fieldAdded:' + assoc, field: field });
+				$('.datepick').removeClass('hasDatepicker').datepicker({
+            dateFormat: 'dd/mm/yy'
  });
       return false;
     },

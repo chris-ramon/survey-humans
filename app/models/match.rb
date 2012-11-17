@@ -47,7 +47,7 @@ class Match < ActiveRecord::Base
 
 	def get_extension
 		match_type_str = match_type_id==1 ? "survey" : "exam"
-		url="http://172.18.19.228:3000/panel/#{match_type_str}/"
+		url="http://www.surveyhumans.com/panel/#{match_type_str}/"
 		param_id=id
 		ext1="#{created_at.year.to_i+12}#{created_at.month.to_i+20}#{created_at.day.to_i+27}"
 		ext2="#{created_at.day.to_i+54}#{created_at.month.to_i+40}#{created_at.year.to_i+24}"

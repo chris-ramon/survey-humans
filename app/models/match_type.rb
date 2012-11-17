@@ -20,4 +20,5 @@ class MatchType < ActiveRecord::Base
 	def self.delete(id)
 		return update_all({:deleted=>1, :updated_at=>Time.now},{:id=>id})
 	end
+
 end

@@ -6,10 +6,12 @@
 			<a href="<%=export_pdf_reports_management_report_index_path+'&id='+@match.id.to_s%>" class="btn btn-danger">PDF</a>
 		</small></h3> 
 	</legend>
-	<%if !@match.pdf_url.nil?%>
-		PDF to download: <a href="<%=@match.pdf_url%>" target="_blank"><%=@match.pdf_url%></a>
-	<%end%>
-
+	<!--
+	if !@match.pdf_url.nil?%>
+		PDF to download: <a href="<=@match.pdf_url%>" target="_blank"><=@match.pdf_url%></a>
+	end%>
+	-->
+<%if @match.match_type_id==1%>
 	<%if @match.started!=0%>
 		<%if !@list_questions.empty?%>
 
@@ -30,4 +32,26 @@
 	<%else%>
 			<h6>The survey has not started yet.</h6>		
 	<%end%>	
+<%else%>
+	<%if @match.started==2%>
+	<h1><small><%=@match.course.name%></small></h1>
+		<%if !@list_students.empty?%>
+
+		    <div class="control-group">
+		      <%@list_students.each_with_index do |student,index|%>
+		        <div class="question-div">
+		          <h5><%=index+1%>. <%=student.email%>
+		          </h5>
+		          <a href="<%=show_result_student_reports_management_report_index_path+'&student_id='+student.id.to_s+'&match_id='+@match.id.to_s%>" class="btn">Results</a>
+		        </div>
+		      <%end%>
+		    </div>
+
+		<%else%>
+		    <small>No registered students</small>
+		<%end%>
+	<%else%>
+			<h6>The exam has not finished yet.</h6>		
+	<%end%>	
+<%end%>
 </section>

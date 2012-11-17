@@ -5,9 +5,9 @@ class ReportsManagement::ReportController < ApplicationController
     if current_user.has_access 23
       @search = Match.search(params[:search])
       if current_user.profile_id==1
-        @list_matches = @search.where(:match_type_id=>1).paginate(:page => params[:page])
+        @list_matches = @search.paginate(:page => params[:page])
       else
-        @list_matches = @search.where(:deleted => 0, :user_id=>current_user.id, :match_type_id=>1).paginate(:page => params[:page])
+        @list_matches = @search.where(:deleted => 0, :user_id=>current_user.id).paginate(:page => params[:page])
         @list_matches = @list_matches.where("started > 0")
       end
       @list_users = User.where(:deleted=>0)
@@ -35,6 +35,8 @@ class ReportsManagement::ReportController < ApplicationController
       @list_questions = Question.where(:match_id=>params[:id],:deleted=>0)
       @question = Question.new
       @int_page_type = 2
+
+      @list_students=Student.where(:course_id=>@match.course_id)
   	else 
   		no_access
   	end
@@ -68,4 +70,16 @@ class ReportsManagement::ReportController < ApplicationController
        redirect_to :action=>"index"
      end
   end
+
+  def show_result_student
+    @student=Student.find params[:student_id]
+    @list_solutions=Solution.where(:student_id=>params[:student_id],:match_id=>params[:match_id])
+    @total = 0.0
+    @total_correct = 0.0
+    @list_solutions.each do |sol|
+      @total_correct=@total_correct+sol.question.weight.to_f if sol.is_correct?
+      @total=@total+sol.question.weight.to_f
+    end
+  end
 end
+
