@@ -5,6 +5,7 @@ es:
       index:
         title: 'Exámenes'
         new_button: 'Crear un Examen'
+        courses: 'Cursos'
       search:
         name: 'Nombre'
         match_type: 'Tipo de Partida'
@@ -32,6 +33,7 @@ es:
         name: 'Nombre'
         status: 'Estado'
         created_by: 'Creador por'
+        course: 'Curso'
       edit:
         title: 'Detalles del Examen'
       add_question:

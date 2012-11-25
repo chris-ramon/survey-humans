@@ -4,24 +4,24 @@
   <h3>Question: </h3><h4><%=question.question%>?</h4>
 </div>
 
-	<%case question.answer_format_id%>
-		<%when 1%>
-			<%= render :partial=>"/match_management/answer/answer_form_one_answer", :locals=>{:question=>question}%>
-		<%when 2%>
-			<%= render :partial=>"/match_management/answer/answer_form_multiple_answers", :locals=>{:question=>question}%>
-		<%when 3%>
-			<%= render :partial=>"/match_management/answer/answer_form_comment", :locals=>{:question=>question}%>
-		<%when 4%>
-			<%= render :partial=>"/match_management/answer/answer_form_ranking", :locals=>{:question=>question}%>
-		<%when 5%>
-			<%= render :partial=>"/match_management/answer/answer_form_one_answer_per_row", :locals=>{:question=>question}%>
-		<%when 6%>
-			<%= render :partial=>"/match_management/answer/answer_form_multiple_answers_per_row", :locals=>{:question=>question}%>
-		<%when 7%>
-			<%= render :partial=>"/match_management/answer/answer_form_datetime", :locals=>{:question=>question}%>
-		<%when 8%>
-			<%= render :partial=>"/match_management/answer/answer_form_file_picker", :locals=>{:question=>question}%>
-	<%end%>
+  <%case question.answer_format_id%>
+    <%when 1%>
+      <%= render :partial=>"/match_management/answer/answer_form_one_answer", :locals=>{:question=>question}%>
+    <%when 2%>
+      <%= render :partial=>"/match_management/answer/answer_form_multiple_answers", :locals=>{:question=>question}%>
+    <%when 3%>
+      <%= render :partial=>"/match_management/answer/answer_form_comment", :locals=>{:question=>question}%>
+    <%when 4%>
+      <%= render :partial=>"/match_management/answer/answer_form_ranking", :locals=>{:question=>question}%>
+    <%when 5%>
+      <%= render :partial=>"/match_management/answer/answer_form_one_answer_per_row", :locals=>{:question=>question}%>
+    <%when 6%>
+      <%= render :partial=>"/match_management/answer/answer_form_multiple_answers_per_row", :locals=>{:question=>question}%>
+    <%when 7%>
+      <%= render :partial=>"/match_management/answer/answer_form_datetime", :locals=>{:question=>question}%>
+    <%when 8%>
+      <%= render :partial=>"/match_management/answer/answer_form_file_picker", :locals=>{:question=>question}%>
+  <%end%>
 
 <script>
 jQuery(function($) {

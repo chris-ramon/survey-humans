@@ -1,3 +1,4 @@
+<% title t('.title') %>
 <%if current_user.profile_id==1%>
 	<% list_access = Access.find(:all, :conditions => ['parent_id = ?', 0])%>
 	<% title t(:dashboard) %>

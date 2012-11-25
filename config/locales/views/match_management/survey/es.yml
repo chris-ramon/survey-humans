@@ -28,6 +28,7 @@ es:
         created_by: 'Creador por'
       new:
         title: 'Detalles de la Encuesta'
+        survey_details: 'Detalles de la Encuesta'
       table:
         name: 'Nombre'
         status: 'Estado'

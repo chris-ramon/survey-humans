@@ -15,7 +15,7 @@ gem 'will_paginate', '~> 3.0'
 gem "meta_where"
 gem "meta_search"
 gem 'private_pub'
-gem 'nested_form'
+gem 'nested_form', '~> 0.2.3'
 gem "pdfkit"
 gem "wkhtmltopdf"
 gem 'rack-ssl', :require => 'rack/ssl'

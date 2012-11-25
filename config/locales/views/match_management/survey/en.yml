@@ -27,6 +27,7 @@ en:
         created_by: 'Created by'
       new:
         title: 'Survey Details'
+        survey_details: 'Survey Details'
       table:
         name: 'Name'
         status: 'Status'

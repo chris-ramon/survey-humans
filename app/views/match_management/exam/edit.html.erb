@@ -3,11 +3,11 @@
 
 <div style="border-radius:8px;border:1px solid #ccc;padding:7px;">
 <h2><%=yield :title%>
-        <%if @match.url.nil?%>
-          <%=link_to "Generate URL", generate_url_for_exam_match_management_exam_index_path+"&id="+@match.id.to_s, :class=>"btn" unless !current_user.has_access(21)%>
+    <%if @match.url.nil?%>
+          <%=link_to "Generate URL", generate_url_for_exam_match_management_exam_index_path+"&id="+@match.id.to_s, :class=>"btn" %>
     <%else%>
         <small><a href="<%=@match.url%>"><%=@match.url%></a></small>
-        <%=link_to "Distribute", distribute_match_management_exam_index_path+"&id="+@match.id.to_s, :class=>"btn" unless !current_user.has_access(21)%>
+        <%=link_to "Distribute", distribute_match_management_exam_index_path+"&id="+@match.id.to_s, :class=>"btn" %>
     <%end%>
 </h2>
 </div>

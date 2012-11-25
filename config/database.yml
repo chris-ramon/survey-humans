@@ -2,7 +2,7 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: surveyhuman_development
+  database: surveyhuman_development2
   pool: 5
   username: root
   password: password
@@ -15,23 +15,18 @@ test: &test
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: surveyhuman_test
+  database: surveyhuman_test2
   pool: 5
   username: root
   password: password
   socket: /var/run/mysqld/mysqld.sock
-  database: surveyhuman_development
-  pool: 5
-  username: root
-  password:
-# socket: /var/run/mysqld/mysqld.sock
-  socket: /tmp/mysql.sock
+#  socket: /tmp/mysql.sock
 
 production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: surveyhumans_production
+  database: surveyhumans_production2
   pool: 5
   username: admin
   password: personal

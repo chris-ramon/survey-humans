@@ -31,30 +31,30 @@
     <% end %>
     <div class="row-fluid container-fluid">
     <section class="span4">
-      <h4>SURVEYS</h4>
+      <h4><%=t('.SURVEYS')%></h4>
       <div class="inner">
         <%@surveys.each do |survey|%>
           <p><a class="match-dashboard" href="<%=edit_match_management_survey_path(survey)%>"><%=survey.name%></a></p>
         <%end%>
-        <a class="btn btn-success" href="<%=match_management_survey_index_path%>">MORE</a>
+        <a class="btn btn-success" href="<%=match_management_survey_index_path%>"><%=t('.more')%></a>
       </div>
     </section>
     <section class="span4">
-      <h4>EXAMS</h4>
+      <h4><%=t('.EXAMS')%></h4>
       <div class="inner">
         <%@exams.each do |exam|%>
           <p><a class="match-dashboard" href="<%=edit_match_management_exam_path(exam)%>"><%=exam.name%></a></p>
         <%end%>
-        <a class="btn btn-success" href="<%=match_management_exam_index_path%>">MORE</a>
+        <a class="btn btn-success" href="<%=match_management_exam_index_path%>"><%=t('.more')%></a>
       </div>
     </section>
     <section id="dashboard-subs-section" class="span4 well text-centered">
-      <h4>SUBSCRIPTION</h4>
+      <h4><%=t('.SUBSCRIPTION')%></h4>
         <div class="alert alert-block">
-            <p>Current plan: <%= @subscription.panel_plan.name if !@subscription.nil? %></p>
+            <p><%=t('.current_plan')%>: <%= @subscription.panel_plan.name if !@subscription.nil? %></p>
         </div>
-        <p><%= @days_left %> days left before subscription expire.</p>
-        <a class="btn btn-success" href="<%= panel_subscribe_index_path %>">UPDATE SUBSCRIPTION</a>
+        <p><%= @days_left %> <%=t('.days_left')%></p>
+        <a class="btn btn-success" href="<%= panel_subscribe_index_path %>"><%=t('.update_subscription')%></a>
     </section>
   </div>
 
@@ -62,23 +62,23 @@
 
   <div class="row-fluid container-fluid">
     <section class="span8">
-      <h4>ANALYZE DATA</h4>
+      <h4><%=t('.ANALYZE_DATA')%></h4>
       <div class="inner">
         <%@list_matches.each do |match|%>
           <p><small style="color:#555"><%=match.match_type.name%> </small><a class="match-dashboard" href="<%=reports_management_report_path(match)%>"><%=match.name%></a></p>
         <%end%>
-        <a class="btn btn-success" href="<%=reports_management_report_index_path%>">MORE</a>
+        <a class="btn btn-success" href="<%=reports_management_report_index_path%>"><%=t('.more')%></a>
       </div>
     </section>
     <section class="span4">
-      <h4>ORGANIZATIONS</h4>
+      <h4><%=t('.ORGANIZATIONS')%></h4>
       <div class="inner">
           <ul>
               <% @organizations.each do |organization| %>
                 <li><a href="<%= panel_organization_path organization.panel_organization.id %>" class=""><%= organization.panel_organization.name %></a></li>
               <% end %>
           </ul>
-        <a class="btn btn-success" href="<%=new_panel_organization_path%>">CREATE ORGANIZATION</a>
+        <a class="btn btn-success" href="<%=new_panel_organization_path%>"><%=t('.create_organization')%></a>
       </div>
     </section>
   </div>

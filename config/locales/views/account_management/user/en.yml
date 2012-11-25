@@ -1,4 +1,16 @@
 en:
+  layouts:
+        panel_user:
+            SURVEYS: "SURVEYS"
+            EXAMS: 'EXAMS'
+            ANALYZE_DATA: 'ANALYZE DATA'
+            ORGANIZATIONS: 'ORGANIZATIONS'
+            SUBSCRIPTION: 'SUBSCRIPTION'
+            more: 'MORE'
+            update_subscription: 'UPDATE SUBSCRIPTION'
+            create_organization: 'CREATE ORGANIZATION'
+            days_left: 'days left before subscription expire.'
+            current_plan: 'Current plan'
   account_management:
     user:
       index:
@@ -57,5 +69,6 @@ en:
         lastname2: '2nd Lastname'
         email: 'Email'
         profile: 'Profile'
-        
+      dashboard:
+        title: ''
 

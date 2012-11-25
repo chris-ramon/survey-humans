@@ -4,6 +4,7 @@ en:
       index:
         title: 'Exams'
         new_button: 'Create a Exam'
+        courses: 'Courses'
       search:
         name: 'Name'
         match_type: 'Match Type'
@@ -31,6 +32,7 @@ en:
         name: 'Name'
         status: 'Status'
         created_by: 'Created by'
+        course: 'Course'
       edit:
         title: 'Exam Details'
       add_question:
