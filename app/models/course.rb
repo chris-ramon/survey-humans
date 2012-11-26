@@ -2,7 +2,7 @@ class Course < ActiveRecord::Base
 	belongs_to :user
 	has_many :students, :dependent => :destroy
 
-	accepts_nested_attributes_for :students, :reject_if => lambda { |a| a[:code].blank? }, :allow_destroy => true
+	accepts_nested_attributes_for :students, :reject_if => lambda { |a| a[:email].blank? }, :allow_destroy => true
 
 	# This function evaluates if a column is nullable or not in the database
 	#

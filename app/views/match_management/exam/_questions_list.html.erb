@@ -2,11 +2,25 @@
     <div class="control-group">
       <%@list_questions.each_with_index do |question,index|%>
         <div class="question-div">
-          <h5><%=index+1%>. <%=question.question%>
-            <small><%=question.answer_format.name%>
-            <a id="edit-question-<%=question.id%> " class="btn btn-success" href="#edit-question-link-<%=question.id%>" role="button" data-toggle="modal">Edit</a>
-            <%=link_to "Delete", {:action=>'delete_question',:id=>question.id},{:method=>:delete, :confirm=>t('messages.sure_to_delete')+question.question+"?", :class=>"btn btn-danger", :role=>"button"} unless !current_user.has_access(47)%></small>
-          </h5>
+          <div class="controls controls-row">
+            <div class="span6">
+              <h5><%=index+1%>. <%=question.question%> <small><%=question.answer_format.name%></small></h5>
+            </div>
+            <div class="span3">
+              <%if !question.image_attch_file_name.nil?%>
+                <%= image_tag question.image_attch.url, :style=>"height:100px" %>
+              <%else%>
+                <small>No image</small>
+              <% end %>
+            </div>
+            <div class="span2">
+              <a id="edit-question-<%=question.id%>" class="btn btn-success" href="#edit-question-link-<%=question.id%>" role="button" data-toggle="modal"><i class='icon-pencil icon-white'></i></a>
+              <%=link_to "<i class='icon-remove icon-white'></i>".html_safe, {:action=>'delete_question',:id=>question.id},{:method=>:delete, :confirm=>t('messages.sure_to_delete')+question.question+"?", :class=>"btn btn-danger", :role=>"button"} unless !current_user.has_access(47)%>
+            </div>
+          </div>
+          
+          <%obli = question.obligatory==1 ? "This question is obligatory " : "This question is NOT obligatory "%>
+          <h6><%=obli%><%=" | WEIGHT : #{question.weight}" unless question.weight.nil?%></h6>
 
           <%= render :partial => "match_management/question/edit_question_exam_dialog", :locals=>{:id=>question.id}%>
 

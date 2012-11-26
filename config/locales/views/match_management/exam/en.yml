@@ -9,6 +9,8 @@ en:
         name: 'Name'
         match_type: 'Match Type'
         level: 'Level'
+        course: 'Course'
+        select_question_level: 'Select a Level'
         all_match_types: 'Select a match type'
         all_question_levels: 'Select a level'
       form:
@@ -26,6 +28,7 @@ en:
         select_status: 'Select status'
         enter_the_name_exam: 'Enter a name exam...'
         created_by: 'Created by'
+        question_level_id: 'Level'
       new:
         title: 'Exam Details'
       table:
@@ -33,6 +36,7 @@ en:
         status: 'Status'
         created_by: 'Created by'
         course: 'Course'
+        level: 'Level'
       edit:
         title: 'Exam Details'
       add_question:

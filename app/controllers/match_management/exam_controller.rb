@@ -16,6 +16,7 @@ class MatchManagement::ExamController < ApplicationController
       end
       @list_users = User.where(:deleted=>0)
       @list_question_levels = QuestionLevel.where(:deleted=>0)
+      @list_courses = Course.where(:user_id=>current_user.id,:deleted=>0).order("name")
       @list_match_types = MatchType.where(:deleted=>0)
       respond_to do |format|
         format.html

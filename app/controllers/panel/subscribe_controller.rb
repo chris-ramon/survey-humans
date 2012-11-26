@@ -1,3 +1,4 @@
+#encoding: utf-8
 class Panel::SubscribeController < ApplicationController
   before_filter :authenticate_user!
   layout "_content"
@@ -35,10 +36,10 @@ class Panel::SubscribeController < ApplicationController
     respond_to do |format|
       if result
         format.html { redirect_to(panel_subscribe_index_path, :notice => 'Subscription was successfully updated.') }
-        format.xml  { head :ok }
+        format.json  { head :ok }
       else
         format.html { redirect_to(panel_subscribe_index_path) }
-        format.xml  { render :xml => @panel_subscription.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @panel_subscription.errors, :status => :unprocessable_entity }
       end
     end
   end

@@ -1,3 +1,4 @@
+#encoding: utf-8
 class Panel::ExamController < ApplicationController
   layout "_base_front"
   def index

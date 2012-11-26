@@ -7,6 +7,10 @@
     <dl class="inline">
       <dt><%= f.label t('.name') %></dt>
       <dd><%= f.text_field :name_contains %></dd>
+      <dt><%= f.label t('.level') %></dt>
+      <dd><%= f.select :question_level_id_eq,@list_question_levels.collect {|t| [t.range,t.id]},{:include_blank=>"#{t('.select_question_level')}"},{:class=>"medium validate[required]"} %></dd>
+      <dt><%= f.label t('.course') %></dt>
+      <dd><%= f.select :course_id_eq, @list_courses.collect {|t| [t["name"],t["id"]]},{:include_blank=>"Another course"},{:class=>"medium validate[#{set_validate(Match.null?("course_id"))}]"} %></dd>
     </dl>
     <div class="buttons">
       <%= submit_tag(t('search.search'), :disable_with => t('buttons.processing'), :class => "btn")%>          
