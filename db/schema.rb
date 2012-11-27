@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121110191140) do
+ActiveRecord::Schema.define(:version => 20121116212410) do
 
   create_table "accesses", :force => true do |t|
     t.string   "name",                      :null => false
@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(:version => 20121110191140) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "obligatory",       :default => 1, :null => false
+    t.float    "weight"
     t.index ["answer_format_id"], :name => "index_questions_on_answer_format_id"
     t.index ["question_type_id"], :name => "index_questions_on_question_type_id"
     t.index ["match_id"], :name => "index_questions_on_match_id"
