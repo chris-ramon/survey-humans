@@ -27,7 +27,7 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: surveyhumans_production2
+  database: surveyhumans_production
   pool: 5
   username: admin
   password: personal
