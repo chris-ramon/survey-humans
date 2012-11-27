@@ -2,38 +2,46 @@
 <%str_path = @int_page_type==2? match_management_exam_path : match_management_exam_index_path%>
 <%= form_for(@match, :url=>str_path, :method=>str_method,:html=>{:id=>"form_match"}, :class=>"form-horizontal") do |f| %>
     <div class="control-group">
-        <div class="controls span4">
+        <div class="controls controls-row">
+        <div class="span3">
           <%= f.label :name,"* #{t('.name')}"%>
-          <%= f.text_field :name, :class=>"inline medium validate[#{set_validate(Match.null?("name"))}] input-xlarge",:size=>50, :placeholder=>"#{t('.enter_the_name_exam')}" %>
+          <%= f.text_field :name, :class=>"inline medium validate[#{set_validate(Match.null?("name"))}] input-xlarge",:size=>100, :placeholder=>"#{t('.enter_the_name_exam')}" %>
+        </div>
+        <div class="span3">
+          <%= f.label :question_level_id,"* #{t('.question_level_id')}"%>
+          <%= f.select :question_level_id,@list_question_levels.collect {|t| [t.range,t.id]},{:include_blank=>"#{t('.select_question_level')}"},{:class=>"medium validate[required]"} %>
         </div>
         <%if @int_page_type==2%>
-          <div class="controls span3">
+          <div class="span3">
             <%= f.label :started,"* #{t('.status')}"%>
             <%= f.select :started, @list_status.collect {|t| [t["name"],t["id"]]},{:class=>"medium validate[#{set_validate(Match.null?("started"))}]"} %>
           </div>
-          <div class="controls span3">
+          <div class="span3">
             <%= f.label :course_id,"* Course"%>
             <%= f.select :course_id, @list_courses.collect {|t| [t["name"],t["id"]]},{:include_blank=>"Another course"},{:class=>"medium validate[#{set_validate(Match.null?("course_id"))}]"} %>
             
           </div>
         <%end%>
+        <div class="span4">
+          <small>If the exam is finished, this will not be able to edit.</small>
+        </div>
         <%if current_user.profile_id==1%>
-            <div class="controls span4">
+            <div class="span4">
               <%= f.label :user_id,"* #{t('.created_by')}"%>
               <%= f.select :user_id,@list_users.collect {|t| [t.name,t.id]},{:include_blank=>"#{t('.select_user')}"},{:class=>"validate[#{set_validate(Match.null?("user_id"))}]"} %>
             </div>
-            <div class="controls span1">
+            <div class="span1">
               <%= render :partial => "buttons" %>
             </div>
         <%else%>
-            <div class="controls span5">
+            <div class="span5">
               <%= render :partial => "buttons" %>
             </div>
         <%end%>
+        </div>
     </div>
 <% end %>
-<br/><br/><br/>
-<small>If the exam is finished, this will not be able to edit.</small>
+
 <%if current_user.profile_id!=1%>
   <%if @int_page_type==2%>
     <div class="control-group">

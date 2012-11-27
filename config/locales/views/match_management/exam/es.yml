@@ -5,10 +5,13 @@ es:
       index:
         title: 'Exámenes'
         new_button: 'Crear un Examen'
+        courses: 'Cursos'
       search:
         name: 'Nombre'
         match_type: 'Tipo de Partida'
         level: 'Nivel'
+        course: 'Curso'
+        select_question_level: 'Seleccione un Nivel'
         all_match_types: 'Seleccione un tipo de partida'
         all_question_levels: 'Seleccione un Nivel'
       form:
@@ -26,12 +29,15 @@ es:
         select_status: 'Selecciones el estado'
         enter_the_name_exam: 'Ingrese un nombre...'
         created_by: 'Creador por'
+        question_level_id: 'Nivel'
       new:
         title: 'Detalles del Examen'
       table:
         name: 'Nombre'
         status: 'Estado'
         created_by: 'Creador por'
+        course: 'Curso'
+        level: 'Nivel'
       edit:
         title: 'Detalles del Examen'
       add_question:

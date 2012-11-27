@@ -1,10 +1,27 @@
+<% title t('.title') %>
 <p id="notice"><%= notice %></p>
+<br/>
 
-<p>
-  <b>Name:</b>
-  <%= @course.name %>
-</p>
+<a href="<%=courses_path%>" class="btn"><i class="icon-chevron-left"></i> Back to Courses</a>
 
+<h2>Course <small><%= @course.name %></small></h2>
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<%if !Student.where(:course_id=>@course.id, :deleted=>0).empty?%>
+<legend>Students</legend>
+<table>
+	<thead>
+		<tr>
+			<th>Email</th>
+		</tr>
+	</thead>
+	<%Student.where(:course_id=>@course.id, :deleted=>0).each do |student|%>
+		<tbody>
+			<tr>
+				<td><%=student.email%></td>
+			</tr>
+		</tbody>
+	<%end%>
+</table>
+<%end%>
+
+<%= link_to 'Edit', edit_course_path(@course), :class=>"btn btn-success"%>

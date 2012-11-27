@@ -1,6 +1,6 @@
-<h1>Editing course</h1>
+<% title t('.title') %>
+<a href="<%=courses_path%>" class="btn"><i class="icon-chevron-left"></i> Back to Courses</a>
+<h1>Editing course <small><%=@course.name%></small></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @course %> |
-<%= link_to 'Back', courses_path %>

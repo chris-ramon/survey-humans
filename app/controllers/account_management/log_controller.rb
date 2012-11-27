@@ -1,3 +1,4 @@
+#encoding: utf-8
 class AccountManagement::LogController < ApplicationController
   layout "_content"  
 

@@ -1,6 +1,6 @@
 <%@question=Question.new%>
 
-<%= form_for(@question, :url=>add_question_match_management_question_index_path, :method=>"post",:html=>{:id=>"form_question"}) do |f| %>   
+<%= form_for(@question, :url=>add_question_match_management_question_index_path, :method=>"post",:html => {:multipart => true}) do |f| %>   
   <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
       <h3>Question</h3>
@@ -11,6 +11,7 @@
         <%= f.text_area :question, :class=>"medium validate[#{set_validate(Question.null?("question"))}]", :style=>"height:50px;width:97%;max-width:97%;max-height:50px;", :placeholder=>"Do you have any question?" %>
       </dd>
       <dl>Weight: <%= f.text_field :weight%></dl>
+      <small>You can attach an image to your question <%= f.file_field :image_attch %></small> 
       <h4>Select an answer format</h4>
 
       <section>

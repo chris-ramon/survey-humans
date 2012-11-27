@@ -130,6 +130,7 @@ class MatchManagement::QuestionController < ApplicationController
         if current_user.id==Match.find(question.match_id).user_id
           redirect_str= question.match.match_type_id==1 ? "/match_management/survey/#{question.match_id}/edit" : "/match_management/exam/#{question.match_id}/edit"
           if Question.where(:match_id=>question.match_id,:deleted=>0).count<=100
+            
             begin
               if question.save
                 str_desc="Se registró el question con id = "+question.id.to_s

@@ -1,3 +1,4 @@
+#encoding: utf-8
 class ReportsManagement::ReportController < ApplicationController
   layout "_content"
   before_filter :authenticate_user!

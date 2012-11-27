@@ -1,8 +1,9 @@
+#encoding: utf-8
 class Panel::GatewaysController < ApplicationController
   before_filter :authenticate_user!, :current_module
   layout "_content"
   # GET /panel/gateways
-  # GET /panel/gateways.xml
+  # GET /panel/gateways.json
   def current_module
     @current_module = "gateways"
   end
@@ -12,29 +13,29 @@ class Panel::GatewaysController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @panel_gateways }
+      format.json  { render :json => @panel_gateways }
     end
   end
 
   # GET /panel/gateways/1
-  # GET /panel/gateways/1.xml
+  # GET /panel/gateways/1.json
   def show
     @panel_gateway = Panel::Gateway.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @panel_gateway }
+      format.json  { render :json => @panel_gateway }
     end
   end
 
   # GET /panel/gateways/new
-  # GET /panel/gateways/new.xml
+  # GET /panel/gateways/new.json
   def new
     @panel_gateway = Panel::Gateway.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @panel_gateway }
+      format.json  { render :json => @panel_gateway }
     end
   end
 
@@ -44,46 +45,46 @@ class Panel::GatewaysController < ApplicationController
   end
 
   # POST /panel/gateways
-  # POST /panel/gateways.xml
+  # POST /panel/gateways.json
   def create
     @panel_gateway = Panel::Gateway.new(params[:panel_gateway])
 
     respond_to do |format|
       if @panel_gateway.save
         format.html { redirect_to(@panel_gateway, :notice => 'Gateway was successfully created.') }
-        format.xml  { render :xml => @panel_gateway, :status => :created, :location => @panel_gateway }
+        format.json  { render :json => @panel_gateway, :status => :created, :location => @panel_gateway }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @panel_gateway.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @panel_gateway.errors, :status => :unprocessable_entity }
       end
     end
   end
 
   # PUT /panel/gateways/1
-  # PUT /panel/gateways/1.xml
+  # PUT /panel/gateways/1.json
   def update
     @panel_gateway = Panel::Gateway.find(params[:id])
 
     respond_to do |format|
       if @panel_gateway.update_attributes(params[:panel_gateway])
         format.html { redirect_to(@panel_gateway, :notice => 'Gateway was successfully updated.') }
-        format.xml  { head :ok }
+        format.json  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @panel_gateway.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @panel_gateway.errors, :status => :unprocessable_entity }
       end
     end
   end
 
   # DELETE /panel/gateways/1
-  # DELETE /panel/gateways/1.xml
+  # DELETE /panel/gateways/1.json
   def destroy
     @panel_gateway = Panel::Gateway.find(params[:id])
     @panel_gateway.destroy
 
     respond_to do |format|
       format.html { redirect_to(panel_gateways_url) }
-      format.xml  { head :ok }
+      format.json  { head :ok }
     end
   end
   def update_default_gateway

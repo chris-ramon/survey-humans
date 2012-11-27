@@ -8,4 +8,4 @@
 </br>
 <%= link_to t('.new_button'),new_match_management_exam_path, :class=>"btn btn-info" unless !current_user.has_access(24)%>
 
-<%=link_to "Courses", courses_path, :class=>"btn"%>
+<%=link_to t('.courses'), courses_path, :class=>"btn"%>

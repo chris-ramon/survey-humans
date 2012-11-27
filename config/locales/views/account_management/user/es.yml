@@ -1,5 +1,17 @@
 #encoding: utf-8
 es:
+  layouts:
+        panel_user:
+            SURVEYS: "ENCUESTAS"
+            EXAMS: 'EXÁMENES'
+            ANALYZE_DATA: 'ANALIZAR DATOS'
+            ORGANIZATIONS: 'ORGANIZACIONES'
+            SUBSCRIPTION: 'SUBSCRIPCIÓN'
+            more: 'VER MÁS'
+            update_subscription: 'ACTUALIZAR SUBSCRIPCIÓN'
+            create_organization: 'CREAR UNA ORGANIZACIÓN'
+            days_left: 'días quedan antes de que expire su subscripción.'
+            current_plan: 'Plan actual'
   account_management:
     user:
       index:
@@ -58,4 +70,6 @@ es:
         lastname2: '2do Apellido'
         email: 'Email'
         profile: 'Rol'
+      dashboard:
+        title: ''
 
