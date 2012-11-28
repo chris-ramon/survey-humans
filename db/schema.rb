@@ -116,10 +116,10 @@ ActiveRecord::Schema.define(:version => 20121116212410) do
     t.index ["question_level_id"], :name => "index_matches_on_question_level_id"
     t.index ["user_id"], :name => "index_matches_on_user_id"
     t.index ["course_id"], :name => "index_matches_on_course_id"
-    t.foreign_key ["course_id"], "courses", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "matches_ibfk_4"
     t.foreign_key ["match_type_id"], "match_types", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "matches_ibfk_1"
     t.foreign_key ["question_level_id"], "question_levels", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "matches_ibfk_2"
     t.foreign_key ["user_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "matches_ibfk_3"
+    t.foreign_key ["course_id"], "courses", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "matches_ibfk_4"
   end
 
   create_table "question_types", :force => true do |t|
@@ -374,9 +374,9 @@ ActiveRecord::Schema.define(:version => 20121116212410) do
     t.index ["question_id"], :name => "index_solutions_on_question_id"
     t.index ["match_id"], :name => "index_solutions_on_match_id"
     t.index ["student_id"], :name => "index_solutions_on_student_id"
-    t.foreign_key ["student_id"], "students", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "solutions_ibfk_3"
     t.foreign_key ["question_id"], "questions", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "solutions_ibfk_1"
     t.foreign_key ["match_id"], "matches", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "solutions_ibfk_2"
+    t.foreign_key ["student_id"], "students", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "solutions_ibfk_3"
   end
 
 end
