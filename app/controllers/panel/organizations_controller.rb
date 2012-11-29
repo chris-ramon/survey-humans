@@ -27,7 +27,7 @@ class Panel::OrganizationsController < ApplicationController
   # GET /panel/organizations/new.json
   def new
     @panel_organization = Panel::Organization.new
-    @users = User.all
+    @users = User.where('id not in (?)', current_user.id)
     respond_to do |format|
       format.html # new.html.erb
       format.json  { render :json => @panel_organization }
@@ -37,7 +37,7 @@ class Panel::OrganizationsController < ApplicationController
   # GET /panel/organizations/1/edit
   def edit
     @panel_organization = Panel::Organization.find(params[:id])
-    @users = User.all
+    @users = User.where('id not in (?)', current_user.id)
   end
 
   # POST /panel/organizations
@@ -80,6 +80,8 @@ class Panel::OrganizationsController < ApplicationController
 
     respond_to do |format|
       if @panel_organization.update_attributes(params[:panel_organization])
+        users = params['members']
+        Panel::Organization.send_invitations(users, @panel_organization, current_user)
         format.html { redirect_to(@panel_organization, :notice => 'Organization was successfully updated.') }
         format.json  { head :ok }
       else
