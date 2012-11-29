@@ -21,4 +21,8 @@ class SurveyMailer < ActionMailer::Base
     @student=student
     mail(:to => "#{student.email}", :subject => "Your code is here")
   end
+
+  def send_deal(user)
+    mail(:to => "#{user.email}", :subject => "You have new deal !")
+  end
 end

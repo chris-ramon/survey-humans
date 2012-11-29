@@ -15,6 +15,10 @@ SurveyHuman::Application.routes.draw do
       :to => "panel/organization_invitations#update_status",
       :as => 'organization_invitation_update_status'
 
+  post "/panel/deals/send-deal",
+    :to => "panel/deals#send_deal",
+    :as => 'send_deal'
+
   namespace :panel do
     resources :gateways do
     end

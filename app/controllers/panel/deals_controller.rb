@@ -88,4 +88,8 @@ class Panel::DealsController < ApplicationController
       format.json  { head :ok }
     end
   end
+
+  def send_deal
+    render :text => params
+  end
 end
