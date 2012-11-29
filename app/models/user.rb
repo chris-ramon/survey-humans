@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  after_create :welcome
+  #after_create :welcome
   after_create :create_subscription
 
   devise :registerable, :database_authenticatable, :recoverable, :rememberable, :trackable
