@@ -6,6 +6,12 @@
 		<%int=0%>
 		<% f.fields_for :answers do |builder| %>
 			<%= render "/match_management/answer/add_field_one_answer", :f => builder , :int=>int, :q=>question%>
+			<script type="text/javascript">
+				$("input:checkbox.chkclass").click(function(){
+					$("input:checkbox.chkclass").not($(this)).removeAttr("checked");
+					$(this).attr("checked", $(this).attr("checked"));
+				});
+			</script>
 			<%int+=1%>
 		<% end %>
 		<%= f.link_to_add "Add answer", :answers %>

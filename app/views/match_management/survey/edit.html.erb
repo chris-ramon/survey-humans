@@ -1,6 +1,7 @@
 <% title t('.title')%>
 <%= render :partial=>"layouts/messages" %>
 
+<%if @match.started!=2%>
 <div style="border-radius:8px;border:1px solid #ccc;padding:7px;">
 <h2><%=yield :title%>
         <%if @match.url.nil?%>
@@ -15,3 +16,7 @@
 <%= render :partial => "form" %>
 
 <%= render :partial=>"layouts/validation",:locals=>{:form_id=>'form_match'} %>
+<%else%>
+	<h2><%=yield :title%></h2>
+	<h5><span style="color:gray;font-size:20px"><%=@match.name.upcase%></span> is not able to be edited.</h5>
+<%end%>

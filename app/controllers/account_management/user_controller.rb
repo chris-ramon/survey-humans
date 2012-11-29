@@ -56,7 +56,7 @@ class AccountManagement::UserController < ApplicationController
   end
 
   def show
-    if current_user.has_access 4
+    if current_user.has_access 4 and current_user.id==params[:id]
       @user = User.find params[:id]
       @list_profiles = Profile.where(:id => @user.profile.id)
       @int_page_type = 1
@@ -66,7 +66,7 @@ class AccountManagement::UserController < ApplicationController
   end
 
   def edit
-    if current_user.has_access 5
+    if current_user.has_access 5 and current_user.id==params[:id]
       @user = User.find params[:id]
       @list_profiles = Profile.where(:deleted => 0)
       @int_page_type = 2

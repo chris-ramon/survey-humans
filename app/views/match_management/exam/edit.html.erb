@@ -1,17 +1,22 @@
 <% title t('.title')%>
 <%= render :partial=>"layouts/messages" %>
 
+<%if @match.started!=2%>
 <div style="border-radius:8px;border:1px solid #ccc;padding:7px;">
 <h2><%=yield :title%>
-    <%if @match.url.nil?%>
-          <%=link_to "Generate URL", generate_url_for_exam_match_management_exam_index_path+"&id="+@match.id.to_s, :class=>"btn" %>
-    <%else%>
-        <small><a href="<%=@match.url%>"><%=@match.url%></a></small>
-        <%=link_to "Distribute", distribute_match_management_exam_index_path+"&id="+@match.id.to_s, :class=>"btn" %>
-    <%end%>
+	<%if @match.url.nil?%>
+	      <%=link_to "Generate URL", generate_url_for_exam_match_management_exam_index_path+"&id="+@match.id.to_s, :class=>"btn" %>
+	<%else%>
+	    <small><a href="<%=@match.url%>"><%=@match.url%></a></small>
+	    <%=link_to "Distribute", distribute_match_management_exam_index_path+"&id="+@match.id.to_s, :class=>"btn" %>
+	<%end%>
 </h2>
 </div>
 <br>
 <%= render :partial => "form" %>
 
 <%= render :partial=>"layouts/validation",:locals=>{:form_id=>'form_match'} %>
+<%else%>
+	<h2><%=yield :title%></h2>
+	<h5><span style="color:gray;font-size:20px"><%=@match.name.upcase%></span> is not able to be edited.</h5>
+<%end%>
