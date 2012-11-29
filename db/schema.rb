@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121110191140) do
+ActiveRecord::Schema.define(:version => 20121126023147) do
 
   create_table "accesses", :force => true do |t|
     t.string   "name",                      :null => false
@@ -131,15 +131,20 @@ ActiveRecord::Schema.define(:version => 20121110191140) do
   end
 
   create_table "questions", :force => true do |t|
-    t.text     "question",                        :null => false
+    t.text     "question",                                :null => false
     t.string   "correct_answer"
-    t.integer  "answer_format_id",                :null => false
+    t.integer  "answer_format_id",                        :null => false
     t.integer  "question_type_id"
-    t.integer  "match_id",                        :null => false
-    t.integer  "deleted",          :default => 0
+    t.integer  "match_id",                                :null => false
+    t.integer  "deleted",                  :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "obligatory",       :default => 1, :null => false
+    t.integer  "obligatory",               :default => 1, :null => false
+    t.float    "weight"
+    t.string   "image_attch_file_name"
+    t.string   "image_attch_content_type"
+    t.integer  "image_attch_file_size"
+    t.datetime "image_attch_updated_at"
     t.index ["answer_format_id"], :name => "index_questions_on_answer_format_id"
     t.index ["question_type_id"], :name => "index_questions_on_question_type_id"
     t.index ["match_id"], :name => "index_questions_on_match_id"
