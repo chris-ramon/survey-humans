@@ -36,9 +36,15 @@ class MatchManagement::SurveyController < ApplicationController
       @match_type_id=1
       @list_answer_formats = AnswerFormat.where(:deleted=>0)
       @list_question_types = QuestionType.where(:deleted=>0)
-      @list_status = [{:id=>0,:name=>"waiting"}, {:id=>1,:name=>'started'}, {:id=>2,:name=>'finished'}]
       @question = Question.new
-      @list_status = [{"id"=>0,"name"=>"waiting"}, {"id"=>1,"name"=>'started'}, {"id"=>2,"name"=>'finished'}]
+      case @match.started
+        when 0
+          @list_status = [{"id"=>0,"name"=>"waiting"}, {"id"=>1,"name"=>'started'}, {"id"=>2,"name"=>'finished'}]
+        when 1
+          @list_status = [{"id"=>1,"name"=>'started'}, {"id"=>2,"name"=>'finished'}]
+        else
+          @list_status = [{"id"=>2,"name"=>'finished'}]
+      end
     else
       no_access
     end
@@ -88,7 +94,14 @@ class MatchManagement::SurveyController < ApplicationController
       @match_type_id=@match.id
       @list_answer_formats = AnswerFormat.where(:deleted=>0)
       @list_question_types = QuestionType.where(:deleted=>0)
-      @list_status = [{"id"=>0,"name"=>"waiting"}, {"id"=>1,"name"=>'started'}, {"id"=>2,"name"=>'finished'}]
+      case @match.started
+        when 0
+          @list_status = [{"id"=>0,"name"=>"waiting"}, {"id"=>1,"name"=>'started'}, {"id"=>2,"name"=>'finished'}]
+        when 1
+          @list_status = [{"id"=>1,"name"=>'started'}, {"id"=>2,"name"=>'finished'}]
+        else
+          @list_status = [{"id"=>2,"name"=>'finished'}]
+      end
       @list_questions = Question.where(:match_id=>params[:id],:deleted=>0)
       @question = Question.new
       @int_page_type = 2
@@ -194,7 +207,14 @@ class MatchManagement::SurveyController < ApplicationController
       @match_type_id=@match.id
       @list_answer_formats = AnswerFormat.where(:deleted=>0)
       @list_question_types = QuestionType.where(:deleted=>0)
-      @list_status = [{"id"=>0,"name"=>"waiting"}, {"id"=>1,"name"=>'started'}, {"id"=>2,"name"=>'finished'}]
+      case @match.started
+        when 0
+          @list_status = [{"id"=>0,"name"=>"waiting"}, {"id"=>1,"name"=>'started'}, {"id"=>2,"name"=>'finished'}]
+        when 1
+          @list_status = [{"id"=>1,"name"=>'started'}, {"id"=>2,"name"=>'finished'}]
+        else
+          @list_status = [{"id"=>2,"name"=>'finished'}]
+      end
       @list_questions = Question.where(:match_id=>params[:id],:deleted=>0)
       @question = Question.new
       @int_page_type = 2

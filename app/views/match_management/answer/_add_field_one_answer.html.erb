@@ -1,5 +1,5 @@
 <%if q.match.match_type_id==2%>
-	<%= f.check_box :is_correct%> <%= f.text_field :answer%>
+	<%=f.check_box :is_correct, :class=>"chkclass"%> <%= f.text_field :answer%>
 <%else%>
 	<input type="radio" name="<%=int%>"/> <%= f.text_field :answer%>
 <%end%>

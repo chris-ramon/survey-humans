@@ -13,6 +13,11 @@
     			<div>
     				<input type="hidden" name="match_id" value="<%=@match.id%>"/>
     				<input type="hidden" name="question_<%=question.id%>" value="<%=question.id%>"/>
+    				<p><%if !question.image_attch_file_name.nil?%>
+			                <%= image_tag question.image_attch.url, :style=>"height:200px" %>
+			              <%else%>
+			                <small>No image</small>
+			              <% end %></p>
     				<%case question.answer_format_id%>
 							<%when 1%>
 								<!--%= render :partial=>"/match_management/answer/ans_one_answer", :locals=>{:question=>question}%-->

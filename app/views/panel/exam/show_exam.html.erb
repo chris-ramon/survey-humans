@@ -1,7 +1,7 @@
 
 <section id="panel">
     <br/><br/><br/>
-    <legend><h3><%=@match.name%></h3><small><%=@match.course.name%></small></legend>
+    <legend><h3><%=@match.name%> <span style="color:red;font-size:18px">(Level: <%=@match.question_level.range%>)</span></h3><small><%=@match.course.name%></small></legend>
 <%if Solution.where(:student_id=>@student_id,:match_id=>@match.id).first.nil?%>
 	<%if @match.started==1%>
 	    <%if !@list_questions.empty?%>
@@ -15,6 +15,9 @@
 	    				<input type="hidden" name="match_id" value="<%=@match.id%>"/>
 	    				<input type="hidden" name="student_id" value="<%=@student_id%>"/>
 	    				<input type="hidden" name="question_<%=question.id%>" value="<%=question.id%>"/>
+	    				<p><%if !question.image_attch_file_name.nil?%>
+			                <%= image_tag question.image_attch.url, :style=>"height:200px" %>
+			              <% end %></p>
 	    				<%case question.answer_format_id%>
 								<%when 1%>
 									<!--%= render :partial=>"/match_management/answer/ans_one_answer", :locals=>{:question=>question}%-->
