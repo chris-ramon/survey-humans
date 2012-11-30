@@ -3,28 +3,44 @@
 <%= form_for(@match, :url=>str_path, :method=>str_method,:html=>{:id=>"form_match"}, :class=>"form-horizontal") do |f| %>
     <div class="control-group">
         <div class="controls controls-row">
-        <div class="span3">
-          <%= f.label :name,"* #{t('.name')}"%>
-          <%= f.text_field :name, :class=>"inline medium validate[#{set_validate(Match.null?("name"))}] input-xlarge",:size=>100, :placeholder=>"#{t('.enter_the_name_exam')}" %>
-        </div>
-        <div class="span3">
-          <%= f.label :question_level_id,"* #{t('.question_level_id')}"%>
-          <%= f.select :question_level_id,@list_question_levels.collect {|t| [t.range,t.id]},{:include_blank=>"#{t('.select_question_level')}"},{:class=>"medium validate[required]"} %>
-        </div>
-        <%if @int_page_type==2%>
           <div class="span3">
-            <%= f.label :started,"* #{t('.status')}"%>
-            <%= f.select :started, @list_status.collect {|t| [t["name"],t["id"]]},{:class=>"medium validate[#{set_validate(Match.null?("started"))}]"} %>
+            <%= f.label :name,"* #{t('.name')}"%>
+            <%= f.text_field :name, :class=>"inline medium validate[#{set_validate(Match.null?("name"))}] input-xlarge",:size=>100, :placeholder=>"#{t('.enter_the_name_exam')}" %>
           </div>
           <div class="span3">
-            <%= f.label :course_id,"* Course"%>
-            <%= f.select :course_id, @list_courses.collect {|t| [t["name"],t["id"]]},{:include_blank=>"Another course"},{:class=>"medium validate[#{set_validate(Match.null?("course_id"))}]"} %>
-            
+            <%= f.label :question_level_id,"* #{t('.question_level_id')}"%>
+            <%= f.select :question_level_id,@list_question_levels.collect {|t| [t.range,t.id]},{:include_blank=>"#{t('.select_question_level')}"},{:class=>"medium validate[required]"} %>
           </div>
-        <%end%>
-        <div class="span4">
-          <small>If the exam is finished, this will not be able to edit.</small>
+          <%if @int_page_type==2%>
+            <div class="span3">
+              <%= f.label :started,"* #{t('.status')}"%>
+              <%= f.select :started, @list_status.collect {|t| [t["name"],t["id"]]},{:class=>"medium validate[#{set_validate(Match.null?("started"))}]"} %>
+            </div>
+            <div class="span3">
+              <%= f.label :course_id,"* Course"%>
+              <%= f.select :course_id, @list_courses.collect {|t| [t["name"],t["id"]]},{:include_blank=>"Another course"},{:class=>"medium validate[#{set_validate(Match.null?("course_id"))}]"} %>
+              
+            </div>
+          <%end%>
         </div>
+        <div class="controls controls-row">
+          <div class="span3">
+            <%= f.label :start_time, "* Start", :class=>"start"%>
+            <%=f.text_field :start_time%>
+          </div>
+          <div class="span3">
+            <%= f.label :end_time, "* End", :class=>"end"%>
+            <%=f.text_field :end_time%>
+          </div>
+          <div class="span4">
+            <small>If the exam is finished, this will not be able to edit.</small>
+          </div>
+          <script>
+            $(function() {
+              $(".start" ).datepicker();
+              $(".end" ).datepicker();
+            });
+          </script>
         <%if current_user.profile_id==1%>
             <div class="span4">
               <%= f.label :user_id,"* #{t('.created_by')}"%>
