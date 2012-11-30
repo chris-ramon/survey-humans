@@ -28,7 +28,10 @@
     <b>Deal:</b>
     <%= @panel_deal.deal %> <%= deal_post_fix @panel_deal.deal_type %>
   </p>
-  <a href="#" class="btn btn-success">Send Deal </a>
+
+  <form method="post" action="<%= send_deal_path  %>">
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+  <input type="submit" class="btn btn-success" value="Send Deal">
   <% if @users.size > 0 %>
       <div class="tablefooter clearfix">
           <div class="pagination">
@@ -36,8 +39,8 @@
               <%= paginate_ajax_js%>
           </div>
       </div>
-      <input id="select_all_deal_show" type="checkbox" class="pull-left">
-      <label for="select_all">Select All</label>
+      <input id="select_all_deal_check_box" type="checkbox" class="pull-left" checked>
+      <label for="select_all_deal_check_box">Select All</label>
       <table class="table table-striped">
           <thead>
           <tr>
@@ -50,7 +53,7 @@
           <tbody>
           <%@users.each do |user|%>
             <tr>
-                <td><input type="checkbox"></td>
+                <td><input type="checkbox" name="users[]" value="<%= user.id %>"></td>
                 <td><%=user.try(:fullname)%></td>
                 <td><%=mail_to user.email%></td>
                 <td><%=user.profile.name%></td>
@@ -60,4 +63,43 @@
       </table>
 
   <% end %>
+  </form>
+    <script>
+      $(function(){
+        var users_check_box = $("input[name='users[]']"),
+            deal_form = $("form");
+
+        $("#select_all_deal_check_box").on("click", update_deal_check_box)
+        function update_deal_check_box(){
+          if($(this).is(':checked')){
+            for(user_check_box in users_check_box){
+              $(users_check_box).attr('checked','checked');
+            }
+          } else {
+            for(user_check_box in users_check_box){
+              $(users_check_box).removeAttr('checked');
+            }
+          }
+        }
+        deal_form.on("submit", validate_form)
+        function validate_form(){
+          MSG_ERR_SELECT_USERS = "Select at least one user."
+          if(at_least_one_user_selected())
+           return true;
+          else
+            alert(MSG_ERR_SELECT_USERS)
+            return false;
+        }
+
+        // form functions
+        function at_least_one_user_selected(){
+          users_check_box_checked = users_check_box.filter(":checked")
+          return (users_check_box_checked.length > 0) ? true : false
+        }
+
+
+
+
+      })
+    </script>
 </div>
