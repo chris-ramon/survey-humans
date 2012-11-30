@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121126023147) do
+ActiveRecord::Schema.define(:version => 20121130214955) do
 
   create_table "accesses", :force => true do |t|
     t.string   "name",                      :null => false
@@ -194,6 +194,37 @@ ActiveRecord::Schema.define(:version => 20121126023147) do
     t.datetime "updated_at"
   end
 
+  create_table "panel_plans", :force => true do |t|
+    t.string   "name"
+    t.decimal  "amount",     :precision => 10, :scale => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "panel_deals", :force => true do |t|
+    t.integer  "panel_plan_id"
+    t.datetime "valid_until"
+    t.integer  "deal_type"
+    t.integer  "deal"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["panel_plan_id"], :name => "index_panel_deals_on_panel_plan_id"
+    t.foreign_key ["panel_plan_id"], "panel_plans", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_deals_ibfk_1"
+  end
+
+  create_table "deal_users", :force => true do |t|
+    t.integer  "panel_deal_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "validation_code", :null => false
+    t.boolean  "status",          :null => false
+    t.index ["panel_deal_id"], :name => "index_deal_users_on_panel_deal_id"
+    t.index ["user_id"], :name => "index_deal_users_on_user_id"
+    t.foreign_key ["panel_deal_id"], "panel_deals", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "deal_users_ibfk_1"
+    t.foreign_key ["user_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "deal_users_ibfk_2"
+  end
+
   create_table "exam_topics", :force => true do |t|
     t.string   "name",                       :null => false
     t.text     "description"
@@ -209,6 +240,46 @@ ActiveRecord::Schema.define(:version => 20121126023147) do
     t.datetime "updated_at"
     t.index ["user_id"], :name => "index_logs_on_user_id"
     t.foreign_key ["user_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "logs_ibfk_1"
+  end
+
+  create_table "panel_organizations", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["user_id"], :name => "index_panel_organizations_on_user_id"
+    t.foreign_key ["user_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_organizations_ibfk_1"
+  end
+
+  create_table "panel_organization_members", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "panel_organization_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "status",                :null => false
+    t.index ["user_id"], :name => "index_panel_organization_members_on_user_id"
+    t.index ["panel_organization_id"], :name => "index_panel_organization_members_on_panel_organization_id"
+    t.foreign_key ["user_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_organization_members_ibfk_1"
+    t.foreign_key ["panel_organization_id"], "panel_organizations", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_organization_members_ibfk_2"
+  end
+
+  create_table "match_accesses", :force => true do |t|
+    t.integer  "panel_organization_member_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["panel_organization_member_id"], :name => "index_match_accesses_on_panel_organization_member_id"
+    t.foreign_key ["panel_organization_member_id"], "panel_organization_members", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "match_accesses_ibfk_1"
+  end
+
+  create_table "matchaccess_matches", :force => true do |t|
+    t.integer  "match_access_id", :null => false
+    t.integer  "match_id",        :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["match_access_id"], :name => "index_matchaccess_matches_on_match_access_id"
+    t.index ["match_id"], :name => "index_matchaccess_matches_on_match_id"
+    t.foreign_key ["match_access_id"], "match_accesses", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "matchaccess_matches_ibfk_1"
+    t.foreign_key ["match_id"], "matches", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "matchaccess_matches_ibfk_2"
   end
 
   create_table "panel_billings", :force => true do |t|
@@ -230,24 +301,6 @@ ActiveRecord::Schema.define(:version => 20121126023147) do
     t.foreign_key ["country_id"], "countries", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_billings_ibfk_2"
   end
 
-  create_table "panel_plans", :force => true do |t|
-    t.string   "name"
-    t.decimal  "amount",     :precision => 10, :scale => 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "panel_deals", :force => true do |t|
-    t.integer  "panel_plan_id"
-    t.datetime "valid_until"
-    t.integer  "deal_type"
-    t.integer  "deal"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["panel_plan_id"], :name => "index_panel_deals_on_panel_plan_id"
-    t.foreign_key ["panel_plan_id"], "panel_plans", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_deals_ibfk_1"
-  end
-
   create_table "panel_features", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -264,15 +317,6 @@ ActiveRecord::Schema.define(:version => 20121126023147) do
     t.datetime "updated_at"
   end
 
-  create_table "panel_organizations", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["user_id"], :name => "index_panel_organizations_on_user_id"
-    t.foreign_key ["user_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_organizations_ibfk_1"
-  end
-
   create_table "panel_organization_invitations", :force => true do |t|
     t.integer  "user_id"
     t.integer  "panel_organization_id"
@@ -283,17 +327,6 @@ ActiveRecord::Schema.define(:version => 20121126023147) do
     t.index ["panel_organization_id"], :name => "index_panel_organization_invitations_on_panel_organization_id"
     t.foreign_key ["user_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_organization_invitations_ibfk_1"
     t.foreign_key ["panel_organization_id"], "panel_organizations", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_organization_invitations_ibfk_2"
-  end
-
-  create_table "panel_organization_members", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "panel_organization_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["user_id"], :name => "index_panel_organization_members_on_user_id"
-    t.index ["panel_organization_id"], :name => "index_panel_organization_members_on_panel_organization_id"
-    t.foreign_key ["user_id"], "users", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_organization_members_ibfk_1"
-    t.foreign_key ["panel_organization_id"], "panel_organizations", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "panel_organization_members_ibfk_2"
   end
 
   create_table "panel_planfeatures", :force => true do |t|

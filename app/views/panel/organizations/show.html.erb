@@ -8,7 +8,9 @@
 <legend>Organization &raquo; <%= @panel_organization.name %></legend>
     <div class="row-fluid">
         <div class="header-actions span6">
-            <%= link_to 'Edit', edit_panel_organization_path(@panel_organization) %> |
+            <% if @panel_organization.user_id == current_user.id %>
+              <%= link_to 'Edit', edit_panel_organization_path(@panel_organization) %> |
+            <% end %>
         </div>
     </div>
 <p>
@@ -26,12 +28,28 @@
       <thead>
       <tr>
           <th>Email</th>
+          <% if @panel_organization.user_id == current_user.id %>
+            <th>Access to matches:</th>
+            <th>Actions</th>
+          <% end %>
       </tr>
       </thead>
       <tbody>
-      <% @members.each do |member| %>
+      <% @members.each do |match_access| %>
       <tr>
-          <td><%= member.user.email %></td>
+          <td><%= match_access.panel_organization_member.user.email %></td>
+          <% if @panel_organization.user_id == current_user.id %>
+            <td>
+                <ul>
+                    <% match_access.matchaccess_matches.each do |match_access_match|%>
+                    <li><%= match_access_match.match.name %></li>
+                    <% end %>
+                </ul>
+            </td>
+            <td>
+                <a href="#" class="btn btn-warning">Edit</a>
+            </td>
+          <% end %>
       </tr>
       <% end %>
       </tbody>

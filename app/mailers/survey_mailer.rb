@@ -22,7 +22,9 @@ class SurveyMailer < ActionMailer::Base
     mail(:to => "#{student.email}", :subject => "Your code is here")
   end
 
-  def send_deal(user)
-    mail(:to => "#{user.email}", :subject => "You have new deal !")
+  def send_deal(deal_user)
+    #emails_as_string = deal_users.collect {|deal_user| "<"+deal_user.user.email+">"}.join(",")
+    @deal_user = deal_user
+    mail(:to => "#{deal_user.user.email}", :subject => "You have new deal !")
   end
 end

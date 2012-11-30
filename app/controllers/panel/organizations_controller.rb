@@ -16,7 +16,13 @@ class Panel::OrganizationsController < ApplicationController
   # GET /panel/organizations/1.json
   def show
     @panel_organization = Panel::Organization.find(params[:id])
-    @members = Panel::OrganizationMember.where(:panel_organization_id=>params[:id]).all
+    #@members = Panel::OrganizationMember.where(:panel_organization_id=>params[:id]).all
+    @members = MatchAccess\
+    .joins(:panel_organization_member)\
+    .where(:panel_organization_member=>{
+        :panel_organization_id=>@panel_organization.id,
+        :status=>1
+    })
     respond_to do |format|
       format.html # show.html.erb
       format.json  { render :json => @panel_organization }
@@ -27,7 +33,13 @@ class Panel::OrganizationsController < ApplicationController
   # GET /panel/organizations/new.json
   def new
     @panel_organization = Panel::Organization.new
-    @users = User.where('id not in (?)', current_user.id)
+    #@users = User.where('id not in (?)', current_user.id)
+    @users = User.all(
+        :conditions => ["id NOT IN (?)", current_user.id]
+    )
+    @matches = Match.where(
+        :user_id => current_user.id
+    )
     respond_to do |format|
       format.html # new.html.erb
       format.json  { render :json => @panel_organization }
@@ -45,6 +57,9 @@ class Panel::OrganizationsController < ApplicationController
   def create
     params['panel_organization']['user'] = current_user
     @panel_organization = Panel::Organization.new(params[:panel_organization])
+    if params.has_key?('matches')
+      matches_ids = params['matches']
+    end
     respond_to do |format|
       if @panel_organization.save
         begin
@@ -56,11 +71,18 @@ class Panel::OrganizationsController < ApplicationController
                 :user_id => user_id,
                 :status => Panel::OrganizationInvitation::SENT
             )
-            Panel::OrganizationMember.create(
-                :user_id => current_user.id,
-                :panel_organization_id => @panel_organization.id
+            organization_member = Panel::OrganizationMember.create(
+                :user_id => user_id,
+                :panel_organization_id => @panel_organization.id,
+                :status => 0
             )
+            organization_member.set_matches_access matches_ids
           end
+          Panel::OrganizationMember.create(
+            :user_id => current_user.id,
+            :panel_organization_id => @panel_organization.id,
+            :status => 1
+          )
           rescue
           #
         end

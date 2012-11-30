@@ -68,7 +68,7 @@
                 <input type="hidden" name="panel_subscription[panel_plan_id]" value="<%= @new_plan.first.panel_plan.id %>">
                 <input type="hidden" name="new_plan" value="<%= @new_plan.first.panel_plan.id %>">
                 <input type="submit" id="select_new_plan_btn" value="Yes, Select New Plan" class="btn btn-info"> or
-                <button class="btn">Cancel</button>
+                <a href="<%= panel_subscribe_index_path %>" class="btn">Cancel</a>
             </div>
         <% end %>
     </div>

@@ -20,7 +20,16 @@ class Panel::DealsController < ApplicationController
   # GET /panel/deals/1.json
   def show
     @panel_deal = Panel::Deal.find(params[:id])
-    @users = User.where(:deleted => 0, :profile_id => 2).paginate(:page => params[:page]).order('id DESC')
+    ids = DealUser.where(:panel_deal_id=>@panel_deal.id)\
+      .select('user_id')\
+      .collect {|deal_user| deal_user.user_id}
+    users_ids_with_deal = (ids.size > 0) ? ids : 0
+    @users = User.where(
+      'id NOT IN (?) and deleted = (?) and profile_id = (?)',
+      users_ids_with_deal,
+      0,
+      2
+    ).paginate(:page => params[:page]).order('id DESC')
     respond_to do |format|
       format.html # show.html.erb
       format.json  { render :json => @panel_deal }
@@ -90,6 +99,20 @@ class Panel::DealsController < ApplicationController
   end
 
   def send_deal
-    render :text => params
+    users_id = params["users"]
+    deal_id = params["deal_id"]
+    users_id.each do |user_id|
+      _deal_user = DealUser.create(
+        :user_id => user_id.to_i,
+        :panel_deal_id => deal_id.to_i,
+        :validation_code => SecureRandom.urlsafe_base64,
+        :status => DealUser::SENT
+      )
+      SurveyMailer.send_deal(_deal_user).deliver
+    end
+    #users = User.where('id in (?)', users_id)
+    flash[:notice] = 'Deal was successfully sent.'
+    redirect_to panel_deal_path deal_id
+    #render :text => params
   end
 end
