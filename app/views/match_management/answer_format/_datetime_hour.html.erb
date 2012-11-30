@@ -2,10 +2,10 @@
 	<%text= @match.match_type_id==1 ? "What time you were born?" : "When was America discovered?"%>
 	<h6><%=text%></h6>
 	<br/>
-	<p>Date or time: <input type="text" id="datepicker" style="width:127px"/></p>
+	<p>Date or time: <input type="text" id="datepicker-<%=@question.id%>" style="width:127px"/></p>
 	<script>
     $(function() {
-        $( "#datepicker" ).datepicker();
+        $( "#datepicker-<%=@question.id%>" ).datepicker();
     });
     </script>
 </div>
