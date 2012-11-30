@@ -11,8 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-#ActiveRecord::Schema.define(:version => 20121130214955) do
-ActiveRecord::Schema.define(:version => 20121129234021) do
+ActiveRecord::Schema.define(:version => 20121130214955) do
 
   create_table "accesses", :force => true do |t|
     t.string   "name",                      :null => false
@@ -396,6 +395,8 @@ ActiveRecord::Schema.define(:version => 20121129234021) do
     t.integer  "course_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "corrects"
+    t.float    "score"
     t.index ["course_id"], :name => "index_students_on_course_id"
     t.foreign_key ["course_id"], "courses", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "students_ibfk_1"
   end
