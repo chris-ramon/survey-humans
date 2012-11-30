@@ -16,7 +16,7 @@ class AccountManagement::UserController < ApplicationController
       @list_profiles = Profile.where(:deleted => 0)
       respond_to do |format|
         format.html 
-        format.js
+        format.json {render :json => @list_users}
       end
     else
       no_access
@@ -173,11 +173,14 @@ class AccountManagement::UserController < ApplicationController
     @exams=Match.where(:match_type_id => 2, :deleted=>0, :user_id=>current_user.id).order('updated_at DESC').limit(4)
     if current_user.profile_id == 2
       @subscription = Panel::Subscription.where(:user_id=>current_user.id).first
-      @organizations = Panel::Organization.where(:user_id=>current_user.id).all
-      @organizations = Panel::OrganizationMember.where(:user_id=>current_user.id).order('created_at DESC').limit(5)
+      @organizations = Panel::OrganizationMember.where(
+        :user_id=>current_user.id,
+        :status => 1
+      ).order('created_at DESC').limit(5)
       one_day_in_seconds = 86400
       @days_left = @subscription.nil? ? "15" :( ( @subscription.expired_at - Time.now  ) / one_day_in_seconds ).round
       @invitations = Panel::OrganizationInvitation.where(:user_id=>current_user.id, :status=>2).limit(5).order('created_at DESC')
+      @deals = DealUser.where(:user_id => current_user.id)
     end
     # matches availables to be analyzed
     @list_matches=Match.where("deleted=? and user_id=? and started>?", 0,current_user.id,0).order('updated_at DESC').limit(3)

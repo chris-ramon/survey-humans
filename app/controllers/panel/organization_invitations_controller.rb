@@ -86,9 +86,19 @@ class Panel::OrganizationInvitationsController < ApplicationController
     @panel_organization_invitation = Panel::OrganizationInvitation.find(params[:id].to_i)
     @panel_organization_invitation.update_attribute("status", params[:status])
     if params[:status].to_i == Panel::OrganizationInvitation::CONFIRMED
-      attributes = {'user_id'=>current_user.id, 'panel_organization_id'=> @panel_organization_invitation.panel_organization.id}
-      member = Panel::OrganizationMember.new(attributes)
-      member.save()
+      panel_organization_member = Panel::OrganizationMember.where(
+        :user_id => current_user.id,
+        :panel_organization_id => @panel_organization_invitation.panel_organization.id
+      ).first
+      panel_organization_member.status = 1
+      panel_organization_member.save()
+      #attributes = {'user_id'=>current_user.id, 'panel_organization_id'=> @panel_organization_invitation.panel_organization.id}
+      #member = Panel::OrganizationMember.new(attributes)
+      #member.save()
+      redirect_to(
+        panel_organization_path @panel_organization_invitation.panel_organization.id)
+      flash[:notice] = "You are now part of: #{@panel_organization_invitation.panel_organization.name}"
+      return false
     end
     redirect_to(dashboard_account_management_user_index_path, :notice => 'Invitation was successfully updated.')
   end

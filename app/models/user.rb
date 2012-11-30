@@ -83,4 +83,12 @@ class User < ActiveRecord::Base
     list_access_ids.include? access_id
   end
 
+  def set_random
+
+  end
+
+  def set_match_access matches
+
+  end
+
 end

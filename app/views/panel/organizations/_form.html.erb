@@ -24,6 +24,15 @@
       </select>
   </div>
   <br>
+  <div class="field">
+      <label for="matches">Access to matches:</label>
+      <select id="matches" name="matches[]" multiple class="chzn-select span6">
+          <% @matches.each do |match| %>
+            <option value="<%= match.id %>"><%= match.name %></option>
+          <% end %>
+      </select>
+  </div>
+  <br>
   <div class="actions">
       <input type="submit" class="btn btn-info" value="Save">
   </div>

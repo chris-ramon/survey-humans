@@ -93,7 +93,7 @@ describe CountriesController do
         assigns(:country).should be_a_new(Country)
       end
 
-      it "re-renders the 'new' template" do
+      it "re-renders the 'new' templates" do
         # Trigger the behavior that occurs when invalid params are submitted
         Country.any_instance.stub(:save).and_return(false)
         post :create, {:country => {}}, valid_session
@@ -136,7 +136,7 @@ describe CountriesController do
         assigns(:country).should eq(country)
       end
 
-      it "re-renders the 'edit' template" do
+      it "re-renders the 'edit' templates" do
         country = Country.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Country.any_instance.stub(:save).and_return(false)

@@ -51,10 +51,14 @@ namespace :deploy do
     puts "=== Inserting basic data ==="
     files = ["01_access", "02_profile", "03_user", "04_company", "05_match", "06_match_type",
              "07_question_level", "08_question_type", "09_question", "10_answer", "11_answer_format",
-             "12_data_init","13_insert_plans"]
+             "13_insert_plans"]
     files.each do |file_name|
       run "cd #{current_path}; rake db:seed:#{file_name} RAILS_ENV=production"
     end
+  end
+  desc "bundle update"
+  task :bundle_update do
+    run "cd #{current_path} && bundle install --without development test"  
   end
 end
 after "deploy:update_code", :bundle_install 

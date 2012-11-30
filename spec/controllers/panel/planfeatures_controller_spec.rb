@@ -93,7 +93,7 @@ describe Panel::PlanfeaturesController do
         assigns(:planfeature).should be_a_new(Panel::Planfeature)
       end
 
-      it "re-renders the 'new' template" do
+      it "re-renders the 'new' templates" do
         # Trigger the behavior that occurs when invalid params are submitted
         Panel::Planfeature.any_instance.stub(:save).and_return(false)
         post :create, {:planfeature => {}}, valid_session
@@ -136,7 +136,7 @@ describe Panel::PlanfeaturesController do
         assigns(:planfeature).should eq(planfeature)
       end
 
-      it "re-renders the 'edit' template" do
+      it "re-renders the 'edit' templates" do
         planfeature = Panel::Planfeature.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Panel::Planfeature.any_instance.stub(:save).and_return(false)

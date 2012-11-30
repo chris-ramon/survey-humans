@@ -26,6 +26,7 @@ gem "wysihat-engine", "~> 0.1.13"
 # gem 'rack-ssl', :require => 'rack/ssl'
 #gem 'redis'
 gem 'rack-ssl', :require => 'rack/ssl'
+#gem 'delayed_job_active_record'
 
 
 # Use unicorn as the web server

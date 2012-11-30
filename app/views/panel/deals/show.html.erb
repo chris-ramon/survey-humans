@@ -28,9 +28,10 @@
     <b>Deal:</b>
     <%= @panel_deal.deal %> <%= deal_post_fix @panel_deal.deal_type %>
   </p>
-
+  <% if @users.size > 0 %>
   <form method="post" action="<%= send_deal_path  %>">
   <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+  <input name="deal_id" type="hidden" value="<%= @panel_deal.id %>">
   <input type="submit" class="btn btn-success" value="Send Deal">
   <% if @users.size > 0 %>
       <div class="tablefooter clearfix">
@@ -39,7 +40,7 @@
               <%= paginate_ajax_js%>
           </div>
       </div>
-      <input id="select_all_deal_check_box" type="checkbox" class="pull-left" checked>
+      <input id="select_all_deal_check_box" type="checkbox" class="pull-left">
       <label for="select_all_deal_check_box">Select All</label>
       <table class="table table-striped">
           <thead>
@@ -102,4 +103,5 @@
 
       })
     </script>
+    <% end %>
 </div>

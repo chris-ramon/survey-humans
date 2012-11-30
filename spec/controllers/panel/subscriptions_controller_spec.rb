@@ -93,7 +93,7 @@ describe Panel::SubscriptionsController do
         assigns(:subscription).should be_a_new(Panel::Subscription)
       end
 
-      it "re-renders the 'new' template" do
+      it "re-renders the 'new' templates" do
         # Trigger the behavior that occurs when invalid params are submitted
         Panel::Subscription.any_instance.stub(:save).and_return(false)
         post :create, {:subscription => {}}, valid_session
@@ -136,7 +136,7 @@ describe Panel::SubscriptionsController do
         assigns(:subscription).should eq(subscription)
       end
 
-      it "re-renders the 'edit' template" do
+      it "re-renders the 'edit' templates" do
         subscription = Panel::Subscription.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Panel::Subscription.any_instance.stub(:save).and_return(false)

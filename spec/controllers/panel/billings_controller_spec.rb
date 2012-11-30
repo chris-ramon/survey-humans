@@ -93,7 +93,7 @@ describe Panel::BillingsController do
         assigns(:billing).should be_a_new(Panel::Billing)
       end
 
-      it "re-renders the 'new' template" do
+      it "re-renders the 'new' templates" do
         # Trigger the behavior that occurs when invalid params are submitted
         Panel::Billing.any_instance.stub(:save).and_return(false)
         post :create, {:billing => {}}, valid_session
@@ -136,7 +136,7 @@ describe Panel::BillingsController do
         assigns(:billing).should eq(billing)
       end
 
-      it "re-renders the 'edit' template" do
+      it "re-renders the 'edit' templates" do
         billing = Panel::Billing.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Panel::Billing.any_instance.stub(:save).and_return(false)
