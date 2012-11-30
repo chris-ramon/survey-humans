@@ -9,25 +9,29 @@
 			<div class="row">
 				<h4 class="span3" style='color:green'>CORRECT: <%=@total_correct%></h4>
 				<h4 class="span3" style='color:#AAA'>TOTAL: <%=@total%></h4>
-				<h2>SCORE: <%=@total_correct/@total if @total!=0.0%></h2>
+				<h2>SCORE: <%=@total_correct/@total*100 if @total!=0.0%></h2>
 			</div>
 		</div>
 		<legend>
 		</legend>
 	</div>
-	<%@list_solutions.each_with_index do |solution,index|%>
-		<div class="question-div">
-			<h5><%=index+1%>. <%=solution.question.question%> <small>WEIGHT: <%=solution.question.weight%></small></h5>
-			<%a = (solution.is_correct?) ? "<small style='color:green'>CORRECT</small>": "<small style='color:red'>INCORRECT</small>"%>
-			<%case solution.question.answer_format_id%>
-				<%when 1%>
-					<h5><small><%=a.html_safe%></small> <%=solution.get_chosen_answer_one_option%></h5>
-				<%when 2%>
-					<h5><small><%=a.html_safe%></small> <%=solution.get_chosen_answer_multiple_options%></h5>
-				<%else%>
-					<h5><small>Answered:</small> <%=solution.answer%></h5>
-			<%end%>
-		</div>
+	<%= form_for(@student, :url=>complete_result_reports_management_report_index_path+"&student_id=#{@student.id}&match_id=#{@match_id}", :method=>"put",:html => {:multipart => true}) do |f| %> 
+		<%= submit_tag('Complete', :disable_with => t('buttons.processing'), :class=>"btn btn-success inline")%>
+		<%@list_solutions.each_with_index do |solution,index|%>
+			<div class="question-div">
+				<h5><%=index+1%>. <%=solution.question.question%> <small>WEIGHT: <%=solution.question.weight%></small></h5>
+				<%a = (solution.is_correct?) ? "<small style='color:green'>CORRECT</small>": "<small style='color:red'>INCORRECT</small>"%>
+				<%case solution.question.answer_format_id%>
+					<%when 1%>
+						<h5><small><%=a.html_safe%></small> <%=solution.get_chosen_answer_one_option%></h5>
+					<%when 2%>
+						<h5><small><%=a.html_safe%></small> <%=solution.get_chosen_answer_multiple_options%></h5>
+					<%else%>
+						<h5><small>Answered:</small> <%=solution.answer%></h5>
+						<p><input type="text" name="complete-<%=solution.id%>"/></p>
+				<%end%>
+			</div>
+		<%end%>
 	<%end%>
 <%else%>
 	<p>There is not exam for this student.</p>

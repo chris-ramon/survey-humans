@@ -38,6 +38,7 @@ class ReportsManagement::ReportController < ApplicationController
       @int_page_type = 2
 
       @list_students=Student.where(:course_id=>@match.course_id)
+      @list_students_appr=Student.where(:course_id=>@match.course_id).order('score desc')
   	else 
   		no_access
   	end
@@ -74,12 +75,42 @@ class ReportsManagement::ReportController < ApplicationController
 
   def show_result_student
     @student=Student.find params[:student_id]
+    @match_id=params[:match_id]
     @list_solutions=Solution.where(:student_id=>params[:student_id],:match_id=>params[:match_id])
     @total = 0.0
     @total_correct = 0.0
     @list_solutions.each do |sol|
       @total_correct=@total_correct+sol.question.weight.to_f if sol.is_correct?
       @total=@total+sol.question.weight.to_f
+    end
+    @total_correct = @student.corrects.nil? ? @total_correct : @student.corrects
+    @student.corrects= @total_correct
+    @student.score= (@total!=0.0) ? @total_correct/@total*100 : 0.0
+    @student.save
+  end
+
+  def complete_result
+    @student = Student.find(params[:student_id])
+    @list_solutions=Solution.where(:student_id=>params[:student_id],:match_id=>params[:match_id])
+    @total = 0.0
+    @more=0.0
+    @list_solutions.each do |sol|
+      @total=@total+sol.question.weight.to_f
+      p params["complete-#{sol.id}"]
+      @more+=params["complete-#{sol.id}"].to_f if params["complete-#{sol.id}"]!=nil
+    end
+    @student.corrects=@student.corrects+@more
+    @student.score= (@total!=0.0) ? @student.corrects/@total*100 : 0.0
+    begin
+      if @student.save
+        str_desc="Se completo el resultado del estudiante con id = "+params[:student_id].to_s
+        @log=Log.create!({:description=>str_desc, :user_id=>current_user.id})
+        redirect_to :action=>"show_result_student",:student_id=>params[:student_id],:match_id=>params[:match_id]
+      else
+        redirect_to :action=>"show_result_student",:student_id=>params[:student_id],:match_id=>params[:match_id]
+      end
+    rescue ActiveRecord::StatementInvalid => error
+      redirect_to :action=>"show_result_student",:student_id=>params[:student_id],:match_id=>params[:match_id]
     end
   end
 end

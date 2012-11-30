@@ -32,7 +32,7 @@
 <%if current_user.profile_id!=1%>
   <%if @int_page_type==2%>
     <div class="control-group">
-      <h3><%=t('.questions') %>jjajajaja
+      <h3><%=t('.questions') %>
       <a class="btn btn-info" href="#add-question-link" role="button" data-toggle="modal">Add Question</a></h3>
     </div>
     <%= render :partial => "questions_list" %>
@@ -46,3 +46,6 @@
 <%end%>
 <br/>
 <br/>
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<%= javascript_include_tag "jquery-ui-timepicker-addon" %>

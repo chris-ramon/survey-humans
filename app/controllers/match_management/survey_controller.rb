@@ -17,6 +17,18 @@ class MatchManagement::SurveyController < ApplicationController
       @list_users = User.where(:deleted=>0)
       @list_question_levels = QuestionLevel.where(:deleted=>0)
       @list_match_types = MatchType.where(:deleted=>0)
+      @panel_id=Panel::Subscription.where(:user_id=>current_user.id).first.panel_plan_id
+      @can_add=false
+      matches=Match.where(:deleted => 0, :user_id=>current_user.id)
+      case @panel_id
+        when 1
+          @can_add=(matches.count<5)
+        when 2
+          @can_add=(matches.count<10)
+        else
+          @can_add=true
+      end
+      @plan=Panel::Plan.find(@panel_id).name
       respond_to do |format|
         format.html
         format.js

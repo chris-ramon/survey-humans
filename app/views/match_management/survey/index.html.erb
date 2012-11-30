@@ -6,4 +6,8 @@
   <%= render :partial => "table" %>
 </div>
 </br>
+<%if @can_add%>
 <%= link_to t('.new_button'),new_match_management_survey_path, :class=>"btn btn-info" unless !current_user.has_access(24)%>
+<%else%>
+	<p>You cannot add more surveys, because you are subscribed: <%=@plan%></p>
+<%end%>

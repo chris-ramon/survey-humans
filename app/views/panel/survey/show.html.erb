@@ -15,9 +15,7 @@
     				<input type="hidden" name="question_<%=question.id%>" value="<%=question.id%>"/>
     				<p><%if !question.image_attch_file_name.nil?%>
 			                <%= image_tag question.image_attch.url, :style=>"height:200px" %>
-			              <%else%>
-			                <small>No image</small>
-			              <% end %></p>
+			            <% end %></p>
     				<%case question.answer_format_id%>
 							<%when 1%>
 								<!--%= render :partial=>"/match_management/answer/ans_one_answer", :locals=>{:question=>question}%-->
@@ -87,6 +85,10 @@
 
 <% javascript "jquery.validationEngine-#{I18n.locale}","jquery.validationEngine","jquery.blockUI" %>
 <% stylesheet "validationEngine.jquery" %>
+
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<%= javascript_include_tag "jquery-ui-timepicker-addon" %>
 
 <script type='text/javascript'>
   $(document).ready(function() {

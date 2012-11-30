@@ -1,9 +1,27 @@
 
 <section id="panel">
     <br/><br/><br/>
-    <legend><h3><%=@match.name%> <span style="color:red;font-size:18px">(Level: <%=@match.question_level.range%>)</span></h3><small><%=@match.course.name%></small></legend>
+    <legend>
+    	<h3><%=@match.name%> <span style="color:red;font-size:18px">(Level: <%=@match.question_level.range%>)</span></h3>
+    	<small><%=@match.course.name%></small>
+    </legend>
 <%if Solution.where(:student_id=>@student_id,:match_id=>@match.id).first.nil?%>
-	<%if @match.started==1%>
+	<%if @match.start_time<=Time.now%>
+<p><%=@match.start_time%></p>
+<p><%=Time.now%></p>
+<%=@match.end_time%>
+<%=@match.end_time.strftime('%Y-%m-%d  %I:%M%p')%>
+		<script type="text/javascript">
+			TargetDate = <%=@match.end_time.strftime('%Y-%m-%d  %I:%M%p')%>;
+			BackColor = "palegreen";
+			ForeColor = "navy";
+			CountActive = true;
+			CountStepper = -1;
+			LeadingZero = true;
+			DisplayFormat = "%%H%% Hours, %%M%% Minutes, %%S%% Seconds.";
+			FinishMessage = "Time out";
+		</script>
+		<script src="http://scripts.hashemian.com/js/countdown.js"></script>
 	    <%if !@list_questions.empty?%>
 			<%=form_tag(submit_exam_panel_exam_index_path, :method=>"post", :multipart => true) do %>
 	    		<%@list_questions.each_with_index do |question, index|%>
