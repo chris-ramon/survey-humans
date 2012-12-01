@@ -13,8 +13,17 @@ SurveyHuman::Application.configure do
   config.action_dispatch.x_sendfile_header = "X-Sendfile"
 
   #Mailer settings
-  config.action_mailer.default_url_options = { :host => 'surveyhumans.com' }
-  config.action_mailer.delivery_method = :smtp
+  #config.action_mailer.default_url_options = { :host => 'surveyhumans.com' }
+  #config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => true,
+    :address => "smtp.gmail.com",
+    :port => "587",
+    :domain => "surveyhumans.com",
+    :authentication => :plain,
+    :user_name => "surveyhumans@gmail.com",
+    :password => "surveyhumans12345"
+  }
   config.action_mailer.perform_deliveries = true
 
   # For nginx:
