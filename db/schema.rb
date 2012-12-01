@@ -12,6 +12,7 @@
 # It's strongly recommended to check this file into your version control system.
 
 ActiveRecord::Schema.define(:version => 20121130214955) do
+#ActiveRecord::Schema.define(:version => 20121130141332) do
 
   create_table "accesses", :force => true do |t|
     t.string   "name",                      :null => false
