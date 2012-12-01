@@ -25,6 +25,7 @@ class Panel::Subscription < ActiveRecord::Base
     ### Updating expired date to 30 days from today.
     subscription.expired_at = Time.now + 2592000
     subscription.panel_plan_id = plan.id
+    subscription.status = nil
     subscription.save
 
     return true

@@ -7,7 +7,12 @@
 </div>
 </br>
 <%if @can_add%>
-<%= link_to t('.new_button'),new_match_management_survey_path, :class=>"btn btn-info" unless !current_user.has_access(24)%>
+  <% if @subscription.status == nil %>
+    <%= link_to t('.new_button'),new_match_management_survey_path, :class=>"btn btn-info" unless !current_user.has_access(24)%>
+  <% else %>
+    <p>Update your subscription in order to create more surveys</p>
+    <a href="<%= panel_subscribe_index_path %>" class="btn btn-success">Update your subscription</a>
+  <% end %>
 <%else%>
 	<p>You cannot add more surveys, because you are subscribed: <%=@plan%></p>
 <%end%>

@@ -8,7 +8,7 @@ class Panel::SubscriptionTransactionsController < ApplicationController
     @current_module = 'transactions'
   end
   def index
-    @panel_subscription_transactions = Panel::SubscriptionTransaction.all
+    @panel_subscription_transactions = Panel::SubscriptionTransaction.order('created_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb

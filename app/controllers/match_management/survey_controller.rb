@@ -20,6 +20,7 @@ class MatchManagement::SurveyController < ApplicationController
       @panel_id=Panel::Subscription.where(:user_id=>current_user.id).first.panel_plan_id
       @can_add=false
       matches=Match.where(:deleted => 0, :user_id=>current_user.id)
+      @subscription = Panel::Subscription.where(:user_id=>current_user.id).first
       case @panel_id
         when 1
           @can_add=(matches.count<5)

@@ -7,11 +7,16 @@
 </div>
 </br>
 <%if @can_add%>
-	<%if @list_courses.count>0%>
-		<%= link_to t('.new_button'),new_match_management_exam_path, :class=>"btn btn-info" unless !current_user.has_access(24)%>
-	<%end%>
+  <% if @subscription.status == nil %>
+    <%if @list_courses.count>0%>
+      <%= link_to t('.new_button'),new_match_management_exam_path, :class=>"btn btn-info" unless !current_user.has_access(24)%>
+    <%end%>
 
-	<%=link_to t('.courses'), courses_path, :class=>"btn"%>
+    <%=link_to t('.courses'), courses_path, :class=>"btn"%>
+  <% else %>
+    <p>Update your subscription in order to create more exams and courses</p>
+    <a href="<%= panel_subscribe_index_path %>" class="btn btn-success">Update your subscription</a>
+  <% end %>
 <%else%>
 	<p>You cannot add more exams, because you are subscribed: <%=@plan%></p>
 <%end%>

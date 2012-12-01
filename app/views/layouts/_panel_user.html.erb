@@ -76,10 +76,16 @@
     </section>
     <section id="dashboard-subs-section" class="span4 well text-centered">
       <h4><%=t('.SUBSCRIPTION')%></h4>
+        <% if @subscription.status == nil %>
         <div class="alert alert-block">
             <p><%=t('.current_plan')%>: <%= @subscription.panel_plan.name if !@subscription.nil? %></p>
         </div>
         <p><%= @days_left %> <%=t('.days_left')%></p>
+        <% elsif @subscription.status == false %>
+          <div class="alert alert-block">
+              <p>You subscription had end.</p>
+          </div>
+        <% end %>
         <a class="btn btn-success" href="<%= panel_subscribe_index_path %>"><%=t('.update_subscription')%></a>
     </section>
   </div>
@@ -104,7 +110,10 @@
                 <li><a href="<%= panel_organization_path organization.panel_organization.id %>" class=""><%= organization.panel_organization.name %></a></li>
               <% end %>
           </ul>
-        <a class="btn btn-success" href="<%=new_panel_organization_path%>"><%=t('.create_organization')%></a>
+          <% if @subscription.status == nil %>
+            <a class="btn btn-success" href="<%=new_panel_organization_path%>"><%=t('.create_organization')%></a>
+          <% else %>
+          <% end %>
       </div>
     </section>
   </div>
