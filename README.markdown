@@ -1,6 +1,10 @@
 <h1>Survey Humans</h1>
-<p>This is the first version of survey humans</p>
-<p>with survey humans you can easily create and manage surveys and examns</p>
+<p>This is the first version of survey humans.</p>
+<p>
+	<strong>
+		With survey humans you can easily create and manage surveys and exams
+	</strong>
+</p>
 
 <h2>Colaboradores</h2>
 <ul>
