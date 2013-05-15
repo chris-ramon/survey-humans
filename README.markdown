@@ -6,7 +6,7 @@
 	</strong>
 </p>
 
-<h2>Colaboradores</h2>
+<h2>Colaborators</h2>
 <ul>
 	<li>
 	<a href="https://github.com/adbeel92" target="_blank">
